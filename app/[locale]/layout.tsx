@@ -15,6 +15,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return {
     title,
     description,
+    icons: {
+      icon: [
+        { url: "/icon.png", type: "image/png" },
+        { url: "/favicon.ico", sizes: "any" }
+      ],
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
     alternates: {
       canonical: `https://futuretalents.his.edu.dz/${locale}`,
       languages: {
@@ -27,6 +35,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       description,
       locale: locale === "ar" ? "ar_DZ" : "fr_FR",
       type: "website",
+      images: [
+        {
+          url: "/icon.png",
+          width: 512,
+          height: 512,
+          alt: "HIS Future Talents Icon",
+        },
+      ],
     },
   };
 }
