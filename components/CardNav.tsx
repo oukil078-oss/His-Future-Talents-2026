@@ -12,6 +12,7 @@ interface NavLink {
 const NAV_LINKS: NavLink[] = [
   { href: "#value-section", label: { fr: "L'Événement", ar: "الحدث" } },
   { href: "#edition3-section", label: { fr: "Édition 2026", ar: "دورة 2026" } },
+  { href: "#sponsors-section", label: { fr: "Nos Sponsors", ar: "الرعاة" } },
   { href: "#why-section", label: { fr: "Pourquoi Exposer", ar: "لماذا المشاركة؟" } },
   { href: "#program-section", label: { fr: "Programme", ar: "البرنامج" } },
   { href: "#speakers-section", label: { fr: "Intervenants", ar: "المتحدثون" } },

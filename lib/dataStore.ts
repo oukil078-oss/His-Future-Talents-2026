@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import os from "os";
 import { partnersData, Partner } from "@/data/partners";
 
 export type ExhibitorLead = {
@@ -22,35 +23,72 @@ export type ExhibitorLead = {
 const LEADS_FILE = path.join(process.cwd(), "data", "leads.json");
 const SPONSORS_FILE = path.join(process.cwd(), "data", "sponsors.json");
 
-// Helper to ensure data files exist
+let memoryLeads: ExhibitorLead[] | null = null;
+let memorySponsors: Partner[] | null = null;
+
+function getTmpPath(filename: string): string {
+  return path.join(os.tmpdir(), filename);
+}
+
+function safeWriteFile(filePath: string, data: string) {
+  try {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(filePath, data, "utf-8");
+  } catch (err) {
+    // Read-only filesystem (e.g. Vercel serverless) fallback to /tmp
+    try {
+      const tmpPath = getTmpPath(path.basename(filePath));
+      fs.writeFileSync(tmpPath, data, "utf-8");
+    } catch (tmpErr) {
+      console.error(`Failed to write file ${filePath} and tmp fallback:`, tmpErr);
+    }
+  }
+}
+
+function safeReadFile<T>(primaryPath: string, fallbackDefault: T): T {
+  const tmpPath = getTmpPath(path.basename(primaryPath));
+  if (fs.existsSync(tmpPath)) {
+    try {
+      return JSON.parse(fs.readFileSync(tmpPath, "utf-8"));
+    } catch (e) {}
+  }
+  if (fs.existsSync(primaryPath)) {
+    try {
+      return JSON.parse(fs.readFileSync(primaryPath, "utf-8"));
+    } catch (e) {}
+  }
+  return fallbackDefault;
+}
+
 function ensureFiles() {
-  const dataDir = path.join(process.cwd(), "data");
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-
-  if (!fs.existsSync(LEADS_FILE)) {
-    fs.writeFileSync(LEADS_FILE, JSON.stringify([], null, 2), "utf-8");
-  }
-
-  if (!fs.existsSync(SPONSORS_FILE)) {
-    fs.writeFileSync(SPONSORS_FILE, JSON.stringify(partnersData, null, 2), "utf-8");
+  try {
+    const dataDir = path.join(process.cwd(), "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    if (!fs.existsSync(LEADS_FILE)) {
+      fs.writeFileSync(LEADS_FILE, JSON.stringify([], null, 2), "utf-8");
+    }
+    if (!fs.existsSync(SPONSORS_FILE)) {
+      fs.writeFileSync(SPONSORS_FILE, JSON.stringify(partnersData, null, 2), "utf-8");
+    }
+  } catch (e) {
+    // Ignore read-only errors on initialization
   }
 }
 
 // ── LEADS CRUD ──
 export function getLeads(): ExhibitorLead[] {
+  if (memoryLeads !== null) return memoryLeads;
   ensureFiles();
-  try {
-    const data = fs.readFileSync(LEADS_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch (err) {
-    return [];
-  }
+  memoryLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
+  return memoryLeads;
 }
 
 export function saveLead(leadData: Omit<ExhibitorLead, "id" | "status" | "submittedAt">): ExhibitorLead {
-  ensureFiles();
   const leads = getLeads();
   const newLead: ExhibitorLead = {
     ...leadData,
@@ -59,43 +97,41 @@ export function saveLead(leadData: Omit<ExhibitorLead, "id" | "status" | "submit
     submittedAt: new Date().toISOString(),
   };
   leads.unshift(newLead);
-  fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+  memoryLeads = leads;
+  safeWriteFile(LEADS_FILE, JSON.stringify(leads, null, 2));
   return newLead;
 }
 
 export function updateLeadStatus(id: string, status: ExhibitorLead["status"]): ExhibitorLead | null {
-  ensureFiles();
   const leads = getLeads();
   const index = leads.findIndex((l) => l.id === id);
   if (index === -1) return null;
   leads[index].status = status;
-  fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+  memoryLeads = leads;
+  safeWriteFile(LEADS_FILE, JSON.stringify(leads, null, 2));
   return leads[index];
 }
 
 export function deleteLead(id: string): boolean {
-  ensureFiles();
   const leads = getLeads();
   const filtered = leads.filter((l) => l.id !== id);
   if (filtered.length === leads.length) return false;
-  fs.writeFileSync(LEADS_FILE, JSON.stringify(filtered, null, 2), "utf-8");
+  memoryLeads = filtered;
+  safeWriteFile(LEADS_FILE, JSON.stringify(filtered, null, 2));
   return true;
 }
 
 // ── SPONSORS CRUD ──
 export function getSponsors(): Partner[] {
+  if (memorySponsors !== null) return memorySponsors;
   ensureFiles();
-  try {
-    const data = fs.readFileSync(SPONSORS_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch (err) {
-    return partnersData;
-  }
+  memorySponsors = safeReadFile<Partner[]>(SPONSORS_FILE, partnersData);
+  return memorySponsors;
 }
 
 export function saveSponsors(sponsors: Partner[]): void {
-  ensureFiles();
-  fs.writeFileSync(SPONSORS_FILE, JSON.stringify(sponsors, null, 2), "utf-8");
+  memorySponsors = sponsors;
+  safeWriteFile(SPONSORS_FILE, JSON.stringify(sponsors, null, 2));
 }
 
 export function addSponsor(sponsor: Partner): Partner[] {
@@ -121,3 +157,4 @@ export function deleteSponsor(slug: string): Partner[] {
   saveSponsors(filtered);
   return filtered;
 }
+

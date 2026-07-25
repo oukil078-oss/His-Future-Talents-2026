@@ -90,8 +90,12 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true, data: lead });
-  } catch (error) {
-    return NextResponse.json({ success: false, error: "Failed to save lead" }, { status: 500 });
+  } catch (error: any) {
+    console.error("Error in POST /api/leads:", error);
+    return NextResponse.json(
+      { success: false, error: error?.message || "Failed to save lead" },
+      { status: 500 }
+    );
   }
 }
 

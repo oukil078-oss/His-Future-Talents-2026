@@ -589,12 +589,7 @@ export default function Home() {
         <MediaCoverage />
 
         {/* ─────────────────────────────────────────────────────────
-            4. SPONSORS SECTION — "Nos sponsors"
-        ──────────────────────────────────────────────────────────── */}
-        <SponsorsSection />
-
-        {/* ─────────────────────────────────────────────────────────
-            5. EXHIBITORS SECTION — "Les exposants des éditions précédentes"
+            4. EXHIBITORS SECTION — "Les exposants des éditions précédentes"
         ──────────────────────────────────────────────────────────── */}
         <ExhibitorsSection />
 
@@ -759,6 +754,11 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* ─────────────────────────────────────────────────────────
+            SPONSORS SECTION — "Nos sponsors"
+        ──────────────────────────────────────────────────────────── */}
+        <SponsorsSection />
 
         {/* ─────────────────────────────────────────────────────────
             5. WHY PARTNER / SPONSORSHIP SECTION — Structured B2B Categories
