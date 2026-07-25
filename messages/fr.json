@@ -1,0 +1,109 @@
+{
+  "common": {
+    "title": "HIS Future Talents — Édition 3 | Espace Exposants & Sponsoring",
+    "description": "Connectez votre entreprise aux futurs talents d'Algérie. Réservez votre stand exposant et découvrez nos packs de sponsoring.",
+    "cta_partner": "Devenir exposant",
+    "cta_contact": "Réserver un échange",
+    "download_dossier": "Télécharger le dossier exposant & sponsoring",
+    "cta_packages": "Voir les packs exposants",
+    "cta_submit": "Envoyer la demande",
+    "privacy_consent": "J'accepte que mes données soient utilisées pour me recontacter dans le cadre de ma demande d'exposition.",
+    "consent_error": "Vous devez accepter les conditions pour continuer."
+  },
+  "navbar": {
+    "home": "Accueil",
+    "value": "Valeur",
+    "why": "Pourquoi exposer",
+    "program": "Programme",
+    "packages": "Offres Exposants",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Bienvenue à HIS Future Talents 3ème édition",
+    "headline": "Connectez votre entreprise aux talents qui façonneront demain",
+    "subheading": "Associez votre marque au premier salon de recrutement et de formation de l'enseignement supérieur privé en Algérie. Exposez, recrutez l'élite et développez votre réseau B2B.",
+    "countdown_title": "Lancement du salon dans",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes"
+  },
+  "value": {
+    "eyebrow": "Édition 2 — En chiffres",
+    "title": "Un rendez-vous stratégique entre entreprises et talents",
+    "subtitle": "Higher Institute of Sciences (HIS) et Future Talents s'associent pour créer un pont solide entre le monde académique et le secteur professionnel.",
+    "stat_visitors": "Visiteurs qualifiés",
+    "stat_companies": "Exposants & Entreprises",
+    "stat_workshops": "Conférences & Ateliers",
+    "stat_satisfaction": "Satisfaction globale"
+  },
+  "partner_highlight": {
+    "title": "Exposant & Sponsor Officiel",
+    "label": "Accompagner la réussite de la jeunesse algérienne"
+  },
+  "why": {
+    "eyebrow": "Avantages exposants & sponsors",
+    "title": "Pourquoi exposer au salon ?",
+    "card1_title": "Attirez les talents de demain",
+    "card1_desc": "Identifiez et recrutez en direct l'élite des diplômés et jeunes talents hautement qualifiés.",
+    "card2_title": "Visibilité de Marque",
+    "card2_desc": "Bénéficiez d'un rayonnement exceptionnel sur nos supports d'exposition, médias et canaux digitaux.",
+    "card3_title": "Responsabilité RSE",
+    "card3_desc": "Concrétisez vos engagements sociétaux en soutenant l'insertion professionnelle de la jeunesse.",
+    "card4_title": "Marque Employeur",
+    "card4_desc": "Valorisez votre culture d'entreprise et affirmez votre statut d'employeur de choix.",
+    "card5_title": "Réseau B2B Exclusif",
+    "card5_desc": "Échangez avec les décideurs RH et dirigeants de plus de 45 entreprises partenaires leaders."
+  },
+  "program": {
+    "title": "Pre-Programme de l'événement",
+    "subtitle": "Un agenda conçu pour maximiser les échanges professionnels, les entretiens exposants et le réseautage B2B."
+  },
+  "marquee": {
+    "attended": "Ils ont exposé lors des éditions précédentes",
+    "media": "Une visibilité médiatique nationale",
+    "speakers": "Ils ont pris la parole lors de nos événements"
+  },
+  "editions": {
+    "title": "Éditions précédentes",
+    "video1_title": "Retour sur l'édition précédente",
+    "video2_title": "Témoignages de nos exposants et sponsors"
+  },
+  "packages": {
+    "title": "Packs exposants & sponsoring",
+    "subtitle": "Sélectionnez le niveau de stand, de visibilité et de sponsoring adapté à votre stratégie.",
+    "bronze": "Bronze",
+    "silver": "Argent",
+    "gold": "Or",
+    "features_title": "Avantages inclus",
+    "da": "DA",
+    "gold_tag": "Impact Maximum",
+    "expand": "Voir les détails des avantages",
+    "collapse": "Masquer les détails"
+  },
+  "form": {
+    "section_label": "Devenir exposant & sponsor",
+    "title": "Exposez à HIS Future Talents et valorisez votre marque",
+    "subtitle": "Remplissez ce formulaire de réservation de stand et de sponsoring pour recevoir votre dossier d'exposition et planifier un échange.",
+    "name": "Nom et prénom",
+    "company": "Entreprise",
+    "role": "Fonction",
+    "email": "Email professionnel",
+    "phone": "Numéro de téléphone",
+    "pack": "Formule exposant souhaitée",
+    "package": "Formule exposant souhaitée",
+    "message": "Message / Besoins spécifiques",
+    "select_package": "Sélectionnez un pack exposant",
+    "option_discuss": "À discuter avec l'équipe",
+    "submit": "Envoyer ma demande d'exposition",
+    "success_title": "Demande d'exposition enregistrée !",
+    "success_message": "Notre équipe vous recontactera sous 48h ouvrables pour valider votre emplacement de stand et vos options de sponsoring.",
+    "success_desc": "Notre équipe prendra contact avec vous rapidement pour finaliser votre dossier d'exposition.",
+    "consent": "J'accepte que mes données soient utilisées pour me recontacter dans le cadre de cette demande d'exposition uniquement.",
+    "required": "Ce champ est obligatoire",
+    "invalid_email": "Veuillez entrer une adresse email professionnelle valide",
+    "pro_email_required": "Veuillez utiliser une adresse email professionnelle (pas Gmail, Yahoo, etc.)",
+    "invalid_phone": "Veuillez entrer un numéro de téléphone valide",
+    "consent_required": "Veuillez accepter les conditions pour continuer"
+  }
+}
