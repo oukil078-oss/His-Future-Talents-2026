@@ -30,6 +30,8 @@ html-only/wordpress-plugin/hft-google-sheets/credentials.json
 *.log
 *.zip
 *.tar.gz
+gh.exe
+MinGit/
 
 # IDE & OS Files
 .DS_Store

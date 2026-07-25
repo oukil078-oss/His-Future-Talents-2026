@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getLeads, saveLead, updateLeadStatus, deleteLead } from "@/lib/dataStore";
+import { appendToGoogleSheet } from "@/lib/googleSheets";
 
 export async function GET() {
   try {
@@ -45,7 +46,47 @@ export async function POST(req: Request) {
       targetProfiles: String(targetProfiles || "").trim(),
       equipmentNeeded: String(equipmentNeeded || "").trim(),
       remarks: String(remarks || "").trim(),
-      packageDesired: String(packageDesired || "gold").trim(),
+      packageDesired: String(packageDesired || "Exposant").trim(),
+    });
+
+    // Format row for Google Sheets sync
+    const oppsList = Array.isArray(opportunities) ? opportunities : [];
+    const now = new Date();
+    const formattedTimestamp = now.toLocaleString("fr-FR", {
+      timeZone: "Africa/Algiers",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    });
+
+    const rowValues = [
+      formattedTimestamp,
+      String(companyName).trim(),
+      String(representativeName).trim(),
+      String(role || "").trim(),
+      String(email).trim().toLowerCase(),
+      String(phone).trim(),
+      Number(representativesCount) || 1,
+      oppsList.includes("emploi") ? "Oui" : "Non",
+      oppsList.includes("pfe") ? "Oui" : "Non",
+      oppsList.includes("immersion") ? "Oui" : "Non",
+      oppsList.includes("decouverte") ? "Oui" : "Non",
+      String(targetProfiles || "").trim(),
+      String(equipmentNeeded || "").trim(),
+      String(remarks || "").trim(),
+      "Site Web Direct (Vercel)",
+      "En attente",
+      req.headers.get("x-forwarded-for") || "127.0.0.1",
+      req.headers.get("user-agent") || "",
+      "fr"
+    ];
+
+    // Fire & forget Google Sheets append
+    appendToGoogleSheet(rowValues).catch((err) => {
+      console.error("Google Sheets async sync error:", err);
     });
 
     return NextResponse.json({ success: true, data: lead });
