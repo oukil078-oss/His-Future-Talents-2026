@@ -1,36 +1,38 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependencies
+node_modules/
+.pnpm-store/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+# Next.js build output
+.next/
+out/
+build/
+dist/
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
+# Credentials, Keys & Secrets (CRITICAL SECURITY RULE)
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
+!data/*.json
+*.env
+*.env.*
+!.env.example
 *.pem
+*.key
+*.p12
+*.pfx
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# WordPress Plugin generated credentials
+html-only/wordpress-plugin/hft-google-sheets/credentials.json
 
-# local env files
-.env*.local
+# Local Archives & Logs
+*.log
+*.zip
+*.tar.gz
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# IDE & OS Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
