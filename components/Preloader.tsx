@@ -255,12 +255,9 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             {/* Inner Brand Logo */}
             <div className="relative z-10 flex flex-col items-center p-3">
               <img
-                src="/brand/Future Talents White-03.png"
+                src="/app-logo.png"
                 alt="HIS Future Talents"
-                className="h-12 sm:h-14 w-auto object-contain drop-shadow-md"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = "/logo-hft-white.svg";
-                }}
+                className="h-10 sm:h-12 w-auto object-contain rounded-lg shadow-sm"
               />
               {/* Monospace Counter */}
               <span

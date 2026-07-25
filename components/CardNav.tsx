@@ -94,20 +94,25 @@ export default function CardNav() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 h-12 md:h-14">
 
-        {/* ── LEFT: Official Stacked HFT Logo (Switches color based on background) ── */}
+        {/* ── LEFT: Official Stacked HFT Logo & App Icon ── */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue rounded-lg transition-transform hover:opacity-95"
+          className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue rounded-lg transition-transform hover:opacity-95"
           aria-label="HIS Future Talents — Page d'accueil"
         >
           <img
+            src="/app-logo.png"
+            alt="HIS Future Talents App Logo"
+            className="h-8 sm:h-9 md:h-10 w-auto rounded-lg object-contain border border-white/20 shadow-xs"
+          />
+          <img
             src={isDarkSection ? "/logo-hft-white.svg" : "/logo-hft.svg"}
             alt="HIS Future Talents"
-            className="h-11 sm:h-12 md:h-14 w-auto object-contain transition-opacity duration-200"
+            className="h-10 sm:h-11 md:h-13 w-auto object-contain transition-opacity duration-200"
           />
         </a>
 

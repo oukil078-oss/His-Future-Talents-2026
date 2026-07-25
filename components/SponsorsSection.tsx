@@ -61,25 +61,29 @@ export default function SponsorsSection() {
     <section
       id="sponsors-section"
       data-theme="dark"
-      className="relative py-16 md:py-24 bg-[#0E1B2C] text-white overflow-hidden text-start"
+      className="relative py-16 md:py-24 bg-[#001E3D] text-white overflow-hidden text-start border-t border-white/10"
     >
-      {/* Ambient Lighting Gradients */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#003876]/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-80 h-80 bg-[#F05A22]/15 rounded-full blur-3xl pointer-events-none" />
+      {/* Brand Motifs in background whitespace */}
+      <div className="absolute top-12 right-6 w-32 md:w-40 opacity-15 pointer-events-none select-none hidden lg:block" aria-hidden="true">
+        <img src="/brand/motifs/Future Talents Icon Yellow-03.png" alt="" className="w-full h-auto" />
+      </div>
+      <div className="absolute bottom-12 left-6 w-32 md:w-40 opacity-15 pointer-events-none select-none hidden lg:block" aria-hidden="true">
+        <img src="/brand/motifs/Future Talents Icon Orange-02.png" alt="" className="w-full h-auto" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 space-y-14">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 space-y-12">
         
         {/* Section Header & CTA */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
           <div className="space-y-3 max-w-2xl">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F05A22]/20 border border-[#F05A22]/40 text-[#F05A22] text-xs font-black uppercase tracking-widest backdrop-blur-md">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F05A22]/15 border border-[#F05A22]/30 text-[#F05A22] text-xs font-bold uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" />
               {language === "ar" ? "الرعاية الرسمية 2026" : "Sponsoring Officiel 2026"}
             </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
               {language === "ar" ? "الرعاة الرسميون" : "Nos sponsors"}
             </h2>
-            <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed">
+            <p className="text-white/80 text-sm md:text-base font-normal leading-relaxed">
               {language === "ar"
                 ? "شركاء استراتيجيون يساهمون في نجاح مبادرة HIS Future Talents."
                 : "Des partenaires engagés aux côtés de HIS Future Talents."}
@@ -88,7 +92,7 @@ export default function SponsorsSection() {
 
           <a
             href="#contact-form"
-            className="inline-flex items-center gap-2.5 px-6 h-13 rounded-2xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl shadow-[#F05A22]/25 hover:-translate-y-0.5 shrink-0 self-start md:self-auto cursor-pointer"
+            className="inline-flex items-center gap-2.5 px-6 h-12 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-bold text-xs uppercase tracking-wider transition-all duration-200 shrink-0 self-start md:self-auto cursor-pointer shadow-sm"
           >
             <span>{language === "ar" ? "الانضمام كرعاة" : "Devenir partenaire"}</span>
             <ArrowRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -96,29 +100,24 @@ export default function SponsorsSection() {
         </div>
 
         {/* Sponsorship Tiers Showcase */}
-        <div className="space-y-14">
+        <div className="space-y-10">
           
-          {/* ─────────────────────────────────────────────────────────
-              1. GOLD SPONSORS TIER (Cinematic Gold Metallic Visuals)
-          ──────────────────────────────────────────────────────────── */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-black uppercase tracking-widest text-[#FFBD0E] flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD0E] animate-pulse" />
+          {/* 1. GOLD SPONSORS TIER */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#FFBD0E] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#FFBD0E]" />
               {language === "ar" ? "الرعاية الذهبية (Sponsors Gold)" : "Sponsors Gold"}
             </h3>
 
             {goldSponsors.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 gap-4">
                 {goldSponsors.map((sponsor) => (
                   <div
                     key={sponsor.name}
-                    className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-[#3b2a08] to-slate-900 border-2 border-amber-400/60 p-6 sm:p-8 text-white shadow-[0_15px_45px_rgba(251,191,36,0.25)] group transition-all duration-500 text-start"
+                    className="relative rounded-2xl bg-[#0E1B2C]/80 border border-amber-400/30 p-6 text-white group transition-all duration-200 text-start hover:border-amber-400/60"
                   >
-                    {/* Gold Metallic Shine Sweep on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                      <div className="bg-white rounded-2xl p-5 shadow-2xl border-2 border-amber-300 w-full md:w-56 h-36 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                      <div className="bg-white rounded-xl p-4 border border-slate-200 w-full md:w-48 h-28 flex items-center justify-center shrink-0">
                         {sponsor.logo ? (
                           <img
                             src={sponsor.logo}
@@ -126,19 +125,19 @@ export default function SponsorsSection() {
                             className="w-full h-full object-contain"
                           />
                         ) : (
-                          <span className="text-xl font-black text-slate-900">{sponsor.name}</span>
+                          <span className="text-lg font-bold text-slate-900">{sponsor.name}</span>
                         )}
                       </div>
 
-                      <div className="flex-1 space-y-3">
-                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-amber-300 via-yellow-100 to-amber-400 text-slate-900 border border-amber-300 shadow-md">
-                          ★ {language === "ar" ? "الراعي الذهبي الرسمي 2026" : "SPONSOR OR 2026 — GOLD SPONSOR"}
+                      <div className="flex-1 space-y-2">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-amber-400/20 text-[#FFBD0E] border border-amber-400/30">
+                          ★ {language === "ar" ? "الراعي الذهبي الرسمي 2026" : "SPONSOR OR 2026"}
                         </span>
-                        <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                        <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                           {sponsor.name}
                         </h4>
                         {sponsor.description && (
-                          <p className="text-white/80 text-xs sm:text-sm leading-relaxed font-medium max-w-3xl">
+                          <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
                             {language === "ar" ? sponsor.description.ar : sponsor.description.fr}
                           </p>
                         )}
@@ -147,7 +146,7 @@ export default function SponsorsSection() {
                             href={sponsor.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-xs font-extrabold text-[#FFBD0E] hover:text-white transition-colors pt-1"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#FFBD0E] hover:text-white transition-colors pt-1"
                           >
                             <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Site officiel de la société"}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -159,11 +158,11 @@ export default function SponsorsSection() {
                 ))}
               </div>
             ) : (
-              <div className="border border-dashed border-amber-400/30 rounded-3xl p-8 text-center space-y-2 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent">
-                <h4 className="text-xs font-black uppercase tracking-wider text-[#FFBD0E]">
+              <div className="border border-dashed border-amber-400/20 rounded-2xl p-6 text-center space-y-1 bg-amber-400/5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#FFBD0E]">
                   {language === "ar" ? "الرعاية الذهبية (Sponsors Gold)" : "Sponsors Gold"}
                 </h4>
-                <p className="text-xs text-white/70 font-medium">
+                <p className="text-xs text-white/60 font-normal">
                   {language === "ar"
                     ? "سيتم الإعلان عن رعاة هذه الدورة قريباً."
                     : "Les sponsors de cette édition seront annoncés prochainement."}
@@ -172,27 +171,22 @@ export default function SponsorsSection() {
             )}
           </div>
 
-          {/* ─────────────────────────────────────────────────────────
-              2. SILVER SPONSORS TIER (Cinematic Silver Metallic Visuals)
-          ──────────────────────────────────────────────────────────── */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-black uppercase tracking-widest text-[#58B9FF] flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#58B9FF] animate-ping" />
+          {/* 2. SILVER SPONSORS TIER */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#58B9FF] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#58B9FF]" />
               {language === "ar" ? "الرعاية الفضية (Sponsors Silver)" : "Sponsors Silver"}
             </h3>
 
             {silverSponsors.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 gap-4">
                 {silverSponsors.map((sponsor) => (
                   <div
                     key={sponsor.name}
-                    className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-[#002855] to-slate-900 border-2 border-slate-300/40 p-6 sm:p-8 text-white shadow-[0_15px_45px_rgba(148,163,184,0.25)] group transition-all duration-500 text-start hover:border-[#58B9FF]"
+                    className="relative rounded-2xl bg-[#0E1B2C]/80 border border-[#58B9FF]/30 p-6 text-white group transition-all duration-200 text-start hover:border-[#58B9FF]/60"
                   >
-                    {/* Silver Metallic Shine Sweep on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                      <div className="bg-white rounded-2xl p-5 shadow-2xl border-2 border-slate-200 w-full md:w-56 h-36 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                      <div className="bg-white rounded-xl p-4 border border-slate-200 w-full md:w-48 h-28 flex items-center justify-center shrink-0">
                         {sponsor.logo ? (
                           <img
                             src={sponsor.logo}
@@ -200,19 +194,19 @@ export default function SponsorsSection() {
                             className="w-full h-full object-contain"
                           />
                         ) : (
-                          <span className="text-xl font-black text-slate-900">{sponsor.name}</span>
+                          <span className="text-lg font-bold text-slate-900">{sponsor.name}</span>
                         )}
                       </div>
 
-                      <div className="flex-1 space-y-3">
-                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-slate-200 via-slate-100 to-slate-300 text-slate-900 border border-slate-300 shadow-md">
-                          ★ {language === "ar" ? "الراعي الفضي الرسمي 2026" : "SPONSOR ARGENT 2026 — SILVER SPONSOR"}
+                      <div className="flex-1 space-y-2">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-[#58B9FF]/20 text-[#58B9FF] border border-[#58B9FF]/30">
+                          ★ {language === "ar" ? "الراعي الفضي الرسمي 2026" : "SPONSOR ARGENT 2026"}
                         </span>
-                        <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                        <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                           {sponsor.name}
                         </h4>
                         {sponsor.description && (
-                          <p className="text-white/80 text-xs sm:text-sm leading-relaxed font-medium max-w-3xl">
+                          <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
                             {language === "ar" ? sponsor.description.ar : sponsor.description.fr}
                           </p>
                         )}
@@ -221,7 +215,7 @@ export default function SponsorsSection() {
                             href={sponsor.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-xs font-extrabold text-[#58B9FF] hover:text-white transition-colors pt-1"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#58B9FF] hover:text-white transition-colors pt-1"
                           >
                             <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Site officiel de la société"}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -233,11 +227,11 @@ export default function SponsorsSection() {
                 ))}
               </div>
             ) : (
-              <div className="border border-dashed border-slate-300/30 rounded-3xl p-8 text-center space-y-2 bg-gradient-to-br from-slate-500/10 via-transparent to-transparent">
-                <h4 className="text-xs font-black uppercase tracking-wider text-[#58B9FF]">
+              <div className="border border-dashed border-[#58B9FF]/20 rounded-2xl p-6 text-center space-y-1 bg-[#58B9FF]/5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#58B9FF]">
                   {language === "ar" ? "الرعاية الفضية (Sponsors Silver)" : "Sponsors Silver"}
                 </h4>
-                <p className="text-xs text-white/70 font-medium">
+                <p className="text-xs text-white/60 font-normal">
                   {language === "ar"
                     ? "سيتم الإعلان عن رعاة هذه الدورة قريباً."
                     : "Les sponsors de cette édition seront annoncés prochainement."}
@@ -246,27 +240,22 @@ export default function SponsorsSection() {
             )}
           </div>
 
-          {/* ─────────────────────────────────────────────────────────
-              3. BRONZE SPONSORS TIER (Cinematic Bronze Metallic Visuals)
-          ──────────────────────────────────────────────────────────── */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-black uppercase tracking-widest text-amber-500 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-600" />
+          {/* 3. BRONZE SPONSORS TIER */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-amber-500 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
               {language === "ar" ? "الرعاية البرونزية (Sponsors Bronze)" : "Sponsors Bronze"}
             </h3>
 
             {bronzeSponsors.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 gap-4">
                 {bronzeSponsors.map((sponsor) => (
                   <div
                     key={sponsor.name}
-                    className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-[#2d1b0d] to-slate-900 border-2 border-amber-700/60 p-6 sm:p-8 text-white shadow-[0_15px_45px_rgba(180,83,9,0.25)] group transition-all duration-500 text-start hover:border-amber-500"
+                    className="relative rounded-2xl bg-[#0E1B2C]/80 border border-amber-600/30 p-6 text-white group transition-all duration-200 text-start hover:border-amber-600/60"
                   >
-                    {/* Bronze Metallic Shine Sweep on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-600/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                      <div className="bg-white rounded-2xl p-5 shadow-2xl border-2 border-amber-600 w-full md:w-56 h-36 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                      <div className="bg-white rounded-xl p-4 border border-slate-200 w-full md:w-48 h-28 flex items-center justify-center shrink-0">
                         {sponsor.logo ? (
                           <img
                             src={sponsor.logo}
@@ -274,19 +263,19 @@ export default function SponsorsSection() {
                             className="w-full h-full object-contain"
                           />
                         ) : (
-                          <span className="text-xl font-black text-slate-900">{sponsor.name}</span>
+                          <span className="text-lg font-bold text-slate-900">{sponsor.name}</span>
                         )}
                       </div>
 
-                      <div className="flex-1 space-y-3">
-                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 text-amber-100 border border-amber-600 shadow-md">
-                          ★ {language === "ar" ? "الراعي البرونزي الرسمي 2026" : "SPONSOR BRONZE 2026 — BRONZE SPONSOR"}
+                      <div className="flex-1 space-y-2">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-amber-600/20 text-amber-400 border border-amber-600/30">
+                          ★ {language === "ar" ? "الراعي البرونزي الرسمي 2026" : "SPONSOR BRONZE 2026"}
                         </span>
-                        <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                        <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                           {sponsor.name}
                         </h4>
                         {sponsor.description && (
-                          <p className="text-white/80 text-xs sm:text-sm leading-relaxed font-medium max-w-3xl">
+                          <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
                             {language === "ar" ? sponsor.description.ar : sponsor.description.fr}
                           </p>
                         )}
@@ -295,7 +284,7 @@ export default function SponsorsSection() {
                             href={sponsor.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-xs font-extrabold text-amber-400 hover:text-white transition-colors pt-1"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-white transition-colors pt-1"
                           >
                             <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Site officiel de la société"}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -307,11 +296,11 @@ export default function SponsorsSection() {
                 ))}
               </div>
             ) : (
-              <div className="border border-dashed border-amber-700/30 rounded-3xl p-8 text-center space-y-2 bg-gradient-to-br from-amber-900/10 via-transparent to-transparent">
-                <h4 className="text-xs font-black uppercase tracking-wider text-amber-500">
+              <div className="border border-dashed border-amber-600/20 rounded-2xl p-6 text-center space-y-1 bg-amber-600/5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-amber-500">
                   {language === "ar" ? "الرعاية البرونزية (Sponsors Bronze)" : "Sponsors Bronze"}
                 </h4>
-                <p className="text-xs text-white/70 font-medium">
+                <p className="text-xs text-white/60 font-normal">
                   {language === "ar"
                     ? "سيتم الإعلان عن رعاة هذه الدورة قريباً."
                     : "Les sponsors de cette édition seront annoncés prochainement."}

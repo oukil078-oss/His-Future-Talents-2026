@@ -5,6 +5,49 @@
 /* ─── LOCAL FONTS ─────────────────────────────────────────────── */
 
 @font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Bahij';
   src: url('/BAHIJ_THESANSARABIC-PLAIN.ttf') format('truetype');
   font-weight: 400;
@@ -43,8 +86,8 @@
 /* ─── CUSTOM PROPERTIES ───────────────────────────────────────── */
 
 :root {
-  --font-sans:    var(--font-neulis), system-ui, sans-serif;
-  --font-heading: var(--font-neulis), sans-serif;
+  --font-sans:    var(--font-neulis), 'Neulis', system-ui, sans-serif;
+  --font-heading: var(--font-neulis), 'Neulis', sans-serif;
   --font-arabic:  var(--font-bahij), 'Bahij', sans-serif;
   --his-deep:     #003876;
   --his-blue:     #0060C1;

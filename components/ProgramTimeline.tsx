@@ -9,10 +9,13 @@ export default function ProgramTimeline() {
   const { t, language, dir } = useLanguage();
 
   return (
-    <section id="program-section" className="py-12 md:py-16 section-compact bg-white relative z-10" dir={dir}>
-      {/* Decorative Full-Color Brand Motif background accent */}
-      <div className="pointer-events-none absolute top-8 inset-inline-end-8 w-32 md:w-44 opacity-90 drop-shadow-md select-none hidden lg:block" aria-hidden="true">
+    <section id="program-section" className="py-12 md:py-16 section-compact bg-white relative z-10 overflow-hidden" dir={dir}>
+      {/* Decorative Brand Motifs: Flipped Blue Arrow on Left, Orange Arrow on Right */}
+      <div className="pointer-events-none absolute top-10 left-6 w-32 md:w-44 opacity-90 drop-shadow-md select-none hidden lg:block scale-x-[-1]" aria-hidden="true">
         <img src="/brand/motifs/Future Talents Icon Blue-07.png" alt="" className="w-full h-auto" />
+      </div>
+      <div className="pointer-events-none absolute bottom-10 right-6 w-32 md:w-44 opacity-90 drop-shadow-md select-none hidden lg:block scale-x-[-1]" aria-hidden="true">
+        <img src="/brand/motifs/Future Talents Icon Orange-03.png" alt="" className="w-full h-auto" />
       </div>
 
       <div className="max-w-4xl mx-auto px-6">

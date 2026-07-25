@@ -955,11 +955,17 @@ export default function Home() {
         <section
           id="speakers-section"
           ref={speakersRef}
-          className="relative py-16 md:py-24 section-compact bg-white"
+          className="relative py-16 md:py-24 section-compact bg-white overflow-hidden"
         >
-          {/* Full-Color Brand Motif */}
+          {/* Decorative Brand Motifs on Left & Right Sides */}
           <div className="absolute top-10 left-8 w-28 md:w-36 opacity-90 drop-shadow-md pointer-events-none select-none hidden lg:block" aria-hidden="true">
             <img src="/brand/motifs/Future Talents Icon Blue-06.png" alt="" className="w-full h-auto" />
+          </div>
+          <div className="absolute top-[48%] right-8 w-28 md:w-36 opacity-90 drop-shadow-md pointer-events-none select-none hidden lg:block" aria-hidden="true">
+            <img src="/brand/motifs/Future Talents Icon Blue-03.png" alt="" className="w-full h-auto" />
+          </div>
+          <div className="absolute bottom-10 right-8 w-28 md:w-36 opacity-90 drop-shadow-md pointer-events-none select-none hidden lg:block" aria-hidden="true">
+            <img src="/brand/motifs/Future Talents Icon Yellow-05.png" alt="" className="w-full h-auto" />
           </div>
           <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center">
             <div data-gsap className="max-w-3xl mx-auto mb-12">

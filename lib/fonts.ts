@@ -3,92 +3,92 @@ import localFont from "next/font/local";
 export const neulis = localFont({
   src: [
     {
-      path: "../app/fonts/Neulis/Neulis-Thin.otf",
+      path: "../public/Neulis/Neulis-Thin.otf",
       weight: "100",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-ThinItalic.otf",
+      path: "../public/Neulis/Neulis-ThinItalic.otf",
       weight: "100",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-ExtraLight.otf",
+      path: "../public/Neulis/Neulis-ExtraLight.otf",
       weight: "200",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-ExtraLightItalic.otf",
+      path: "../public/Neulis/Neulis-ExtraLightItalic.otf",
       weight: "200",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-Light.otf",
+      path: "../public/Neulis/Neulis-Light.otf",
       weight: "300",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-LightItalic.otf",
+      path: "../public/Neulis/Neulis-LightItalic.otf",
       weight: "300",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-Regular.otf",
+      path: "../public/Neulis/Neulis-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-Italic.otf",
+      path: "../public/Neulis/Neulis-Italic.otf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-Medium.otf",
+      path: "../public/Neulis/Neulis-Medium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-MediumItalic.otf",
+      path: "../public/Neulis/Neulis-MediumItalic.otf",
       weight: "500",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-SemiBold.otf",
+      path: "../public/Neulis/Neulis-SemiBold.otf",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-SemiBoldItalic.otf",
+      path: "../public/Neulis/Neulis-SemiBoldItalic.otf",
       weight: "600",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-Bold.otf",
+      path: "../public/Neulis/Neulis-Bold.otf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-BoldItalic.otf",
+      path: "../public/Neulis/Neulis-BoldItalic.otf",
       weight: "700",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-ExtraBold.otf",
+      path: "../public/Neulis/Neulis-ExtraBold.otf",
       weight: "800",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-ExtraBoldItalic.otf",
+      path: "../public/Neulis/Neulis-ExtraBoldItalic.otf",
       weight: "800",
       style: "italic",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-Black.otf",
+      path: "../public/Neulis/Neulis-Black.otf",
       weight: "900",
       style: "normal",
     },
     {
-      path: "../app/fonts/Neulis/Neulis-BlackItalic.otf",
+      path: "../public/Neulis/Neulis-BlackItalic.otf",
       weight: "900",
       style: "italic",
     }

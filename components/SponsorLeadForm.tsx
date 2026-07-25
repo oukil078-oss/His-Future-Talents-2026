@@ -209,8 +209,8 @@ export default function SponsorLeadForm() {
             </div>
           </div>
         ) : (
-          /* Multi-Step Glassmorphic Form Card */
-          <div className="bg-gradient-to-br from-[#002855]/90 via-[#003876]/85 to-[#0E1B2C]/95 border border-white/20 rounded-3xl p-6 sm:p-10 backdrop-blur-xl shadow-2xl space-y-8">
+          /* Multi-Step Clean Form Card */
+          <div className="bg-[#001E3D]/95 border border-white/15 rounded-2xl p-6 sm:p-10 backdrop-blur-md space-y-8 text-start">
             
             {/* Step Wizard Bar */}
             <div className="grid grid-cols-3 gap-2 border-b border-white/12 pb-6">

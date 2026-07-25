@@ -84,10 +84,15 @@ export async function POST(req: Request) {
       "fr"
     ];
 
-    // Fire & forget Google Sheets append
-    appendToGoogleSheet(rowValues).catch((err) => {
-      console.error("Google Sheets async sync error:", err);
-    });
+    // Await Google Sheets sync so Vercel serverless environment doesn't freeze the process
+    try {
+      const sheetSynced = await appendToGoogleSheet(rowValues);
+      if (!sheetSynced) {
+        console.warn("Google Sheets append failed or credentials were missing on Vercel.");
+      }
+    } catch (sheetErr) {
+      console.error("Google Sheets sync exception:", sheetErr);
+    }
 
     return NextResponse.json({ success: true, data: lead });
   } catch (error: any) {
