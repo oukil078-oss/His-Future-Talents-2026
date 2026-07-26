@@ -258,19 +258,19 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-[#FBF9F6] text-slate-900 flex flex-col text-start">
       
       {/* Admin Top Navigation Header */}
-      <header className="bg-[#003876] text-white py-4 px-6 sm:px-8 shadow-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#F05A22] animate-pulse" />
-            <h1 className="font-black text-lg sm:text-xl tracking-tight">
-              HIS Future Talents — Dashboard Admin
+      <header className="bg-[#003876] text-white py-4 px-4 sm:px-8 shadow-md sticky top-0 z-40 w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="w-3 h-3 rounded-full bg-[#F05A22] animate-pulse shrink-0" />
+            <h1 className="font-black text-sm sm:text-xl tracking-tight truncate">
+              HIS Future Talents — Admin
             </h1>
-            <span className="bg-white/10 text-[#58B9FF] text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/15 hidden sm:inline">
+            <span className="bg-white/10 text-[#58B9FF] text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/15 hidden md:inline shrink-0">
               Édition 2026
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
             <button
               onClick={fetchData}
               className="p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-all text-white/80 hover:text-white"
@@ -291,11 +291,11 @@ export default function AdminDashboard() {
       </header>
 
       {/* Admin Navigation Tabs */}
-      <div className="bg-[#0E1B2C] text-white border-b border-white/10 px-6 sm:px-8 py-3">
-        <div className="max-w-7xl mx-auto flex items-center gap-3">
+      <div className="bg-[#0E1B2C] text-white border-b border-white/10 px-4 sm:px-8 py-3 overflow-x-auto no-scrollbar whitespace-nowrap w-full">
+        <div className="max-w-7xl mx-auto flex items-center gap-2 sm:gap-3 min-w-max">
           <button
             onClick={() => setActiveTab("overview")}
-            className={`flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${
+            className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all shrink-0 ${
               activeTab === "overview"
                 ? "bg-[#F05A22] text-white shadow-md"
                 : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
@@ -307,7 +307,7 @@ export default function AdminDashboard() {
 
           <button
             onClick={() => setActiveTab("leads")}
-            className={`flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all relative ${
+            className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all relative shrink-0 ${
               activeTab === "leads"
                 ? "bg-[#F05A22] text-white shadow-md"
                 : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
@@ -324,7 +324,7 @@ export default function AdminDashboard() {
 
           <button
             onClick={() => setActiveTab("sponsors")}
-            className={`flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${
+            className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all shrink-0 ${
               activeTab === "sponsors"
                 ? "bg-[#F05A22] text-white shadow-md"
                 : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
@@ -337,7 +337,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Main Content Body */}
-      <main className="max-w-7xl mx-auto px-6 sm:px-8 py-8 flex-1 w-full">
+      <main className="max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-8 flex-1 w-full overflow-x-hidden">
 
         {/* ── 1. OVERVIEW TAB ── */}
         {activeTab === "overview" && (
@@ -435,8 +435,8 @@ export default function AdminDashboard() {
         {activeTab === "leads" && (
           <div className="space-y-6">
             {/* Filters bar */}
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
-              <div className="relative w-full sm:w-80">
+            <div className="bg-white p-4 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shadow-xs w-full overflow-hidden">
+              <div className="relative w-full md:w-80">
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
                 <input
                   type="text"
@@ -447,13 +447,13 @@ export default function AdminDashboard() {
                 />
               </div>
 
-              <div className="flex items-center gap-2 w-full sm:w-auto">
-                <span className="text-xs font-bold text-slate-500">Statut :</span>
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0 w-full md:w-auto">
+                <span className="text-xs font-bold text-slate-500 shrink-0">Statut :</span>
                 {["all", "Nouveau", "En cours", "Confirmé", "Refusé"].map((st) => (
                   <button
                     key={st}
                     onClick={() => setLeadStatusFilter(st)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                       leadStatusFilter === st
                         ? "bg-[#003876] text-white"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -466,9 +466,9 @@ export default function AdminDashboard() {
             </div>
 
             {/* Leads Table */}
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-soft overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-start text-xs">
+            <div className="bg-white rounded-3xl border border-slate-200 shadow-soft overflow-hidden w-full">
+              <div className="w-full overflow-x-auto no-scrollbar">
+                <table className="w-full text-start text-xs min-w-[650px]">
                   <thead className="bg-[#003876] text-white font-black uppercase tracking-wider">
                     <tr>
                       <th className="p-4 text-start">Entreprise</th>
@@ -553,14 +553,14 @@ export default function AdminDashboard() {
         {/* ── 3. SPONSORS MANAGER TAB ── */}
         {activeTab === "sponsors" && (
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-bold text-slate-500">Filtrer par Édition :</span>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs w-full overflow-hidden">
+              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0">
+                <span className="text-xs font-bold text-slate-500 shrink-0">Édition :</span>
                 {[2026, 2025, 2024].map((ed) => (
                   <button
                     key={ed}
                     onClick={() => setSponsorEditionFilter(ed)}
-                    className={`px-4 py-2 rounded-xl text-xs font-black uppercase transition-all ${
+                    className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-black uppercase transition-all shrink-0 ${
                       sponsorEditionFilter === ed
                         ? "bg-[#003876] text-white shadow-sm"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -577,7 +577,7 @@ export default function AdminDashboard() {
                   setSponsorForm({ name: "", slug: "", logo: "", edition: sponsorEditionFilter as any, sponsorTier: "silver", website: "", description: { fr: "", ar: "" } });
                   setShowSponsorModal(true);
                 }}
-                className="px-5 py-2.5 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider flex items-center gap-2 shadow-md transition-all"
+                className="px-5 py-2.5 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all w-full sm:w-auto"
               >
                 <Plus className="w-4 h-4" />
                 Ajouter un sponsor / entreprise
@@ -585,7 +585,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Sponsor Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {filteredSponsors.map((sponsor) => (
                 <div
                   key={sponsor.slug}
@@ -646,12 +646,12 @@ export default function AdminDashboard() {
 
       {/* ── LEAD INSPECTION MODAL ── */}
       {selectedLead && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl text-start">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-8 space-y-6 shadow-2xl text-start my-auto">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div>
                 <span className="text-[10px] font-black uppercase text-[#F05A22]">Formulaire PDF 9-Champs</span>
-                <h3 className="text-xl font-black text-[#003876]">{selectedLead.companyName}</h3>
+                <h3 className="text-lg sm:text-xl font-black text-[#003876]">{selectedLead.companyName}</h3>
               </div>
               <button onClick={() => setSelectedLead(null)} className="p-2 rounded-full hover:bg-slate-100">
                 <XCircle className="w-6 h-6 text-slate-400" />
@@ -659,7 +659,7 @@ export default function AdminDashboard() {
             </div>
 
             <div className="space-y-4 text-xs font-semibold text-slate-700">
-              <div className="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-slate-50 p-3 sm:p-4 rounded-2xl border border-slate-200">
                 <div>
                   <span className="block text-[10px] font-black uppercase text-slate-400">Représentant</span>
                   <span className="text-slate-900 font-bold text-sm">{selectedLead.representativeName}</span>
@@ -729,10 +729,10 @@ export default function AdminDashboard() {
 
       {/* ── ADD/EDIT SPONSOR MODAL ── */}
       {showSponsorModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl text-start">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-8 space-y-6 shadow-2xl text-start my-auto">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-              <h3 className="text-xl font-black text-[#003876]">
+              <h3 className="text-lg sm:text-xl font-black text-[#003876]">
                 {editingSponsor ? "Modifier le Sponsor / Entreprise" : "Ajouter un Sponsor / Entreprise"}
               </h3>
               <button onClick={() => setShowSponsorModal(false)} className="p-2 rounded-full hover:bg-slate-100">
