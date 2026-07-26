@@ -481,6 +481,7 @@ export default function Home() {
         <section
           id="value-section"
           ref={valueRef}
+          data-theme="light"
           className="relative py-16 md:py-24 section-compact bg-white border-t border-[#003876]/08"
         >
           {/* Full-Color Brand Motif in whitespace */}
@@ -766,6 +767,7 @@ export default function Home() {
         <section
           id="why-section"
           ref={whyRef}
+          data-theme="light"
           className="relative py-16 md:py-24 section-compact bg-white"
         >
           {/* Full-Color Brand Motifs */}
@@ -870,7 +872,7 @@ export default function Home() {
         {/* ─────────────────────────────────────────────────────────
             5b. INTERMEDIATE B2B CTA BANNER (Between Why & Program)
         ──────────────────────────────────────────────────────────── */}
-        <section className="relative py-12 md:py-16 bg-[#FBF9F6] border-b border-[#003876]/08">
+        <section data-theme="light" className="relative py-12 md:py-16 bg-[#FBF9F6] border-b border-[#003876]/08">
           <div className="max-w-7xl mx-auto px-6 sm:px-8">
             <div className="relative rounded-3xl overflow-hidden bg-[#001E3D] border border-white/20 p-8 sm:p-12 lg:p-14 text-white shadow-2xl text-start group">
               
@@ -955,6 +957,7 @@ export default function Home() {
         <section
           id="speakers-section"
           ref={speakersRef}
+          data-theme="light"
           className="relative py-16 md:py-24 section-compact bg-white overflow-hidden"
         >
           {/* Decorative Brand Motifs on Left & Right Sides */}
@@ -987,6 +990,7 @@ export default function Home() {
         <section
           id="editions-section"
           ref={galleryRef}
+          data-theme="light"
           className="relative py-16 md:py-24 section-compact bg-[#FBF9F6] border-t border-[#003876]/08"
         >
           {/* Full-Color Orange Accent Motif */}

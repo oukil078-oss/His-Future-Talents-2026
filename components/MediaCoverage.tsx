@@ -13,6 +13,7 @@ export default function MediaCoverage() {
   return (
     <section
       id="media-coverage-section"
+      data-theme="light"
       className="relative py-16 md:py-24 bg-[#FAF8F5] border-y border-[#003876]/10 text-start overflow-hidden"
     >
       {/* Decorative Outer Edge Motif */}

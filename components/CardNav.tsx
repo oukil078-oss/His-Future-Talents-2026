@@ -29,27 +29,38 @@ export default function CardNav() {
 
   // Track scroll position & dark section overlap
   useEffect(() => {
+    let rAF: number;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 30);
 
-      // Detect dark section collision at header center point (~44px from top)
-      const headerY = 44;
-      const darkSections = document.querySelectorAll('[data-theme="dark"]');
-      let isDark = false;
+        const headerHeight = headerRef.current?.offsetHeight || 64;
+        const headerY = headerHeight / 2;
+        const darkSections = document.querySelectorAll('[data-theme="dark"]');
+        let isDark = false;
 
-      darkSections.forEach((sec) => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top <= headerY && rect.bottom >= headerY) {
-          isDark = true;
-        }
+        darkSections.forEach((sec) => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= headerY && rect.bottom >= headerY) {
+            isDark = true;
+          }
+        });
+
+        setIsDarkSection(isDark);
       });
-
-      setIsDarkSection(isDark);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     handleScroll(); // Initial check
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      cancelAnimationFrame(rAF);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -94,20 +105,31 @@ export default function CardNav() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 h-12 md:h-14">
 
-        {/* ── LEFT: Official Stacked HFT Logo (Switches color based on background) ── */}
+        {/* ── LEFT: Official Stacked HFT Logo (Smooth cross-fade between white & dark logo) ── */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue rounded-lg transition-transform hover:opacity-95"
+          className="relative flex items-center shrink-0 h-11 sm:h-12 md:h-14 focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue rounded-lg transition-transform hover:opacity-95"
           aria-label="HIS Future Talents — Page d'accueil"
         >
+          {/* White Logo for Dark Sections */}
           <img
-            src={isDarkSection ? "/logo-hft-white.svg" : "/logo-hft.svg"}
+            src="/logo-hft-white.svg"
             alt="HIS Future Talents"
-            className="h-11 sm:h-12 md:h-14 w-auto object-contain transition-opacity duration-200"
+            className={`h-11 sm:h-12 md:h-14 w-auto object-contain transition-opacity duration-300 ${
+              isDarkSection ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          />
+          {/* Dark Navy Logo for Light Sections */}
+          <img
+            src="/logo-hft.svg"
+            alt="HIS Future Talents"
+            className={`absolute top-0 start-0 h-11 sm:h-12 md:h-14 w-auto object-contain transition-opacity duration-300 ${
+              isDarkSection ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
           />
         </a>
 
