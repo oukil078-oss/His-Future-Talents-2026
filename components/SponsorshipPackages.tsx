@@ -7,22 +7,22 @@ import { Check, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 
 const TIER_STYLES = {
   bronze: {
-    badge:  "bg-[#a0714f]/10 text-[#a0714f] border-[#a0714f]/25",
-    check:  "text-his-blue",
-    card:   "b-alpha hover:border-his-blue/20",
-    glow:   "shadow-soft",
+    badge:  "bg-amber-700/10 text-amber-800 border-amber-700/25 font-bold",
+    check:  "text-amber-700",
+    card:   "border border-amber-700/30 hover:border-amber-600 transition-all duration-300 hover:shadow-[0_12px_35px_rgba(180,83,9,0.22)] hover:-translate-y-1",
+    glow:   "shadow-md",
   },
   silver: {
-    badge:  "bg-slate-100 text-slate-600 border-slate-200",
-    check:  "text-his-blue",
-    card:   "b-alpha hover:border-his-blue/20",
-    glow:   "shadow-soft",
+    badge:  "bg-slate-100 text-slate-700 border-slate-300 font-bold",
+    check:  "text-slate-600",
+    card:   "border border-slate-200 hover:border-slate-300 transition-all duration-300 hover:shadow-[0_12px_35px_rgba(226,232,240,0.35)] hover:-translate-y-1",
+    glow:   "shadow-md",
   },
   gold: {
-    badge:  "bg-[#D4AF37]/10 text-[#9d7a0a] border-[#D4AF37]/35",
-    check:  "text-[#9d7a0a]",
-    card:   "b-alpha-gold",
-    glow:   "shadow-gold-premium ring-1 ring-[#D4AF37]/30",
+    badge:  "bg-[#D4AF37]/15 text-[#8a6b05] border-[#D4AF37]/40 font-bold",
+    check:  "text-[#8a6b05]",
+    card:   "border-2 border-[#D4AF37]/50 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-[0_12px_45px_rgba(212,175,55,0.3)] hover:-translate-y-1",
+    glow:   "shadow-xl ring-1 ring-[#D4AF37]/30",
   },
 };
 
@@ -58,7 +58,7 @@ export default function SponsorshipPackages() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest bg-[#F05A22] text-white mb-3 shadow-md">
+          <span className="inline-block px-3.5 py-1 rounded-md text-xs font-bold uppercase tracking-widest bg-[#F05A22] text-white mb-3 shadow-sm">
             {language === "ar" ? "باقات الرعاية والظهور" : "Offres & Packs Partenaires"}
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mt-2 text-balance leading-tight">

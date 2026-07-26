@@ -239,26 +239,26 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 .text-balance { text-wrap: balance; }
 
-/* Section label pill */
+/* Section label kicker */
 .section-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: 1px solid rgba(0,56,118,0.10);
-  background: rgba(0,56,118,0.04);
-  color: var(--his-blue);
+  border: 1px solid rgba(0,56,118,0.12);
+  background: rgba(0,56,118,0.05);
+  color: var(--his-deep);
 }
 
-/* Orange accent pill */
+/* Orange accent kicker */
 .section-pill-orange {
-  background: rgba(240,81,35,0.08);
-  border-color: rgba(240,81,35,0.15);
+  background: rgba(240,90,34,0.06);
+  border-color: rgba(240,90,34,0.18);
   color: var(--his-orange);
 }
 

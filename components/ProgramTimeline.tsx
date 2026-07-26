@@ -21,7 +21,7 @@ export default function ProgramTimeline() {
       <div className="max-w-4xl mx-auto px-6">
         {/* Section header */}
         <div className="mb-14 text-start">
-          <span className="section-pill mb-4">{t("program.title")}</span>
+          <span className="section-pill mb-4">{language === "ar" ? "برنامج الصالون" : "Programme Officiel"}</span>
           <h2 className="text-3xl md:text-5xl font-black text-his-deep leading-tight tracking-tight mt-4">
             {t("program.title")}
           </h2>

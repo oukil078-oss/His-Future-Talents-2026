@@ -318,11 +318,11 @@ export default function Home() {
 
                   {/* Top Bar inside Video Card */}
                   <div className="relative z-10 p-5 sm:p-6 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F05A22] text-white text-xs font-black uppercase tracking-wider shadow-lg">
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
                       <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                       {language === "ar" ? "الدورة السابقة" : "Édition précédente"}
                     </span>
-                    <span className="text-[11px] font-black uppercase tracking-widest text-white/80 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-white/90 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-md border border-white/15">
                       Vidéo HD • 02:15
                     </span>
                   </div>
@@ -454,7 +454,7 @@ export default function Home() {
                   <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-3 pt-2 w-full max-w-full">
                     <a
                       href="#contact-form"
-                      className="inline-flex items-center justify-center gap-3 min-h-[52px] px-6 py-3 rounded-2xl bg-[#F05A22] text-white font-black text-sm tracking-wide hover:bg-[#FFBD0E] hover:text-[#0E1B2C] transition-all duration-300 shadow-xl shadow-[#F05A22]/30 hover:-translate-y-0.5 focus:outline-none shrink-0"
+                      className="inline-flex items-center justify-center gap-3 min-h-[52px] px-6 py-3 rounded-2xl bg-[#F05A22] text-white font-black text-sm tracking-wide hover:bg-[#d84a15] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none shrink-0"
                     >
                       <span className="whitespace-nowrap">{t("common.cta_partner")}</span>
                       <ArrowRight className={`w-4 h-4 shrink-0 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -901,7 +901,7 @@ export default function Home() {
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Left Text Block (8 cols) */}
                 <div className="lg:col-span-8 space-y-4">
-                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F05A22] text-white text-xs font-black uppercase tracking-wider shadow-md">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
                     <TrendingUp className="w-4 h-4 text-white" />
                     {language === "ar" ? "فرصة الشراكة والاستقطاب" : "Opportunité Partenaires & Recruteurs"}
                   </span>
@@ -923,7 +923,7 @@ export default function Home() {
                 <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 justify-end w-full max-w-full">
                   <a
                     href="#contact-form"
-                    className="inline-flex items-center justify-center gap-3 min-h-[52px] px-6 py-3 rounded-2xl bg-[#F05A22] text-white font-black text-sm sm:text-base tracking-wide hover:bg-[#FFBD0E] hover:text-[#0E1B2C] transition-all duration-300 shadow-xl shadow-[#F05A22]/30 hover:-translate-y-0.5 focus:outline-none w-full sm:flex-1 lg:w-full text-center cursor-pointer"
+                    className="inline-flex items-center justify-center gap-3 min-h-[52px] px-6 py-3 rounded-2xl bg-[#F05A22] text-white font-black text-sm sm:text-base tracking-wide hover:bg-[#d84a15] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none w-full sm:flex-1 lg:w-full text-center cursor-pointer"
                   >
                     <span className="whitespace-nowrap">{t("common.cta_partner")}</span>
                     <ArrowRight className={`w-5 h-5 shrink-0 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -1027,11 +1027,11 @@ export default function Home() {
 
                 {/* Top Header Badge */}
                 <div className="relative z-10 flex items-center justify-between gap-4">
-                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F05A22] text-white text-xs font-black uppercase tracking-widest shadow-lg shadow-[#F05A22]/40">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22] text-white text-xs font-bold uppercase tracking-widest shadow-sm">
                     <Film className="w-3.5 h-3.5" />
                     Édition 2025
                   </span>
-                  <span className="text-[11px] font-black text-white/80 uppercase tracking-widest bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
+                  <span className="text-[11px] font-bold text-white/90 uppercase tracking-widest bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-md border border-white/15">
                     Live Motion HD
                   </span>
                 </div>
@@ -1045,7 +1045,7 @@ export default function Home() {
                       title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2025" : "Rétrospective Officielle — HIS Future Talents 2025",
                       year: "2025"
                     })}
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] shadow-[0_0_40px_rgba(240,90,34,0.6)] transition-all duration-300 transform group-hover:scale-110 cursor-pointer relative"
+                    className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#F05A22] hover:bg-[#d84a15] text-white shadow-xl shadow-black/40 transition-all duration-300 transform group-hover:scale-110 cursor-pointer relative"
                   >
                     <span className="absolute inset-0 rounded-full bg-[#F05A22] animate-ping opacity-40 pointer-events-none" />
                     <Play className="w-9 h-9 fill-current ms-1" />
@@ -1069,7 +1069,7 @@ export default function Home() {
                       title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2025" : "Rétrospective Officielle — HIS Future Talents 2025",
                       year: "2025"
                     })}
-                    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#58B9FF] hover:text-[#FFBD0E] transition-colors cursor-pointer pt-1"
+                    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#58B9FF] hover:text-white transition-colors cursor-pointer pt-1"
                   >
                     <span>{language === "ar" ? "مشاهدة التقرير بالصوت الكامل" : "Regarder avec son en plein écran"}</span>
                     <ArrowRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -1098,11 +1098,11 @@ export default function Home() {
 
                 {/* Top Header Badge */}
                 <div className="relative z-10 flex items-center justify-between gap-4">
-                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#003876] text-white text-xs font-black uppercase tracking-widest border border-white/20 shadow-lg">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#003876] text-white text-xs font-bold uppercase tracking-widest border border-white/20 shadow-sm">
                     <Film className="w-3.5 h-3.5" />
                     Édition 2024
                   </span>
-                  <span className="text-[11px] font-black text-white/80 uppercase tracking-widest bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
+                  <span className="text-[11px] font-bold text-white/90 uppercase tracking-widest bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-md border border-white/15">
                     Live Motion HD
                   </span>
                 </div>
@@ -1140,7 +1140,7 @@ export default function Home() {
                       title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2024" : "Rétrospective Officielle — HIS Future Talents 2024",
                       year: "2024"
                     })}
-                    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#58B9FF] hover:text-[#FFBD0E] transition-colors cursor-pointer pt-1"
+                    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#58B9FF] hover:text-white transition-colors cursor-pointer pt-1"
                   >
                     <span>{language === "ar" ? "مشاهدة التقرير بالصوت الكامل" : "Regarder avec son en plein écran"}</span>
                     <ArrowRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -1154,7 +1154,7 @@ export default function Home() {
         {/* Lightbox Modal with Left & Right Arrows + Keyboard Nav (Clean - No text on pictures) */}
         {lightboxIndex !== null && (
           <div
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 md:p-8 select-none"
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 md:p-8"
             onClick={() => setLightboxIndex(null)}
           >
             {/* Close Button */}
@@ -1206,7 +1206,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* Video Lightbox Modal with Full Volume & Smooth Opening/Closing Animations */}
+        {/* ── Hero Video Lightbox Modal ── */}
         <AnimatePresence>
           {isVideoModalOpen && (
             <motion.div
@@ -1214,7 +1214,7 @@ export default function Home() {
               animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
               exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 z-50 bg-black/92 flex items-center justify-center p-4 md:p-8 select-none"
+              className="fixed inset-0 z-50 bg-black/92 flex items-center justify-center p-4 md:p-8"
               onClick={() => setIsVideoModalOpen(false)}
             >
               {/* Close Button with Fade & Scale Entrance */}
@@ -1224,7 +1224,7 @@ export default function Home() {
                 exit={{ opacity: 0, scale: 0.7, y: -10 }}
                 transition={{ duration: 0.25, delay: 0.1, ease: "easeOut" }}
                 onClick={() => setIsVideoModalOpen(false)}
-                className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors focus:outline-none z-30 hover:scale-105"
+                className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors focus:outline-none z-30 hover:scale-105 cursor-pointer"
                 aria-label="Fermer la vidéo"
               >
                 <X className="w-6 h-6" />
@@ -1249,9 +1249,9 @@ export default function Home() {
                   preload="auto"
                   className="w-full h-full object-contain"
                   ref={(el) => {
-                    if (el) {
+                    if (el && el.dataset.initialized !== "true") {
+                      el.dataset.initialized = "true";
                       el.muted = false;
-                      el.volume = 1;
                       el.play().catch(() => {});
                     }
                   }}
@@ -1272,7 +1272,7 @@ export default function Home() {
               animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
               exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 z-[10000] bg-black/94 flex items-center justify-center p-4 md:p-8 select-none"
+              className="fixed inset-0 z-[10000] bg-black/94 flex items-center justify-center p-4 md:p-8"
               onClick={() => setSelectedRecapVideo(null)}
               dir={dir}
             >
@@ -1314,9 +1314,9 @@ export default function Home() {
                   preload="auto"
                   className="w-full h-full object-contain"
                   ref={(el) => {
-                    if (el) {
+                    if (el && el.dataset.initialized !== "true") {
+                      el.dataset.initialized = "true";
                       el.muted = false;
-                      el.volume = 1;
                       el.play().catch(() => {});
                     }
                   }}
@@ -1400,7 +1400,7 @@ export default function Home() {
                     href={selectedMedia.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full h-13 rounded-2xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full h-13 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visiter le site officiel du média"}</span>
                     <ExternalLink className="w-4 h-4" />

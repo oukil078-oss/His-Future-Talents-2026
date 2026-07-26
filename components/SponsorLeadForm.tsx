@@ -202,7 +202,7 @@ export default function SponsorLeadForm() {
             <div className="pt-4">
               <button
                 onClick={() => { setSuccess(false); setCurrentStep(1); }}
-                className="h-14 px-8 rounded-2xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl cursor-pointer"
+                className="h-14 px-8 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl cursor-pointer"
               >
                 {language === "ar" ? "إرسال نموذج آخر" : "Soumettre un autre formulaire"}
               </button>
@@ -367,7 +367,7 @@ export default function SponsorLeadForm() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="h-13 sm:h-14 px-8 sm:px-10 rounded-2xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-black text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-xl shadow-[#F05A22]/25 hover:-translate-y-0.5 cursor-pointer"
+                      className="h-13 sm:h-14 px-8 sm:px-10 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
                     >
                       <span>{language === "ar" ? "التالي (الفرص والتخصصات)" : "Étape suivante (Opportunités)"}</span>
                       <ChevronRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -472,7 +472,7 @@ export default function SponsorLeadForm() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="h-13 sm:h-14 px-8 sm:px-10 rounded-2xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-black text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-xl shadow-[#F05A22]/25 hover:-translate-y-0.5 cursor-pointer"
+                      className="h-13 sm:h-14 px-8 sm:px-10 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
                     >
                       <span>{language === "ar" ? "التالي (تجهيزات الجناح)" : "Étape suivante (Matériel & Remarques)"}</span>
                       <ChevronRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -549,7 +549,7 @@ export default function SponsorLeadForm() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex-1 h-14 sm:h-16 px-8 rounded-2xl bg-[#F05A22] text-white font-black text-sm sm:text-base uppercase tracking-wider hover:bg-[#FFBD0E] hover:text-[#0E1B2C] transition-all duration-300 shadow-xl shadow-[#F05A22]/30 flex items-center justify-center gap-3 disabled:opacity-50 hover:-translate-y-0.5 cursor-pointer"
+                        className="flex-1 h-14 sm:h-16 px-8 rounded-2xl bg-[#F05A22] text-white font-black text-sm sm:text-base uppercase tracking-wider hover:bg-[#d84a15] transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-3 disabled:opacity-50 hover:-translate-y-0.5 cursor-pointer"
                       >
                         {isSubmitting ? (
                           <span>{language === "ar" ? "جاري الإرسال..." : "Transmissions en cours..."}</span>

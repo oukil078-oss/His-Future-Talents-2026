@@ -221,7 +221,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
         {/* ── RADIANT LIGHT FLARE BURST ── */}
         <div
           ref={lightFlareRef}
-          className="absolute inset-0 m-auto w-96 h-96 rounded-full bg-gradient-to-tr from-[#F05A22] via-[#FFBD0E] to-white blur-3xl pointer-events-none z-10 opacity-0"
+          className="absolute inset-0 m-auto w-96 h-96 rounded-full bg-gradient-to-tr from-white via-white/90 to-slate-100 blur-3xl pointer-events-none z-10 opacity-0"
         />
 
         {/* ── 3D CENTER EMBLEM / WELCOME LOCK ── */}
@@ -230,7 +230,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           className="absolute z-30 flex flex-col items-center justify-center p-6 text-center space-y-6"
         >
           {/* Circular Progress & Logo Container */}
-          <div className="relative w-36 h-36 sm:w-44 sm:h-44 flex items-center justify-center rounded-full bg-[#0E1B2C]/90 border border-white/20 shadow-[0_0_50px_rgba(240,90,34,0.35)] backdrop-blur-xl">
+          <div className="relative w-36 h-36 sm:w-44 sm:h-44 flex items-center justify-center rounded-full bg-[#0E1B2C]/90 border border-white/20 shadow-2xl shadow-black/50 backdrop-blur-xl">
             {/* SVG Circular Progress Bar */}
             <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
               <circle

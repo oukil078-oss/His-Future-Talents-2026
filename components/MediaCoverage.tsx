@@ -129,7 +129,7 @@ export default function MediaCoverage() {
 
               {/* Description (FR & AR) */}
               <div className="space-y-3">
-                <h4 className="text-xs font-black uppercase tracking-wider text-[#FFBD0E]">
+                <h4 className="text-xs font-black uppercase tracking-wider text-[#F05A22]">
                   {language === "ar" ? "حول القناة وتغطية الصالون" : "À propos du média & de la couverture"}
                 </h4>
                 <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-medium">
@@ -161,7 +161,7 @@ export default function MediaCoverage() {
                     href={selectedChannel.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full h-12 rounded-2xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full h-12 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visiter le site officiel du média"}</span>
                     <ExternalLink className="w-4 h-4" />

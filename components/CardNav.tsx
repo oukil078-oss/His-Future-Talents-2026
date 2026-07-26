@@ -88,7 +88,7 @@ export default function CardNav() {
       {/* Scroll Progress Indicator Bar */}
       <div
         id="scroll-progress"
-        className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-his-blue via-his-orange to-his-yellow z-50 transition-all duration-150"
+        className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-his-deep via-his-blue to-his-orange z-50 transition-all duration-150"
         style={{ width: "0%" }}
       />
 

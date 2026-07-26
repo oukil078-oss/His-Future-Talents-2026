@@ -199,7 +199,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
 
                   {/* Title & Subtitle */}
                   <div className="space-y-2">
-                    <h3 className="text-lg font-black text-white group-hover:text-[#58B9FF] transition-colors leading-snug">
+                    <h3 className="text-lg font-black text-white group-hover:text-[#F05A22] transition-colors leading-snug">
                       {language === "ar" ? doc.title.ar : doc.title.fr}
                     </h3>
                     <p className="text-white/70 text-xs font-medium leading-relaxed">
@@ -215,7 +215,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                         setActiveDoc(doc);
                         setViewMode("viewer");
                       }}
-                      className="flex-1 h-12 rounded-2xl bg-[#F05A22] hover:bg-[#FFBD0E] text-white hover:text-[#0E1B2C] font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                      className="flex-1 h-12 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Eye className="w-4 h-4" />
                       <span>{language === "ar" ? "قراءة الملف" : "Aperçu & Lecteur"}</span>
@@ -243,7 +243,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 href="https://drive.google.com/drive/folders/15RIU4KXb1zHrkVr6VKDH3bmXGFyMXPjD"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-bold text-[#58B9FF] hover:text-[#FFBD0E] transition-colors"
+                className="inline-flex items-center gap-1.5 font-bold text-[#58B9FF] hover:text-[#58B9FF]/80 transition-colors"
               >
                 <span>{language === "ar" ? "فتح مجلد Google Drive" : "Ouvrir le dossier Drive"}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
