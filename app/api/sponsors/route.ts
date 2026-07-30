@@ -38,12 +38,12 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     const body = await req.json();
-    const { slug, ...updatedFields } = body;
+    const { slug, edition, ...updatedFields } = body;
     if (!slug) {
       return NextResponse.json({ success: false, error: "Slug is required" }, { status: 400 });
     }
 
-    const updatedList = updateSponsor(slug, updatedFields);
+    const updatedList = updateSponsor(slug, updatedFields, edition ? Number(edition) : undefined);
     return NextResponse.json({ success: true, data: updatedList });
   } catch (error) {
     return NextResponse.json({ success: false, error: "Failed to update sponsor" }, { status: 500 });
@@ -54,11 +54,12 @@ export async function DELETE(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const slug = searchParams.get("slug");
+    const edition = searchParams.get("edition");
     if (!slug) {
       return NextResponse.json({ success: false, error: "Slug is required" }, { status: 400 });
     }
 
-    const updatedList = deleteSponsor(slug);
+    const updatedList = deleteSponsor(slug, edition ? Number(edition) : undefined);
     return NextResponse.json({ success: true, data: updatedList });
   } catch (error) {
     return NextResponse.json({ success: false, error: "Failed to delete sponsor" }, { status: 500 });

@@ -303,10 +303,11 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleDeleteSponsor = async (slug: string) => {
+  const handleDeleteSponsor = async (slug: string, edition?: number) => {
     if (!confirm("Voulez-vous vraiment supprimer cette entreprise / sponsor ?")) return;
     try {
-      const res = await fetch(`/api/sponsors?slug=${slug}`, { method: "DELETE" });
+      const url = edition ? `/api/sponsors?slug=${slug}&edition=${edition}` : `/api/sponsors?slug=${slug}`;
+      const res = await fetch(url, { method: "DELETE" });
       const data = await res.json();
       if (data.success) {
         setSponsors(data.data);
@@ -838,7 +839,7 @@ export default function AdminDashboard() {
                           <Edit className="w-3.5 h-3.5" />
                         </button>
                         <button
-                          onClick={() => handleDeleteSponsor(sponsor.slug)}
+                          onClick={() => handleDeleteSponsor(sponsor.slug, sponsor.edition)}
                           className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600"
                           title="Supprimer"
                         >

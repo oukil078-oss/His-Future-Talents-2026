@@ -141,9 +141,9 @@ export function addSponsor(sponsor: Partner): Partner[] {
   return sponsors;
 }
 
-export function updateSponsor(slug: string, updated: Partial<Partner>): Partner[] {
+export function updateSponsor(slug: string, updated: Partial<Partner>, edition?: number): Partner[] {
   const sponsors = getSponsors();
-  const idx = sponsors.findIndex((s) => s.slug === slug);
+  const idx = sponsors.findIndex((s) => s.slug === slug && (!edition || s.edition === edition));
   if (idx !== -1) {
     sponsors[idx] = { ...sponsors[idx], ...updated };
     saveSponsors(sponsors);
@@ -151,9 +151,14 @@ export function updateSponsor(slug: string, updated: Partial<Partner>): Partner[
   return sponsors;
 }
 
-export function deleteSponsor(slug: string): Partner[] {
+export function deleteSponsor(slug: string, edition?: number): Partner[] {
   const sponsors = getSponsors();
-  const filtered = sponsors.filter((s) => s.slug !== slug);
+  const filtered = sponsors.filter((s) => {
+    if (edition) {
+      return !(s.slug === slug && s.edition === edition);
+    }
+    return s.slug !== slug;
+  });
   saveSponsors(filtered);
   return filtered;
 }
