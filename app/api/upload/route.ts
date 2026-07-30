@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     }
 
     // Validate image mime type
-    if (!file.type.startsWith("image/")) {
+    if (!file.type || !file.type.startsWith("image/")) {
       return NextResponse.json(
         { success: false, error: "Le fichier doit être une image (PNG, JPG, SVG, WEBP...)." },
         { status: 400 }
@@ -25,6 +25,11 @@ export async function POST(req: Request) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+
+    // Generate Data URL for 100% reliable instant rendering
+    const base64 = buffer.toString("base64");
+    const mimeType = file.type || "image/png";
+    const dataUrl = `data:${mimeType};base64,${base64}`;
 
     // Clean up filename
     const cleanName = file.name
@@ -37,6 +42,8 @@ export async function POST(req: Request) {
     const editionFolder = edition === "2024" || edition === "2025" || edition === "2026" ? edition : "2026";
     const uploadDir = path.join(process.cwd(), "public", "partners", editionFolder);
 
+    let publicUrl = dataUrl;
+
     try {
       if (!fs.existsSync(uploadDir)) {
         fs.mkdirSync(uploadDir, { recursive: true });
@@ -44,14 +51,17 @@ export async function POST(req: Request) {
       const filePath = path.join(uploadDir, filename);
       fs.writeFileSync(filePath, buffer);
 
-      const publicUrl = `/partners/${editionFolder}/${filename}`;
-      return NextResponse.json({ success: true, url: publicUrl, filename });
+      publicUrl = `/partners/${editionFolder}/${filename}`;
     } catch (fsErr) {
-      // Fallback to data URL if filesystem write fails (e.g. read-only serverless host)
-      const base64 = buffer.toString("base64");
-      const dataUrl = `data:${file.type};base64,${base64}`;
-      return NextResponse.json({ success: true, url: dataUrl, filename });
+      console.warn("FS write failed, falling back to data URL:", fsErr);
     }
+
+    return NextResponse.json({
+      success: true,
+      url: publicUrl,
+      dataUrl: dataUrl,
+      filename,
+    });
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json(

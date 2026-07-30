@@ -117,15 +117,27 @@ export default function AdminDashboard() {
     }
   };
 
+  // Helper to read file locally into base64 Data URL for instant rendering
+  const readFileAsDataUrl = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(file);
+    });
+  };
+
   // Upload logo image helper
   const uploadLogoFile = async (file: File, editionYear?: number): Promise<string | null> => {
-    if (!file.type.startsWith("image/")) {
+    if (!file.type || !file.type.startsWith("image/")) {
       alert("Veuillez sélectionner un fichier image valide (PNG, JPG, SVG, WEBP...).");
       return null;
     }
 
     setIsUploadingLogo(true);
     try {
+      const localDataUrl = await readFileAsDataUrl(file);
+
       const formData = new FormData();
       formData.append("file", file);
       formData.append("edition", String(editionYear || sponsorForm.edition || sponsorEditionFilter || 2026));
@@ -135,16 +147,18 @@ export default function AdminDashboard() {
         body: formData,
       });
       const data = await res.json();
-      if (data.success && data.url) {
-        return data.url;
+      if (data.success) {
+        return data.dataUrl || data.url || localDataUrl;
       } else {
-        alert(data.error || "Erreur lors du téléversement du logo.");
-        return null;
+        return localDataUrl;
       }
     } catch (err) {
       console.error("Upload error:", err);
-      alert("Erreur de connexion lors du téléversement du fichier.");
-      return null;
+      try {
+        return await readFileAsDataUrl(file);
+      } catch {
+        return null;
+      }
     } finally {
       setIsUploadingLogo(false);
     }
@@ -158,7 +172,6 @@ export default function AdminDashboard() {
       const file = e.dataTransfer.files[0];
       const uploadedUrl = await uploadLogoFile(file);
       if (uploadedUrl) {
-        // Auto infer name if empty
         const inferredName = sponsorForm.name || file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ").toUpperCase();
         setSponsorForm((prev) => ({
           ...prev,
@@ -201,7 +214,6 @@ export default function AdminDashboard() {
       const file = e.dataTransfer.files[0];
       const uploadedUrl = await uploadLogoFile(file, targetSponsor.edition);
       if (uploadedUrl) {
-        // Update sponsor immediately
         try {
           const res = await fetch("/api/sponsors", {
             method: "PUT",
@@ -788,7 +800,15 @@ export default function AdminDashboard() {
                       </div>
 
                       <div className="aspect-[16/9] w-full bg-slate-50 border border-slate-100 rounded-2xl p-4 flex items-center justify-center relative group/img">
-                        <img src={sponsor.logo} alt={sponsor.name} className="max-h-full max-w-full object-contain" />
+                        <img
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          className="max-h-full max-w-full object-contain"
+                          onError={(e) => {
+                            // Suppress broken alt icon if path is invalid
+                            (e.target as HTMLElement).style.display = "none";
+                          }}
+                        />
                         <div className="absolute inset-0 bg-slate-950/40 rounded-2xl opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold gap-1">
                           <Upload className="w-3.5 h-3.5 text-[#F05A22]" />
                           <span>Glisser un nouveau logo</span>
@@ -985,8 +1005,12 @@ export default function AdminDashboard() {
                     </div>
                   ) : sponsorForm.logo ? (
                     <div className="space-y-3 py-1 flex flex-col items-center w-full">
-                      <div className="h-20 max-w-full bg-white border border-slate-200 rounded-xl p-2 flex items-center justify-center shadow-xs">
-                        <img src={sponsorForm.logo} alt="Aperçu logo" className="max-h-full max-w-full object-contain" />
+                      <div className="h-28 w-full max-w-xs bg-white border border-slate-200 rounded-xl p-3 flex items-center justify-center shadow-xs">
+                        <img
+                          src={sponsorForm.logo}
+                          alt={sponsorForm.name || "Logo sponsor"}
+                          className="max-h-full max-w-full object-contain"
+                        />
                       </div>
                       <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs">
                         <Check className="w-4 h-4 text-emerald-600" />
