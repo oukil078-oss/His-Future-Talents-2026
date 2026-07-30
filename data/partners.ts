@@ -90,6 +90,29 @@ export const partnersData: Partner[] = [
     }
   },
   {
+    name: "HIS Training Center",
+    slug: "his-training-center",
+    logo: "/shared/his-training-center.png",
+    edition: 2025,
+    description: {
+      fr: "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
+      ar: "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
+    },
+    website: "https://his.edu.dz",
+    keyPoints: {
+      fr: [
+        "Centre de formation continue et de perfectionnement professionnel de HIS University.",
+        "Formations qualifiantes et ateliers pratiques adaptés aux exigences du marché du travail.",
+        "Accompagnement des étudiants et professionnels dans le développement de leurs compétences."
+      ],
+      ar: [
+        "مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي.",
+        "دورات تدريبية متخصصة وورش عمل تطبيقية تتماشى مع متطلبات سوق العمل.",
+        "مرافقة الطلبة والمهنيين لتطوير مهاراتهم وتدعيم خبراتهم العملية."
+      ]
+    }
+  },
+  {
     name: "Profex",
     slug: "profex",
     logo: "/partners/2025/prophex.png",
@@ -844,6 +867,29 @@ export const partnersData: Partner[] = [
         "مركز للغات والتحضير للامتحانات والشهادات الدولية المعتمدة (TOEIC و TFI).",
         "تابع لجامعة (HIS University)، أول معهد تعليم عالي خاص متعدد التخصصات في الجزائر.",
         "مرافقة وتوجيه مخصص للطلبة الراغبين في مواصلة دراستهم بالخارج."
+      ]
+    }
+  },
+  {
+    name: "HIS Training Center",
+    slug: "his-training-center",
+    logo: "/shared/his-training-center.png",
+    edition: 2024,
+    description: {
+      fr: "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
+      ar: "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
+    },
+    website: "https://his.edu.dz",
+    keyPoints: {
+      fr: [
+        "Centre de formation continue et de perfectionnement professionnel de HIS University.",
+        "Formations qualifiantes et ateliers pratiques adaptés aux exigences du marché du travail.",
+        "Accompagnement des étudiants et professionnels dans le développement de leurs compétences."
+      ],
+      ar: [
+        "مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي.",
+        "دورات تدريبية متخصصة وورش عمل تطبيقية تتماشى مع متطلبات سوق العمل.",
+        "مرافقة الطلبة والمهنيين لتطوير مهاراتهم وتدعيم خبراتهم العملية."
       ]
     }
   },

@@ -7,6 +7,7 @@ export type Exhibitor = {
 
 export const verifiedExhibitors2025: Exhibitor[] = [
   { name: "HIS University", logo: "/partners/2025/his-university.png", edition: "2025", website: "https://his.edu.dz" },
+  { name: "HIS Training Center", logo: "/shared/his-training-center.png", edition: "2025", website: "https://his.edu.dz" },
   { name: "IRAcademy", logo: "/shared/iracademy.png", edition: "2025", website: "https://his.edu.dz" },
   { name: "Profex", logo: "/partners/2025/prophex.png", edition: "2025", website: "https://www.profex.dz" },
   { name: "Faderco", logo: "/partners/2025/faderco.png", edition: "2025" },
@@ -35,6 +36,7 @@ export const verifiedExhibitors2025: Exhibitor[] = [
 ];
 
 export const verifiedExhibitors2024: Exhibitor[] = [
+  { name: "HIS Training Center", logo: "/shared/his-training-center.png", edition: "2024", website: "https://his.edu.dz" },
   { name: "IRAcademy", logo: "/shared/iracademy.png", edition: "2024" },
   { name: "Apollo", edition: "2024" },
   { name: "Cabcof", edition: "2024" },
