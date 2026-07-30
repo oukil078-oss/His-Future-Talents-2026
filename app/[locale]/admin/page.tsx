@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ExhibitorLead } from "@/lib/dataStore";
 import { Partner } from "@/data/partners";
@@ -26,6 +26,10 @@ import {
   RefreshCw,
   Award,
   Lock,
+  Upload,
+  Image as ImageIcon,
+  FileImage,
+  Loader2,
 } from "lucide-react";
 
 export default function AdminDashboard() {
@@ -50,6 +54,13 @@ export default function AdminDashboard() {
   const [sponsorEditionFilter, setSponsorEditionFilter] = useState<number>(2026);
   const [showSponsorModal, setShowSponsorModal] = useState(false);
   const [editingSponsor, setEditingSponsor] = useState<Partner | null>(null);
+
+  // Drag & Drop / Upload States
+  const [isUploadingLogo, setIsUploadingLogo] = useState(false);
+  const [isDraggingModal, setIsDraggingModal] = useState(false);
+  const [isDraggingGrid, setIsDraggingGrid] = useState(false);
+  const [dragTargetSlug, setDragTargetSlug] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // New/Edit Sponsor Form
   const [sponsorForm, setSponsorForm] = useState<Partial<Partner>>({
@@ -106,6 +117,108 @@ export default function AdminDashboard() {
     }
   };
 
+  // Upload logo image helper
+  const uploadLogoFile = async (file: File, editionYear?: number): Promise<string | null> => {
+    if (!file.type.startsWith("image/")) {
+      alert("Veuillez sélectionner un fichier image valide (PNG, JPG, SVG, WEBP...).");
+      return null;
+    }
+
+    setIsUploadingLogo(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("edition", String(editionYear || sponsorForm.edition || sponsorEditionFilter || 2026));
+
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success && data.url) {
+        return data.url;
+      } else {
+        alert(data.error || "Erreur lors du téléversement du logo.");
+        return null;
+      }
+    } catch (err) {
+      console.error("Upload error:", err);
+      alert("Erreur de connexion lors du téléversement du fichier.");
+      return null;
+    } finally {
+      setIsUploadingLogo(false);
+    }
+  };
+
+  // Handle Drag & Drop in Modal
+  const handleModalDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDraggingModal(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      const uploadedUrl = await uploadLogoFile(file);
+      if (uploadedUrl) {
+        // Auto infer name if empty
+        const inferredName = sponsorForm.name || file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ").toUpperCase();
+        setSponsorForm((prev) => ({
+          ...prev,
+          logo: uploadedUrl,
+          name: inferredName,
+        }));
+      }
+    }
+  };
+
+  // Handle Drag & Drop onto New Sponsor Dropzone Card
+  const handleNewSponsorDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDraggingGrid(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      const uploadedUrl = await uploadLogoFile(file, sponsorEditionFilter);
+      if (uploadedUrl) {
+        const inferredName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ").toUpperCase();
+        setEditingSponsor(null);
+        setSponsorForm({
+          name: inferredName,
+          slug: inferredName.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+          logo: uploadedUrl,
+          edition: sponsorEditionFilter as any,
+          sponsorTier: "silver",
+          website: "",
+          description: { fr: "", ar: "" },
+        });
+        setShowSponsorModal(true);
+      }
+    }
+  };
+
+  // Handle Drag & Drop directly onto existing Sponsor Card
+  const handleSponsorCardDrop = async (e: React.DragEvent, targetSponsor: Partner) => {
+    e.preventDefault();
+    setDragTargetSlug(null);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      const uploadedUrl = await uploadLogoFile(file, targetSponsor.edition);
+      if (uploadedUrl) {
+        // Update sponsor immediately
+        try {
+          const res = await fetch("/api/sponsors", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ slug: targetSponsor.slug, logo: uploadedUrl }),
+          });
+          const data = await res.json();
+          if (data.success) {
+            setSponsors(data.data);
+          }
+        } catch (err) {
+          alert("Erreur lors de la mise à jour du logo de l'entreprise.");
+        }
+      }
+    }
+  };
+
   // Lead status updater
   const handleUpdateLeadStatus = async (id: string, status: ExhibitorLead["status"]) => {
     try {
@@ -148,7 +261,7 @@ export default function AdminDashboard() {
   const handleSaveSponsor = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!sponsorForm.name || !sponsorForm.logo) {
-      alert("Le nom et l'URL du logo sont obligatoires.");
+      alert("Le nom et l'image / logo de l'entreprise sont obligatoires.");
       return;
     }
 
@@ -550,7 +663,7 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* ── 3. SPONSORS MANAGER TAB ── */}
+        {/* ── 3. SPONSORS MANAGER TAB (WITH ADMIN DRAG & DROP) ── */}
         {activeTab === "sponsors" && (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs w-full overflow-hidden">
@@ -571,73 +684,151 @@ export default function AdminDashboard() {
                 ))}
               </div>
 
-              <button
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    setEditingSponsor(null);
+                    setSponsorForm({ name: "", slug: "", logo: "", edition: sponsorEditionFilter as any, sponsorTier: "silver", website: "", description: { fr: "", ar: "" } });
+                    setShowSponsorModal(true);
+                  }}
+                  className="px-5 py-2.5 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all w-full sm:w-auto"
+                >
+                  <Plus className="w-4 h-4" />
+                  Ajouter un sponsor / entreprise
+                </button>
+              </div>
+            </div>
+
+            {/* Admin Drag & Drop Quick Notice */}
+            <div className="bg-[#003876]/5 border border-[#003876]/15 rounded-2xl p-3.5 flex items-center gap-3 text-xs text-[#003876] font-semibold">
+              <Upload className="w-5 h-5 text-[#F05A22] shrink-0" />
+              <span>
+                <strong>Fonction Glisser-Déposer Administrateur :</strong> Vous pouvez glisser et déposer l'image d'un logo directement sur la carte "Glisser un logo ici" ou sur n'importe quelle carte entreprise ci-dessous pour modifier son logo instantanément !
+              </span>
+            </div>
+
+            {/* Sponsor Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+              
+              {/* Special Admin Drag & Drop Upload Dropzone Card */}
+              <div
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setIsDraggingGrid(true);
+                }}
+                onDragLeave={() => setIsDraggingGrid(false)}
+                onDrop={handleNewSponsorDrop}
                 onClick={() => {
                   setEditingSponsor(null);
                   setSponsorForm({ name: "", slug: "", logo: "", edition: sponsorEditionFilter as any, sponsorTier: "silver", website: "", description: { fr: "", ar: "" } });
                   setShowSponsorModal(true);
                 }}
-                className="px-5 py-2.5 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all w-full sm:w-auto"
+                className={`border-2 border-dashed rounded-3xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 min-h-[220px] group ${
+                  isDraggingGrid
+                    ? "border-[#F05A22] bg-[#F05A22]/10 scale-105 shadow-xl"
+                    : "border-slate-300 hover:border-[#F05A22] bg-slate-50/60 hover:bg-white"
+                }`}
               >
-                <Plus className="w-4 h-4" />
-                Ajouter un sponsor / entreprise
-              </button>
-            </div>
-
-            {/* Sponsor Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              {filteredSponsors.map((sponsor) => (
-                <div
-                  key={sponsor.slug}
-                  className={`bg-white border rounded-3xl p-5 flex flex-col justify-between shadow-soft hover:shadow-premium transition-all space-y-4 relative ${
-                    sponsor.sponsorTier === "silver" ? "border-slate-300 ring-2 ring-slate-300/60" : "border-slate-200"
-                  }`}
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">
-                        {sponsor.sponsorTier || "Partenaire"}
-                      </span>
-                      <span className="text-[10px] font-bold text-slate-400">Édition {sponsor.edition}</span>
+                {isUploadingLogo ? (
+                  <div className="flex flex-col items-center gap-2 text-[#003876]">
+                    <Loader2 className="w-8 h-8 animate-spin text-[#F05A22]" />
+                    <span className="font-bold text-xs">Téléversement du logo...</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 group-hover:border-[#F05A22] flex items-center justify-center shadow-xs group-hover:scale-110 transition-all mb-3 text-[#F05A22]">
+                      <Upload className="w-6 h-6" />
                     </div>
+                    <h4 className="font-black text-sm text-[#003876] tracking-tight">
+                      Glissez-déposez un logo ici
+                    </h4>
+                    <p className="text-[11px] text-slate-500 font-medium mt-1">
+                      Ou cliquez pour ajouter une entreprise (Édition {sponsorEditionFilter})
+                    </p>
+                    <span className="mt-3 px-3 py-1 rounded-full bg-[#F05A22]/10 text-[#F05A22] text-[10px] font-black uppercase tracking-wider">
+                      Format PNG, JPG, SVG, WEBP
+                    </span>
+                  </>
+                )}
+              </div>
 
-                    <div className="aspect-[16/9] w-full bg-slate-50 border border-slate-100 rounded-2xl p-4 flex items-center justify-center">
-                      <img src={sponsor.logo} alt={sponsor.name} className="max-h-full max-w-full object-contain" />
-                    </div>
-
-                    <h3 className="font-extrabold text-base text-[#003876]">{sponsor.name}</h3>
-                    {sponsor.description?.fr && (
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">{sponsor.description.fr}</p>
+              {/* Render Existing Sponsors */}
+              {filteredSponsors.map((sponsor) => {
+                const isTargetingThis = dragTargetSlug === sponsor.slug;
+                return (
+                  <div
+                    key={sponsor.slug}
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      setDragTargetSlug(sponsor.slug);
+                    }}
+                    onDragLeave={() => setDragTargetSlug(null)}
+                    onDrop={(e) => handleSponsorCardDrop(e, sponsor)}
+                    className={`bg-white border rounded-3xl p-5 flex flex-col justify-between shadow-soft hover:shadow-premium transition-all space-y-4 relative group ${
+                      isTargetingThis
+                        ? "border-[#F05A22] ring-4 ring-[#F05A22]/20 bg-[#F05A22]/5 scale-102"
+                        : sponsor.sponsorTier === "silver"
+                        ? "border-slate-300 ring-2 ring-slate-300/60"
+                        : "border-slate-200"
+                    }`}
+                  >
+                    {isTargetingThis && (
+                      <div className="absolute inset-0 bg-[#003876]/80 backdrop-blur-xs rounded-3xl z-20 flex flex-col items-center justify-center text-white p-4 text-center">
+                        <Upload className="w-8 h-8 text-[#F05A22] animate-bounce mb-1" />
+                        <span className="font-black text-xs">Déposer pour remplacer le logo</span>
+                      </div>
                     )}
-                  </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                    {sponsor.website ? (
-                      <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="text-xs text-[#58B9FF] font-bold hover:underline flex items-center gap-1">
-                        <span>Site Web</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    ) : <span />}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">
+                          {sponsor.sponsorTier || "Partenaire"}
+                        </span>
+                        <span className="text-[10px] font-bold text-slate-400">Édition {sponsor.edition}</span>
+                      </div>
 
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => openEditSponsor(sponsor)}
-                        className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700"
-                        title="Modifier"
-                      >
-                        <Edit className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteSponsor(sponsor.slug)}
-                        className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600"
-                        title="Supprimer"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="aspect-[16/9] w-full bg-slate-50 border border-slate-100 rounded-2xl p-4 flex items-center justify-center relative group/img">
+                        <img src={sponsor.logo} alt={sponsor.name} className="max-h-full max-w-full object-contain" />
+                        <div className="absolute inset-0 bg-slate-950/40 rounded-2xl opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold gap-1">
+                          <Upload className="w-3.5 h-3.5 text-[#F05A22]" />
+                          <span>Glisser un nouveau logo</span>
+                        </div>
+                      </div>
+
+                      <h3 className="font-extrabold text-base text-[#003876]">{sponsor.name}</h3>
+                      {sponsor.description?.fr && (
+                        <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">{sponsor.description.fr}</p>
+                      )}
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                      {sponsor.website ? (
+                        <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="text-xs text-[#58B9FF] font-bold hover:underline flex items-center gap-1">
+                          <span>Site Web</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      ) : <span />}
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => openEditSponsor(sponsor)}
+                          className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700"
+                          title="Modifier"
+                        >
+                          <Edit className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteSponsor(sponsor.slug)}
+                          className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600"
+                          title="Supprimer"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -727,7 +918,7 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* ── ADD/EDIT SPONSOR MODAL ── */}
+      {/* ── ADD/EDIT SPONSOR MODAL (WITH DRAG & DROP LOGO DROPZONE) ── */}
       {showSponsorModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
           <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-8 space-y-6 shadow-2xl text-start my-auto">
@@ -741,6 +932,99 @@ export default function AdminDashboard() {
             </div>
 
             <form onSubmit={handleSaveSponsor} className="space-y-4 text-xs font-semibold">
+              
+              {/* Drag & Drop Logo Dropzone in Form */}
+              <div>
+                <label className="block text-slate-700 font-black mb-1.5">
+                  Logo / Image de la marque *
+                </label>
+
+                {/* Hidden File Input */}
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  accept="image/*"
+                  className="hidden"
+                  onChange={async (e) => {
+                    if (e.target.files && e.target.files.length > 0) {
+                      const file = e.target.files[0];
+                      const uploadedUrl = await uploadLogoFile(file);
+                      if (uploadedUrl) {
+                        const inferredName = sponsorForm.name || file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ").toUpperCase();
+                        setSponsorForm((prev) => ({
+                          ...prev,
+                          logo: uploadedUrl,
+                          name: inferredName,
+                        }));
+                      }
+                    }
+                  }}
+                />
+
+                {/* Dragzone Box */}
+                <div
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    setIsDraggingModal(true);
+                  }}
+                  onDragLeave={() => setIsDraggingModal(false)}
+                  onDrop={handleModalDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`border-2 border-dashed rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 relative ${
+                    isDraggingModal
+                      ? "border-[#F05A22] bg-[#F05A22]/10 scale-102"
+                      : sponsorForm.logo
+                      ? "border-emerald-300 bg-emerald-50/30 hover:border-emerald-400"
+                      : "border-slate-300 hover:border-[#003876] bg-slate-50 hover:bg-white"
+                  }`}
+                >
+                  {isUploadingLogo ? (
+                    <div className="flex items-center gap-2 py-4 text-[#003876]">
+                      <Loader2 className="w-6 h-6 animate-spin text-[#F05A22]" />
+                      <span className="font-bold text-xs">Téléversement de l'image en cours...</span>
+                    </div>
+                  ) : sponsorForm.logo ? (
+                    <div className="space-y-3 py-1 flex flex-col items-center w-full">
+                      <div className="h-20 max-w-full bg-white border border-slate-200 rounded-xl p-2 flex items-center justify-center shadow-xs">
+                        <img src={sponsorForm.logo} alt="Aperçu logo" className="max-h-full max-w-full object-contain" />
+                      </div>
+                      <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs">
+                        <Check className="w-4 h-4 text-emerald-600" />
+                        <span>Logo chargé avec succès</span>
+                        <span className="text-slate-400 text-[10px]">(Cliquer pour remplacer)</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-2 py-2">
+                      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 mx-auto flex items-center justify-center text-[#F05A22] shadow-xs">
+                        <Upload className="w-5 h-5" />
+                      </div>
+                      <p className="font-black text-xs text-[#003876]">
+                        Glissez et déposez votre image ici
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        Ou cliquez pour parcourir les fichiers (PNG, JPG, SVG, WEBP)
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Manual URL Input Fallback */}
+                <div className="mt-2">
+                  <span className="text-[10px] text-slate-400 font-medium block mb-1">
+                    Ou saisissez manuellement le chemin d'accès au logo :
+                  </span>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ex: /partners/2026/satim.png"
+                    value={sponsorForm.logo || ""}
+                    onChange={(e) => setSponsorForm({ ...sponsorForm, logo: e.target.value })}
+                    className="w-full h-9 px-3 rounded-xl border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-[#003876]"
+                  />
+                </div>
+              </div>
+
               <div>
                 <label className="block text-slate-700 font-black mb-1">Nom de l'entreprise *</label>
                 <input
@@ -749,18 +1033,6 @@ export default function AdminDashboard() {
                   placeholder="Ex: SATIM"
                   value={sponsorForm.name || ""}
                   onChange={(e) => setSponsorForm({ ...sponsorForm, name: e.target.value })}
-                  className="w-full h-10 px-3 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#003876]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-slate-700 font-black mb-1">URL du Logo *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Ex: /partners/2026/satim.png"
-                  value={sponsorForm.logo || ""}
-                  onChange={(e) => setSponsorForm({ ...sponsorForm, logo: e.target.value })}
                   className="w-full h-10 px-3 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#003876]"
                 />
               </div>
