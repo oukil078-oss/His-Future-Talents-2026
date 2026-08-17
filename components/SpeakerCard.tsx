@@ -1,6 +1,7 @@
 import React from "react";
 import { Speaker } from "@/data/speakers";
 import { useLanguage } from "@/context/LanguageContext";
+import { Calendar, Tag } from "lucide-react";
 
 interface SpeakerCardProps {
   speaker: Speaker;
@@ -10,7 +11,6 @@ export default function SpeakerCard({ speaker }: SpeakerCardProps) {
   const { language } = useLanguage();
   const isConfirmed = speaker.imageStatus === "confirmed" && speaker.image;
 
-  // Format category badge
   const categoryLabel =
     speaker.category === "conference"
       ? language === "ar"
@@ -21,93 +21,59 @@ export default function SpeakerCard({ speaker }: SpeakerCardProps) {
       : "Workshop";
 
   return (
-    <div className="bg-white border border-slate-100 rounded-3xl p-5 flex flex-col justify-between shadow-soft hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300 group cursor-default text-start relative overflow-hidden h-full">
-      {/* Top Background accent glow */}
-      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-his-blue/5 to-transparent rounded-bl-full pointer-events-none" />
-
-      <div className="space-y-4">
-        {/* Photo area with aspect-[4/5] */}
-        <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50 shrink-0">
-          {isConfirmed ? (
+    <div className="bg-white border border-slate-200/80 rounded-2xl p-3.5 flex items-center gap-3.5 shadow-xs hover:shadow-md hover:border-[#F05A22]/50 hover:-translate-y-0.5 transition-all duration-300 group text-start h-full">
+      {/* Mini Avatar Photo */}
+      <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-xl overflow-hidden shrink-0 bg-slate-100 border border-slate-200 shadow-xs">
+        {isConfirmed ? (
+          <img
+            src={speaker.image}
+            alt={speaker.name}
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+            width={72}
+            height={72}
+          />
+        ) : (
+          <div className="w-full h-full bg-[#0E1B2C] flex flex-col items-center justify-center p-1.5 text-center">
             <img
-              src={speaker.image}
-              alt={language === "ar" ? `صورة الشخصية لـ ${speaker.name}` : `Portrait of ${speaker.name}`}
-              className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
-              loading="lazy"
-              width={350}
-              height={438}
+              src="/brand/motifs/Future Talents Icon Orange-01.png"
+              alt=""
+              className="w-6 h-6 object-contain opacity-80"
+              aria-hidden="true"
             />
-          ) : (
-            /* Official Branded navy placeholder with brand motif icon */
-            <div className="w-full h-full bg-[#0E1B2C] relative flex flex-col items-center justify-center p-6 text-center select-none overflow-hidden">
-              {/* Graphic brand motif overlays */}
-              <div className="absolute -top-10 -left-10 w-28 h-28 opacity-20 pointer-events-none">
-                <img src="/brand/motifs/Future Talents Icon Yellow-03.png" alt="" className="w-full h-auto" />
-              </div>
-              <div className="absolute -bottom-10 -right-10 w-28 h-28 opacity-20 pointer-events-none">
-                <img src="/brand/motifs/Future Talents Icon Orange-05.png" alt="" className="w-full h-auto" />
-              </div>
-              
-              {/* Fine line pattern */}
-              <div 
-                className="absolute inset-0 opacity-[0.04] pointer-events-none"
-                style={{ backgroundImage: "repeating-linear-gradient(45deg,#fff,#fff 1px,transparent 1px,transparent 12px)" }}
-              />
+            <span className="text-[7px] font-bold text-white/60 uppercase mt-0.5 leading-tight">
+              HIS
+            </span>
+          </div>
+        )}
+      </div>
 
-              {/* Central Official Brand Motif Icon */}
-              <div className="relative z-10 w-16 h-16 rounded-2xl border border-white/15 flex items-center justify-center mb-4 bg-white/5 backdrop-blur-xs p-3">
-                <img
-                  src="/brand/motifs/Future Talents Icon Orange-01.png"
-                  alt=""
-                  className="w-full h-full object-contain"
-                  aria-hidden="true"
-                />
-              </div>
-
-              {/* Placeholder text */}
-              <p className="relative z-10 text-[10px] text-white/70 font-black uppercase tracking-wider leading-snug max-w-[150px]">
-                {language === "ar"
-                  ? "صورة المتحدث ستتوفر قريبًا"
-                  : "Photo bientôt disponible"}
-              </p>
-            </div>
-          )}
-
-          {/* Category Tag Overlay */}
-          <span className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm shadow-sm border border-slate-100 text-slate-700 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-lg">
+      {/* Content */}
+      <div className="flex-1 min-w-0 space-y-1">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-md ${
+            speaker.category === "conference"
+              ? "bg-[#003876]/10 text-[#003876]"
+              : "bg-[#F05A22]/10 text-[#F05A22]"
+          }`}>
             {categoryLabel}
+          </span>
+          <span className="text-[8px] font-bold text-slate-400">
+            {speaker.edition}
           </span>
         </div>
 
-        {/* Info below photo */}
-        <div className="space-y-1">
-          {/* Edition Label */}
-          <div className="flex items-center gap-1.5">
-            <span className={`w-1.5 h-1.5 rounded-full ${
-              speaker.edition === 2025 ? "bg-his-orange" : "bg-his-blue"
-            }`} />
-            <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">
-              {language === "ar" ? `نسخة ${speaker.edition}` : `Édition ${speaker.edition}`}
-            </span>
-          </div>
+        {/* Name */}
+        <h4 className="font-black text-slate-900 text-xs sm:text-sm truncate group-hover:text-[#F05A22] transition-colors">
+          {speaker.name}
+        </h4>
 
-          {/* Name */}
-          <h4 className="font-black text-his-deep text-lg leading-tight group-hover:text-his-orange transition-colors duration-300">
-            {speaker.name}
-          </h4>
-
-          {/* Role */}
-          <p className="text-slate-600 text-xs font-semibold leading-relaxed">
-            {language === "ar" ? speaker.role.ar : speaker.role.fr}
-          </p>
-
-          {/* Company (if present) */}
-          {speaker.company && (
-            <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">
-              {speaker.company}
-            </p>
-          )}
-        </div>
+        {/* Topic / Role (What they do) */}
+        <p className="text-[11px] text-slate-600 font-medium line-clamp-2 leading-tight">
+          {typeof speaker.role === "object"
+            ? (language === "ar" ? speaker.role.ar : speaker.role.fr)
+            : speaker.role}
+        </p>
       </div>
     </div>
   );

@@ -3,6 +3,10 @@ import { Providers } from "./providers";
 import { bahij, neulis } from "@/lib/fonts";
 import { Metadata } from "next";
 
+export function generateStaticParams() {
+  return [{ locale: "fr" }, { locale: "ar" }];
+}
+
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale === "ar" ? "ar" : "fr";
   const title = locale === "ar" 
@@ -16,12 +20,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     title,
     description,
     icons: {
-      icon: [
-        { url: "/icon.png", type: "image/png" },
-        { url: "/favicon.ico", sizes: "any" }
-      ],
-      shortcut: "/favicon.ico",
-      apple: "/apple-touch-icon.png",
+      icon: "/brand/motifs/Future Talents Icon Orange-01.png",
+      apple: "/brand/motifs/Future Talents Icon Orange-01.png",
     },
     alternates: {
       canonical: `https://futuretalents.his.edu.dz/${locale}`,
@@ -59,6 +59,20 @@ export default function RootLayout({
 
   return (
     <html lang={locale} dir={dir}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('error', function(e) {
+                if (e && e.message && (e.message.indexOf('ethereum') !== -1 || e.message.indexOf('selectedAddress') !== -1)) {
+                  e.stopImmediatePropagation();
+                  e.preventDefault();
+                }
+              });
+            `,
+          }}
+        />
+      </head>
       <body className={`${neulis.variable} ${bahij.variable} bg-white text-slate-900`}>
         <Providers locale={locale}>{children}</Providers>
       </body>

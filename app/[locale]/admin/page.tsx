@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { ExhibitorLead } from "@/lib/dataStore";
+import { ExhibitorLead, StudentApplication } from "@/lib/dataStore";
 import { Partner } from "@/data/partners";
+import StudentBadge from "@/components/StudentBadge";
+import { Html5QrcodeScanner } from "html5-qrcode";
 import {
   Shield,
   Building2,
@@ -30,7 +32,86 @@ import {
   Image as ImageIcon,
   FileImage,
   Loader2,
+  GraduationCap,
+  School,
+  HeartHandshake,
+  FileText,
+  Compass,
+  Share2,
+  QrCode,
+  Camera,
+  Mail,
 } from "lucide-react";
+
+function CameraScannerComponent({
+  onScanResult,
+}: {
+  onScanResult: (text: string) => void;
+}) {
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (!active) return;
+    let scanner: Html5QrcodeScanner | null = null;
+    try {
+      scanner = new Html5QrcodeScanner(
+        "html5qr-code-full-region",
+        {
+          fps: 10,
+          qrbox: { width: 220, height: 220 },
+          aspectRatio: 1.0,
+        },
+        false
+      );
+
+      scanner.render(
+        (decodedText) => {
+          onScanResult(decodedText);
+          setActive(false);
+        },
+        (error) => {}
+      );
+    } catch (err) {
+      console.error("Camera scanner error:", err);
+    }
+
+    return () => {
+      if (scanner) {
+        scanner.clear().catch((err) => console.error("Error clearing scanner:", err));
+      }
+    };
+  }, [active, onScanResult]);
+
+  return (
+    <div className="space-y-4">
+      {!active ? (
+        <button
+          onClick={() => setActive(true)}
+          className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#003876] via-[#0E1B2C] to-[#003876] hover:from-[#F05A22] hover:to-[#003876] text-white font-black text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 border border-white/10"
+        >
+          <Camera className="w-5 h-5 text-[#FFBD0E] animate-bounce" />
+          <span>Activer le Scanner Caméra (Téléphone / Webcam)</span>
+        </button>
+      ) : (
+        <div className="space-y-3 bg-slate-900 border-2 border-[#003876] rounded-3xl p-4 text-center shadow-xl">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <span className="text-xs font-black uppercase text-[#FFBD0E] flex items-center gap-1.5">
+              <Camera className="w-4 h-4 text-emerald-400 animate-pulse" />
+              Scanner Caméra Actif — Scannez le Pass QR
+            </span>
+            <button
+              onClick={() => setActive(false)}
+              className="text-xs font-bold text-slate-300 hover:text-white px-3 py-1 bg-red-600/80 hover:bg-red-600 rounded-xl transition-all"
+            >
+              Fermer Caméra
+            </button>
+          </div>
+          <div id="html5qr-code-full-region" className="w-full rounded-2xl overflow-hidden text-slate-900 bg-white" />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function AdminDashboard() {
   const { language } = useLanguage();
@@ -38,17 +119,30 @@ export default function AdminDashboard() {
   const [passcode, setPasscode] = useState("");
   const [loginError, setLoginError] = useState("");
 
-  const [activeTab, setActiveTab] = useState<"overview" | "leads" | "sponsors">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "leads" | "sponsors" | "students" | "scanner">("overview");
 
   // Data states
   const [leads, setLeads] = useState<ExhibitorLead[]>([]);
   const [sponsors, setSponsors] = useState<Partner[]>([]);
+  const [students, setStudents] = useState<StudentApplication[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Lead filters & detail modal
   const [leadSearch, setLeadSearch] = useState("");
   const [leadStatusFilter, setLeadStatusFilter] = useState<string>("all");
   const [selectedLead, setSelectedLead] = useState<ExhibitorLead | null>(null);
+
+  // Student filters & detail modal
+  const [studentSearch, setStudentSearch] = useState("");
+  const [studentStatusFilter, setStudentStatusFilter] = useState<string>("all");
+  const [selectedStudent, setSelectedStudent] = useState<StudentApplication | null>(null);
+  const [scanConfirmationNotice, setScanConfirmationNotice] = useState<string | null>(null);
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
+
+  // Reception Scanner Tab State
+  const [scannerInput, setScannerInput] = useState("");
+  const [scannedStudentResult, setScannedStudentResult] = useState<StudentApplication | null>(null);
+  const [scannerError, setScannerError] = useState("");
 
   // Sponsor manager state
   const [sponsorEditionFilter, setSponsorEditionFilter] = useState<number>(2026);
@@ -75,10 +169,12 @@ export default function AdminDashboard() {
 
   // Check auth session
   useEffect(() => {
-    const auth = sessionStorage.getItem("hft_admin_auth");
-    if (auth === "true") {
-      setIsAuthenticated(true);
-      fetchData();
+    if (typeof window !== "undefined") {
+      const auth = localStorage.getItem("hft_admin_auth");
+      if (auth === "true") {
+        setIsAuthenticated(true);
+        fetchData();
+      }
     }
   }, []);
 
@@ -86,7 +182,9 @@ export default function AdminDashboard() {
     e.preventDefault();
     if (passcode === "hft2026" || passcode === "admin") {
       setIsAuthenticated(true);
-      sessionStorage.setItem("hft_admin_auth", "true");
+      if (typeof window !== "undefined") {
+        localStorage.setItem("hft_admin_auth", "true");
+      }
       fetchData();
     } else {
       setLoginError("Code d'accès incorrect.");
@@ -95,27 +193,53 @@ export default function AdminDashboard() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    sessionStorage.removeItem("hft_admin_auth");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("hft_admin_auth");
+    }
   };
 
   const fetchData = async () => {
     setLoading(true);
     try {
-      const [leadsRes, sponsorsRes] = await Promise.all([
+      const [leadsRes, sponsorsRes, studentsRes] = await Promise.all([
         fetch("/api/leads"),
         fetch("/api/sponsors"),
+        fetch("/api/students"),
       ]);
       const leadsData = await leadsRes.json();
       const sponsorsData = await sponsorsRes.json();
+      const studentsData = await studentsRes.json();
 
       if (leadsData.success) setLeads(leadsData.data);
       if (sponsorsData.success) setSponsors(sponsorsData.data);
+      if (studentsData.success) setStudents(studentsData.data);
     } catch (err) {
       console.error("Error loading admin data", err);
     } finally {
       setLoading(false);
     }
   };
+
+  // Handle Reception QR Code scanning via URL (?confirmBadge=HFT-2026-XXXX)
+  useEffect(() => {
+    if (students.length > 0 && typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const confirmBadge = params.get("confirmBadge");
+      if (confirmBadge) {
+        const query = confirmBadge.toUpperCase().trim();
+        const match = students.find(
+          (st) =>
+            st.badgeId?.toUpperCase() === query ||
+            st.id.toUpperCase() === query
+        );
+        if (match) {
+          setScannerInput(query);
+          setScannedStudentResult(match);
+          setActiveTab("scanner");
+        }
+      }
+    }
+  }, [students]);
 
   // Helper to read file locally into base64 Data URL for instant rendering
   const readFileAsDataUrl = (file: File): Promise<string> => {
@@ -269,6 +393,75 @@ export default function AdminDashboard() {
     }
   };
 
+  // Student status updater
+  const handleUpdateStudentStatus = async (id: string, status: StudentApplication["status"]) => {
+    try {
+      setIsSendingEmail(true);
+      const res = await fetch("/api/students", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStudents((prev) => prev.map((s) => (s.id === id ? { ...s, status } : s)));
+        if (selectedStudent?.id === id) {
+          setSelectedStudent((prev) => (prev ? { ...prev, status } : null));
+        }
+        if (status === "Confirmé") {
+          if (data.emailSent) {
+            alert("✓ Statut mis à jour ! L'email de confirmation avec le Pass Badge PDF a été envoyé au candidat.");
+          } else {
+            alert("Statut mis à jour en 'Confirmé'. Note: La notification par email a rencontré une erreur ou est en cours.");
+          }
+        }
+      }
+    } catch (err) {
+      alert("Erreur lors de la mise à jour");
+    } finally {
+      setIsSendingEmail(false);
+    }
+  };
+
+  const handleResendStudentEmail = async (id: string) => {
+    try {
+      setIsSendingEmail(true);
+      const res = await fetch("/api/students", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, action: "resend_email" }),
+      });
+      const data = await res.json();
+      if (data.success && data.emailSent) {
+        alert("✓ Email de confirmation et Badge PDF renvoyés avec succès !");
+      } else {
+        alert(`Erreur d'envoi d'email : ${data.emailResult?.error || data.error || "Échec SMTP"}`);
+      }
+    } catch (err: any) {
+      alert("Erreur de connexion lors de l'envoi de l'email.");
+    } finally {
+      setIsSendingEmail(false);
+    }
+  };
+
+  const handleDeleteStudent = async (id: string) => {
+    if (!confirm("Voulez-vous vraiment supprimer cette inscription étudiant ?")) return;
+    try {
+      const res = await fetch("/api/students", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, action: "delete" }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStudents((prev) => prev.filter((s) => s.id !== id));
+        if (selectedStudent?.id === id) setSelectedStudent(null);
+      }
+    } catch (err) {
+      alert("Erreur lors de la suppression");
+    }
+  };
+
   // Sponsor CRUD Actions
   const handleSaveSponsor = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -330,6 +523,21 @@ export default function AdminDashboard() {
       l.representativeName.toLowerCase().includes(leadSearch.toLowerCase()) ||
       l.email.toLowerCase().includes(leadSearch.toLowerCase());
     const matchesStatus = leadStatusFilter === "all" || l.status === leadStatusFilter;
+    return matchesSearch && matchesStatus;
+  });
+
+  // Filtered Students
+  const filteredStudents = students.filter((s) => {
+    const query = studentSearch.toLowerCase();
+    const matchesSearch =
+      s.firstName.toLowerCase().includes(query) ||
+      s.lastName.toLowerCase().includes(query) ||
+      s.email.toLowerCase().includes(query) ||
+      (s.university && s.university.toLowerCase().includes(query)) ||
+      (s.fieldOfStudyOrWork && s.fieldOfStudyOrWork.toLowerCase().includes(query)) ||
+      (s.wilaya && s.wilaya.toLowerCase().includes(query)) ||
+      (s.currentStatus && s.currentStatus.toLowerCase().includes(query));
+    const matchesStatus = studentStatusFilter === "all" || s.status === studentStatusFilter;
     return matchesSearch && matchesStatus;
   });
 
@@ -449,6 +657,35 @@ export default function AdminDashboard() {
           </button>
 
           <button
+            onClick={() => setActiveTab("students")}
+            className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all relative shrink-0 ${
+              activeTab === "students"
+                ? "bg-[#F05A22] text-white shadow-md"
+                : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+            }`}
+          >
+            <GraduationCap className="w-4 h-4" />
+            Inscriptions Étudiants
+            {students.filter((s) => s.status === "Nouveau").length > 0 && (
+              <span className="ml-1 bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-black">
+                {students.filter((s) => s.status === "Nouveau").length}
+              </span>
+            )}
+          </button>
+
+          <button
+            onClick={() => setActiveTab("scanner")}
+            className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all relative shrink-0 ${
+              activeTab === "scanner"
+                ? "bg-emerald-600 text-white shadow-md scale-105"
+                : "bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 hover:bg-emerald-500/30"
+            }`}
+          >
+            <QrCode className="w-4 h-4 text-emerald-400" />
+            <span>Scan QR Code (Réception)</span>
+          </button>
+
+          <button
             onClick={() => setActiveTab("sponsors")}
             className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all shrink-0 ${
               activeTab === "sponsors"
@@ -465,11 +702,23 @@ export default function AdminDashboard() {
       {/* Main Content Body */}
       <main className="max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-8 flex-1 w-full overflow-x-hidden">
 
+        {scanConfirmationNotice && (
+          <div className="mb-6 p-4 rounded-2xl bg-emerald-500 text-white font-black text-sm text-center shadow-lg border-2 border-emerald-400 animate-fadeIn flex items-center justify-between gap-4">
+            <span className="truncate">{scanConfirmationNotice}</span>
+            <button
+              onClick={() => setScanConfirmationNotice(null)}
+              className="px-3 py-1 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold shrink-0"
+            >
+              Fermer
+            </button>
+          </div>
+        )}
+
         {/* ── 1. OVERVIEW TAB ── */}
         {activeTab === "overview" && (
           <div className="space-y-8">
             {/* Stat Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
                 <div className="flex items-center justify-between text-slate-500">
                   <span className="text-xs font-black uppercase tracking-wider">Demandes Exposants</span>
@@ -477,13 +726,24 @@ export default function AdminDashboard() {
                 </div>
                 <p className="text-3xl font-black text-[#003876]">{leads.length}</p>
                 <p className="text-xs text-slate-500 font-medium">
-                  {leads.filter((l) => l.status === "Nouveau").length} nouvelles demandes à traiter
+                  {leads.filter((l) => l.status === "Nouveau").length} nouvelles demandes
                 </p>
               </div>
 
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
                 <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-black uppercase tracking-wider">Demandes Confirmées</span>
+                  <span className="text-xs font-black uppercase tracking-wider">Inscriptions Étudiants</span>
+                  <GraduationCap className="w-5 h-5 text-[#F05A22]" />
+                </div>
+                <p className="text-3xl font-black text-[#F05A22]">{students.length}</p>
+                <p className="text-xs text-slate-500 font-medium">
+                  {students.filter((s) => s.status === "Nouveau").length} nouveaux inscrits
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
+                <div className="flex items-center justify-between text-slate-500">
+                  <span className="text-xs font-black uppercase tracking-wider">Exposants Validés</span>
                   <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                 </div>
                 <p className="text-3xl font-black text-emerald-600">
@@ -494,22 +754,22 @@ export default function AdminDashboard() {
 
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
                 <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-black uppercase tracking-wider">Sponsors 2026 Confirmés</span>
-                  <Award className="w-5 h-5 text-[#F05A22]" />
+                  <span className="text-xs font-black uppercase tracking-wider">Sponsors 2026</span>
+                  <Award className="w-5 h-5 text-amber-500" />
                 </div>
-                <p className="text-3xl font-black text-[#F05A22]">
+                <p className="text-3xl font-black text-amber-500">
                   {sponsors.filter((s) => s.edition === 2026).length}
                 </p>
-                <p className="text-xs text-slate-500 font-medium">Exposants & Sponsors au catalogue</p>
+                <p className="text-xs text-slate-500 font-medium">Sponsors au catalogue</p>
               </div>
 
-              <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
+              <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2 sm:col-span-2 lg:col-span-1">
                 <div className="flex items-center justify-between text-slate-500">
                   <span className="text-xs font-black uppercase tracking-wider">Total Entreprises</span>
                   <Users className="w-5 h-5 text-[#58B9FF]" />
                 </div>
                 <p className="text-3xl font-black text-slate-800">{sponsors.length}</p>
-                <p className="text-xs text-slate-500 font-medium">Historique (2024 - 2026)</p>
+                <p className="text-xs text-slate-500 font-medium">Historique 2024 - 2026</p>
               </div>
             </div>
 
@@ -676,7 +936,143 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* ── 3. SPONSORS MANAGER TAB (WITH ADMIN DRAG & DROP) ── */}
+        {/* ── 3. STUDENTS TAB ── */}
+        {activeTab === "students" && (
+          <div className="space-y-6">
+            {/* Filters bar */}
+            <div className="bg-white p-4 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shadow-xs w-full overflow-hidden">
+              <div className="relative w-full md:w-80">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+                <input
+                  type="text"
+                  placeholder="Rechercher nom, université, filière, entreprise..."
+                  value={studentSearch}
+                  onChange={(e) => setStudentSearch(e.target.value)}
+                  className="w-full h-10 pl-9 pr-4 rounded-xl border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#003876]"
+                />
+              </div>
+
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0 w-full md:w-auto">
+                <span className="text-xs font-bold text-slate-500 shrink-0">Statut :</span>
+                {["all", "Nouveau", "En cours", "Confirmé", "Refusé"].map((st) => (
+                  <button
+                    key={st}
+                    onClick={() => setStudentStatusFilter(st)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                      studentStatusFilter === st
+                        ? "bg-[#003876] text-white"
+                        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    }`}
+                  >
+                    {st === "all" ? "Tous" : st}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Students Table */}
+            <div className="bg-white rounded-3xl border border-slate-200 shadow-soft overflow-hidden w-full">
+              <div className="w-full overflow-x-auto no-scrollbar">
+                <table className="w-full text-start text-xs min-w-[700px]">
+                  <thead className="bg-[#003876] text-white font-black uppercase tracking-wider">
+                    <tr>
+                      <th className="p-4 text-start">Pass / Étudiant</th>
+                      <th className="p-4 text-start">Wilaya & Statut</th>
+                      <th className="p-4 text-start">Domaine & Établissement</th>
+                      <th className="p-4 text-center">CV PDF</th>
+                      <th className="p-4 text-center">Statut Inscription</th>
+                      <th className="p-4 text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 font-medium">
+                    {filteredStudents.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} className="p-8 text-center text-slate-400 font-bold">
+                          Aucune inscription étudiant trouvée.
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredStudents.map((std) => (
+                        <tr key={std.id} className="hover:bg-slate-50 transition-colors">
+                          <td className="p-4">
+                            <span className="text-[10px] font-black uppercase text-[#F05A22] bg-[#F05A22]/10 px-2 py-0.5 rounded-md inline-block mb-0.5">
+                              {std.badgeId || "HFT-2026"}
+                            </span>
+                            <span className="font-bold text-sm text-slate-900 block">
+                              {std.firstName} {std.lastName}
+                            </span>
+                            <span className="text-slate-500 text-[11px] block">{std.email} • {std.phone}</span>
+                          </td>
+                          <td className="p-4">
+                            <span className="font-bold text-slate-800 block">{std.currentStatus || "Étudiant"}</span>
+                            <span className="text-slate-500 text-[11px] block">{std.wilaya ? `Wilaya: ${std.wilaya}` : std.ageCategory}</span>
+                          </td>
+                          <td className="p-4">
+                            <span className="font-semibold text-slate-800 block">{std.fieldOfStudyOrWork || (std as any).fieldOfStudy}</span>
+                            <span className="text-slate-400 text-[11px] block">{std.university || "Non spécifié"}</span>
+                          </td>
+                          <td className="p-4 text-center">
+                            {std.cvUrl ? (
+                              <a
+                                href={std.cvUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold hover:bg-emerald-100"
+                                title="Voir CV PDF"
+                              >
+                                <FileText className="w-3 h-3 text-emerald-600" />
+                                <span>CV PDF</span>
+                              </a>
+                            ) : (
+                              <span className="text-slate-300 text-[10px]">Non fournie</span>
+                            )}
+                          </td>
+                          <td className="p-4 text-center">
+                            <select
+                              value={std.status}
+                              onChange={(e) => handleUpdateStudentStatus(std.id, e.target.value as any)}
+                              className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full border cursor-pointer ${
+                                std.status === "Nouveau" ? "bg-amber-100 text-amber-800 border-amber-300" :
+                                std.status === "Confirmé" ? "bg-emerald-100 text-emerald-800 border-emerald-300" :
+                                std.status === "En cours" ? "bg-blue-100 text-blue-800 border-blue-300" :
+                                "bg-red-100 text-red-800 border-red-300"
+                              }`}
+                            >
+                              <option value="Nouveau">Nouveau</option>
+                              <option value="En cours">En cours</option>
+                              <option value="Confirmé">Confirmé</option>
+                              <option value="Refusé">Refusé</option>
+                            </select>
+                          </td>
+                          <td className="p-4 text-end">
+                            <div className="flex items-center justify-end gap-2">
+                              <button
+                                onClick={() => setSelectedStudent(std)}
+                                className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700"
+                                title="Voir les détails"
+                              >
+                                <Eye className="w-4 h-4" />
+                              </button>
+                              <button
+                                onClick={() => handleDeleteStudent(std.id)}
+                                className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600"
+                                title="Supprimer"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── 4. SPONSORS MANAGER TAB (WITH ADMIN DRAG & DROP) ── */}
         {activeTab === "sponsors" && (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs w-full overflow-hidden">
@@ -854,6 +1250,213 @@ export default function AdminDashboard() {
           </div>
         )}
 
+        {/* ── 5. SCANNER QR CODE TAB ── */}
+        {activeTab === "scanner" && (
+          <div className="max-w-4xl mx-auto space-y-8 animate-fadeIn text-start">
+            
+            {/* Tab Header Banner */}
+            <div className="bg-[#003876] text-white rounded-3xl p-6 sm:p-8 space-y-3 shadow-xl relative overflow-hidden">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-[#F05A22] flex items-center justify-center text-white shadow-md">
+                  <QrCode className="w-7 h-7" />
+                </div>
+                <div>
+                  <span className="text-xs font-black uppercase text-[#FFBD0E] tracking-wider">Réception & Contrôle d'Accès</span>
+                  <h2 className="text-2xl sm:text-3xl font-black">Scanner Pass QR & Validation Entrée</h2>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-200 font-medium">
+                Scannez le QR Code de l'étudiant avec votre douchette / caméra ou saisissez sa référence unique (ex: HFT-2026-X89A2).
+              </p>
+            </div>
+
+            {/* Scanner Input / Search Box */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-lg space-y-4">
+              <label className="block text-xs font-black uppercase text-[#003876]">
+                Saisir ou Scanner la Référence Pass (Badge ID / Email)
+              </label>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-1">
+                  <Search className="w-5 h-5 text-slate-400 absolute left-4 top-3.5" />
+                  <input
+                    type="text"
+                    autoFocus
+                    placeholder="Ex: HFT-2026-X89A2 ou email@example.com"
+                    value={scannerInput}
+                    onChange={(e) => setScannerInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        const query = scannerInput.trim().toUpperCase();
+                        if (!query) return;
+                        const match = students.find(
+                          (s) =>
+                            s.badgeId?.toUpperCase() === query ||
+                            s.email.toUpperCase() === query ||
+                            s.id.toUpperCase() === query
+                        );
+                        if (match) {
+                          setScannedStudentResult(match);
+                          setScannerError("");
+                        } else {
+                          setScannedStudentResult(null);
+                          setScannerError(`Aucun étudiant trouvé avec la référence: ${query}`);
+                        }
+                      }
+                    }}
+                    className="w-full h-12 pl-12 pr-4 rounded-2xl border border-slate-200 font-mono text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#003876]"
+                  />
+                </div>
+
+                <button
+                  onClick={() => {
+                    const query = scannerInput.trim().toUpperCase();
+                    if (!query) return;
+                    const match = students.find(
+                      (s) =>
+                        s.badgeId?.toUpperCase() === query ||
+                        s.email.toUpperCase() === query ||
+                        s.id.toUpperCase() === query
+                    );
+                    if (match) {
+                      setScannedStudentResult(match);
+                      setScannerError("");
+                    } else {
+                      setScannedStudentResult(null);
+                      setScannerError(`Aucun étudiant trouvé avec la référence: ${query}`);
+                    }
+                  }}
+                  className="h-12 px-6 rounded-2xl bg-[#003876] hover:bg-[#F05A22] text-white font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
+                >
+                  <Search className="w-4 h-4" />
+                  <span>Rechercher Pass</span>
+                </button>
+              </div>
+
+              {/* Live Phone & Webcam QR Camera Scanner */}
+              <div className="pt-2">
+                <CameraScannerComponent
+                  onScanResult={(decodedText) => {
+                    let query = decodedText.trim().toUpperCase();
+                    if (query.includes("CONFIRMBADGE=")) {
+                      query = query.split("CONFIRMBADGE=")[1]?.split("&")[0]?.trim() || query;
+                    }
+                    setScannerInput(query);
+                    const match = students.find(
+                      (s) =>
+                        s.badgeId?.toUpperCase() === query ||
+                        s.email.toUpperCase() === query ||
+                        s.id.toUpperCase() === query
+                    );
+                    if (match) {
+                      setScannedStudentResult(match);
+                      setScannerError("");
+                    } else {
+                      setScannedStudentResult(null);
+                      setScannerError(`Aucun étudiant trouvé avec la référence: ${query}`);
+                    }
+                  }}
+                />
+              </div>
+
+              {scannerError && (
+                <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-bold text-center">
+                  {scannerError}
+                </div>
+              )}
+            </div>
+
+            {/* Scanned Student Results & Confirmation Panel */}
+            {scannedStudentResult && (
+              <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl space-y-8 animate-fadeIn">
+                
+                {/* Result Header & Status Confirmation CTA */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                  <div>
+                    <span className="text-[10px] font-black uppercase text-[#F05A22] bg-[#F05A22]/10 px-2.5 py-0.5 rounded-full">
+                      Référence Pass: {scannedStudentResult.badgeId || "HFT-2026"}
+                    </span>
+                    <h3 className="text-2xl font-black text-[#003876] mt-1">
+                      {scannedStudentResult.firstName} {scannedStudentResult.lastName}
+                    </h3>
+                  </div>
+
+                  <div>
+                    {scannedStudentResult.status === "Confirmé" ? (
+                      <span className="px-5 py-3 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 font-black text-xs uppercase tracking-wider flex items-center gap-2 shadow-sm">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                        <span>ENTRÉE DÉJÀ VALIDÉE & CONFIRMÉE</span>
+                      </span>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          handleUpdateStudentStatus(scannedStudentResult.id, "Confirmé");
+                          setScannedStudentResult({ ...scannedStudentResult, status: "Confirmé" });
+                          setScanConfirmationNotice(
+                            `✅ ACCÈS ENTRÉE CONFIRMÉ : ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} - Entrée Validée avec Succès !`
+                          );
+                        }}
+                        className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center gap-2"
+                      >
+                        <CheckCircle2 className="w-5 h-5" />
+                        <span>CONFIRMER L'ENTRÉE DE L'ÉTUDIANT</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Details & Live Badge Preview */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                  
+                  {/* Student Registration Details */}
+                  <div className="md:col-span-6 space-y-4 text-xs font-semibold text-slate-700">
+                    <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                      <span className="text-[10px] font-black uppercase text-[#003876] block">Informations Personnelles</span>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Email</span> <span className="font-bold text-slate-900">{scannedStudentResult.email}</span></p>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Téléphone</span> <span className="font-bold text-slate-900">{scannedStudentResult.phone}</span></p>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Wilaya</span> <span className="font-bold text-slate-900">{scannedStudentResult.wilaya || "Non spécifiée"}</span></p>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Tranche d'âge</span> <span className="font-bold text-slate-900">{scannedStudentResult.ageCategory}</span></p>
+                    </div>
+
+                    <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                      <span className="text-[10px] font-black uppercase text-[#003876] block">Parcours & Profil</span>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Statut Actuel</span> <span className="font-bold text-[#003876]">{scannedStudentResult.currentStatus}</span></p>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Domaine</span> <span className="font-bold text-slate-900">{scannedStudentResult.fieldOfStudyOrWork}</span></p>
+                      {scannedStudentResult.university && (
+                        <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Établissement</span> <span className="font-bold text-slate-900">{scannedStudentResult.university}</span></p>
+                      )}
+                    </div>
+
+                    {scannedStudentResult.cvUrl && (
+                      <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
+                        <span className="text-slate-700 font-bold truncate max-w-[180px]">{scannedStudentResult.cvFileName || "Fichier_CV.pdf"}</span>
+                        <a
+                          href={scannedStudentResult.cvUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-sm"
+                        >
+                          <FileText className="w-3.5 h-3.5" />
+                          <span>Ouvrir CV PDF</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Live Badge Preview */}
+                  <div className="md:col-span-6 flex flex-col items-center justify-center bg-slate-100/60 p-4 rounded-3xl border border-slate-200">
+                    <span className="text-xs font-black uppercase text-[#003876] mb-3">Aperçu du Pass Badge Étudiant</span>
+                    <StudentBadge student={scannedStudentResult} showActions={false} />
+                  </div>
+
+                </div>
+
+              </div>
+            )}
+
+          </div>
+        )}
+
       </main>
 
       {/* ── LEAD INSPECTION MODAL ── */}
@@ -935,6 +1538,191 @@ export default function AdminDashboard() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── STUDENT INSPECTION MODAL (WITH BADGE & 5-STEP PDF DETAILS) ── */}
+      {selectedStudent && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto p-4 sm:p-8 space-y-6 shadow-2xl text-start my-auto">
+            
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-black uppercase text-[#F05A22] bg-[#F05A22]/10 px-2.5 py-0.5 rounded-full">
+                    Pass Badge: {selectedStudent.badgeId || "HFT-2026"}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400">
+                    Reçu le : {new Date(selectedStudent.submittedAt).toLocaleString("fr-FR")}
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-[#003876] mt-1">
+                  {selectedStudent.firstName} {selectedStudent.lastName}
+                </h3>
+              </div>
+              <button onClick={() => setSelectedStudent(null)} className="p-2 rounded-full hover:bg-slate-100">
+                <XCircle className="w-6 h-6 text-slate-400" />
+              </button>
+            </div>
+
+            {/* Modal Content Grid: Left side details, Right side Badge */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Left Column (7 cols): Full 5-Section Registration Details */}
+              <div className="lg:col-span-7 space-y-5 text-xs font-semibold text-slate-700">
+                
+                {/* 1. Informations Personnelles */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2.5">
+                  <h4 className="font-black text-xs uppercase tracking-wider text-[#003876] border-b border-slate-200 pb-1.5">
+                    1. Informations Personnelles
+                  </h4>
+                  <div className="grid grid-cols-2 gap-2 text-slate-800">
+                    <div><span className="text-slate-400 text-[10px] uppercase block font-bold">Email</span><span className="font-bold">{selectedStudent.email}</span></div>
+                    <div><span className="text-slate-400 text-[10px] uppercase block font-bold">Téléphone</span><span className="font-bold">{selectedStudent.phone}</span></div>
+                    <div><span className="text-slate-400 text-[10px] uppercase block font-bold">Wilaya</span><span className="font-bold">{selectedStudent.wilaya || "Non spécifiée"}</span></div>
+                    <div><span className="text-slate-400 text-[10px] uppercase block font-bold">Tranche d'âge</span><span className="font-bold">{selectedStudent.ageCategory}</span></div>
+                  </div>
+                </div>
+
+                {/* 2. Parcours Académique et Professionnel */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2.5">
+                  <h4 className="font-black text-xs uppercase tracking-wider text-[#003876] border-b border-slate-200 pb-1.5">
+                    2. Parcours Académique & Professionnel
+                  </h4>
+                  <div className="grid grid-cols-2 gap-2 text-slate-800">
+                    <div><span className="text-slate-400 text-[10px] uppercase block font-bold">Statut Actuel</span><span className="font-bold text-[#003876]">{selectedStudent.currentStatus}</span></div>
+                    <div><span className="text-slate-400 text-[10px] uppercase block font-bold">Domaine d'études / travail</span><span className="font-bold">{selectedStudent.fieldOfStudyOrWork || (selectedStudent as any).fieldOfStudy}</span></div>
+                    {selectedStudent.university && (
+                      <div className="col-span-2"><span className="text-slate-400 text-[10px] uppercase block font-bold">Établissement</span><span className="font-bold">{selectedStudent.university}</span></div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 3. Profil Professionnel (CV PDF) */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2.5">
+                  <h4 className="font-black text-xs uppercase tracking-wider text-[#003876] border-b border-slate-200 pb-1.5">
+                    3. Profil Professionnel & CV PDF
+                  </h4>
+                  {selectedStudent.cvUrl ? (
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-700 font-bold truncate max-w-[200px]">{selectedStudent.cvFileName || "Fichier_CV.pdf"}</span>
+                      <a
+                        href={selectedStudent.cvUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-sm"
+                      >
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>Ouvrir CV PDF</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  ) : (
+                    <p className="text-slate-400 italic">Aucun CV PDF téléversé.</p>
+                  )}
+                </div>
+
+                {/* 4. Objectifs et Centres d'Intérêt */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
+                  <h4 className="font-black text-xs uppercase tracking-wider text-[#003876] border-b border-slate-200 pb-1.5">
+                    4. Objectifs & Centres d'Intérêt
+                  </h4>
+                  
+                  <div>
+                    <span className="text-slate-400 text-[10px] uppercase block font-bold mb-1">Objectifs recherchés</span>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedStudent.seekingObjectives && selectedStudent.seekingObjectives.length > 0 ? (
+                        selectedStudent.seekingObjectives.map((obj, i) => (
+                          <span key={i} className="px-2.5 py-0.5 rounded-full bg-[#003876] text-white text-[10px] font-bold">
+                            {obj}
+                          </span>
+                        ))
+                      ) : <span className="text-slate-400">Non renseigné</span>}
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="text-slate-400 text-[10px] uppercase block font-bold mb-1">Domaines les plus intéressants</span>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedStudent.interestedFields && selectedStudent.interestedFields.length > 0 ? (
+                        selectedStudent.interestedFields.map((fld, i) => (
+                          <span key={i} className="px-2.5 py-0.5 rounded-full bg-[#F05A22]/10 text-[#F05A22] text-[10px] font-bold border border-[#F05A22]/20">
+                            {fld}
+                          </span>
+                        ))
+                      ) : <span className="text-slate-400">Non renseigné</span>}
+                    </div>
+                  </div>
+                </div>
+
+                {/* 5. Source et Remarques */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2">
+                  <h4 className="font-black text-xs uppercase tracking-wider text-[#003876] border-b border-slate-200 pb-1.5">
+                    5. Source & Remarques
+                  </h4>
+                  <p><span className="text-slate-400 text-[10px] uppercase font-bold block">Canal de découverte</span> {selectedStudent.howDidYouHear || "Non spécifié"}</p>
+                  {selectedStudent.additionalComments && (
+                    <p className="pt-1"><span className="text-slate-400 text-[10px] uppercase font-bold block">Commentaires</span> {selectedStudent.additionalComments}</p>
+                  )}
+                </div>
+
+                {/* Status Updater */}
+                <div className="pt-2 flex items-center justify-between border-t border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-slate-500">Statut :</span>
+                    <select
+                      value={selectedStudent.status}
+                      disabled={isSendingEmail}
+                      onChange={(e) => handleUpdateStudentStatus(selectedStudent.id, e.target.value as any)}
+                      className="text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 bg-white"
+                    >
+                      <option value="Nouveau">Nouveau</option>
+                      <option value="En cours">En cours</option>
+                      <option value="Confirmé">Confirmé</option>
+                      <option value="Refusé">Refusé</option>
+                    </select>
+                  </div>
+
+                  <button
+                    type="button"
+                    disabled={isSendingEmail}
+                    onClick={() => handleResendStudentEmail(selectedStudent.id)}
+                    className="px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#003876] font-bold text-xs flex items-center gap-1.5 transition-all"
+                  >
+                    {isSendingEmail ? (
+                      <Loader2 className="w-4 h-4 animate-spin text-[#003876]" />
+                    ) : (
+                      <Mail className="w-4 h-4 text-[#F05A22]" />
+                    )}
+                    <span>{isSendingEmail ? "Envoi en cours..." : "Renvoyer Badge par Email"}</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleDeleteStudent(selectedStudent.id)}
+                    className="px-3.5 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs flex items-center gap-1.5"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    <span>Supprimer l'étudiant</span>
+                  </button>
+                </div>
+
+              </div>
+
+              {/* Right Column (5 cols): Live Student Lanyard Badge Preview */}
+              <div className="lg:col-span-5 bg-slate-100/60 p-4 rounded-3xl border border-slate-200 flex flex-col items-center justify-center space-y-4">
+                <div className="text-center space-y-1">
+                  <span className="text-xs font-black uppercase text-[#003876] tracking-wider">Aperçu du Pass Badge Étudiant</span>
+                  <p className="text-[11px] text-slate-500 font-medium">Généré pour l'entrée et l'accueil du salon</p>
+                </div>
+
+                {/* Live Badge Preview Component */}
+                <StudentBadge student={selectedStudent} showActions={true} />
+              </div>
+
+            </div>
+
           </div>
         </div>
       )}

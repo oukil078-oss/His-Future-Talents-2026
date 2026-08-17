@@ -16,10 +16,25 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
 
   const [counter, setCounter] = useState(0);
 
+  const onCompleteRef = useRef(onComplete);
   useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
+
+  useEffect(() => {
+    // Check session storage to avoid repeating preloader if already seen in session
+    if (typeof window !== "undefined") {
+      const seen = sessionStorage.getItem("hft_preloader_seen");
+      if (seen === "true") {
+        if (containerRef.current) containerRef.current.style.display = "none";
+        onCompleteRef.current();
+        return;
+      }
+    }
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
-      onComplete();
+      onCompleteRef.current();
       return;
     }
 
@@ -34,7 +49,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     const welcomeText = welcomeTextRef.current;
 
     if (!container || !leftDoor || !rightDoor || !centerSeal) {
-      onComplete();
+      onCompleteRef.current();
       return;
     }
 
@@ -54,13 +69,16 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     // GSAP Timeline for the 3D Grand Door Opening Experience
     const tl = gsap.timeline({
       onComplete: () => {
+        try {
+          sessionStorage.setItem("hft_preloader_seen", "true");
+        } catch (e) {}
         gsap.to(container, {
           opacity: 0,
           duration: 0.5,
           ease: "power2.inOut",
           onComplete: () => {
             if (container) container.style.display = "none";
-            onComplete();
+            onCompleteRef.current();
           },
         });
       },
@@ -168,7 +186,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     return () => {
       tl.kill();
     };
-  }, [onComplete]);
+  }, []);
 
   return (
     <div

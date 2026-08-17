@@ -20,11 +20,38 @@ export type ExhibitorLead = {
   submittedAt: string;
 };
 
+export type StudentApplication = {
+  id: string;
+  badgeId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  wilaya?: string;
+  ageCategory: string;
+  currentStatus: string;
+  fieldOfStudyOrWork: string;
+  university?: string;
+  studyLevel?: string;
+  cvUrl?: string;
+  cvFileName?: string;
+  seekingObjectives: string[];
+  interestedFields: string[];
+  interestedCompanies?: string[];
+  interests?: string[];
+  howDidYouHear?: string;
+  additionalComments?: string;
+  status: "Nouveau" | "En cours" | "Confirmé" | "Refusé";
+  submittedAt: string;
+};
+
 const LEADS_FILE = path.join(process.cwd(), "data", "leads.json");
 const SPONSORS_FILE = path.join(process.cwd(), "data", "sponsors.json");
+const STUDENTS_FILE = path.join(process.cwd(), "data", "students.json");
 
 let memoryLeads: ExhibitorLead[] | null = null;
 let memorySponsors: Partner[] | null = null;
+let memoryStudents: StudentApplication[] | null = null;
 
 function getTmpPath(filename: string): string {
   return path.join(os.tmpdir(), filename);
@@ -75,6 +102,9 @@ function ensureFiles() {
     if (!fs.existsSync(SPONSORS_FILE)) {
       fs.writeFileSync(SPONSORS_FILE, JSON.stringify(partnersData, null, 2), "utf-8");
     }
+    if (!fs.existsSync(STUDENTS_FILE)) {
+      fs.writeFileSync(STUDENTS_FILE, JSON.stringify([], null, 2), "utf-8");
+    }
   } catch (e) {
     // Ignore read-only errors on initialization
   }
@@ -118,6 +148,54 @@ export function deleteLead(id: string): boolean {
   if (filtered.length === leads.length) return false;
   memoryLeads = filtered;
   safeWriteFile(LEADS_FILE, JSON.stringify(filtered, null, 2));
+  return true;
+}
+
+// ── STUDENTS CRUD ──
+export function getStudentApplications(): StudentApplication[] {
+  if (memoryStudents !== null) return memoryStudents;
+  ensureFiles();
+  memoryStudents = safeReadFile<StudentApplication[]>(STUDENTS_FILE, []);
+  return memoryStudents;
+}
+
+export function saveStudentApplication(
+  appData: Omit<StudentApplication, "id" | "badgeId" | "status" | "submittedAt"> & { badgeId?: string }
+): StudentApplication {
+  const apps = getStudentApplications();
+  const randomSuffix = Math.random().toString(36).substring(2, 6).toUpperCase();
+  const newApp: StudentApplication = {
+    ...appData,
+    id: `std_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+    badgeId: appData.badgeId || `HFT-2026-${randomSuffix}`,
+    status: "Nouveau",
+    submittedAt: new Date().toISOString(),
+  };
+  apps.unshift(newApp);
+  memoryStudents = apps;
+  safeWriteFile(STUDENTS_FILE, JSON.stringify(apps, null, 2));
+  return newApp;
+}
+
+export function updateStudentApplicationStatus(
+  id: string,
+  status: StudentApplication["status"]
+): StudentApplication | null {
+  const apps = getStudentApplications();
+  const index = apps.findIndex((a) => a.id === id);
+  if (index === -1) return null;
+  apps[index].status = status;
+  memoryStudents = apps;
+  safeWriteFile(STUDENTS_FILE, JSON.stringify(apps, null, 2));
+  return apps[index];
+}
+
+export function deleteStudentApplication(id: string): boolean {
+  const apps = getStudentApplications();
+  const filtered = apps.filter((a) => a.id !== id);
+  if (filtered.length === apps.length) return false;
+  memoryStudents = filtered;
+  safeWriteFile(STUDENTS_FILE, JSON.stringify(filtered, null, 2));
   return true;
 }
 

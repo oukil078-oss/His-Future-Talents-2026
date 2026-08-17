@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { eventDetails, placeholderMedias, mediaPartners, mediaPartnersDetails, MediaPartner } from "@/lib/eventData";
 import PartnerLogoGrid from "@/components/PartnerLogoGrid";
@@ -1211,209 +1210,166 @@ export default function Home() {
         )}
 
         {/* ── Hero Video Lightbox Modal ── */}
-        <AnimatePresence>
-          {isVideoModalOpen && (
-            <motion.div
-              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
-              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 z-50 bg-black/92 flex items-center justify-center p-4 md:p-8"
+        {isVideoModalOpen && (
+          <div
+            className="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex items-center justify-center p-4 md:p-8 animate-fadeIn"
+            onClick={() => setIsVideoModalOpen(false)}
+          >
+            {/* Close Button */}
+            <button
               onClick={() => setIsVideoModalOpen(false)}
+              className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors focus:outline-none z-30 hover:scale-105 cursor-pointer"
+              aria-label="Fermer la vidéo"
             >
-              {/* Close Button with Fade & Scale Entrance */}
-              <motion.button
-                initial={{ opacity: 0, scale: 0.7, y: -10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.7, y: -10 }}
-                transition={{ duration: 0.25, delay: 0.1, ease: "easeOut" }}
-                onClick={() => setIsVideoModalOpen(false)}
-                className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors focus:outline-none z-30 hover:scale-105 cursor-pointer"
-                aria-label="Fermer la vidéo"
-              >
-                <X className="w-6 h-6" />
-              </motion.button>
+              <X className="w-6 h-6" />
+            </button>
 
-              {/* Video Player Container with Cinematic Zoom & Spring Elastic Entrance */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.88, y: 24 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.88, y: 24 }}
-                transition={{
-                  duration: 0.45,
-                  ease: [0.16, 1, 0.3, 1],
+            {/* Video Player Container */}
+            <div
+              className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/20 transform transition-all duration-300 scale-100"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                autoPlay
+                controls
+                playsInline
+                preload="auto"
+                className="w-full h-full object-contain"
+                ref={(el) => {
+                  if (el && el.dataset.initialized !== "true") {
+                    el.dataset.initialized = "true";
+                    el.muted = false;
+                    el.play().catch(() => {});
+                  }
                 }}
-                className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/20"
-                onClick={(e) => e.stopPropagation()}
               >
-                <video
-                  autoPlay
-                  controls
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-contain"
-                  ref={(el) => {
-                    if (el && el.dataset.initialized !== "true") {
-                      el.dataset.initialized = "true";
-                      el.muted = false;
-                      el.play().catch(() => {});
-                    }
-                  }}
-                >
-                  <source src="/video/hft-hero-background.mp4" type="video/mp4" />
-                  {language === "ar" ? "متصفحك لا يدعم تشغيل الفيديو." : "Votre navigateur ne prend pas en charge la lecture de vidéos."}
-                </video>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                <source src="/video/hft-hero-background.mp4" type="video/mp4" />
+                {language === "ar" ? "متصفحك لا يدعم تشغيل الفيديو." : "Votre navigateur ne prend pas en charge la lecture de vidéos."}
+              </video>
+            </div>
+          </div>
+        )}
 
         {/* ── Edition Recap Video Cinema Lightbox Modal ── */}
-        <AnimatePresence>
-          {selectedRecapVideo && (
-            <motion.div
-              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
-              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 z-[10000] bg-black/94 flex items-center justify-center p-4 md:p-8"
+        {selectedRecapVideo && (
+          <div
+            className="fixed inset-0 z-[10000] bg-black/94 backdrop-blur-md flex items-center justify-center p-4 md:p-8 animate-fadeIn"
+            onClick={() => setSelectedRecapVideo(null)}
+            dir={dir}
+          >
+            {/* Close Button */}
+            <button
               onClick={() => setSelectedRecapVideo(null)}
-              dir={dir}
+              className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors focus:outline-none z-30 hover:scale-105 cursor-pointer"
+              aria-label="Fermer la vidéo"
             >
-              {/* Close Button */}
-              <motion.button
-                initial={{ opacity: 0, scale: 0.7, y: -10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.7, y: -10 }}
-                transition={{ duration: 0.25, delay: 0.1, ease: "easeOut" }}
-                onClick={() => setSelectedRecapVideo(null)}
-                className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors focus:outline-none z-30 hover:scale-105 cursor-pointer"
-                aria-label="Fermer la vidéo"
-              >
-                <X className="w-6 h-6" />
-              </motion.button>
+              <X className="w-6 h-6" />
+            </button>
 
-              {/* Video Title Header Badge */}
-              <div className="absolute top-6 left-6 text-white text-xs font-black uppercase tracking-wider bg-white/10 px-4 py-2 rounded-full backdrop-blur-md border border-white/15 z-20 flex items-center gap-2 hidden sm:flex">
-                <Film className="w-4 h-4 text-[#F05A22]" />
-                <span>{selectedRecapVideo.title}</span>
-              </div>
+            {/* Video Title Header Badge */}
+            <div className="absolute top-6 left-6 text-white text-xs font-black uppercase tracking-wider bg-white/10 px-4 py-2 rounded-full backdrop-blur-md border border-white/15 z-20 flex items-center gap-2 hidden sm:flex">
+              <Film className="w-4 h-4 text-[#F05A22]" />
+              <span>{selectedRecapVideo.title}</span>
+            </div>
 
-              {/* Cinema Player Container */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.88, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.88, y: 20 }}
-                transition={{
-                  duration: 0.45,
-                  ease: [0.16, 1, 0.3, 1],
+            {/* Cinema Player Container */}
+            <div
+              className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/20 transform transition-all duration-300 scale-100"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                autoPlay
+                controls
+                playsInline
+                preload="auto"
+                className="w-full h-full object-contain"
+                ref={(el) => {
+                  if (el && el.dataset.initialized !== "true") {
+                    el.dataset.initialized = "true";
+                    el.muted = false;
+                    el.play().catch(() => {});
+                  }
                 }}
-                className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/20"
-                onClick={(e) => e.stopPropagation()}
               >
-                <video
-                  autoPlay
-                  controls
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-contain"
-                  ref={(el) => {
-                    if (el && el.dataset.initialized !== "true") {
-                      el.dataset.initialized = "true";
-                      el.muted = false;
-                      el.play().catch(() => {});
-                    }
-                  }}
-                >
-                  <source src={selectedRecapVideo.src} type="video/mp4" />
-                  {language === "ar" ? "متصفحك لا يدعم تشغيل الفيديو." : "Votre navigateur ne prend pas en charge la lecture de vidéos."}
-                </video>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                <source src={selectedRecapVideo.src} type="video/mp4" />
+                {language === "ar" ? "متصفحك لا يدعم تشغيل الفيديو." : "Votre navigateur ne prend pas en charge la lecture de vidéos."}
+              </video>
+            </div>
+          </div>
+        )}
 
         {/* ── Media Partner Detail Modal ── */}
-        <AnimatePresence>
-          {selectedMedia && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" dir={dir}>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+        {selectedMedia && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn" dir={dir}>
+            {/* Backdrop */}
+            <div
+              onClick={() => setSelectedMedia(null)}
+              className="fixed inset-0 bg-[#0E1B2C]/80 backdrop-blur-md"
+            />
+
+            {/* Modal Card */}
+            <div
+              className="relative w-full max-w-lg bg-gradient-to-br from-[#002855] via-[#003876] to-[#0E1B2C] border border-white/20 rounded-3xl p-6 sm:p-8 text-white shadow-2xl z-10 space-y-6 text-start transform transition-all duration-300 scale-100"
+            >
+              {/* Close Button */}
+              <button
+                type="button"
                 onClick={() => setSelectedMedia(null)}
-                className="fixed inset-0 bg-[#0E1B2C]/80 backdrop-blur-md"
-              />
-
-              {/* Modal Card */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                transition={{ type: "spring", stiffness: 300, damping: 28 }}
-                className="relative w-full max-w-lg bg-gradient-to-br from-[#002855] via-[#003876] to-[#0E1B2C] border border-white/20 rounded-3xl p-6 sm:p-8 text-white shadow-2xl z-10 space-y-6 text-start"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-colors cursor-pointer"
+                aria-label="Fermer"
               >
-                {/* Close Button */}
-                <button
-                  type="button"
-                  onClick={() => setSelectedMedia(null)}
-                  className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-colors cursor-pointer"
-                  aria-label="Fermer"
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Modal Header */}
+              <div className="flex flex-col items-center text-center space-y-3 pt-2">
+                <div className="w-24 h-24 rounded-2xl bg-white p-3 flex items-center justify-center shadow-lg border border-white/20">
+                  <img
+                    src={selectedMedia.logo}
+                    alt={selectedMedia.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-white">
+                  {selectedMedia.name}
+                </h3>
+              </div>
+
+              {/* Description */}
+              <p className="text-white/85 text-xs sm:text-sm font-medium leading-relaxed bg-white/5 border border-white/10 p-4 rounded-2xl">
+                {language === "ar" ? selectedMedia.description.ar : selectedMedia.description.fr}
+              </p>
+
+              {/* Key Points */}
+              <div className="space-y-2">
+                <h4 className="text-xs font-black uppercase tracking-wider text-[#58B9FF]">
+                  {language === "ar" ? "تفاصيل التغطية الإعلامية" : "Points Forts de la Couverture"}
+                </h4>
+                <ul className="space-y-2">
+                  {(language === "ar" ? selectedMedia.keyPoints.ar : selectedMedia.keyPoints.fr).map((pt, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs text-white/90 font-medium">
+                      <CheckCircle className="w-4 h-4 text-[#F05A22] shrink-0 mt-0.5" />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* External Link Button */}
+              <div className="pt-2">
+                <a
+                  href={selectedMedia.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-13 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <X className="w-5 h-5" />
-                </button>
-
-                {/* Modal Header */}
-                <div className="flex flex-col items-center text-center space-y-3 pt-2">
-                  <div className="w-24 h-24 rounded-2xl bg-white p-3 flex items-center justify-center shadow-lg border border-white/20">
-                    <img
-                      src={selectedMedia.logo}
-                      alt={selectedMedia.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-white">
-                    {selectedMedia.name}
-                  </h3>
-                </div>
-
-                {/* Description */}
-                <p className="text-white/85 text-xs sm:text-sm font-medium leading-relaxed bg-white/5 border border-white/10 p-4 rounded-2xl">
-                  {language === "ar" ? selectedMedia.description.ar : selectedMedia.description.fr}
-                </p>
-
-                {/* Key Points */}
-                <div className="space-y-2">
-                  <h4 className="text-xs font-black uppercase tracking-wider text-[#58B9FF]">
-                    {language === "ar" ? "تفاصيل التغطية الإعلامية" : "Points Forts de la Couverture"}
-                  </h4>
-                  <ul className="space-y-2">
-                    {(language === "ar" ? selectedMedia.keyPoints.ar : selectedMedia.keyPoints.fr).map((pt, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs text-white/90 font-medium">
-                        <CheckCircle className="w-4 h-4 text-[#F05A22] shrink-0 mt-0.5" />
-                        <span>{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* External Link Button */}
-                <div className="pt-2">
-                  <a
-                    href={selectedMedia.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full h-13 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visiter le site officiel du média"}</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </motion.div>
+                  <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visiter le site officiel du média"}</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
             </div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
 
         {/* ── Document Hub & Styled PDF Viewer Modal ── */}
         <DocumentModal
