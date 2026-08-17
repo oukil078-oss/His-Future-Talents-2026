@@ -43,9 +43,13 @@ export async function POST(request: Request) {
     const clientIp = request.headers.get("x-forwarded-for") || "127.0.0.1";
     const userAgent = request.headers.get("user-agent") || "";
 
+    const leadId = `lead_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
+
     // Array row matching Columns A to S (19 columns)
     const rowValues = [
+      leadId,
       formattedTimestamp,
+      "Nouveau",
       companyName,
       representativeName,
       role,
@@ -59,8 +63,8 @@ export async function POST(request: Request) {
       targetProfiles,
       equipmentNeeded,
       remarks,
+      "Exposant",
       "Site Web Direct (Vercel)",
-      "En attente",
       clientIp,
       userAgent,
       "fr"

@@ -179,49 +179,102 @@ export async function fetchLeadsFromGoogleSheet(
 
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
-      // Skip header row if it contains column labels
+      // Skip header rows (e.g. rows 1-4)
       if (
-        i === 0 &&
-        (String(row[0]).toLowerCase().includes("date") ||
-          String(row[1]).toLowerCase().includes("entreprise") ||
-          String(row[1]).toLowerCase().includes("nom"))
+        i < 4 ||
+        String(row[0]).toLowerCase().includes("id") ||
+        String(row[0]).toLowerCase().includes("date") ||
+        String(row[1]).toLowerCase().includes("date") ||
+        String(row[1]).toLowerCase().includes("nom") ||
+        String(row[3]).toLowerCase().includes("nom")
       ) {
         continue;
       }
 
-      const companyName = String(row[1] || "").trim();
-      const representativeName = String(row[2] || "").trim();
-      const email = String(row[4] || "").trim();
+      // Detect if row starts with ID (Aligned Format) or Timestamp (Legacy Shifted Format)
+      const isAlignedFormat =
+        String(row[0]).startsWith("lead_") ||
+        String(row[0]).startsWith("HFT-") ||
+        String(row[0]).startsWith("EXP-") ||
+        (row[6] && String(row[6]).includes("@"));
+
+      let id = "";
+      let submittedAt = "";
+      let statusRaw = "Nouveau";
+      let companyName = "";
+      let representativeName = "";
+      let role = "";
+      let email = "";
+      let phone = "";
+      let repsCount = 2;
+      const opps: string[] = [];
+      let targetProfiles = "";
+      let equipmentNeeded = "";
+      let remarks = "";
+      let packageDesired = "Exposant";
+
+      if (isAlignedFormat) {
+        // Col A=ID, B=Date, C=Statut, D=Entreprise, E=Représentant, F=Fonction, G=Email, H=Tél, I=Nb, J=Emploi, K=PFE, L=Immersion, M=Découverte, N=Profils, O=Matériel, P=Remarques, Q=Pack
+        id = String(row[0] || `sheet_lead_${i + 1}`).trim();
+        submittedAt = String(row[1] || new Date().toISOString()).trim();
+        statusRaw = String(row[2] || "Nouveau").trim();
+        companyName = String(row[3] || "").trim();
+        representativeName = String(row[4] || "").trim();
+        role = String(row[5] || "").trim();
+        email = String(row[6] || "").trim();
+        phone = String(row[7] || "").trim();
+        repsCount = parseInt(String(row[8]), 10) || 2;
+        if (String(row[9]).toLowerCase().includes("oui")) opps.push("emploi");
+        if (String(row[10]).toLowerCase().includes("oui")) opps.push("pfe");
+        if (String(row[11]).toLowerCase().includes("oui")) opps.push("immersion");
+        if (String(row[12]).toLowerCase().includes("oui")) opps.push("decouverte");
+        targetProfiles = String(row[13] || "").trim();
+        equipmentNeeded = String(row[14] || "").trim();
+        remarks = String(row[15] || "").trim();
+        packageDesired = String(row[16] || "Exposant").trim();
+      } else {
+        // Legacy Shifted Format: Col A=Date, B=Entreprise, C=Représentant, D=Fonction, E=Email, F=Tél, G=Nb, H=Emploi, I=PFE, J=Immersion, K=Découverte, L=Profils, M=Matériel, N=Remarques, O=Pack, P=Statut
+        id = `sheet_lead_${i + 1}`;
+        submittedAt = String(row[0] || new Date().toISOString()).trim();
+        companyName = String(row[1] || "").trim();
+        representativeName = String(row[2] || "").trim();
+        role = String(row[3] || "").trim();
+        email = String(row[4] || "").trim();
+        phone = String(row[5] || "").trim();
+        repsCount = parseInt(String(row[6]), 10) || 2;
+        if (String(row[7]).toLowerCase().includes("oui") || String(row[8]).toLowerCase().includes("oui")) opps.push("emploi");
+        if (String(row[8]).toLowerCase().includes("oui") || String(row[9]).toLowerCase().includes("oui")) opps.push("pfe");
+        if (String(row[9]).toLowerCase().includes("oui") || String(row[10]).toLowerCase().includes("oui")) opps.push("immersion");
+        if (String(row[10]).toLowerCase().includes("oui") || String(row[11]).toLowerCase().includes("oui")) opps.push("decouverte");
+        targetProfiles = String(row[11] || row[12] || "").trim();
+        equipmentNeeded = String(row[12] || row[13] || "").trim();
+        remarks = String(row[13] || row[14] || "").trim();
+        packageDesired = String(row[14] || "Exposant").trim();
+        statusRaw = String(row[15] || "Nouveau").trim();
+      }
 
       if (!companyName && !representativeName && !email) continue;
 
-      const opps: string[] = [];
-      if (String(row[7]).toLowerCase().includes("oui")) opps.push("emploi");
-      if (String(row[8]).toLowerCase().includes("oui")) opps.push("pfe");
-      if (String(row[9]).toLowerCase().includes("oui")) opps.push("immersion");
-      if (String(row[10]).toLowerCase().includes("oui")) opps.push("decouverte");
-
-      const statusRaw = String(row[15] || "Nouveau").trim();
       let status: ExhibitorLead["status"] = "Nouveau";
       if (statusRaw.toLowerCase().includes("confirm")) status = "Confirmé";
       else if (statusRaw.toLowerCase().includes("cours")) status = "En cours";
       else if (statusRaw.toLowerCase().includes("refus")) status = "Refusé";
 
       leads.push({
-        id: `sheet_lead_${i + 1}`,
+        id: id || `sheet_lead_${i + 1}`,
         companyName: companyName || "Entreprise",
         representativeName: representativeName || "Représentant",
-        role: String(row[3] || "").trim(),
+        role: role,
         email: email || "contact@entreprise.dz",
-        phone: String(row[5] || "").trim(),
-        representativesCount: parseInt(String(row[6]), 10) || 2,
-        opportunities: opps,
-        targetProfiles: String(row[11] || "").trim(),
-        equipmentNeeded: String(row[12] || "").trim(),
-        remarks: String(row[13] || "").trim(),
-        packageDesired: String(row[14] || "Exposant").trim(),
+        phone: phone,
+        representativesCount: repsCount,
+        opportunities: opps.length > 0 ? opps : ["emploi", "pfe"],
+        targetProfiles: targetProfiles,
+        equipmentNeeded: equipmentNeeded,
+        remarks: remarks,
+        packageDesired: packageDesired,
         status: status,
-        submittedAt: String(row[0] || new Date().toISOString()),
+        submittedAt: submittedAt,
       });
     }
 

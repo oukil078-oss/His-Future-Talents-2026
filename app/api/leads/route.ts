@@ -81,7 +81,9 @@ export async function POST(req: Request) {
     });
 
     const rowValues = [
+      lead.id,
       formattedTimestamp,
+      "Nouveau",
       String(companyName).trim(),
       String(representativeName).trim(),
       String(role || "").trim(),
@@ -95,8 +97,8 @@ export async function POST(req: Request) {
       String(targetProfiles || "").trim(),
       String(equipmentNeeded || "").trim(),
       String(remarks || "").trim(),
+      String(packageDesired || "Exposant").trim(),
       "Site Web Direct (Vercel)",
-      "En attente",
       req.headers.get("x-forwarded-for") || "127.0.0.1",
       req.headers.get("user-agent") || "",
       "fr"
