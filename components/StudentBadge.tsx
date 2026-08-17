@@ -2,8 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { StudentApplication } from "@/lib/dataStore";
-import { Download, Printer, Check, QrCode, Sparkles, FileText, ShieldCheck, MapPin, Calendar, Clock, Mail } from "lucide-react";
-
+import { Download, Printer, ShieldCheck, Mail, CheckCircle2 } from "lucide-react";
 import QRCode from "qrcode";
 
 interface StudentBadgeProps {
@@ -11,16 +10,16 @@ interface StudentBadgeProps {
   showActions?: boolean;
 }
 
-// Real 100% Compliant Scannable QR Code Generator
-function RealScannableQRCode({ value, size = 48 }: { value: string; size?: number }) {
+// Scannable High-DPI QR Code Generator
+function RealScannableQRCode({ value, size = 80 }: { value: string; size?: number }) {
   const [dataUrl, setDataUrl] = useState<string>("");
 
   useEffect(() => {
     QRCode.toDataURL(value, {
-      width: size * 3, // Crisp resolution for mobile camera scanning
+      width: size * 3,
       margin: 1,
       color: {
-        dark: "#06101D",
+        dark: "#001C3D",
         light: "#FFFFFF",
       },
       errorCorrectionLevel: "M",
@@ -33,9 +32,9 @@ function RealScannableQRCode({ value, size = 48 }: { value: string; size?: numbe
     return (
       <div
         style={{ width: size, height: size }}
-        className="bg-white rounded-lg flex items-center justify-center border border-slate-200"
+        className="bg-white rounded-xl flex items-center justify-center border border-slate-200"
       >
-        <span className="text-[7px] font-bold text-slate-400">QR</span>
+        <span className="text-[9px] font-bold text-slate-400">QR</span>
       </div>
     );
   }
@@ -44,11 +43,11 @@ function RealScannableQRCode({ value, size = 48 }: { value: string; size?: numbe
     <img
       src={dataUrl}
       crossOrigin="anonymous"
-      alt="Pass QR Code"
+      alt="Pass Ticket QR Code"
       width={size}
       height={size}
       style={{ width: size, height: size }}
-      className="rounded-md object-contain bg-white p-0.5 border border-slate-200 shadow-xs"
+      className="rounded-xl object-contain bg-white p-1 border border-slate-200 shadow-xs"
     />
   );
 }
@@ -62,8 +61,12 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
 
   const firstName = (student.firstName || "").toUpperCase();
   const lastName = (student.lastName || "").toUpperCase();
-  const fullName = `${firstName} ${lastName}`.trim();
+  const fullName = `${firstName} ${lastName}`.trim() || "TALENT ÉTUDIANT";
   const badgeCode = student.badgeId || `HFT-2026-${student.id.slice(-4).toUpperCase()}`;
+  const domain = (student.fieldOfStudyOrWork || student.currentStatus || "Informatique & IA").trim().toUpperCase();
+  const university = (student.university || "HIS University").trim().toUpperCase();
+
+  const qrUrl = `https://hisfuturetalents.his.edu.dz/verify?id=${student.id}&code=${badgeCode}&name=${encodeURIComponent(fullName)}`;
 
   // Force/Resend Badge Email
   const handleSendEmail = async () => {
@@ -79,7 +82,7 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
       if (data.success) {
         setEmailStatusMessage({
           type: "success",
-          text: `✓ Badge envoyé à ${student.email} !`,
+          text: `✓ Ticket envoyé à ${student.email} !`,
         });
       } else {
         setEmailStatusMessage({
@@ -112,17 +115,17 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
-      link.download = `Badge-HFT2026-${fullName.replace(/\s+/g, "_")}.png`;
+      link.download = `Ticket-HFT2026-${fullName.replace(/\s+/g, "_")}.png`;
       link.click();
     } catch (err) {
-      console.error("Error exporting badge PNG:", err);
+      console.error("Error exporting ticket PNG:", err);
       alert("Erreur lors de la génération de l'image.");
     } finally {
       setDownloadingPng(false);
     }
   };
 
-  // Handle PDF Download
+  // Handle PDF Download (Landscape Ticket Format)
   const handleDownloadPDF = async () => {
     if (!badgeRef.current) return;
     setDownloadingPdf(true);
@@ -140,24 +143,25 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
       const pngImageBytes = await fetch(pngDataUrl).then((res) => res.arrayBuffer());
 
       const pdfDoc = await PDFDocument.create();
-      const page = pdfDoc.addPage([240, 380]);
+      // Standard landscape ticket format (595 x 345 pt)
+      const page = pdfDoc.addPage([595, 345]);
 
       const pngImage = await pdfDoc.embedPng(pngImageBytes);
       page.drawImage(pngImage, {
-        x: 8,
-        y: 8,
-        width: 224,
-        height: 364,
+        x: 10,
+        y: 10,
+        width: 575,
+        height: 325,
       });
 
       const pdfBytes = await pdfDoc.save();
       const blob = new Blob([pdfBytes as any], { type: "application/pdf" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Pass-Badge-HFT2026-${fullName.replace(/\s+/g, "_")}.pdf`;
+      link.download = `Pass-Ticket-HFT2026-${fullName.replace(/\s+/g, "_")}.pdf`;
       link.click();
     } catch (err) {
-      console.error("Error exporting badge PDF:", err);
+      console.error("Error exporting ticket PDF:", err);
       alert("Erreur lors de la génération du PDF.");
     } finally {
       setDownloadingPdf(false);
@@ -174,10 +178,10 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
       <!DOCTYPE html>
       <html>
         <head>
-          <title>Pass Badge - ${fullName}</title>
+          <title>Pass Ticket - ${fullName}</title>
           <style>
             body { margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #fff; }
-            @page { size: portrait; margin: 10mm; }
+            @page { size: landscape; margin: 10mm; }
           </style>
         </head>
         <body>
@@ -191,240 +195,214 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
     printWindow.document.close();
   };
 
-  const qrUrl = `https://hisfuturetalents.his.edu.dz/verify?id=${student.id}&code=${badgeCode}&name=${encodeURIComponent(fullName)}`;
-
   return (
-    <div className="flex flex-col items-center space-y-2.5 w-full">
+    <div className="flex flex-col items-center space-y-3 w-full">
       
-      {/* ── REALISTIC LANYARD MOCKUP CONTAINER ── */}
-      <div className="relative group perspective-1000">
-        
-        {/* Fabric Lanyard Ribbon & Buckle (Compact Screen Height Sized) */}
-        <div className="flex flex-col items-center select-none pointer-events-none z-20 relative">
+      {/* ── OFFICIAL EVENT TICKET PASS (LANDSCAPE FORMAT MATCHING EXACT REFERENCE) ── */}
+      <div
+        ref={badgeRef}
+        className="w-full max-w-[500px] rounded-2xl overflow-hidden shadow-2xl border border-white/20 select-none bg-white text-slate-900 transition-all duration-300"
+      >
+        {/* ════════════════════ TOP HALF: BRAND IDENTITY BANNER (HFT PALETTE) ════════════════════ */}
+        <div className="relative bg-gradient-to-r from-[#001B3A] via-[#003876] to-[#0A1424] p-3.5 sm:p-4 text-white overflow-hidden">
           
-          {/* Woven Fabric Strap */}
-          <div className="w-6 h-4 sm:h-5 bg-[#002855] rounded-t-sm shadow-sm border-x border-white/20 relative flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.15)_50%,transparent_75%)] bg-[length:4px_4px]" />
-            <span className="text-[4.5px] font-black text-white/80 uppercase tracking-widest rotate-90 whitespace-nowrap">
-              HFT 2026
-            </span>
+          {/* Subtle Ambient Wave Glows */}
+          <div className="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(ellipse_at_top_right,rgba(88,185,255,0.4),transparent_60%)]" />
+          <div className="absolute inset-0 pointer-events-none opacity-25 bg-[linear-gradient(135deg,rgba(240,90,34,0.2)_0%,transparent_50%)]" />
+
+          {/* Decorative Dot Matrix on Left in HIS Electric Blue */}
+          <div className="absolute left-3 top-10 pointer-events-none opacity-40 hidden sm:grid grid-cols-5 gap-1">
+            {Array.from({ length: 25 }).map((_, i) => (
+              <div key={i} className="w-1 h-1 rounded-full bg-[#58B9FF]" />
+            ))}
           </div>
 
-          {/* HFT Orange Plastic Breakaway Buckle */}
-          <div className="w-7 h-2 bg-[#F05A22] rounded-xs border border-orange-400 shadow-xs flex items-center justify-center gap-0.5 z-20 -mt-0.5">
-            <div className="w-1 h-1 bg-slate-900/40 rounded-xs" />
-            <div className="w-1 h-1 bg-slate-900/40 rounded-xs" />
-          </div>
-
-          {/* Stainless Steel Swivel Hook Clip */}
-          <div className="flex flex-col items-center -mt-0.5 z-20">
-            <div className="w-3 h-3 rounded-full border border-slate-300 bg-transparent flex items-center justify-center shadow-xs">
-              <div className="w-1 h-1 rounded-full border border-slate-400 bg-slate-200" />
-            </div>
-            <div className="w-2 h-2 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-xs border border-slate-400 -mt-0.5 shadow-xs flex items-center justify-center">
-              <div className="w-0.5 h-1 bg-slate-600 rounded-full" />
-            </div>
-          </div>
-        </div>
-
-        {/* ── MAIN BADGE CARD (EXACT SCALED PASS DESIGN TO FIT SCREEN HEIGHT) ── */}
-        <div
-          ref={badgeRef}
-          className="w-[255px] sm:w-[270px] h-[345px] sm:h-[360px] rounded-[18px] p-2.5 sm:p-3 text-white shadow-2xl relative overflow-hidden flex flex-col justify-between border border-white/15 select-none -mt-2"
-          style={{
-            background: "linear-gradient(170deg, #091320 0%, #0D1F38 60%, #050D18 100%)",
-          }}
-        >
-          {/* Subtle Diagonal Texture Lines */}
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.03)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.03)_50%,rgba(255,255,255,0.03)_75%,transparent_75%)] bg-[length:12px_12px] pointer-events-none" />
-
-          {/* Top Hole Punch */}
-          <div className="w-2.5 h-2.5 mx-auto bg-[#050D18] border border-slate-400/60 rounded-full shadow-inner mb-0.5 shrink-0 z-20 flex items-center justify-center">
-            <div className="w-1 h-1 rounded-full bg-slate-900" />
-          </div>
-
-          {/* ── HEADER ROW ── */}
-          <div className="flex items-center justify-between z-10 shrink-0 border-b border-white/10 pb-1.5">
-            <div className="flex items-center gap-1">
-              <img
-                src="/logo-hft-white.svg"
-                crossOrigin="anonymous"
-                alt="HIS Future Talents"
-                width={100}
-                height={26}
-                className="h-5.5 sm:h-6 w-auto object-contain drop-shadow-md"
-              />
-            </div>
-
-            <div className="flex items-center gap-1 text-end">
-              <span className="text-white/40 font-light text-xs">|</span>
-              <div>
-                <span className="text-[9px] font-black text-[#FFBD0E] tracking-wider block font-mono leading-none">
-                  ÉDITION 3 • 2026
-                </span>
-                <span className="text-[7px] font-bold text-white/50 uppercase tracking-widest block leading-tight">
-                  RÉF: {badgeCode}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* ── SIGNATURE CENTRAL WHITE NAME CONTAINER ── */}
-          <div className="my-auto z-10 bg-white rounded-[14px] p-2.5 shadow-xl text-slate-900 relative overflow-hidden border border-white/30 space-y-1.5">
+          {/* Top Row: Patronage Left + Venue/Dates Right */}
+          <div className="flex items-start justify-between relative z-10 gap-2 mb-2">
             
-            {/* Top Role Banner Strip */}
-            <div className="-mx-2.5 -mt-2.5 px-2.5 py-1 bg-gradient-to-r from-[#F05A22] via-[#FFBD0E] to-[#F05A22] text-slate-950 text-center shadow-xs">
-              <span className="text-[8.5px] sm:text-[9px] font-black uppercase tracking-wider block font-sans">
-                {student.status === "Confirmé" ? "ACCÈS CONFIRMÉ • PASS ÉTUDIANT" : "VISITEUR OFFICIEL • ÉTUDIANT"}
+            {/* Top Left: Institutional Patronage in HFT Gold */}
+            <div className="text-start leading-tight space-y-0.5 max-w-[240px]">
+              <span className="text-[6.5px] sm:text-[7.5px] font-black text-[#FFBD0E] tracking-wider uppercase block">
+                SOUS LE HAUT PATRONAGE DE
+              </span>
+              <span className="text-[6px] sm:text-[6.5px] font-bold text-white tracking-wide uppercase block">
+                MINISTÈRE DE L'ENSEIGNEMENT SUPÉRIEUR &amp; R.S
+              </span>
+              <span className="text-[6px] sm:text-[6.5px] font-bold text-slate-300 tracking-wide uppercase block">
+                MINISTÈRE DE L'ÉCONOMIE DE LA CONNAISSANCE
               </span>
             </div>
 
-            {/* Student Full Name Display */}
-            <div className="text-center pt-0.5 space-y-0.5">
-              <h2 className="text-sm sm:text-base font-black text-slate-950 uppercase tracking-tight leading-tight drop-shadow-xs break-words">
-                {firstName} <span className="text-[#003876]">{lastName}</span>
-              </h2>
-              
-              <p className="text-[9.5px] sm:text-[10px] font-black text-[#F05A22] uppercase tracking-wider truncate">
-                {student.fieldOfStudyOrWork || student.currentStatus || "TALENT ÉTUDIANT"}
-              </p>
-            </div>
-
-            {/* Bottom Row inside White Container: Details Left + QR Code Right */}
-            <div className="flex items-end justify-between border-t border-slate-100 pt-1.5 text-start gap-1">
-              <div className="text-[8px] text-slate-600 font-bold space-y-0.5 max-w-[130px] truncate">
-                <p className="text-slate-900 font-extrabold truncate">{student.email}</p>
-                <p className="text-slate-500 truncate">{student.phone} {student.wilaya ? `• ${student.wilaya}` : ""}</p>
-                {student.university && (
-                  <p className="text-[#003876] font-bold truncate">{student.university}</p>
-                )}
-              </div>
-
-              {/* Scannable QR Code */}
-              <div className="p-0.5 bg-white rounded-md border border-slate-200 shadow-xs shrink-0">
-                <RealScannableQRCode value={qrUrl} size={44} />
+            {/* Top Right: Location & Dates in HFT Palette */}
+            <div className="text-end leading-tight space-y-0.5">
+              <span className="text-[7.5px] sm:text-[8px] font-black text-white tracking-widest uppercase block">
+                HIS UNIVERSITY
+              </span>
+              <span className="text-[6.5px] sm:text-[7px] font-extrabold text-[#58B9FF] tracking-wider uppercase block">
+                "CAMPUS DES TALENTS", ALGER
+              </span>
+              <div className="pt-0.5">
+                <span className="text-xs sm:text-sm font-black text-[#FFBD0E] tracking-tight block font-mono">
+                  13 &amp; 14
+                </span>
+                <span className="text-[8px] font-black text-white tracking-widest uppercase block -mt-0.5">
+                  MAI 2026
+                </span>
               </div>
             </div>
 
           </div>
 
-          {/* ── LOWER SLOGAN & EVENT DETAILS ROW ── */}
-          <div className="grid grid-cols-12 gap-1 items-center z-10 shrink-0 pt-0.5 text-start">
-            {/* Left: Graphic Slogan */}
-            <div className="col-span-7 space-y-0.5 pr-1">
-              <p className="text-[8px] sm:text-[8.5px] font-black text-white leading-tight uppercase tracking-wide">
-                Façonner l'Avenir des Talents <br />
-                <span className="text-[#FFBD0E]">& Innovations en Algérie</span>
-              </p>
-              <span className="text-[6.5px] font-bold text-white/50 uppercase tracking-widest block">
+          {/* Center Brand Identity: Official White HFT Logo from Header */}
+          <div className="flex flex-col items-center justify-center relative z-10 py-1 space-y-1">
+            <img
+              src="/logo-hft-white.svg"
+              crossOrigin="anonymous"
+              alt="HIS Future Talents"
+              className="h-12 sm:h-14 w-auto object-contain drop-shadow-md"
+            />
+            <p className="text-[7.5px] sm:text-[8.5px] font-extrabold text-[#58B9FF] tracking-widest uppercase">
+              FAÇONNER L'AVENIR DES TALENTS &amp; INNOVATIONS
+            </p>
+          </div>
+
+          {/* Bottom Right Event Highlights in Top Banner */}
+          <div className="text-end relative z-10 pt-1 border-t border-white/10 mt-1.5">
+            <span className="text-[6.5px] sm:text-[7.5px] font-black text-[#FFBD0E] tracking-wider uppercase block">
+              LE 1ER SALON DES TALENTS &amp; RECRUTEMENT EN ALGÉRIE
+            </span>
+            <span className="text-[5.5px] sm:text-[6.5px] font-bold text-slate-200 tracking-wide uppercase block">
+              STAGES, EMPLOIS, NETWORKING, ATELIERS &amp; CONFÉRENCES
+            </span>
+          </div>
+
+        </div>
+
+        {/* ════════════════════ BOTTOM HALF: VISITOR DETAILS & QR CODE ════════════════════ */}
+        <div className="p-3.5 sm:p-4 bg-white flex items-center justify-between gap-3 text-start">
+          
+          {/* Left Column: Participant Information */}
+          <div className="space-y-1.5 flex-1 min-w-0">
+            
+            <div>
+              <span className="text-xs sm:text-sm font-black text-[#003876] uppercase tracking-wide block">
                 HIS FUTURE TALENTS 2026
               </span>
+              <div className="flex items-center gap-1.5 pt-0.5">
+                <span className="text-[10px] sm:text-[11px] font-bold text-slate-700">
+                  Inscription N°
+                </span>
+                <span className="text-[11px] sm:text-xs font-black text-[#F05A22] font-mono">
+                  {badgeCode}
+                </span>
+              </div>
             </div>
 
-            {/* Right: Stacked Info Pills */}
-            <div className="col-span-5 space-y-0.5 text-end">
-              <div className="bg-[#F05A22]/20 border border-[#F05A22]/40 rounded-xs px-1.5 py-0.5 text-[#FFBD0E] text-[7.5px] font-black uppercase tracking-wider inline-block">
-                13–14 MAI 2026
-              </div>
-              <div className="bg-[#003876]/60 border border-[#58B9FF]/30 rounded-xs px-1.5 py-0.5 text-[#58B9FF] text-[6.5px] font-extrabold uppercase tracking-wider block truncate">
-                HIS University, Alger
-              </div>
+            {/* Full Name & Profession */}
+            <div className="pt-0.5">
+              <h2 className="text-sm sm:text-base font-black text-[#00224A] uppercase tracking-tight truncate">
+                {fullName}
+              </h2>
+              <p className="text-[9.5px] sm:text-[10.5px] font-black text-[#F05A22] uppercase tracking-wide truncate">
+                {domain} • {university}
+              </p>
             </div>
+
+            {/* Venue & Date */}
+            <div className="text-[8px] sm:text-[9px] text-slate-600 font-bold space-y-0.5 pt-1 border-t border-slate-100">
+              <p className="truncate">Campus HIS University, Chéraga, Alger, Algérie</p>
+              <p className="text-[#003876] font-extrabold truncate">
+                Mercredi 13 &amp; Jeudi 14 Mai 2026 à partir de 09:00
+              </p>
+            </div>
+
           </div>
 
-          {/* ── FOOTER STATUS BAR ── */}
-          <div className="flex items-center justify-between z-10 shrink-0 pt-1 border-t border-white/10 text-start">
-            {student.status === "Confirmé" ? (
-              <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 text-[7px] font-black uppercase tracking-wider">
-                <ShieldCheck className="w-2.5 h-2.5" />
-                <span>ACCÈS CONFIRMÉ</span>
-              </div>
-            ) : (
-              <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-amber-500/20 border border-amber-400/50 text-amber-300 text-[7px] font-black uppercase tracking-wider animate-pulse">
-                <span>⏳ EN ATTENTE</span>
-              </div>
-            )}
-
-            <span className="text-[6.5px] text-white/40 font-bold uppercase tracking-widest">
-              SCANNER RÉCEPTION
-            </span>
+          {/* Right Column: Scannable QR Code */}
+          <div className="shrink-0 flex flex-col items-center">
+            <RealScannableQRCode value={qrUrl} size={76} />
           </div>
 
         </div>
+
       </div>
 
-      {/* ── ACTION BUTTONS: Compact 2x2 Grid (Fits Screen Height) ── */}
+      {/* ── EMAIL STATUS FEEDBACK MESSAGE ── */}
+      {emailStatusMessage && (
+        <div
+          className={`w-full max-w-[500px] p-2 rounded-lg text-center text-xs font-black ${
+            emailStatusMessage.type === "success"
+              ? "bg-emerald-500/20 text-emerald-300 border border-emerald-400/40"
+              : "bg-rose-500/20 text-rose-300 border border-rose-400/40"
+          }`}
+        >
+          {emailStatusMessage.text}
+        </div>
+      )}
+
+      {/* ── ACTION BUTTONS: 4-Grid Action Bar ── */}
       {showActions && (
-        <div className="flex flex-col gap-1.5 max-w-[280px] w-full">
-          <div className="grid grid-cols-2 gap-1.5 w-full">
-            {/* Resend Email */}
-            <button
-              onClick={handleSendEmail}
-              disabled={sendingEmail}
-              className="h-8 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 shadow-sm transition-all border border-emerald-500/30 cursor-pointer"
-              title="Recevoir le Pass Badge par email"
-            >
-              {sendingEmail ? (
-                <span className="animate-pulse flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  Envoi...
-                </span>
-              ) : (
-                <>
-                  <Mail className="w-3 h-3" />
-                  <span>Par Email</span>
-                </>
-              )}
-            </button>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full max-w-[500px]">
+          {/* Resend Email */}
+          <button
+            onClick={handleSendEmail}
+            disabled={sendingEmail}
+            className="h-8.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all border border-emerald-500/30 cursor-pointer"
+            title="Recevoir le Ticket par email"
+          >
+            {sendingEmail ? (
+              <span className="animate-pulse flex items-center gap-1">
+                <span className="w-2.5 h-2.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                Envoi...
+              </span>
+            ) : (
+              <>
+                <Mail className="w-3.5 h-3.5" />
+                <span>Par Email</span>
+              </>
+            )}
+          </button>
 
-            {/* PNG Download */}
-            <button
-              onClick={handleDownloadPNG}
-              disabled={downloadingPng}
-              className="h-8 rounded-lg bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer"
-            >
-              {downloadingPng ? (
-                <span className="animate-pulse">PNG...</span>
-              ) : (
-                <>
-                  <Download className="w-3 h-3" />
-                  <span>Pass PNG</span>
-                </>
-              )}
-            </button>
+          {/* PNG Download */}
+          <button
+            onClick={handleDownloadPNG}
+            disabled={downloadingPng}
+            className="h-8.5 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer"
+          >
+            {downloadingPng ? (
+              <span className="animate-pulse">PNG...</span>
+            ) : (
+              <>
+                <Download className="w-3.5 h-3.5" />
+                <span>PNG</span>
+              </>
+            )}
+          </button>
 
-            {/* PDF Download */}
-            <button
-              onClick={handleDownloadPDF}
-              disabled={downloadingPdf}
-              className="h-8 rounded-lg bg-[#003876] hover:bg-[#58B9FF] text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 shadow-sm transition-all border border-white/20 cursor-pointer"
-            >
-              {downloadingPdf ? (
-                <span className="animate-pulse">PDF...</span>
-              ) : (
-                <>
-                  <FileText className="w-3 h-3" />
-                  <span>Pass PDF</span>
-                </>
-              )}
-            </button>
+          {/* PDF Download */}
+          <button
+            onClick={handleDownloadPDF}
+            disabled={downloadingPdf}
+            className="h-8.5 rounded-xl bg-[#003876] hover:bg-[#002855] text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all border border-blue-400/30 cursor-pointer"
+          >
+            {downloadingPdf ? (
+              <span className="animate-pulse">PDF...</span>
+            ) : (
+              <>
+                <Download className="w-3.5 h-3.5" />
+                <span>PDF Pass</span>
+              </>
+            )}
+          </button>
 
-            {/* Print */}
-            <button
-              onClick={handlePrint}
-              className="h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 transition-all border border-white/20 cursor-pointer"
-              title="Imprimer le Pass Badge"
-            >
-              <Printer className="w-3 h-3" />
-              <span>Imprimer</span>
-            </button>
-          </div>
-
-          {emailStatusMessage && (
-            <div className={`p-1.5 rounded-lg text-[10px] font-bold text-center ${emailStatusMessage.type === "success" ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" : "bg-red-500/20 text-red-300 border border-red-500/30"}`}>
-              {emailStatusMessage.text}
-            </div>
-          )}
+          {/* Print */}
+          <button
+            onClick={handlePrint}
+            className="h-8.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all border border-white/20 cursor-pointer"
+          >
+            <Printer className="w-3.5 h-3.5" />
+            <span>Imprimer</span>
+          </button>
         </div>
       )}
 

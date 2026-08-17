@@ -1,4 +1,8 @@
 import nodemailer from "nodemailer";
+import fs from "fs";
+import path from "path";
+import sharp from "sharp";
+import QRCode from "qrcode";
 import { StudentApplication } from "@/lib/dataStore";
 import { generateApprovalEmailHtml } from "@/lib/emailTemplates";
 import {
@@ -49,7 +53,7 @@ export interface SendMailOptions {
 }
 
 /**
- * Sends a generic transactional email using the configured SMTP server.
+ * Sends a transactional email using the configured SMTP server.
  */
 export async function sendEmail(options: SendMailOptions) {
   try {
@@ -75,7 +79,7 @@ export async function sendEmail(options: SendMailOptions) {
 }
 
 /**
- * Generates the official student badge PNG image and PDF document, and sends the approval confirmation email.
+ * Generates the official student ticket PNG image and PDF pass, and dispatches the confirmation email.
  */
 export async function sendStudentApprovalEmail(
   student: StudentApplication,
@@ -89,18 +93,49 @@ export async function sendStudentApprovalEmail(
   const fullName = `${student.firstName || ""} ${student.lastName || ""}`.trim() || "Étudiant";
   const cleanName = fullName.replace(/[^a-zA-Z0-9_-]/g, "_");
 
-  // 1. Generate both High-Res PNG Image and Printable PDF Badge
+  // 1. Generate downloadable High-Res PNG Image and Printable PDF Landscape Ticket
   let pngBuffer: Buffer = Buffer.from("");
   let pdfBuffer: Buffer = Buffer.from("");
+  let qrBuffer: Buffer = Buffer.from("");
+  let logoBuffer: Buffer = Buffer.from("");
 
   try {
     pngBuffer = await generateStudentBadgePngBuffer(student);
     pdfBuffer = customBadgeBuffer || (await generateStudentBadgePdfBuffer(student, pngBuffer));
   } catch (err: any) {
-    console.error("[BADGE ERROR] Failed to generate badge image/PDF buffer:", err);
+    console.error("[BADGE ERROR] Failed to generate ticket image/PDF buffer:", err);
   }
 
-  // 2. Generate HTML template
+  // 2. Generate inline CID QR Code buffer (Guarantees display in Gmail and all email clients)
+  try {
+    qrBuffer = await QRCode.toBuffer(
+      `https://hisfuturetalents.his.edu.dz/verify?id=${student.id}&code=${badgeId}&name=${encodeURIComponent(fullName)}`,
+      {
+        margin: 1,
+        width: 300,
+        color: {
+          dark: "#001C3D",
+          light: "#FFFFFF",
+        },
+        errorCorrectionLevel: "M",
+      }
+    );
+  } catch (qrErr) {
+    console.error("[QR ERROR] Failed to generate QR buffer:", qrErr);
+  }
+
+  // 3. Generate inline CID white logo buffer from logo-hft-white.svg
+  try {
+    const logoSvgPath = path.join(process.cwd(), "public", "logo-hft-white.svg");
+    if (fs.existsSync(logoSvgPath)) {
+      const logoSvg = fs.readFileSync(logoSvgPath);
+      logoBuffer = await sharp(logoSvg).png().toBuffer();
+    }
+  } catch (logoErr) {
+    console.error("[LOGO ERROR] Failed to generate logo buffer:", logoErr);
+  }
+
+  // 4. Generate HTML template
   const html = await generateApprovalEmailHtml({
     studentId: student.id,
     firstName: student.firstName || "",
@@ -112,30 +147,50 @@ export async function sendStudentApprovalEmail(
 
   const attachments: Array<{ filename: string; content?: Buffer; contentType?: string; cid?: string }> = [];
 
-  // Add PNG image attachment
+  // Inline CID image: Scannable QR Code
+  if (qrBuffer && qrBuffer.length > 0) {
+    attachments.push({
+      filename: "ticket-qr.png",
+      content: qrBuffer,
+      contentType: "image/png",
+      cid: "ticket_qr_code",
+    });
+  }
+
+  // Inline CID image: White Header Logo
+  if (logoBuffer && logoBuffer.length > 0) {
+    attachments.push({
+      filename: "hft-logo-white.png",
+      content: logoBuffer,
+      contentType: "image/png",
+      cid: "hft_logo_white",
+    });
+  }
+
+  // Downloadable PNG image attachment
   if (pngBuffer && pngBuffer.length > 0) {
     attachments.push({
-      filename: `Badge-HFT2026-${cleanName}.png`,
+      filename: `Pass-Ticket-HFT2026-${cleanName}.png`,
       content: pngBuffer,
       contentType: "image/png",
     });
   }
 
-  // Add PDF document attachment
+  // Downloadable PDF document attachment
   if (pdfBuffer && pdfBuffer.length > 0) {
     attachments.push({
-      filename: `Pass-Badge-HFT2026-${cleanName}.pdf`,
+      filename: `Pass-Ticket-HFT2026-${cleanName}.pdf`,
       content: pdfBuffer,
       contentType: "application/pdf",
     });
   }
 
-  // 3. Dispatch the email
+  // 5. Dispatch the email
   return sendEmail({
     to: student.email,
-    subject: "Confirmation d'accréditation & Badge Officiel - HIS Future Talents 2026",
+    subject: "Registration Confirmation & Official Event Pass - HIS Future Talents 2026",
     html: html,
-    text: `Bonjour ${fullName},\n\nVotre candidature pour l'événement HIS Future Talents 2026 a été approuvée !\nVotre ID Badge : ${badgeId}\n\nVeuillez trouver votre badge officiel au format Image PNG et au format PDF en pièces jointes.\n\nL'équipe HIS Future Talents`,
+    text: `This email is to confirm your registration for the HIS Future Talents 2026 event on May 13-14 at HIS University Algiers.\n\nPlease find attached your official event registration ticket.\n\nTo stay informed on all event updates, we highly recommend following our official social media account @hisfuturetalents.\n\nThank you for your participation and we look forward to welcoming you at the event.\n\nBest,\nHIS Future Talents Team`,
     attachments: attachments,
   });
 }

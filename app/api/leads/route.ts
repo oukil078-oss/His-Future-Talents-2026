@@ -1,13 +1,31 @@
 import { NextResponse } from "next/server";
 import { getLeads, saveLead, updateLeadStatus, deleteLead } from "@/lib/dataStore";
-import { appendToGoogleSheet } from "@/lib/googleSheets";
+import { appendToGoogleSheet, fetchLeadsFromGoogleSheet } from "@/lib/googleSheets";
 
 export async function GET() {
   try {
-    const leads = getLeads();
-    return NextResponse.json({ success: true, data: leads });
+    const localLeads = getLeads();
+    const sheetLeads = await fetchLeadsFromGoogleSheet();
+
+    const leadMap = new Map<string, any>();
+
+    for (const lead of localLeads) {
+      const key = `${lead.companyName.toLowerCase().trim()}_${lead.email.toLowerCase().trim()}`;
+      leadMap.set(key, lead);
+    }
+
+    for (const sheetLead of sheetLeads) {
+      const key = `${sheetLead.companyName.toLowerCase().trim()}_${sheetLead.email.toLowerCase().trim()}`;
+      if (!leadMap.has(key)) {
+        leadMap.set(key, sheetLead);
+      }
+    }
+
+    const allLeads = Array.from(leadMap.values());
+    return NextResponse.json({ success: true, data: allLeads });
   } catch (error) {
-    return NextResponse.json({ success: false, error: "Failed to fetch leads" }, { status: 500 });
+    const fallbackLeads = getLeads();
+    return NextResponse.json({ success: true, data: fallbackLeads });
   }
 }
 

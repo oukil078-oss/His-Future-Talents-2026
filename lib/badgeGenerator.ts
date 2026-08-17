@@ -4,156 +4,218 @@ import { PDFDocument } from "pdf-lib";
 import { StudentApplication } from "@/lib/dataStore";
 
 /**
- * Generates the SVG source for the official student badge.
- * Matches 100% the physical badge design on the website:
- * - Rounded Dark Navy background with hole punch (#091320 -> #0D1F38 -> #050D18)
- * - Header with HFT logo & Edition 3 • 2026 | RÉF
- * - Central White Card with Orange-Gold role strip, bold student names, field, and QR code
- * - Lower Slogan & Date/Time/Location Pills
- * - Footer with confirmed status & reception scan text
+ * Generates the SVG source for the official student ticket/badge.
+ * Matches 100% the landscape event ticket design from Image 2:
+ * - Top Brand Banner: Deep Blue gradient with digital wave mesh, dot-matrix pattern,
+ *   institutional patronage on top-left, location & dates on top-right, center HFT brand logo,
+ *   and event category pill on bottom-right.
+ * - Bottom White Section: Event Title, Inscription N° [BadgeId], Full Name in bold uppercase,
+ *   Profession / Field of Study & University, Venue & Date on left,
+ *   and large crisp scannable QR code on right.
  */
 export async function generateStudentBadgeSvg(student: StudentApplication): Promise<string> {
   const badgeId = student.badgeId || `HFT-2026-${student.id.slice(-4).toUpperCase()}`;
   const firstName = (student.firstName || "").toUpperCase();
   const lastName = (student.lastName || "").toUpperCase();
   const fullName = `${firstName} ${lastName}`.trim() || "TALENT ÉTUDIANT";
-  const domain = (student.fieldOfStudyOrWork || student.currentStatus || "INFORMATIQUE & INNOVATION").trim().toUpperCase();
-  const email = (student.email || "").trim();
-  const phone = (student.phone || "").trim();
-  const wilaya = (student.wilaya || "Alger").trim();
-  const university = (student.university || "HIS University").trim();
-  const isConfirmed = student.status === "Confirmé";
+  const domain = (student.fieldOfStudyOrWork || student.currentStatus || "INFORMATIQUE & IA").trim().toUpperCase();
+  const university = (student.university || "HIS University").trim().toUpperCase();
+  const professionText = `${domain} • ${university}`;
 
   const qrDataUrl = await QRCode.toDataURL(
     `https://hisfuturetalents.his.edu.dz/verify?id=${student.id}&code=${badgeId}&name=${encodeURIComponent(fullName)}`,
     {
       margin: 1,
       width: 400,
-      color: { dark: "#06101D", light: "#FFFFFF" },
+      color: { dark: "#00224A", light: "#FFFFFF" },
       errorCorrectionLevel: "M",
     }
   );
 
-  const roleText = isConfirmed ? "ACCÈS CONFIRMÉ • ÉTUDIANT" : "VISITEUR OFFICIEL • ÉTUDIANT";
-  const statusText = isConfirmed ? "ACCÈS CONFIRMÉ" : "⏳ EN ATTENTE DE CONFIRMATION";
-  const statusBg = isConfirmed ? "rgba(16, 185, 129, 0.2)" : "rgba(245, 158, 11, 0.2)";
-  const statusBorder = isConfirmed ? "#10B981" : "#F59E0B";
-  const statusColor = isConfirmed ? "#34D399" : "#FCD34D";
-
   return `
-<svg width="600" height="960" viewBox="0 0 600 960" xmlns="http://www.w3.org/2000/svg">
+<svg width="1000" height="580" viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#091320" />
-      <stop offset="60%" stop-color="#0D1F38" />
-      <stop offset="100%" stop-color="#050D18" />
+    <!-- HIS Official Deep Blue / Ink Gradient -->
+    <linearGradient id="topBannerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001B3A" />
+      <stop offset="40%" stop-color="#003876" />
+      <stop offset="80%" stop-color="#00224A" />
+      <stop offset="100%" stop-color="#0A1424" />
     </linearGradient>
-    <linearGradient id="bannerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+
+    <!-- HIS Electric Blue & Orange Wave Accents -->
+    <linearGradient id="hftWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F05A22" stop-opacity="0.15" />
+      <stop offset="50%" stop-color="#58B9FF" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#FFBD0E" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="logoAccent" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F05A22" />
-      <stop offset="50%" stop-color="#FFBD0E" />
-      <stop offset="100%" stop-color="#F05A22" />
+      <stop offset="100%" stop-color="#FFBD0E" />
     </linearGradient>
-    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5"/>
-    </filter>
+
+    <!-- Clip Path for Rounded Ticket -->
+    <clipPath id="ticketClip">
+      <rect x="0" y="0" width="1000" height="580" rx="28" ry="28" />
+    </clipPath>
   </defs>
 
-  <!-- Outer Card Background -->
-  <rect x="12" y="12" width="576" height="936" rx="44" fill="url(#bgGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="2" filter="url(#cardShadow)" />
+  <!-- Main Card Container -->
+  <g clip-path="url(#ticketClip)">
+    
+    <!-- ════════════════════ TOP SECTION (HIS FUTURE TALENTS BRANDING) ════════════════════ -->
+    <rect x="0" y="0" width="1000" height="320" fill="url(#topBannerGrad)" />
 
-  <!-- Top Hole Punch -->
-  <circle cx="300" cy="48" r="14" fill="#050D18" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
-  <circle cx="300" cy="48" r="6" fill="#091320"/>
+    <!-- Ambient Waves in Top Banner with HFT Brand Colors -->
+    <path d="M -100 240 Q 200 80 500 200 T 1100 120 L 1100 0 L -100 0 Z" fill="url(#hftWaveGrad)" />
+    <path d="M -50 280 Q 250 140 550 260 T 1150 180 L 1150 0 L -50 0 Z" fill="none" stroke="#58B9FF" stroke-width="1.5" stroke-opacity="0.3" />
+    <path d="M -50 260 Q 280 110 580 230 T 1150 150 L 1150 0 L -50 0 Z" fill="none" stroke="#F05A22" stroke-width="1" stroke-opacity="0.25" />
 
-  <!-- Header Row -->
-  <!-- Logo Left -->
-  <g transform="translate(44, 86)">
-    <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="18" fill="#ffffff" letter-spacing="-0.5">His</text>
-    <text x="0" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="18" fill="#ffffff" letter-spacing="-0.5">Future</text>
-    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="14" fill="#ffffff" letter-spacing="-0.5">Talents</text>
-  </g>
+    <!-- Left Dot Matrix Pattern in HIS Electric Blue (5x5 grid) -->
+    <g transform="translate(36, 115)" opacity="0.5">
+      <circle cx="0" cy="0" r="2.5" fill="#58B9FF"/>
+      <circle cx="16" cy="0" r="2.5" fill="#58B9FF"/>
+      <circle cx="32" cy="0" r="2.5" fill="#58B9FF"/>
+      <circle cx="48" cy="0" r="2.5" fill="#58B9FF"/>
+      <circle cx="64" cy="0" r="2.5" fill="#58B9FF"/>
 
-  <!-- Edition / Ref Right -->
-  <g transform="translate(556, 100)" text-anchor="end">
-    <text x="0" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="15" fill="#FFBD0E" letter-spacing="1">ÉDITION 3 • 2026</text>
-    <text x="0" y="32" font-family="monospace, Courier" font-weight="700" font-size="13" fill="rgba(255,255,255,0.6)" letter-spacing="1.5">RÉF: ${badgeId}</text>
-  </g>
+      <circle cx="0" cy="16" r="2.5" fill="#58B9FF"/>
+      <circle cx="16" cy="16" r="2.5" fill="#58B9FF"/>
+      <circle cx="32" cy="16" r="2.5" fill="#58B9FF"/>
+      <circle cx="48" cy="16" r="2.5" fill="#58B9FF"/>
+      <circle cx="64" cy="16" r="2.5" fill="#58B9FF"/>
 
-  <!-- Divider under header -->
-  <line x1="44" y1="152" x2="556" y2="152" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <circle cx="0" cy="32" r="2.5" fill="#58B9FF"/>
+      <circle cx="16" cy="32" r="2.5" fill="#58B9FF"/>
+      <circle cx="32" cy="32" r="2.5" fill="#58B9FF"/>
+      <circle cx="48" cy="32" r="2.5" fill="#58B9FF"/>
+      <circle cx="64" cy="32" r="2.5" fill="#58B9FF"/>
 
-  <!-- ── CENTRAL WHITE STUDENT CARD ── -->
-  <g transform="translate(44, 176)">
-    <!-- White Box Background with Soft Shadow -->
-    <rect x="0" y="0" width="512" height="490" rx="36" fill="#ffffff" filter="url(#cardShadow)"/>
+      <circle cx="0" cy="48" r="2.5" fill="#58B9FF"/>
+      <circle cx="16" cy="48" r="2.5" fill="#58B9FF"/>
+      <circle cx="32" cy="48" r="2.5" fill="#58B9FF"/>
+      <circle cx="48" cy="48" r="2.5" fill="#58B9FF"/>
+      <circle cx="64" cy="48" r="2.5" fill="#58B9FF"/>
 
-    <!-- Top Vibrant Role Banner Strip -->
-    <path d="M 0 36 A 36 36 0 0 1 36 0 L 476 0 A 36 36 0 0 1 512 36 L 512 56 L 0 56 Z" fill="url(#bannerGrad)" />
-    <text x="256" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="14" fill="#091320" text-anchor="middle" letter-spacing="2">${roleText}</text>
-
-    <!-- Student Name -->
-    <text x="256" y="145" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="34" fill="#091320" text-anchor="middle" letter-spacing="-0.5">${firstName}</text>
-    <text x="256" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="34" fill="#003876" text-anchor="middle" letter-spacing="-0.5">${lastName}</text>
-
-    <!-- Domain -->
-    <text x="256" y="245" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="16" fill="#F05A22" text-anchor="middle" letter-spacing="2">${domain}</text>
-
-    <!-- Inner Divider -->
-    <line x1="28" y1="285" x2="484" y2="285" stroke="#f1f5f9" stroke-width="2"/>
-
-    <!-- Details Left -->
-    <g transform="translate(28, 335)">
-      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="16" fill="#0f172a">${email}</text>
-      <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="15" fill="#64748b">${phone} • ${wilaya}</text>
-      <text x="0" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="15" fill="#003876">${university}</text>
+      <circle cx="0" cy="64" r="2.5" fill="#58B9FF"/>
+      <circle cx="16" cy="64" r="2.5" fill="#58B9FF"/>
+      <circle cx="32" cy="64" r="2.5" fill="#58B9FF"/>
+      <circle cx="48" cy="64" r="2.5" fill="#58B9FF"/>
+      <circle cx="64" cy="64" r="2.5" fill="#58B9FF"/>
     </g>
 
-    <!-- QR Code Right -->
-    <rect x="340" y="305" width="144" height="144" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
-    <image x="348" y="313" width="128" height="128" href="${qrDataUrl}" />
+    <!-- Top Left Institutional Header Text in HFT Gold -->
+    <g transform="translate(36, 40)">
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11" fill="#FFBD0E" letter-spacing="1.5">SOUS LE HAUT PATRONAGE DE</text>
+      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="10" fill="#FFFFFF" letter-spacing="1">MINISTÈRE DE L'ENSEIGNEMENT SUPÉRIEUR ET DE LA RECHERCHE SCIENTIFIQUE</text>
+      <text x="0" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="10" fill="#CBD5E1" letter-spacing="1">MINISTÈRE DE L'ÉCONOMIE DE LA CONNAISSANCE ET DES START-UPS</text>
+    </g>
+
+    <!-- Top Right Location & Dates Text in HFT Palette -->
+    <g transform="translate(964, 40)" text-anchor="end">
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="12" fill="#FFFFFF" letter-spacing="1.5">HIS UNIVERSITY</text>
+      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10" fill="#58B9FF" letter-spacing="1.5">"CAMPUS DES TALENTS", ALGER</text>
+      <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22" fill="#FFBD0E" letter-spacing="1">13 &amp; 14</text>
+      <text x="0" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13" fill="#FFFFFF" letter-spacing="2">MAI 2026</text>
+    </g>
+
+    <!-- ── OFFICIAL WHITE HFT LOGO FROM HEADER ── -->
+    <g transform="translate(500, 160)">
+      <g transform="translate(-140, -95) scale(0.72)">
+        <svg viewBox="7 70 383 260" width="383" height="260">
+          <g>
+            <path fill="#ffffff" d="m127.12,226.12v13.4h-4.03c-7.64,0-12.65-2.76-14.73-8.08-4.25,6.06-10.47,9.36-18.1,9.36-12.54,0-20.94-8.19-20.94-20.74v-34.79h14.18v30.75c0,6.91,4.58,11.38,11.45,11.38,7.31,0,12.21-4.57,12.21-11.6v-30.53h14.18v36.28c0,2.87,1.75,4.58,4.69,4.58h1.09Z"/>
+            <path fill="#ffffff" d="m150.59,197.92v22.13c0,4.25,2.73,6.81,7.31,6.81h5.56v12.66h-7.63c-12.76,0-19.42-5.96-19.42-17.13v-24.47h-8.83v-12.66h5.12c2.95,0,4.48-1.49,4.48-4.36v-10.11h13.41v14.47h12.87v12.66h-12.87Z"/>
+            <path fill="#ffffff" d="m226.71,226.12v13.4h-4.03c-7.64,0-12.65-2.76-14.73-8.08-4.25,6.06-10.47,9.36-18.1,9.36-12.54,0-20.94-8.19-20.94-20.74v-34.79h14.18v30.75c0,6.91,4.58,11.38,11.45,11.38,7.31,0,12.21-4.57,12.21-11.6v-30.53h14.18v36.28c0,2.87,1.75,4.58,4.69,4.58h1.09Z"/>
+            <path fill="#ffffff" d="m288.03,226.12v13.4h-3.6c-14.73,0-22.47-8.08-22.47-21.49,0-5.1,1.31-10.53,4.14-16.06l-16.57-2.13-7.75,39.69h-13.96l8.73-42.88c-2.95-1.81-4.8-5.21-4.8-8.94,0-5.21,3.82-8.83,9.38-8.83s9.27,3.4,9.82,7.87l35.11,4.04v3.3c-6.1,8.4-9.59,15.96-9.59,22.24s3.38,9.79,9.27,9.79h2.29Z"/>
+            <path fill="#ffffff" d="m347.36,217.18h-44.17c1.85,6.91,7.53,11.38,15.16,11.38,5.78,0,10.8-2.44,13.2-5.96h15.37c-4.25,10.85-15.26,18.19-28.79,18.19-17.23,0-30.1-12.23-30.1-28.41s12.87-28.41,29.88-28.41,29.89,12.24,29.89,28.52c0,1.38-.11,3.4-.44,4.68Zm-43.95-10.11h29.12c-1.86-6.59-7.64-10.96-14.62-10.96s-12.65,4.36-14.5,10.96Z"/>
+          </g>
+          <g>
+            <path fill="#ffffff" d="m63.24,262.05h-20.5v59.58h-15.05v-59.58H7.2v-13.83h56.05v13.83Z"/>
+            <path fill="#ffffff" d="m122.26,308.22v13.4h-4.04c-7.85,0-12.87-2.87-14.94-8.51-4.36,6.07-11.01,9.79-19.08,9.79-15.49,0-27.16-12.23-27.16-28.41s11.67-28.41,27.16-28.41c7.52,0,13.74,3.19,18.1,8.4v-7.12h14.18v36.28c0,2.87,1.63,4.58,4.69,4.58h1.09Zm-19.96-13.73c0-8.51-6.54-15-15.38-15s-15.27,6.49-15.27,15,6.55,15,15.27,15,15.38-6.49,15.38-15Z"/>
+            <path fill="#ffffff" d="m169.27,308.22v13.4h-4.14c-8.4,0-15.82-2.55-21.92-7.02-4.15,2.87-8.73,5.32-13.75,7.02l-5.45-11.06c3.6-1.49,6.98-3.3,10.03-5.53-5.78-8.3-9.05-19.36-9.05-31.81,0-18.94,8.73-29.47,21.82-29.47s20.72,9.57,20.72,25.96c0,12.77-4.91,25.21-13.42,35.11,3.38,2.23,7.42,3.4,11.78,3.4h3.38Zm-29.66-35.97c0,8.41,1.85,16.07,5.12,22.13,5.24-7.23,8.18-15.75,8.18-24.68,0-8.19-2.4-12.55-6.32-12.55-4.26,0-6.98,4.78-6.98,15.1Z"/>
+            <path fill="#ffffff" d="m228.83,299.28h-44.17c1.85,6.91,7.53,11.38,15.16,11.38,5.78,0,10.8-2.44,13.2-5.96h15.37c-4.25,10.85-15.26,18.19-28.79,18.19-17.23,0-30.1-12.23-30.1-28.41s12.87-28.41,29.88-28.41,29.89,12.24,29.89,28.52c0,1.38-.11,3.4-.44,4.68Zm-43.95-10.11h29.12c-1.86-6.59-7.64-10.96-14.62-10.96s-12.65,4.36-14.5,10.96Z"/>
+            <path fill="#ffffff" d="m294.28,308.22v13.4h-4.03c-10.58,0-16.04-5.1-16.04-15v-15c0-7.34-4.8-12.13-12.1-12.13-7.85,0-13.09,4.89-13.09,12.34v29.79h-14.18v-54.26h14.18v6.7c4.25-5.21,10.36-7.98,17.67-7.98,13.09,0,21.7,8.3,21.7,21.07v16.49c0,2.87,1.75,4.58,4.69,4.58h1.2Z"/>
+            <path fill="#ffffff" d="m316.21,280.03v22.13c0,4.25,2.73,6.81,7.31,6.81h5.56v12.66h-7.63c-12.76,0-19.42-5.96-19.42-17.13v-24.47h-8.83v-12.66h5.12c2.95,0,4.48-1.49,4.48-4.36v-10.11h13.41v14.47h12.87v12.66h-12.87Z"/>
+            <path fill="#ffffff" d="m389.63,300.78c0,13.08-8.73,22.13-23.02,22.13-8.72,0-16.36-3.29-21.48-8.61l-3.16,7.34h-14.62l24-54.26h16.25c2.5,14.04,22.03,13.83,22.03,33.41Zm-14.62-.32c0-7.77-10.69-10.21-15.81-18.83l-9.16,21.17c2.83,4.04,8.07,6.7,13.85,6.7,6.65,0,11.12-3.51,11.12-9.04Z"/>
+          </g>
+          <g>
+            <path fill="#ffffff" d="m71.25,83.16v73.41h-15.05v-30H22.82v30H7.78v-73.41h15.05v29.58h33.38v-29.58h15.05Z"/>
+            <path fill="#ffffff" d="m79.67,85.72c0-4.89,3.92-8.62,8.94-8.62s8.94,3.72,8.94,8.62-3.92,8.61-8.94,8.61-8.94-3.72-8.94-8.61Zm1.85,16.6h14.18v54.26h-14.18v-54.26Z"/>
+            <path fill="#ffffff" d="m158.08,135.72c0,13.08-8.73,22.13-23.02,22.13-8.72,0-16.36-3.29-21.48-8.61l-3.16,7.34h-14.62l24-54.26h16.25c2.5,14.04,22.03,13.83,22.03,33.41Zm-14.62-.32c0-7.76-10.69-10.21-15.81-18.83l-9.16,21.17c2.83,4.04,8.07,6.7,13.85,6.7,6.65,0,11.12-3.51,11.12-9.04Z"/>
+          </g>
+          <g>
+            <rect fill="#ffbd0e" x="302.88" y="143.4" width="32.91" height="14.09" transform="translate(131.13 449.1) rotate(-83.01)"/>
+            <rect fill="#ffbd0e" x="333.72" y="144.89" width="42.58" height="14.09" transform="translate(35.4 368.65) rotate(-57.31)"/>
+            <rect fill="#ffbd0e" x="357.57" y="174.85" width="33.86" height="14.09" transform="translate(-41.83 184.44) rotate(-26.26)"/>
+          </g>
+          <path fill="#f05a22" d="m42.33,181.19c6.84-1.3,14.1-1.37,21.08-.27v-13.28c-20.4-1.85-53.32,3.63-52.98,29.64.62,4.72,2.46,9.04,5.2,12.8-.82,1.23-1.57,2.53-2.19,3.9-4.04,8.76-4.93,17.66-5.27,26.01l14.37.34c-.27-7.46.89-14.78,3.7-20.88,9.38,5.27,21.15,6.16,30.32-.34,8.14-5.34,9.58-19.71.14-24.44-11.16-5.13-23.75-1.51-32.92,6.16-.75-1.51-1.23-3.08-1.44-4.65.14-9.38,11.09-13.07,19.99-14.99Zm5.61,22.93c4.86-.27,5.68,2.67,1.71,5.95-4.72,3.08-10.95,2.53-16.29-.14,3.76-3.15,8.56-5.27,14.58-5.82Z"/>
+        </svg>
+      </g>
+      <!-- Subtitle under official logo -->
+      <text x="0" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="13.5" fill="#58B9FF" letter-spacing="4" text-anchor="middle">FAÇONNER L'AVENIR DES TALENTS &amp; INNOVATIONS</text>
+    </g>
+
+    <!-- Bottom Right Highlights Text in Top Banner -->
+    <g transform="translate(964, 282)" text-anchor="end">
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10" fill="#FFBD0E" letter-spacing="1.5">LE 1ER SALON DES TALENTS &amp; RECRUTEMENT EN ALGÉRIE</text>
+      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9" fill="#E2E8F0" letter-spacing="1">STAGES, EMPLOIS, NETWORKING, ATELIERS &amp; CONFÉRENCES</text>
+    </g>
+
+    <!-- ════════════════════ BOTTOM SECTION (USER DETAILS + QR CODE) ════════════════════ -->
+    <rect x="0" y="320" width="1000" height="260" fill="#FFFFFF" />
+    <line x1="0" y1="320" x2="1000" y2="320" stroke="#E2E8F0" stroke-width="1.5" />
+
+    <!-- Bottom Left: Participant Details -->
+    <g transform="translate(48, 365)">
+      <!-- Event Name & Category Title in HIS Deep Navy -->
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="24" fill="#003876" letter-spacing="1">HIS FUTURE TALENTS 2026</text>
+
+      <!-- Inscription Reference Number Pill -->
+      <g transform="translate(0, 16)">
+        <text x="0" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="15" fill="#0E1B2C">
+          Inscription N° <tspan font-family="monospace, Courier" font-weight="900" fill="#F05A22">${badgeId}</tspan>
+        </text>
+      </g>
+
+      <!-- Full Name & Profession -->
+      <g transform="translate(0, 68)">
+        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="20" fill="#00224A" letter-spacing="0.5">
+          ${fullName}
+        </text>
+        <text x="0" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13.5" fill="#F05A22">
+          ${professionText}
+        </text>
+      </g>
+
+      <!-- Venue & Date -->
+      <g transform="translate(0, 122)">
+        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="12.5" fill="#475569">
+          Campus HIS University, Chéraga, Alger, Algérie
+        </text>
+        <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13" fill="#003876">
+          Mercredi 13 &amp; Jeudi 14 Mai 2026 à partir de 09:00
+        </text>
+      </g>
+    </g>
+
+    <!-- Bottom Right: Crisp Scannable QR Code -->
+    <g transform="translate(740, 340)">
+      <rect x="0" y="0" width="210" height="210" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+      <image x="10" y="10" width="190" height="190" href="${qrDataUrl}" />
+    </g>
+
   </g>
 
-  <!-- ── LOWER SLOGAN & EVENT DETAILS ── -->
-  <!-- Left Graphic Slogan -->
-  <g transform="translate(44, 715)">
-    <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="16" fill="#ffffff" letter-spacing="0.5">FAÇONNER L'AVENIR DES TALENTS</text>
-    <text x="0" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="16" fill="#FFBD0E" letter-spacing="0.5">&amp; INNOVATIONS EN ALGÉRIE</text>
-    <text x="0" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="11" fill="rgba(255,255,255,0.5)" letter-spacing="2">HIS FUTURE TALENTS 2026</text>
-  </g>
-
-  <!-- Right Stacked Info Pills -->
-  <g transform="translate(556, 705)" text-anchor="end">
-    <!-- Date Pill -->
-    <rect x="-150" y="0" width="150" height="28" rx="8" fill="rgba(240,90,34,0.2)" stroke="rgba(240,90,34,0.5)" stroke-width="1.5"/>
-    <text x="-75" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="12" fill="#FFBD0E" text-anchor="middle" letter-spacing="1">13–14 MAI 2026</text>
-
-    <!-- Time Pill -->
-    <rect x="-120" y="36" width="120" height="26" rx="8" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-    <text x="-60" y="53" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="1">09:00 - 17:00</text>
-
-    <!-- Place Pill -->
-    <rect x="-190" y="70" width="190" height="26" rx="8" fill="rgba(0,56,118,0.6)" stroke="rgba(88,185,255,0.4)" stroke-width="1"/>
-    <text x="-95" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="11" fill="#58B9FF" text-anchor="middle" letter-spacing="1">HIS UNIVERSITY, ALGER</text>
-  </g>
-
-  <!-- Footer Divider -->
-  <line x1="44" y1="835" x2="556" y2="835" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-
-  <!-- Footer Row -->
-  <g transform="translate(44, 855)">
-    <!-- Status Pill -->
-    <rect x="0" y="0" width="280" height="30" rx="8" fill="${statusBg}" stroke="${statusBorder}" stroke-width="1"/>
-    <text x="140" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="11" fill="${statusColor}" text-anchor="middle" letter-spacing="1">${statusText}</text>
-
-    <!-- Scanner text -->
-    <text x="512" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="11" fill="rgba(255,255,255,0.4)" text-anchor="end" letter-spacing="2">SCANNER RÉCEPTION</text>
-  </g>
+  <!-- Outer Border Stroke with HIS Deep Blue tone -->
+  <rect x="1" y="1" width="998" height="578" rx="28" ry="28" fill="none" stroke="#003876" stroke-opacity="0.2" stroke-width="2" />
 </svg>
   `.trim();
 }
 
 /**
- * Generates an exact high-resolution PNG buffer of the Pass Badge.
+ * Generates an exact high-resolution PNG buffer of the official Ticket Pass.
  */
 export async function generateStudentBadgePngBuffer(student: StudentApplication): Promise<Buffer> {
   const svg = await generateStudentBadgeSvg(student);
@@ -161,8 +223,8 @@ export async function generateStudentBadgePngBuffer(student: StudentApplication)
 }
 
 /**
- * Generates an exact replica of the Pass Badge in PDF format.
- * Embeds the high-resolution badge image onto a clean, printable PDF page.
+ * Generates an exact replica of the official Ticket Pass in PDF format.
+ * Embeds the high-resolution landscape ticket onto a clean printable PDF page.
  */
 export async function generateStudentBadgePdfBuffer(
   student: StudentApplication,
@@ -171,15 +233,15 @@ export async function generateStudentBadgePdfBuffer(
   const pngBuffer = providedPngBuffer || (await generateStudentBadgePngBuffer(student));
   
   const pdfDoc = await PDFDocument.create();
-  // Standard portrait badge page dimensions (300 x 480 pt)
-  const page = pdfDoc.addPage([300, 480]);
+  // Standard landscape ticket page dimensions (595 x 345 pt)
+  const page = pdfDoc.addPage([595, 345]);
   const pngImage = await pdfDoc.embedPng(pngBuffer);
 
   page.drawImage(pngImage, {
-    x: 0,
-    y: 0,
-    width: 300,
-    height: 480,
+    x: 10,
+    y: 10,
+    width: 575,
+    height: 325,
   });
 
   const pdfBytes = await pdfDoc.save();

@@ -1,1 +1,100 @@
-[]
+[
+  {
+    "id": "lead_1784923298057_wf212",
+    "companyName": "Yalidine Express",
+    "representativeName": "Amine Belkacem",
+    "role": "Responsable Recrutement & Marque Employeur",
+    "email": "a.belkacem@yalidine.com",
+    "phone": "0550123456",
+    "representativesCount": 3,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ],
+    "targetProfiles": "Développeurs Full Stack, Spécialistes Logistique, Data Analysts",
+    "equipmentNeeded": "Stand 9m², 2 tables, 4 chaises, Roll-up, Connexion Wi-Fi",
+    "remarks": "Souhaite animer un atelier de 45 min sur la logistique e-commerce.",
+    "packageDesired": "Exposant Gold",
+    "status": "Confirmé",
+    "submittedAt": "2026-05-10T10:15:00.000Z"
+  },
+  {
+    "id": "lead_1784923298058_kg882",
+    "companyName": "Beyn (Fintech)",
+    "representativeName": "Sarah Mansouri",
+    "role": "Talent Acquisition Lead",
+    "email": "sarah.mansouri@beyn.com",
+    "phone": "0770987654",
+    "representativesCount": 2,
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ],
+    "targetProfiles": "Ingénieurs Sécurité, Développeurs Mobile (Flutter/React Native), DevOps",
+    "equipmentNeeded": "Stand 6m², 1 écran TV 55 pouces pour démo, multiprises",
+    "remarks": "Partenariat privilégié avec les diplômés HIS en informatique.",
+    "packageDesired": "Exposant Silver",
+    "status": "Confirmé",
+    "submittedAt": "2026-05-11T14:30:00.000Z"
+  },
+  {
+    "id": "lead_1784923298059_lp104",
+    "companyName": "Djezzy",
+    "representativeName": "Karim Hamidi",
+    "role": "Directeur Ressources Humaines",
+    "email": "k.hamidi@djezzy.dz",
+    "phone": "0770112233",
+    "representativesCount": 4,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ],
+    "targetProfiles": "Data Engineers, Télécoms, Marketing Digital, Cybersécurité",
+    "equipmentNeeded": "Stand Premium 18m², Espace Interview dédié, Éclairage spot",
+    "remarks": "Session de speed-recruiting programmée le 14 mai.",
+    "packageDesired": "Sponsor Officiel",
+    "status": "Confirmé",
+    "submittedAt": "2026-05-11T16:45:00.000Z"
+  },
+  {
+    "id": "lead_1784923298060_qz551",
+    "companyName": "Sylabs Innovation Hub",
+    "representativeName": "Nadia Toumi",
+    "role": "Coordinatrice Programmes & Startups",
+    "email": "nadia@sylabs.dz",
+    "phone": "0661445566",
+    "representativesCount": 2,
+    "opportunities": [
+      "pfe",
+      "decouverte"
+    ],
+    "targetProfiles": "Porteurs de projets innovants, Développeurs, UI/UX Designers",
+    "equipmentNeeded": "Espace partagé, 1 table, 2 chaises",
+    "remarks": "Présentation des programmes d'incubation pour étudiants.",
+    "packageDesired": "Partenaire Écosystème",
+    "status": "En cours",
+    "submittedAt": "2026-05-12T09:20:00.000Z"
+  },
+  {
+    "id": "lead_1784923298061_xy902",
+    "companyName": "Henkel Algérie",
+    "representativeName": "Meriem Zerrouki",
+    "role": "HR Business Partner",
+    "email": "meriem.zerrouki@henkel.com",
+    "phone": "0560778899",
+    "representativesCount": 3,
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ],
+    "targetProfiles": "Ingénieurs Procédés, Supply Chain, Finance & Audit",
+    "equipmentNeeded": "Stand 9m², Display produits, Support kakemono",
+    "remarks": "Présentation du graduate program 2026.",
+    "packageDesired": "Exposant Gold",
+    "status": "Confirmé",
+    "submittedAt": "2026-05-12T11:10:00.000Z"
+  }
+]
