@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { getSponsors, addSponsor, updateSponsor, deleteSponsor } from "@/lib/dataStore";
 import { Partner } from "@/data/partners";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   try {
     const sponsors = getSponsors();

@@ -7,6 +7,9 @@ import {
 } from "@/lib/dataStore";
 import { sendStudentApprovalEmail } from "@/lib/mailer";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   try {
     const students = await getStudentApplications();

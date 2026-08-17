@@ -202,9 +202,9 @@ export default function AdminDashboard() {
     setLoading(true);
     try {
       const [leadsRes, sponsorsRes, studentsRes] = await Promise.all([
-        fetch("/api/leads"),
-        fetch("/api/sponsors"),
-        fetch("/api/students"),
+        fetch("/api/leads", { cache: "no-store" }),
+        fetch("/api/sponsors", { cache: "no-store" }),
+        fetch("/api/students", { cache: "no-store" }),
       ]);
       const leadsData = await leadsRes.json();
       const sponsorsData = await sponsorsRes.json();

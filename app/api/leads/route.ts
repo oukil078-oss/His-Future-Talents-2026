@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { getLeads, saveLead, updateLeadStatus, deleteLead } from "@/lib/dataStore";
 import { appendToGoogleSheet, fetchLeadsFromGoogleSheet } from "@/lib/googleSheets";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   try {
     const localLeads = await getLeads();

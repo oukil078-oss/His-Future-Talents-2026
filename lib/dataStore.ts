@@ -109,36 +109,68 @@ function ensureFiles() {
 }
 
 /**
- * Automatically seeds PostgreSQL with existing authentic records if database is empty.
+ * Automatically cleans fake/mock test leads and syncs all authentic production records into PostgreSQL.
  */
 async function autoSeedDatabaseIfEmpty() {
   if (isSeedingDone || !process.env.DATABASE_URL) return;
   try {
     isSeedingDone = true;
-    const leadsCount = await prisma.exhibitorLead.count();
-    if (leadsCount === 0) {
-      const fileLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
-      if (fileLeads.length > 0) {
-        for (const lead of fileLeads) {
-          await prisma.exhibitorLead.create({
-            data: {
-              id: lead.id,
-              companyName: lead.companyName,
-              representativeName: lead.representativeName,
-              role: lead.role || "",
-              email: lead.email,
-              phone: lead.phone,
-              representativesCount: lead.representativesCount || 2,
-              opportunities: lead.opportunities || [],
-              targetProfiles: lead.targetProfiles || "",
-              equipmentNeeded: lead.equipmentNeeded || "",
-              remarks: lead.remarks || "",
-              packageDesired: lead.packageDesired || "Exposant",
-              status: lead.status || "Nouveau",
-              submittedAt: lead.submittedAt ? new Date(lead.submittedAt) : new Date(),
-            },
-          });
-        }
+    
+    // 1. Purge legacy mock/test leads from PostgreSQL if present
+    const mockCompanyNames = [
+      "Yalidine Express",
+      "Beyn (Fintech)",
+      "Djezzy",
+      "Sylabs Innovation Hub",
+      "Henkel Algérie"
+    ];
+    await prisma.exhibitorLead.deleteMany({
+      where: {
+        OR: [
+          { companyName: { in: mockCompanyNames } },
+          { id: { startsWith: "lead_178492329805" } },
+          { id: { startsWith: "lead_178492329806" } },
+        ]
+      }
+    });
+
+    // 2. Ensure all 15 authentic production leads are in PostgreSQL
+    const fileLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
+    if (fileLeads.length > 0) {
+      for (const lead of fileLeads) {
+        await prisma.exhibitorLead.upsert({
+          where: { id: lead.id },
+          update: {
+            companyName: lead.companyName,
+            representativeName: lead.representativeName,
+            role: lead.role || "",
+            email: lead.email,
+            phone: lead.phone,
+            representativesCount: lead.representativesCount || 2,
+            opportunities: lead.opportunities || [],
+            targetProfiles: lead.targetProfiles || "",
+            equipmentNeeded: lead.equipmentNeeded || "",
+            remarks: lead.remarks || "",
+            packageDesired: lead.packageDesired || "Exposant",
+            status: lead.status || "Nouveau",
+          },
+          create: {
+            id: lead.id,
+            companyName: lead.companyName,
+            representativeName: lead.representativeName,
+            role: lead.role || "",
+            email: lead.email,
+            phone: lead.phone,
+            representativesCount: lead.representativesCount || 2,
+            opportunities: lead.opportunities || [],
+            targetProfiles: lead.targetProfiles || "",
+            equipmentNeeded: lead.equipmentNeeded || "",
+            remarks: lead.remarks || "",
+            packageDesired: lead.packageDesired || "Exposant",
+            status: lead.status || "Nouveau",
+            submittedAt: lead.submittedAt ? new Date(lead.submittedAt) : new Date(),
+          },
+        });
       }
     }
 
@@ -147,8 +179,10 @@ async function autoSeedDatabaseIfEmpty() {
       const fileStudents = safeReadFile<StudentApplication[]>(STUDENTS_FILE, []);
       if (fileStudents.length > 0) {
         for (const s of fileStudents) {
-          await prisma.studentApplication.create({
-            data: {
+          await prisma.studentApplication.upsert({
+            where: { id: s.id },
+            update: {},
+            create: {
               id: s.id,
               badgeId: s.badgeId || `HFT-2026-${s.id.slice(-4).toUpperCase()}`,
               firstName: s.firstName || "",
@@ -177,7 +211,7 @@ async function autoSeedDatabaseIfEmpty() {
       }
     }
   } catch (err) {
-    console.warn("[PRISMA SEED WARNING] Could not auto-seed database:", err);
+    console.warn("[PRISMA SEED WARNING] Could not sync authentic data:", err);
   }
 }
 
