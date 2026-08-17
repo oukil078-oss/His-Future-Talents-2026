@@ -337,9 +337,32 @@ function ensureFiles() {
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
-    if (!fs.existsSync(LEADS_FILE)) {
+    
+    // Always overwrite if file is missing or contains old mock test IDs
+    let shouldRewrite = !fs.existsSync(LEADS_FILE);
+    if (!shouldRewrite) {
+      try {
+        const current = JSON.parse(fs.readFileSync(LEADS_FILE, "utf-8"));
+        if (Array.isArray(current)) {
+          const hasMock = current.some((l: any) => 
+            l.id?.startsWith("lead_178492329805") || 
+            l.id?.startsWith("lead_178492329806") ||
+            l.companyName === "Yalidine Express" ||
+            l.companyName === "Beyn (Fintech)"
+          );
+          if (hasMock || current.length < 10) {
+            shouldRewrite = true;
+          }
+        }
+      } catch (e) {
+        shouldRewrite = true;
+      }
+    }
+
+    if (shouldRewrite) {
       fs.writeFileSync(LEADS_FILE, JSON.stringify(AUTHENTIC_RECOVERED_LEADS, null, 2), "utf-8");
     }
+
     if (!fs.existsSync(SPONSORS_FILE)) {
       fs.writeFileSync(SPONSORS_FILE, JSON.stringify(partnersData, null, 2), "utf-8");
     }
