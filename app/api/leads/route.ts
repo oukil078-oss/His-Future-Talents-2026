@@ -24,7 +24,19 @@ export async function GET() {
       }
     }
 
-    const allLeads = Array.from(leadMap.values());
+    const mockIds = [
+      "lead_1784923298057_wf212",
+      "lead_1784923298058_kg882",
+      "lead_1784923298059_lp104",
+      "lead_1784923298060_qz551",
+      "lead_1784923298061_xy902"
+    ];
+    const allLeads = Array.from(leadMap.values()).filter(
+      (l) =>
+        !mockIds.includes(l.id) &&
+        !l.id.startsWith("lead_178492329805") &&
+        !l.id.startsWith("lead_178492329806")
+    );
     return NextResponse.json({ success: true, data: allLeads });
   } catch (error) {
     const fallbackLeads = await getLeads();

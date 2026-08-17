@@ -46,6 +46,249 @@ export type StudentApplication = {
   submittedAt: string;
 };
 
+export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
+  {
+    companyName: "SPA MOUSTACHIR",
+    representativeName: "BAHNAS Younes",
+    role: "Directeur Marketing",
+    email: "bahnasyounes@moustachir.dz",
+    phone: "0791260835",
+    representativesCount: 3,
+    opportunities: ["emploi", "pfe", "decouverte", "immersion"],
+    targetProfiles: "Generalement de le departement Commercial ,Finance, marketing",
+    equipmentNeeded: "Supports marketing , Flayers , Rollups , Pc .. etc",
+    remarks: "tables et des chaises je pense seulement",
+    packageDesired: "Exposant",
+    id: "lead_1786622173707_3gfw1",
+    status: "Confirmé",
+    submittedAt: "2026-08-13T11:56:13.707Z"
+  },
+  {
+    companyName: "SARL AYAM",
+    representativeName: "HAIFI ABDELOUAHAB",
+    role: "RESPONSABLE RH",
+    email: "abdelouahab.haifi@ayam-dz.com",
+    phone: "0560861819",
+    representativesCount: 2,
+    opportunities: ["emploi", "pfe", "immersion"],
+    targetProfiles: "MARKETING - COMMERCIAL - COMPTABILITE",
+    equipmentNeeded: "FLYERS",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786612817101_h37c9",
+    status: "En cours",
+    submittedAt: "2026-08-13T09:20:17.101Z"
+  },
+  {
+    companyName: "CANHYGINEN",
+    representativeName: "AMINA SADOU",
+    role: "MANAGER DEVELOPPEMENT",
+    email: "amina.sadou@canhygiene.com",
+    phone: "0550953011",
+    representativesCount: 2,
+    opportunities: ["pfe", "emploi"],
+    targetProfiles: "",
+    equipmentNeeded: "UNE Baner",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786536638514_scgrs",
+    status: "Confirmé",
+    submittedAt: "2026-08-12T12:10:38.514Z"
+  },
+  {
+    companyName: "Gam assurance",
+    representativeName: "ouadah sabrina",
+    role: "manager développement RH",
+    email: "souadah@gam.dz",
+    phone: "0782291417",
+    representativesCount: 2,
+    opportunities: ["pfe", "emploi"],
+    targetProfiles: "ingénieur système sécurité /graphiste/manager juridique /juriste contentieux /moyen généraux/ressources humaines",
+    equipmentNeeded: "banners shops flayer",
+    remarks: "table espace ou mettre se matérielle",
+    packageDesired: "Exposant",
+    id: "lead_1786374061037_qzlog",
+    status: "Confirmé",
+    submittedAt: "2026-08-10T15:01:01.037Z"
+  },
+  {
+    companyName: "EURL OUM DARMAN ENTREPOT PUBLIC",
+    representativeName: "Med Nadji LAHMARI",
+    role: "Directeur de la promotion commerciale",
+    email: "n.lahmari@omd-dz.com",
+    phone: "0560628418",
+    representativesCount: 4,
+    opportunities: ["pfe", "decouverte", "immersion"],
+    targetProfiles: "",
+    equipmentNeeded: "un Snapap\nUn dex ( Petit bureu )\nQlq chaises",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786363483142_orys7",
+    status: "Confirmé",
+    submittedAt: "2026-08-10T12:04:43.142Z"
+  },
+  {
+    companyName: "BortoCall",
+    representativeName: "Billel AMIOUR",
+    role: "Directeur des opérations",
+    email: "b.amiour@bortocall.dz",
+    phone: "0770022038",
+    representativesCount: 2,
+    opportunities: ["emploi"],
+    targetProfiles: "- Cyber Security Engineer\n- Android Developer - Native\n- iOS Developer - Native",
+    equipmentNeeded: "Roll-up",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786302038327_hi7ng",
+    status: "Confirmé",
+    submittedAt: "2026-08-09T19:00:38.327Z"
+  },
+  {
+    companyName: "VİTRİN CLİNİC",
+    representativeName: "Lazhari BEKKARİ",
+    role: "Manager",
+    email: "l.bekkari@vitrinclinic.com",
+    phone: "0770406022",
+    representativesCount: 2,
+    opportunities: ["emploi", "pfe", "immersion"],
+    targetProfiles: "",
+    equipmentNeeded: "Roll up, flyers, ...",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786277155406_mjj5z",
+    status: "En cours",
+    submittedAt: "2026-08-09T12:05:55.406Z"
+  },
+  {
+    companyName: "ZAD AI",
+    representativeName: "Rayan Ibrahim Benatallah",
+    role: "General manager",
+    email: "rayan.benatallah@zad-ai.com",
+    phone: "+213540091749",
+    representativesCount: 2,
+    opportunities: ["emploi", "pfe"],
+    targetProfiles: "",
+    equipmentNeeded: "2 banners, notebooks, pens",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786272150222_is1m9",
+    status: "Confirmé",
+    submittedAt: "2026-08-09T10:42:30.222Z"
+  },
+  {
+    companyName: "SARL SOFICLEF",
+    representativeName: "CHANANE MOHAMED RAFIK",
+    role: "Responsable Emplois et Compétences",
+    email: "r.chanane@soficlef.com",
+    phone: "0560016014",
+    representativesCount: 2,
+    opportunities: ["emploi", "pfe", "immersion", "decouverte"],
+    targetProfiles: "nous cherchons des profils pour l'engenniring , R & D , marketing (chef de produit)",
+    equipmentNeeded: "Banners  muralle\nflayers",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786271815110_kdi5j",
+    status: "Confirmé",
+    submittedAt: "2026-08-09T10:36:55.110Z"
+  },
+  {
+    companyName: "SARL AFC INDUSTRY",
+    representativeName: "Yasmine Ramdani",
+    role: "Chargée d'événementiel",
+    email: "yasmine.ramdani@afcindustry-dz.com",
+    phone: "+213 563 05 74 14",
+    representativesCount: 3,
+    opportunities: ["emploi", "immersion", "pfe", "decouverte"],
+    targetProfiles: "",
+    equipmentNeeded: "Flyers, roll up",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1786260926128_9gymc",
+    status: "Confirmé",
+    submittedAt: "2026-08-09T07:35:26.128Z"
+  },
+  {
+    companyName: "HYDRAPHARM Groupe",
+    representativeName: "Racha Yasmine BENDRIS",
+    role: "Talent Acquisition Specialist",
+    email: "racha.bendris@groupehydrapharm.com",
+    phone: "0770510910",
+    representativesCount: 2,
+    opportunities: ["emploi", "pfe"],
+    targetProfiles: "Développeurs Applications et ERP \nDélégués médicaux  \nConseillers Commerciaux Parapharm et clinique \nEvènementiel",
+    equipmentNeeded: "Tablettes et banners",
+    remarks: "/",
+    packageDesired: "Exposant",
+    id: "lead_1786017516645_4d4ra",
+    status: "Confirmé",
+    submittedAt: "2026-08-06T11:58:36.645Z"
+  },
+  {
+    companyName: "Laboratoires Merinal",
+    representativeName: "Selma Goumeziane",
+    role: "Chargée de communication interne",
+    email: "s.goumeziane@gmail.com",
+    phone: "0561638621",
+    representativesCount: 4,
+    opportunities: ["emploi", "pfe", "decouverte"],
+    targetProfiles: "",
+    equipmentNeeded: "",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1785857696100_w9xhc",
+    status: "Confirmé",
+    submittedAt: "2026-08-04T15:34:56.101Z"
+  },
+  {
+    companyName: "KAOUA FOOD",
+    representativeName: "ZEBOUCHI MOHAMED",
+    role: "DRH",
+    email: "mohamed.zebouchi@kaouafood.dz",
+    phone: "0560347447",
+    representativesCount: 2,
+    opportunities: ["emploi", "pfe"],
+    targetProfiles: "Marketing management rh",
+    equipmentNeeded: "desk",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1785768194136_xyceh",
+    status: "Confirmé",
+    submittedAt: "2026-08-03T14:43:14.136Z"
+  },
+  {
+    companyName: "MFG",
+    representativeName: "Yamina BOUHINI",
+    role: "Responsable développement RH",
+    email: "yamina.bouhini@mfg.dz",
+    phone: "0550981663",
+    representativesCount: 2,
+    opportunities: ["emploi", "pfe", "decouverte", "immersion"],
+    targetProfiles: "",
+    equipmentNeeded: "banners , flyers..etc",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1785764709493_vgokz",
+    status: "Confirmé",
+    submittedAt: "2026-08-03T13:45:09.493Z"
+  },
+  {
+    companyName: "HIBOU CONSULTING RH",
+    representativeName: "ABDERRAHIM HAMMADI",
+    role: "gérant",
+    email: "contact@hibouconsulting.com",
+    phone: "0770561007",
+    representativesCount: 2,
+    opportunities: ["emploi", "immersion"],
+    targetProfiles: "gestionnaire des ressources humaines \ncommercial sédentaire (plusieurs postes )",
+    equipmentNeeded: "Roll up -2-",
+    remarks: "",
+    packageDesired: "Exposant",
+    id: "lead_1785671872976_5kdpm",
+    status: "Confirmé",
+    submittedAt: "2026-08-02T11:57:52.976Z"
+  }
+];
+
 const LEADS_FILE = path.join(process.cwd(), "data", "leads.json");
 const SPONSORS_FILE = path.join(process.cwd(), "data", "sponsors.json");
 const STUDENTS_FILE = path.join(process.cwd(), "data", "students.json");
@@ -95,7 +338,7 @@ function ensureFiles() {
       fs.mkdirSync(dataDir, { recursive: true });
     }
     if (!fs.existsSync(LEADS_FILE)) {
-      fs.writeFileSync(LEADS_FILE, JSON.stringify([], null, 2), "utf-8");
+      fs.writeFileSync(LEADS_FILE, JSON.stringify(AUTHENTIC_RECOVERED_LEADS, null, 2), "utf-8");
     }
     if (!fs.existsSync(SPONSORS_FILE)) {
       fs.writeFileSync(SPONSORS_FILE, JSON.stringify(partnersData, null, 2), "utf-8");
@@ -115,19 +358,11 @@ async function autoSeedDatabaseIfEmpty() {
   if (isSeedingDone || !process.env.DATABASE_URL) return;
   try {
     isSeedingDone = true;
-    
-    // 1. Purge legacy mock/test leads from PostgreSQL if present
-    const mockCompanyNames = [
-      "Yalidine Express",
-      "Beyn (Fintech)",
-      "Djezzy",
-      "Sylabs Innovation Hub",
-      "Henkel Algérie"
-    ];
+
+    // 1. Purge legacy mock/test leads from PostgreSQL by exact mock IDs
     await prisma.exhibitorLead.deleteMany({
       where: {
         OR: [
-          { companyName: { in: mockCompanyNames } },
           { id: { startsWith: "lead_178492329805" } },
           { id: { startsWith: "lead_178492329806" } },
         ]
@@ -135,43 +370,40 @@ async function autoSeedDatabaseIfEmpty() {
     });
 
     // 2. Ensure all 15 authentic production leads are in PostgreSQL
-    const fileLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
-    if (fileLeads.length > 0) {
-      for (const lead of fileLeads) {
-        await prisma.exhibitorLead.upsert({
-          where: { id: lead.id },
-          update: {
-            companyName: lead.companyName,
-            representativeName: lead.representativeName,
-            role: lead.role || "",
-            email: lead.email,
-            phone: lead.phone,
-            representativesCount: lead.representativesCount || 2,
-            opportunities: lead.opportunities || [],
-            targetProfiles: lead.targetProfiles || "",
-            equipmentNeeded: lead.equipmentNeeded || "",
-            remarks: lead.remarks || "",
-            packageDesired: lead.packageDesired || "Exposant",
-            status: lead.status || "Nouveau",
-          },
-          create: {
-            id: lead.id,
-            companyName: lead.companyName,
-            representativeName: lead.representativeName,
-            role: lead.role || "",
-            email: lead.email,
-            phone: lead.phone,
-            representativesCount: lead.representativesCount || 2,
-            opportunities: lead.opportunities || [],
-            targetProfiles: lead.targetProfiles || "",
-            equipmentNeeded: lead.equipmentNeeded || "",
-            remarks: lead.remarks || "",
-            packageDesired: lead.packageDesired || "Exposant",
-            status: lead.status || "Nouveau",
-            submittedAt: lead.submittedAt ? new Date(lead.submittedAt) : new Date(),
-          },
-        });
-      }
+    for (const lead of AUTHENTIC_RECOVERED_LEADS) {
+      await prisma.exhibitorLead.upsert({
+        where: { id: lead.id },
+        update: {
+          companyName: lead.companyName,
+          representativeName: lead.representativeName,
+          role: lead.role || "",
+          email: lead.email,
+          phone: lead.phone,
+          representativesCount: lead.representativesCount || 2,
+          opportunities: lead.opportunities || [],
+          targetProfiles: lead.targetProfiles || "",
+          equipmentNeeded: lead.equipmentNeeded || "",
+          remarks: lead.remarks || "",
+          packageDesired: lead.packageDesired || "Exposant",
+          status: lead.status || "Nouveau",
+        },
+        create: {
+          id: lead.id,
+          companyName: lead.companyName,
+          representativeName: lead.representativeName,
+          role: lead.role || "",
+          email: lead.email,
+          phone: lead.phone,
+          representativesCount: lead.representativesCount || 2,
+          opportunities: lead.opportunities || [],
+          targetProfiles: lead.targetProfiles || "",
+          equipmentNeeded: lead.equipmentNeeded || "",
+          remarks: lead.remarks || "",
+          packageDesired: lead.packageDesired || "Exposant",
+          status: lead.status || "Nouveau",
+          submittedAt: lead.submittedAt ? new Date(lead.submittedAt) : new Date(),
+        },
+      });
     }
 
     const studentsCount = await prisma.studentApplication.count();
@@ -225,17 +457,28 @@ export async function getLeads(): Promise<ExhibitorLead[]> {
         orderBy: { submittedAt: "desc" },
       });
       if (dbLeads && dbLeads.length > 0) {
-        return dbLeads.map((l) => ({
-          ...l,
-          status: l.status as any,
-          submittedAt: l.submittedAt.toISOString(),
-        }));
+        // Filter out any lingering mock IDs
+        const filtered = dbLeads.filter(
+          (l) => !l.id.startsWith("lead_178492329805") && !l.id.startsWith("lead_178492329806")
+        );
+        if (filtered.length > 0) {
+          return filtered.map((l) => ({
+            ...l,
+            status: l.status as any,
+            submittedAt: l.submittedAt.toISOString(),
+          }));
+        }
       }
     } catch (err) {
       console.warn("[PRISMA READ WARNING] Falling back to file storage for leads:", err);
     }
   }
-  return safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
+  
+  const fileLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, AUTHENTIC_RECOVERED_LEADS);
+  const cleanLeads = fileLeads.filter(
+    (l) => !l.id.startsWith("lead_178492329805") && !l.id.startsWith("lead_178492329806")
+  );
+  return cleanLeads.length > 0 ? cleanLeads : AUTHENTIC_RECOVERED_LEADS;
 }
 
 export async function saveLead(
@@ -281,7 +524,7 @@ export async function saveLead(
     }
   }
 
-  const localLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
+  const localLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, AUTHENTIC_RECOVERED_LEADS);
   localLeads.unshift(newLead);
   safeWriteFile(LEADS_FILE, JSON.stringify(localLeads, null, 2));
   return newLead;
@@ -307,7 +550,7 @@ export async function updateLeadStatus(
     }
   }
 
-  const leads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
+  const leads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, AUTHENTIC_RECOVERED_LEADS);
   const index = leads.findIndex((l) => l.id === id);
   if (index === -1) return null;
   leads[index].status = status;
@@ -325,7 +568,7 @@ export async function deleteLead(id: string): Promise<boolean> {
     }
   }
 
-  const leads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
+  const leads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, AUTHENTIC_RECOVERED_LEADS);
   const filtered = leads.filter((l) => l.id !== id);
   if (filtered.length === leads.length) return false;
   safeWriteFile(LEADS_FILE, JSON.stringify(filtered, null, 2));
