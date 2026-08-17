@@ -9,7 +9,7 @@ import { sendStudentApprovalEmail } from "@/lib/mailer";
 
 export async function GET() {
   try {
-    const students = getStudentApplications();
+    const students = await getStudentApplications();
     return NextResponse.json({ success: true, data: students });
   } catch (error) {
     return NextResponse.json({ success: false, error: "Failed to fetch student applications" }, { status: 500 });
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const application = saveStudentApplication({
+    const application = await saveStudentApplication({
       firstName: String(firstName).trim(),
       lastName: String(lastName || "").trim(),
       email: String(email).trim().toLowerCase(),
@@ -71,7 +71,7 @@ export async function POST(req: Request) {
     });
 
     // Automatically confirm registration and send the official pass badge PDF via email
-    updateStudentApplicationStatus(application.id, "Confirmé");
+    await updateStudentApplicationStatus(application.id, "Confirmé");
     application.status = "Confirmé";
     sendStudentApprovalEmail(application).catch((err) =>
       console.error("Student registration email dispatch error:", err)
@@ -93,13 +93,13 @@ export async function PATCH(req: Request) {
     const { id, status, action, resendEmail } = body;
 
     if (action === "delete") {
-      const deleted = deleteStudentApplication(id);
+      const deleted = await deleteStudentApplication(id);
       return NextResponse.json({ success: deleted });
     }
 
     // Action to resend approval email manually
     if (action === "resend_email" || resendEmail) {
-      const students = getStudentApplications();
+      const students = await getStudentApplications();
       const student = students.find((s) => s.id === id);
       if (!student) {
         return NextResponse.json({ success: false, error: "Student not found" }, { status: 404 });
@@ -117,7 +117,7 @@ export async function PATCH(req: Request) {
       return NextResponse.json({ success: false, error: "ID and status are required" }, { status: 400 });
     }
 
-    const updated = updateStudentApplicationStatus(id, status);
+    const updated = await updateStudentApplicationStatus(id, status);
     if (!updated) {
       return NextResponse.json({ success: false, error: "Student application not found" }, { status: 404 });
     }

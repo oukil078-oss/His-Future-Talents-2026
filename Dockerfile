@@ -4,12 +4,14 @@ WORKDIR /app
 
 # Install dependencies
 COPY package.json package-lock.json ./
+COPY prisma ./prisma/
 RUN npm install
 
 # Copy source code and build
 COPY . .
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+RUN npx prisma generate
 RUN npm run build
 
 # Expose port 3000
@@ -18,4 +20,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npx prisma db push && npm start"]

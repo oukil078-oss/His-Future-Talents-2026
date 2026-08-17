@@ -4,7 +4,7 @@ import { appendToGoogleSheet, fetchLeadsFromGoogleSheet } from "@/lib/googleShee
 
 export async function GET() {
   try {
-    const localLeads = getLeads();
+    const localLeads = await getLeads();
     const sheetLeads = await fetchLeadsFromGoogleSheet();
 
     const leadMap = new Map<string, any>();
@@ -24,7 +24,7 @@ export async function GET() {
     const allLeads = Array.from(leadMap.values());
     return NextResponse.json({ success: true, data: allLeads });
   } catch (error) {
-    const fallbackLeads = getLeads();
+    const fallbackLeads = await getLeads();
     return NextResponse.json({ success: true, data: fallbackLeads });
   }
 }
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const lead = saveLead({
+    const lead = await saveLead({
       companyName: String(companyName).trim(),
       representativeName: String(representativeName).trim(),
       role: String(role || "").trim(),
@@ -130,7 +130,7 @@ export async function PATCH(req: Request) {
     const { id, status, action } = body;
 
     if (action === "delete") {
-      const deleted = deleteLead(id);
+      const deleted = await deleteLead(id);
       return NextResponse.json({ success: deleted });
     }
 
@@ -138,7 +138,7 @@ export async function PATCH(req: Request) {
       return NextResponse.json({ success: false, error: "ID and status are required" }, { status: 400 });
     }
 
-    const updated = updateLeadStatus(id, status);
+    const updated = await updateLeadStatus(id, status);
     if (!updated) {
       return NextResponse.json({ success: false, error: "Lead not found" }, { status: 404 });
     }

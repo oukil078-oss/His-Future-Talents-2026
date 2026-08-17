@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ExhibitorLead {
+  id                   String   @id @default(cuid())
+  companyName          String
+  representativeName   String
+  role                 String   @default("")
+  email                String
+  phone                String
+  representativesCount Int      @default(2)
+  opportunities        String[] @default([])
+  targetProfiles       String   @default("")
+  equipmentNeeded      String   @default("")
+  remarks              String   @default("")
+  packageDesired       String   @default("Exposant")
+  status               String   @default("Nouveau") // "Nouveau" | "En cours" | "Confirmé" | "Refusé"
+  submittedAt          DateTime @default(now())
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@map("exhibitor_leads")
+}
+
+model StudentApplication {
+  id                   String   @id @default(cuid())
+  badgeId              String   @unique
+  firstName            String
+  lastName             String
+  email                String
+  phone                String
+  wilaya               String?  @default("")
+  ageCategory          String   @default("")
+  currentStatus        String   @default("")
+  fieldOfStudyOrWork   String   @default("")
+  university           String?  @default("")
+  studyLevel           String?  @default("")
+  cvUrl                String?  @default("")
+  cvFileName           String?  @default("")
+  seekingObjectives    String[] @default([])
+  interestedFields     String[] @default([])
+  interestedCompanies  String[] @default([])
+  interests            String[] @default([])
+  howDidYouHear        String?  @default("")
+  additionalComments   String?  @default("")
+  status               String   @default("Nouveau") // "Nouveau" | "En cours" | "Confirmé" | "Refusé"
+  submittedAt          DateTime @default(now())
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@map("student_applications")
+}
+
+model Sponsor {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String
+  logo          String
+  edition       Int      @default(2026)
+  sponsorTier   String?  @default("silver")
+  featured      Boolean  @default(false)
+  website       String?  @default("")
+  descriptionFr String?  @default("")
+  descriptionAr String?  @default("")
+  keyPointsFr   String[] @default([])
+  keyPointsAr   String[] @default([])
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([slug, edition])
+  @@map("sponsors")
+}
