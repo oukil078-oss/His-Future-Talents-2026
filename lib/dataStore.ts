@@ -112,10 +112,10 @@ function ensureFiles() {
 
 // ── LEADS CRUD ──
 export function getLeads(): ExhibitorLead[] {
-  if (memoryLeads !== null) return memoryLeads;
   ensureFiles();
-  memoryLeads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
-  return memoryLeads;
+  const leads = safeReadFile<ExhibitorLead[]>(LEADS_FILE, []);
+  memoryLeads = leads;
+  return leads;
 }
 
 export function saveLead(leadData: Omit<ExhibitorLead, "id" | "status" | "submittedAt">): ExhibitorLead {
@@ -153,10 +153,10 @@ export function deleteLead(id: string): boolean {
 
 // ── STUDENTS CRUD ──
 export function getStudentApplications(): StudentApplication[] {
-  if (memoryStudents !== null) return memoryStudents;
   ensureFiles();
-  memoryStudents = safeReadFile<StudentApplication[]>(STUDENTS_FILE, []);
-  return memoryStudents;
+  const apps = safeReadFile<StudentApplication[]>(STUDENTS_FILE, []);
+  memoryStudents = apps;
+  return apps;
 }
 
 export function saveStudentApplication(
