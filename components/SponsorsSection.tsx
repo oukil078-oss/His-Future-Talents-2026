@@ -78,15 +78,15 @@ export default function SponsorsSection() {
           <div className="space-y-3 max-w-2xl">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22]/10 border border-[#F05A22]/25 text-[#F05A22] text-xs font-bold uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" />
-              {language === "ar" ? "الرعاية الرسمية 2026" : "Sponsoring Officiel 2026"}
+              {language === "ar" ? "SPONSORS | شركاؤنا — 03" : "— NOS SPONSORS"}
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-              {language === "ar" ? "الرعاة الرسميون" : "Nos sponsors"}
+              {language === "ar" ? "الرعاة الرسميون" : "Nos Sponsors"}
             </h2>
             <p className="text-white/80 text-sm md:text-base font-normal leading-relaxed">
               {language === "ar"
-                ? "شركاء استراتيجيون يساهمون في نجاح مبادرة HIS Future Talents."
-                : "Des partenaires engagés aux côtés de HIS Future Talents."}
+                ? "لقد رأوا امكانيتكم ... و قرروا أن يفتحوا لكم الباب."
+                : "Ils ont vu le potentiel. Ils ont choisi d’ouvrir la porte."}
             </p>
           </div>
 

@@ -2,6 +2,33 @@
   {
     "firstName": "zakarya",
     "lastName": "oukil",
+    "email": "zakarya.oukil@his.edu.dz",
+    "phone": "+213773234526",
+    "wilaya": "",
+    "ageCategory": "18–24 سنة",
+    "currentStatus": "خريج حديث",
+    "fieldOfStudyOrWork": "aaaaa",
+    "university": "aaaaaa",
+    "studyLevel": "خريج حديث",
+    "cvUrl": "/uploads/cv/cv-1787658952401-01.pdf",
+    "cvFileName": "01.pdf",
+    "seekingObjectives": [
+      "فرص تدريب",
+      "التعرف على الشركات والمؤسسات"
+    ],
+    "interestedFields": [],
+    "interestedCompanies": [],
+    "interests": [],
+    "howDidYouHear": "",
+    "additionalComments": "",
+    "id": "std_1787658959030_hkyjm",
+    "badgeId": "HFT-2026-QQHA",
+    "status": "Confirmé",
+    "submittedAt": "2026-08-25T11:55:59.030Z"
+  },
+  {
+    "firstName": "zakarya",
+    "lastName": "oukil",
     "email": "zakomca2017@gmail.com",
     "phone": "+213773234526",
     "wilaya": "",

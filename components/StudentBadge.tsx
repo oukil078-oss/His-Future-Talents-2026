@@ -239,14 +239,14 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
                 HIS UNIVERSITY
               </span>
               <span className="text-[6.5px] sm:text-[7px] font-extrabold text-[#58B9FF] tracking-wider uppercase block">
-                "CAMPUS DES TALENTS", ALGER
+                ALGER
               </span>
               <div className="pt-0.5">
                 <span className="text-xs sm:text-sm font-black text-[#FFBD0E] tracking-tight block font-mono">
-                  13 &amp; 14
+                  29
                 </span>
                 <span className="text-[8px] font-black text-white tracking-widest uppercase block -mt-0.5">
-                  MAI 2026
+                  SEPTEMBRE 2026
                 </span>
               </div>
             </div>
@@ -261,8 +261,8 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
               alt="HIS Future Talents"
               className="h-12 sm:h-14 w-auto object-contain drop-shadow-md"
             />
-            <p className="text-[7.5px] sm:text-[8.5px] font-extrabold text-[#58B9FF] tracking-widest uppercase">
-              FAÇONNER L'AVENIR DES TALENTS &amp; INNOVATIONS
+            <p className="text-[8px] sm:text-[9px] font-black text-[#FFBD0E] tracking-widest uppercase">
+              FROM POTENTIAL TO PROFESSION
             </p>
           </div>
 

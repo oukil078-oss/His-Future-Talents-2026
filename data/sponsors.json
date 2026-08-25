@@ -25,6 +25,31 @@
     }
   },
   {
+    "name": "PROPHEX",
+    "slug": "prophex-2026",
+    "logo": "/partners/2025/prophex.png",
+    "edition": 2026,
+    "sponsorTier": "bronze",
+    "featured": true,
+    "description": {
+      "fr": "Profex est une entreprise spécialisée dans le domaine de la fabrication de produits de soins et de dispositifs médicaux de haute qualité, répondant aux exigences réglementaires et normatives internationales.",
+      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
+    },
+    "website": "https://www.profex.dz",
+    "keyPoints": {
+      "fr": [
+        "Fabrication de produits de soins et de dispositifs médicaux certifiés.",
+        "Conformité avec les normes internationales de qualité et de sécurité.",
+        "Sponsor Bronze Officiel de HIS Future Talents 2026."
+      ],
+      "ar": [
+        "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
+        "الامتثال للمعايير الدولية للجودة والسلامة.",
+        "الراعي البرونزي الرسمي لصالون HIS Future Talents 2026."
+      ]
+    }
+  },
+  {
     "name": "HIS University",
     "slug": "his-university",
     "logo": "/partners/2025/his-university.png",

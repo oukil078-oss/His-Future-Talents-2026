@@ -42,12 +42,12 @@ export interface PackageBenefit {
 
 export const eventDetails = {
   date: {
-    fr: "Lundi 29 Septembre 2026",
-    ar: "الإثنين 29 سبتمبر 2026",
+    fr: "Mardi 29 Septembre 2026",
+    ar: "الثلاثاء 29 سبتمبر 2026",
   },
   location: {
     fr: "HIS University, Alger",
-    ar: "جامعة معهد العلوم، الجزائر العاصمة",
+    ar: "المعهد العالي للعلوم، برج الكيفان الجزائر العاصمة",
   },
   targetDate: "2026-09-29T08:00:00+01:00", // Algerian Timezone (GMT+1)
   stats: {
@@ -57,8 +57,8 @@ export const eventDetails = {
     satisfaction: 96,
   },
   targetStats: {
-    visitors: "Jusqu'à 1 000",
-    visitorsAr: "تصل إلى 1000",
+    visitors: "1 000+",
+    visitorsAr: "أكثر من 1,000",
     companies: 45,
   }
 };
@@ -68,42 +68,42 @@ export const programData: ProgramItem[] = [
     time: "08:00",
     title: {
       fr: "Mise en place des stands",
-      ar: "تهيئة وتجهيز الأجنحة",
+      ar: "تهيئة الأجنحة والاستعداد",
     },
   },
   {
     time: "09:00",
     title: {
-      fr: "Ouverture des portes & accueil des participants",
+      fr: "Ouverture des portes & accueil",
       ar: "فتح الأبواب واستقبال المشاركين",
     },
   },
   {
     time: "10:00",
     title: {
-      fr: "Conférence d'ouverture — Keynote speakers",
-      ar: "المحاضرة الافتتاحية والمداخلات الرئيسية",
+      fr: "Conférence d'ouverture — Keynote",
+      ar: "Keynote — الجلسة الافتتاحية",
     },
   },
   {
     time: "12:00",
     title: {
-      fr: "Networking Lunch (Déjeuner réseau)",
-      ar: "غداء عمل وتواصل مهني",
+      fr: "Networking Lunch",
+      ar: "Networking Lunch — غداء وتواصل مهني",
     },
   },
   {
     time: "13:00",
     title: {
-      fr: "Sessions & Workshops (x3 en parallèle)",
-      ar: "جلسات وورشات عمل (3 ورشات بالتوازي)",
+      fr: "Sessions & Workshops — 3 en parallèle",
+      ar: "جلسات وورشات تطبيقية — 3 ورشات بالتوازي",
     },
   },
   {
     time: "15:30",
     title: {
-      fr: "HIS Talent Awards & Clôture officielle",
-      ar: "توزيع جوائز المعهد واختتام الفعالية رسمياً",
+      fr: "HIS Talent Awards & Clôture",
+      ar: "HIS Talent Awards والاختتام",
     },
   },
 ];

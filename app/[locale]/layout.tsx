@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     : "Associez votre marque au premier salon de recrutement et de formation de l'enseignement supérieur en Algérie. Découvrez nos packs de sponsoring.";
   
   return {
+    metadataBase: new URL("https://futuretalents.his.edu.dz"),
     title,
     description,
     icons: {
