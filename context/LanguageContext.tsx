@@ -62,9 +62,20 @@ export function LanguageProvider({
     if (typeof window !== "undefined") {
       document.documentElement.dir = newDir;
       document.documentElement.lang = lang;
-      // Change URL path to navigate to /[locale] preserving routing anchor
-      const anchor = window.location.hash;
-      window.location.href = `/${lang}${anchor}`;
+      
+      const pathname = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+
+      // Preserve current route (e.g. /students, /admin) when switching language
+      let newPath = pathname;
+      if (pathname.startsWith("/fr") || pathname.startsWith("/ar")) {
+        newPath = pathname.replace(/^\/(fr|ar)(\/|$)/, `/${lang}$2`);
+      } else {
+        newPath = `/${lang}${pathname.startsWith("/") ? pathname : `/${pathname}`}`;
+      }
+
+      window.location.href = `${newPath}${search}${hash}`;
     }
   };
 
