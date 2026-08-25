@@ -3,6 +3,9 @@ import { Providers } from "./providers";
 import { bahij, neulis } from "@/lib/fonts";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export function generateStaticParams() {
   return [{ locale: "fr" }, { locale: "ar" }];
 }
