@@ -5,6 +5,55 @@ import { Partner } from "@/data/partners";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
+function sortPartnersByCustomRules(list: any[]) {
+  const isHis = (n: string) => /his university|higher institute of sciences/i.test(n);
+  const isIra = (n: string) => /iracademy/i.test(n);
+  const isTraining = (n: string) => /training center/i.test(n);
+
+  const priority2024 = [
+    (n: string) => /yassir/i.test(n),
+    (n: string) => /bnp/i.test(n),
+    (n: string) => /natixis/i.test(n),
+  ];
+
+  const priority2025 = [
+    (n: string) => /satim/i.test(n),
+    (n: string) => /djezzy/i.test(n),
+    (n: string) => /cybear/i.test(n),
+    (n: string) => /yalid/i.test(n),
+    (n: string) => /aviation|enna/i.test(n),
+  ];
+
+  function getScore(p: any): number {
+    const name = p.name || "";
+    if (isHis(name)) return 1;
+    if (isIra(name)) return 2;
+    if (isTraining(name)) return 3;
+
+    if (p.edition === 2024) {
+      for (let i = 0; i < priority2024.length; i++) {
+        if (priority2024[i](name)) return 10 + i;
+      }
+    } else if (p.edition === 2025) {
+      for (let i = 0; i < priority2025.length; i++) {
+        if (priority2025[i](name)) return 10 + i;
+      }
+    }
+
+    return 100;
+  }
+
+  // Preserve relative order for items with the same score
+  return [...list].sort((a, b) => {
+    if (a.edition !== b.edition) {
+      return (b.edition || 0) - (a.edition || 0);
+    }
+    const scoreA = getScore(a);
+    const scoreB = getScore(b);
+    return scoreA - scoreB;
+  });
+}
+
 export async function GET() {
   try {
     const localSponsors = getSponsors();
@@ -25,21 +74,23 @@ export async function GET() {
       // offline fallback
     }
 
+    let result = localSponsors;
     if (liveSponsors.length > 0) {
       const sponsorMap = new Map<string, any>();
-      for (const s of liveSponsors) {
+      for (const s of localSponsors) {
         sponsorMap.set(`${s.edition}_${s.slug || s.name}`, s);
       }
-      for (const s of localSponsors) {
+      for (const s of liveSponsors) {
         const key = `${s.edition}_${s.slug || s.name}`;
         if (!sponsorMap.has(key)) {
           sponsorMap.set(key, s);
         }
       }
-      return NextResponse.json({ success: true, data: Array.from(sponsorMap.values()) });
+      result = Array.from(sponsorMap.values());
     }
 
-    return NextResponse.json({ success: true, data: localSponsors });
+    const sorted = sortPartnersByCustomRules(result);
+    return NextResponse.json({ success: true, data: sorted });
   } catch (error) {
     return NextResponse.json({ success: false, error: "Failed to fetch sponsors" }, { status: 500 });
   }

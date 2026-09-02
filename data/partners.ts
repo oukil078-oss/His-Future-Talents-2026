@@ -21,6 +21,237 @@ export type Partner = {
 
 export const partners: Partner[] = [
   {
+    "name": "HIS University",
+    "slug": "his-university",
+    "logo": "/brand/his-official-logo.png",
+    "edition": 2026,
+    "tier": "official"
+  },
+  {
+    "name": "IRAcademy",
+    "slug": "iracademy",
+    "logo": "/shared/iracademy.png",
+    "edition": 2026,
+    "tier": "official"
+  },
+  {
+    "name": "HIS Training Center",
+    "slug": "his-training-center",
+    "logo": "/shared/his-training-center.png",
+    "edition": 2026,
+    "tier": "official"
+  },
+  {
+    "name": "Les Laboratoires Frater Razes",
+    "slug": "les-laboratoires-frater-razes",
+    "logo": "/partners/2026/les-laboratoires-frater-razes.png",
+    "edition": 2026,
+    "description": {
+      "fr": "Les Laboratoires Frater Razes participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "Les Laboratoires Frater Razes تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "TECHNO STATIONERY",
+    "slug": "techno-stationery",
+    "logo": "/partners/2026/techno-stationery.png",
+    "edition": 2026,
+    "description": {
+      "fr": "TECHNO STATIONERY participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "TECHNO STATIONERY تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "CPH",
+    "slug": "cph",
+    "logo": "/partners/2026/cph.png",
+    "edition": 2026,
+    "description": {
+      "fr": "CPH participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "CPH تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "Ouedkniss SARL",
+    "slug": "ouedkniss-sarl",
+    "logo": "/partners/2026/ouedkniss.png",
+    "edition": 2026,
+    "description": {
+      "fr": "Ouedkniss SARL participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "Ouedkniss SARL تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "Sarl Wafa Faile",
+    "slug": "sarl-wafa-faile",
+    "logo": "/partners/2026/sarl-wafa-faile.png",
+    "edition": 2026,
+    "description": {
+      "fr": "Sarl Wafa Faile participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "Sarl Wafa Faile تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "MAGHREB LEASING ALGERIE",
+    "slug": "maghreb-leasing-algerie",
+    "logo": "/partners/2026/maghreb-leasing-algerie.png",
+    "edition": 2026,
+    "description": {
+      "fr": "MAGHREB LEASING ALGERIE participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "MAGHREB LEASING ALGERIE تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "SPA MOUSTACHIR",
+    "slug": "spa-moustachir",
+    "logo": "/partners/2026/moustachir.png",
+    "edition": 2026,
+    "description": {
+      "fr": "SPA MOUSTACHIR participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "SPA MOUSTACHIR تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "SARL AYAM",
+    "slug": "sarl-ayam",
+    "logo": "/partners/2026/sarl-ayam.png",
+    "edition": 2026,
+    "description": {
+      "fr": "SARL AYAM participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "SARL AYAM تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "CANHYGINEN",
+    "slug": "canhyginen",
+    "logo": "/partners/2026/canhyginen.png",
+    "edition": 2026,
+    "description": {
+      "fr": "CANHYGINEN participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "CANHYGINEN تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "Gam assurance",
+    "slug": "gam-assurance",
+    "logo": "/partners/2026/gam-assurance.png",
+    "edition": 2026,
+    "description": {
+      "fr": "Gam assurance participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "Gam assurance تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "EURL OUM DARMAN ENTREPOT PUBLIC",
+    "slug": "eurl-oum-darman-entrepot-public",
+    "logo": "/partners/2026/eurl-oum-darman-entrepot-public.png",
+    "edition": 2026,
+    "description": {
+      "fr": "EURL OUM DARMAN ENTREPOT PUBLIC participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "EURL OUM DARMAN ENTREPOT PUBLIC تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "BortoCall",
+    "slug": "bortocall",
+    "logo": "/partners/2026/bortocall.png",
+    "edition": 2026,
+    "description": {
+      "fr": "BortoCall participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "BortoCall تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "VİTRİN CLİNİC",
+    "slug": "vi-tri-n-cli-ni-c",
+    "logo": "/partners/2026/vi-tri-n-cli-ni-c.png",
+    "edition": 2026,
+    "description": {
+      "fr": "VİTRİN CLİNİC participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "VİTRİN CLİNİC تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "ZAD AI",
+    "slug": "zad-ai",
+    "logo": "/partners/2026/zad-ai.png",
+    "edition": 2026,
+    "description": {
+      "fr": "ZAD AI participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "ZAD AI تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "SARL SOFICLEF",
+    "slug": "sarl-soficlef",
+    "logo": "/partners/2026/sarl-soficlef.png",
+    "edition": 2026,
+    "description": {
+      "fr": "SARL SOFICLEF participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "SARL SOFICLEF تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "SARL AFC INDUSTRY",
+    "slug": "sarl-afc-industry",
+    "logo": "/partners/2026/sarl-afc-industry.png",
+    "edition": 2026,
+    "description": {
+      "fr": "SARL AFC INDUSTRY participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "SARL AFC INDUSTRY تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "HYDRAPHARM Groupe",
+    "slug": "hydrapharm-groupe",
+    "logo": "/partners/2026/hydrapharm-groupe.png",
+    "edition": 2026,
+    "description": {
+      "fr": "HYDRAPHARM Groupe participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "HYDRAPHARM Groupe تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "Laboratoires Merinal",
+    "slug": "laboratoires-merinal",
+    "logo": "/partners/2026/laboratoires-merinal.png",
+    "edition": 2026,
+    "description": {
+      "fr": "Laboratoires Merinal participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "Laboratoires Merinal تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "KAOUA FOOD",
+    "slug": "kaoua-food",
+    "logo": "/partners/2026/kaoua-food.png",
+    "edition": 2026,
+    "description": {
+      "fr": "KAOUA FOOD participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "KAOUA FOOD تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "MFG",
+    "slug": "mfg",
+    "logo": "/partners/2026/mfg.png",
+    "edition": 2026,
+    "description": {
+      "fr": "MFG participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "MFG تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "HIBOU CONSULTING RH",
+    "slug": "hibou-consulting-rh",
+    "logo": "/partners/2026/hibou-consulting.png",
+    "edition": 2026,
+    "description": {
+      "fr": "HIBOU CONSULTING RH participe officiellement à la 3e édition de HIS Future Talents 2026.",
+      "ar": "HIBOU CONSULTING RH تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
     "name": "SATIM",
     "slug": "satim",
     "logo": "/partners/2026/satim.png",
@@ -47,8 +278,8 @@ export const partners: Partner[] = [
   },
   {
     "name": "PROPHEX",
-    "slug": "prophex",
-    "logo": "/partners/2025/prophex.png",
+    "slug": "prophex-2026",
+    "logo": "/partners/2026/prophex.png",
     "edition": 2026,
     "sponsorTier": "bronze",
     "featured": true,
@@ -73,69 +304,135 @@ export const partners: Partner[] = [
   {
     "name": "HIS University",
     "slug": "his-university",
-    "logo": "/partners/2025/his-university.png",
+    "logo": "/brand/his-official-logo.png",
     "edition": 2025,
-    "description": {
-      "fr": "HIS University (Higher Institute of Sciences / Institut Supérieur des Sciences) est le premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie. Situé à Alger, il propose des formations de niveau Licence, Master et Doctorat orientées vers l'excellence académique et l'innovation.",
-      "ar": "جامعة معهد العلوم العالي (HIS University / Higher Institute of Sciences) هي أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة من الدولة في الجزائر. تقع في الجزائر العاصمة، وتقدم برامج الليسانس والماستر والدكتوراه الموجهة نحو التميز الأكاديمي والابتكار."
-    },
-    "website": "https://his.edu.dz",
-    "keyPoints": {
-      "fr": [
-        "Premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie.",
-        "Programmes académiques d'excellence conçus pour l'insertion professionnelle et l'innovation.",
-        "Partenariats académiques et industriels solides au niveau national et international."
-      ],
-      "ar": [
-        "أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة رسمياً من الدولة في الجزائر.",
-        "برامج أكاديمية متميزة مصممة لتلبية متطلبات سوق العمل والابتكار.",
-        "شراكات أكاديمية وصناعية متينة على المستويين الوطني والدولي."
-      ]
-    }
+    "tier": "official"
   },
   {
-    "name": "IRAcademy By HIS University",
+    "name": "IRAcademy",
     "slug": "iracademy",
     "logo": "/shared/iracademy.png",
     "edition": 2025,
-    "description": {
-      "fr": "IRAcademy (International Research Academy) est un centre de formation linguistique et de préparation aux certifications internationales, affilié à HIS University (Higher Institute of Sciences) d'Alger. Basé à Bordj El Bahri, l'établissement propose des cursus intensifs en langues étrangères et un accompagnement complet pour les études à l'étranger.",
-      "ar": "آي آر أكاديمي (IRAcademy) هي مركز للتكوين اللغوي والتحضير للشهادات الدولية، تابعة لجامعة (HIS University) بالجزائر العاصمة. تقدم الأكاديمية دورات مكثفة في اللغات الأجنبية ومرافقة كاملة لمشاريع الدراسة في الخارج."
-    },
-    "website": "https://his.edu.dz",
-    "keyPoints": {
-      "fr": [
-        "Centre de langues et de préparation aux certifications internationales (TOEIC, TFI).",
-        "Affilié à HIS University, premier institut d'enseignement supérieur privé multidisciplinaire d'Algérie.",
-        "Accompagnement personnalisé pour l'orientation académique et la mobilité internationale."
-      ],
-      "ar": [
-        "مركز للغات والتحضير للامتحانات والشهادات الدولية المعتمدة (TOEIC و TFI).",
-        "تابع لجامعة (HIS University)، أول معهد تعليم عالي خاص متعدد التخصصات في الجزائر.",
-        "مرافقة وتوجيه مخصص للطلبة الراغبين في مواصلة دراستهم بالخارج."
-      ]
-    }
+    "tier": "official"
   },
   {
     "name": "HIS Training Center",
     "slug": "his-training-center",
     "logo": "/shared/his-training-center.png",
     "edition": 2025,
+    "tier": "official"
+  },
+  {
+    "name": "SATIM",
+    "slug": "satim",
+    "logo": "/partners/2025/satim.png",
+    "edition": 2025,
     "description": {
-      "fr": "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
-      "ar": "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
+      "fr": "SATIM (Société d’Automatisation des Transactions Interbancaires et de Monétique) est l’opérateur national responsable de l'infrastructure de paiement électronique en Algérie. Fondée en 1995 par la communauté bancaire nationale, elle assure l'interopérabilité des paiements par carte bancaire (CIB et Edahabia) à travers son switch interbancaire.",
+      "ar": "شركة ساتيم (شركة تسيير وسائط الدفع التلقائي بين البنوك) هي المتعامل الوطني المسؤول عن البنية التحتية للدفع الإلكتروني في الجزائر. تأسست عام 1995 بمبادرة من المجموعة البنكية الجزائرية، وتضمن التشغيل البيني لبطاقات الدفع (CIB والذهبية) عبر مقسمها البنكي المشترك."
     },
-    "website": "https://his.edu.dz",
+    "website": "https://www.satim.dz",
     "keyPoints": {
       "fr": [
-        "Centre de formation continue et de perfectionnement professionnel de HIS University.",
-        "Formations qualifiantes et ateliers pratiques adaptés aux exigences du marché du travail.",
-        "Accompagnement des étudiants et professionnels dans le développement de leurs compétences."
+        "Gère le switch monétique interbancaire reliant les banques algériennes et Algérie Poste.",
+        "Certifie et sécurise les terminaux de paiement (TPE) et les distributeurs automatiques (DAB/GAB) selon les normes internationales.",
+        "Fournit la passerelle nationale de paiement en ligne sécurisée pour le e-commerce."
       ],
       "ar": [
-        "مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي.",
-        "دورات تدريبية متخصصة وورش عمل تطبيقية تتماشى مع متطلبات سوق العمل.",
-        "مرافقة الطلبة والمهنيين لتطوير مهاراتهم وتدعيم خبراتهم العملية."
+        "إدارة مقسم الدفع الإلكتروني المشترك الذي يربط البنوك الجزائرية وبريد الجزائر.",
+        "اعتماد وتأمين أجهزة الدفع الإلكتروني (TPE) والموزعات الآلية (DAB/GAB) وفقًا للمعايير الدولية.",
+        "توفير البوابة الوطنية الآمنة للدفع الإلكتروني عبر الإنترنت لدعم التجارة الإلكترونية."
+      ]
+    }
+  },
+  {
+    "name": "Djezzy",
+    "slug": "djezzy",
+    "logo": "/partners/2025/djezzy.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Djezzy (Optimum Telecom Algérie) est l'un des leaders de la téléphonie mobile et des télécommunications en Algérie, fondé en 2001. Depuis 2022, l'entreprise est détenue à 96,57 % par le Fonds National d'Investissement (FNI), qui pilote sa transformation technologique et le déploiement du réseau 4G/5G à l'échelle nationale.",
+      "ar": "جازي (Djezzy - Optimum Telecom Algérie) هي إحدى الشركات الرائدة في مجال الهاتف المحمول والاتصالات في الجزائر، تأسست عام 2001. منذ عام 2022، أصبحت الشركة مملوكة بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI)، الذي يقود تحولها التكنولوجي وتوسيع شبكة الجيل الرابع والخامس."
+    },
+    "website": "https://www.djezzy.dz",
+    "keyPoints": {
+      "fr": [
+        "Opérateur mobile leader comptant des millions d'abonnés en Algérie depuis 2001.",
+        "Détenu à 96,57% par l'État algérien via le Fonds National d'Investissement (FNI).",
+        "Acteur majeur de l'économie numérique nationale, engagé dans la couverture 4G et le déploiement de la 5G."
+      ],
+      "ar": [
+        "متعامل هاتف محمول رائد يضم ملايين المشتركين في الجزائر منذ عام 2001.",
+        "مملوك بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI).",
+        "فاعل رئيسي في الاقتصاد الرقمي الوطني، ملتزم بتغطية الجيل الرابع والتحضير للجيل الخامس."
+      ]
+    }
+  },
+  {
+    "name": "CyBears",
+    "slug": "cybears",
+    "logo": "/partners/2025/cybears.png",
+    "edition": 2025,
+    "description": {
+      "fr": "CyBears est une startup algérienne innovante spécialisée dans le domaine de la cybersécurité. Fondée pour sécuriser les infrastructures numériques nationales et régionales, elle propose des services d'audit, de conseil, de détection et de réponse aux menaces en temps réel.",
+      "ar": "سايبيرز (CyBears) هي شركة جزائرية ناشئة ومبتكرة متخصصة في مجال الأمن السيبراني. تأسست لحماية البنية التحتية الرقمية الوطنية والإقليمية، وتقدم خدمات التدقيق والاستشارات، والكشف عن التهديدات والاستجابة لها في الوقت الفعلي."
+    },
+    "keyPoints": {
+      "fr": [
+        "Startup spécialisée dans la cybersécurité et la souveraineté numérique.",
+        "Solutions complètes d'audit de sécurité, de détection et réponse aux incidents.",
+        "Partenaire stratégique d'acteurs de premier plan comme WALLIX."
+      ],
+      "ar": [
+        "شركة ناشئة متخصصة في الأمن السيبراني والسيادة الرقمية.",
+        "حلول متكاملة لتدقيق الأمن، الكشف عن الحوادث والاستجابة الفورية لها.",
+        "شراكات استراتيجية مع كبار الفاعلين التكنولوجيين الدوليين مثل WALLIX."
+      ]
+    }
+  },
+  {
+    "name": "Yalidine Express",
+    "slug": "yalidine-express",
+    "logo": "/partners/2025/yalidine-express.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Yalidine Express est l'un des leaders de la logistique et de la livraison express en Algérie. Spécialisée dans les solutions de transport pour le e-commerce, elle assure une couverture nationale complète sur les 58 wilayas du pays avec des services de paiement à la livraison et de suivi en temps réel.",
+      "ar": "ياليدين إكسبريس (Yalidine Express) هي إحدى الشركات الرائدة في مجال اللوجستيات والتوصيل السريع في الجزائر. وهي متخصصة في حلول النقل المخصصة للتجارة الإلكترونية، وتوفر تغطية وطنية شاملة عبر 58 ولاية مع خدمات الدفع عند الاستلام والتتبع الفوري للطرود."
+    },
+    "website": "https://yalidine-express.com.dz",
+    "keyPoints": {
+      "fr": [
+        "Leader national de la livraison express et de la logistique e-commerce en Algérie.",
+        "Couverture logistique complète s'étendant sur les 58 wilayas du pays.",
+        "Pionnier des solutions de paiement à la livraison (Cash on Delivery) et de tracking de colis."
+      ],
+      "ar": [
+        "الرائد الوطني في مجال التوصيل السريع ولوجستيات التجارة الإلكترونية في الجزائر.",
+        "تغطية لوجستية شاملة وموثوقة تمتد لتشمل كافة ولايات الوطن الـ 58.",
+        "رائد حلول الدفع عند الاستلام (Cash on Delivery) وتتبع حركة الشحنات فورياً."
+      ]
+    }
+  },
+  {
+    "name": "National Civil Aviation Agency",
+    "slug": "national-civil-aviation",
+    "logo": "/partners/2025/national-civil-aviation.png",
+    "edition": 2025,
+    "description": {
+      "fr": "L'ANAC (Agence Nationale de l'Aviation Civile) est l'autorité publique chargée de la régulation, de la surveillance et du contrôle des activités de l'aviation civile en Algérie. Instituée en 2019, elle garantit l'application des normes internationales de sûreté, de sécurité et de protection des passagers.",
+      "ar": "الوكالة الوطنية للطيران المدني (ANAC) هي الهيئة العمومية المكلفة بتنظيم ومراقبة والإشراف على أنشطة الطيران المدني في الجزائر. تأسست عام 2019، وتضمن تطبيق المعايير الدولية للسلامة والأمن وحماية حقوق المسافرين."
+    },
+    "website": "https://anac.dz",
+    "keyPoints": {
+      "fr": [
+        "Autorité publique de régulation et de contrôle de l'aviation civile en Algérie.",
+        "Garante de la conformité aux normes internationales de sûreté et de sécurité (OACI).",
+        "Chargée de la protection des droits des passagers et du développement du secteur aérien."
+      ],
+      "ar": [
+        "الهيئة العمومية لتنظيم ومراقبة قطاع الطيران المدني في الجزائر.",
+        "ضمان مطابقة معايير السلامة والأمن الجوي الدولية (منظمة الطيران المدني الدولي).",
+        "المكلفة بحماية حقوق المسافرين وتطوير النقل الجوي."
       ]
     }
   },
@@ -163,45 +460,16 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "SATIM",
-    "slug": "satim",
-    "logo": "/partners/2025/satim.png",
-    "edition": 2025,
-    "description": {
-      "fr": "SATIM (Société d’Automatisation des Transactions Interbancaires et de Monétique) est l’opérateur national responsable de l'infrastructure de paiement électronique en Algérie. Fondée en 1995 par la communauté bancaire nationale, elle assure l'interopérabilité des paiements par carte bancaire (CIB et Edahabia) à travers son switch interbancaire.",
-      "ar": "شركة ساتيم (شركة تسيير وسائط الدفع التلقائي بين البنوك) هي المتعامل الوطني المسؤول عن البنية التحتية للدفع الإلكتروني في الجزائر. تأسست عام 1995 بمبادرة من المجموعة البنكية الجزائرية، وتضمن التشغيل البيني لبطاقات الدفع (CIB والذهبية) عبر مقسمها البنكي المشترك."
-    },
-    "website": "https://www.satim.dz",
-    "keyPoints": {
-      "fr": [
-        "Gère le switch monétique interbancaire reliant les banques algériennes et Algérie Poste.",
-        "Certifie et sécurise les terminaux de paiement (TPE) et les distributeurs automatiques (DAB/GAB) selon les normes internationales.",
-        "Fournit la passerelle nationale de paiement en ligne sécurisée pour le e-commerce."
-      ],
-      "ar": [
-        "إدارة مقسم الدفع الإلكتروني المشترك الذي يربط البنوك الجزائرية وبريد الجزائر.",
-        "اعتماد وتأمين أجهزة الدفع الإلكتروني (TPE) والموزعات الآلية (DAB/GAB) وفقًا للمعايير الدولية.",
-        "توفير البوابة الوطنية الآمنة للدفع الإلكتروني عبر الإنترنت لدعم التجارة الإلكترونية."
-      ]
-    }
-  },
-  {
     "name": "Faderco",
     "slug": "faderco",
     "logo": "/partners/2025/faderco.png",
     "edition": 2025,
     "description": {
-      "en": "Faderco is a leading Algerian hygiene and personal care manufacturing group founded in 1986. An undisputed national industry leader, it has achieved vertical integration with state-of-the-art cellulose wadding production and extensive international export distribution.",
       "fr": "Faderco est une entreprise algérienne de premier plan fondée en 1986, spécialisée dans la fabrication de produits d'hygiène corporelle. Leader du marché national, elle s'est développée à travers une intégration verticale majeure (ouate de cellulose, distribution) et un fort développement à l'exportation.",
       "ar": "فاديركو هي شركة جزائرية رائدة تأسست عام 1986، متخصصة في صناعة منتجات النظافة الشخصية والمنزلية. وهي رائدة في السوق الوطنية، وتوسعت بشكل كبير من خلال استراتيجية متكاملة للتصنيع والتوزيع وخطط طموحة للتصدير."
     },
     "website": "https://faderco.co",
     "keyPoints": {
-      "en": [
-        "Algerian market leader in personal and domestic hygiene since 1986.",
-        "Recognized consumer portfolio (Awane, Cotex, Bimbies, Bello).",
-        "Vertically integrated manufacturing hub with its own cellulose mill (Warak)."
-      ],
       "fr": [
         "Leader algérien de l'hygiène corporelle et domestique depuis 1986.",
         "Portefeuille de marques reconnues (Awane, Cotex, Bimbies, Bello).",
@@ -281,12 +549,6 @@ export const partners: Partner[] = [
         "حضور دولي قوي مع تصدير 70٪ من الإنتاج إلى الأسواق الأوروبية."
       ]
     }
-  },
-  {
-    "name": "Bitr Transpo",
-    "slug": "bitr-transpo",
-    "logo": "/shared/bitr-transpo.png",
-    "edition": 2025
   },
   {
     "name": "CASH Assurances",
@@ -404,45 +666,16 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "Yalidine Express",
-    "slug": "yalidine-express",
-    "logo": "/partners/2025/yalidine-express.png",
-    "edition": 2025,
-    "description": {
-      "fr": "Yalidine Express est l'un des leaders de la logistique et de la livraison express en Algérie. Spécialisée dans les solutions de transport pour le e-commerce, elle assure une couverture nationale complète sur les 58 wilayas du pays avec des services de paiement à la livraison et de suivi en temps réel.",
-      "ar": "ياليدين إكسبريس (Yalidine Express) هي إحدى الشركات الرائدة في مجال اللوجستيات والتوصيل السريع في الجزائر. وهي متخصصة في حلول النقل المخصصة للتجارة الإلكترونية، وتوفر تغطية وطنية شاملة عبر 58 ولاية مع خدمات الدفع عند الاستلام والتتبع الفوري للطرود."
-    },
-    "website": "https://yalidine-express.com.dz",
-    "keyPoints": {
-      "fr": [
-        "Leader national de la livraison express et de la logistique e-commerce en Algérie.",
-        "Couverture logistique complète s'étendant sur les 58 wilayas du pays.",
-        "Pionnier des solutions de paiement à la livraison (Cash on Delivery) et de tracking de colis."
-      ],
-      "ar": [
-        "الرائد الوطني في مجال التوصيل السريع ولوجستيات التجارة الإلكترونية في الجزائر.",
-        "تغطية لوجستية شاملة وموثوقة تمتد لتشمل كافة ولايات الوطن الـ 58.",
-        "رائد حلول الدفع عند الاستلام (Cash on Delivery) وتتبع حركة الشحنات فورياً."
-      ]
-    }
-  },
-  {
     "name": "Henkel",
     "slug": "henkel",
     "logo": "/partners/2025/henkel.png",
     "edition": 2025,
     "description": {
-      "en": "Henkel Algeria, subsidiary of the multinational Henkel Group established in Algeria since 2000, is a major player in consumer laundry, home & beauty care as well as industrial adhesive technologies, with modern production facilities in Reghaïa (Algiers) and Chelghoum Laïd (Mila).",
       "fr": "Henkel Algérie, filiale du groupe international Henkel présente en Algérie depuis 2000, est un acteur majeur dans les domaines des détergents (lessives, soins corporels et capillaires) et des technologies d'adhésifs. Le groupe dispose de deux sites de production de pointe à Réghaïa (Alger) et Chelghoum Laïd (Mila).",
       "ar": "هنكل الجزائر (Henkel Algérie)، وهي فرع من مجموعة هنكل العالمية المتواجدة في الجزائر منذ عام 2000، وتعد لاعباً رئيسياً في مجالات المنظفات (مساحيق الغسيل، العناية الشخصية والشعر) وتكنولوجيا الدولية للمواد اللاصقة. تمتلك المجموعة موقعين صناعيين متطورين في الرغاية (الجزائر العاصمة) وشلغوم العيد (ميلة)."
     },
     "website": "https://www.henkel-algerie.com",
     "keyPoints": {
-      "en": [
-        "Major industrial presence and manufacturing leadership in Algeria since 2000.",
-        "Modern digitalized production plants in Reghaïa and Chelghoum Laïd.",
-        "Leader in Consumer Brands (household & hair care) and industrial adhesive technologies."
-      ],
       "fr": [
         "Présence industrielle majeure en Algérie depuis 2000.",
         "Deux usines de production modernes et digitalisées à Réghaïa et Chelghoum Laïd.",
@@ -637,29 +870,6 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "National Civil Aviation Agency",
-    "slug": "national-civil-aviation",
-    "logo": "/partners/2025/national-civil-aviation.png",
-    "edition": 2025,
-    "description": {
-      "fr": "L'ANAC (Agence Nationale de l'Aviation Civile) est l'autorité publique chargée de la régulation, de la surveillance et du contrôle des activités de l'aviation civile en Algérie. Instituée en 2019, elle garantit l'application des normes internationales de sûreté, de sécurité et de protection des passagers.",
-      "ar": "الوكالة الوطنية للطيران المدني (ANAC) هي الهيئة العمومية المكلفة بتنظيم ومراقبة والإشراف على أنشطة الطيران المدني في الجزائر. تأسست عام 2019، وتضمن تطبيق المعايير الدولية للسلامة والأمن وحماية حقوق المسافرين."
-    },
-    "website": "https://anac.dz",
-    "keyPoints": {
-      "fr": [
-        "Autorité publique de régulation et de contrôle de l'aviation civile en Algérie.",
-        "Garante de la conformité aux normes internationales de sûreté et de sécurité (OACI).",
-        "Chargée de la protection des droits des passagers et du développement du secteur aérien."
-      ],
-      "ar": [
-        "الهيئة العمومية لتنظيم ومراقبة قطاع الطيران المدني في الجزائر.",
-        "ضمان مطابقة معايير السلامة والأمن الجوي الدولية (منظمة الطيران المدني الدولي).",
-        "المكلفة بحماية حقوق المسافرين وتطوير النقل الجوي."
-      ]
-    }
-  },
-  {
     "name": "Ouedkniss",
     "slug": "ouedkniss",
     "logo": "/partners/2025/ouedkniss.png",
@@ -774,29 +984,6 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "Djezzy",
-    "slug": "djezzy",
-    "logo": "/partners/2025/djezzy.png",
-    "edition": 2025,
-    "description": {
-      "fr": "Djezzy (Optimum Telecom Algérie) est l'un des leaders de la téléphonie mobile et des télécommunications en Algérie, fondé en 2001. Depuis 2022, l'entreprise est détenue à 96,57 % par le Fonds National d'Investissement (FNI), qui pilote sa transformation technologique et le déploiement du réseau 4G/5G à l'échelle nationale.",
-      "ar": "جازي (Djezzy - Optimum Telecom Algérie) هي إحدى الشركات الرائدة في مجال الهاتف المحمول والاتصالات في الجزائر، تأسست عام 2001. منذ عام 2022، أصبحت الشركة مملوكة بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI)، الذي يقود تحولها التكنولوجي وتوسيع شبكة الجيل الرابع والخامس."
-    },
-    "website": "https://www.djezzy.dz",
-    "keyPoints": {
-      "fr": [
-        "Opérateur mobile leader comptant des millions d'abonnés en Algérie depuis 2001.",
-        "Détenu à 96,57% par l'État algérien via le Fonds National d'Investissement (FNI).",
-        "Acteur majeur de l'économie numérique nationale, engagé dans la couverture 4G et le déploiement de la 5G."
-      ],
-      "ar": [
-        "متعامل هاتف محمول رائد يضم ملايين المشتركين في الجزائر منذ عام 2001.",
-        "مملوك بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI).",
-        "فاعل رئيسي في الاقتصاد الرقمي الوطني، ملتزم بتغطية الجيل الرابع والتحضير للجيل الخامس."
-      ]
-    }
-  },
-  {
     "name": "GAM Assurances",
     "slug": "gam-assurances",
     "logo": "/partners/2025/gam-assurances.png",
@@ -843,180 +1030,92 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "CyBears",
-    "slug": "cybears",
-    "logo": "/partners/2025/cybears.png",
-    "edition": 2025,
-    "description": {
-      "fr": "CyBears est une startup algérienne innovante spécialisée dans le domaine de la cybersécurité. Fondée pour sécuriser les infrastructures numériques nationales et régionales, elle propose des services d'audit, de conseil, de détection et de réponse aux menaces en temps réel.",
-      "ar": "سايبيرز (CyBears) هي شركة جزائرية ناشئة ومبتكرة متخصصة في مجال الأمن السيبراني. تأسست لحماية البنية التحتية الرقمية الوطنية والإقليمية، وتقدم خدمات التدقيق والاستشارات، والكشف عن التهديدات والاستجابة لها في الوقت الفعلي."
-    },
-    "keyPoints": {
-      "fr": [
-        "Startup spécialisée dans la cybersécurité et la souveraineté numérique.",
-        "Solutions complètes d'audit de sécurité, de détection et réponse aux incidents.",
-        "Partenaire stratégique d'acteurs de premier plan comme WALLIX."
-      ],
-      "ar": [
-        "شركة ناشئة متخصصة في الأمن السيبراني والسيادة الرقمية.",
-        "حلول متكاملة لتدقيق الأمن، الكشف عن الحوادث والاستجابة الفورية لها.",
-        "شراكات استراتيجية مع كبار الفاعلين التكنولوجيين الدوليين مثل WALLIX."
-      ]
-    }
-  },
-  {
-    "name": "SATIM",
-    "slug": "satim",
-    "logo": "/partners/2024/satim.png",
-    "edition": 2024,
-    "description": {
-      "en": "SATIM is the national interbank electronic payment and transaction switch operator in Algeria.",
-      "fr": "SATIM (Société d’Automatisation des Transactions Interbancaires et de Monétique) est l’opérateur national responsable de l'infrastructure de paiement électronique en Algérie.",
-      "ar": "شركة ساتيم (شركة تسيير وسائط الدفع التلقائي بين البنوك) هي المتعامل الوطني المسؤول عن البنية التحتية للدفع الإلكتروني في الجزائر."
-    },
-    "website": "https://www.satim.dz",
-    "keyPoints": {
-      "en": [
-        "National interbank electronic payment and transaction switch operator.",
-        "Official manager of the CIB card network and e-commerce payment gateway.",
-        "Strategic partner for digital financial inclusion and economic innovation."
-      ],
-      "fr": [
-        "Gère le switch monétique interbancaire reliant les banques algériennes et Algérie Poste.",
-        "Certifie et sécurise les terminaux de paiement (TPE) et les distributeurs automatiques (DAB/GAB).",
-        "Fournit la passerelle nationale de paiement en ligne sécurisée pour le e-commerce."
-      ],
-      "ar": [
-        "إدارة مقسم الدفع الإلكتروني المشترك الذي يربط البنوك الجزائرية وبريد الجزائر.",
-        "اعتماد وتأمين أجهزة الدفع الإلكتروني (TPE) والموزعات الآلية (DAB/GAB) وفقًا للمعايير الدولية.",
-        "توفير البوابة الوطنية الآمنة للدفع الإلكتروني عبر الإنترنت لدعم التجارة الإلكترونية."
-      ]
-    }
-  },
-  {
-    "name": "Profex",
-    "slug": "prophex",
-    "logo": "/partners/2024/prophex.png",
-    "edition": 2024,
-    "description": {
-      "en": "Profex is a specialized manufacturer of certified personal care products and medical devices adhering to international quality standards.",
-      "fr": "Profex est une entreprise spécialisée dans le domaine de la fabrication de produits de soins et de dispositifs médicaux de haute qualité.",
-      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة."
-    },
-    "website": "https://www.profex.dz",
-    "keyPoints": {
-      "en": [
-        "Manufacturing of certified healthcare products and medical devices.",
-        "Full compliance with international quality and safety benchmarks.",
-        "Trusted healthcare brand in the Algerian market."
-      ],
-      "fr": [
-        "Fabrication de produits de soins et de dispositifs médicaux certifiés.",
-        "Conformité avec les normes internationales de qualité et de sécurité.",
-        "Marque de confiance pour les professionnels de la santé et les consommateurs."
-      ],
-      "ar": [
-        "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
-        "الامتثال للمعايير الدولية للجودة والسلامة.",
-        "علامة تجارية موثوقة لمهنيي الصحة والمستهلكين على حد سواء."
-      ]
-    }
-  },
-  {
-    "name": "Hayat",
-    "slug": "hayat",
-    "logo": "/partners/2024/hayat.png",
-    "edition": 2024,
-    "description": {
-      "en": "Hayat DHC Algeria, subsidiary of the global Turkish Hayat Group, is a leading manufacturer of hygiene and detergent consumer brands.",
-      "fr": "Hayat DHC Algérie, filiale du groupe international turc Hayat fondée en 2005, est un acteur leader du secteur de l'hygiène et des détergents en Algérie.",
-      "ar": "حياة دي إتش سي الجزائر (Hayat DHC Algérie)، وهي فرع من مجموعة حياة التركية العالمية، وتعد من الشركات الرائدة في قطاع النظافة والمنظفات في الجزائر."
-    },
-    "website": "https://www.hayat.com.tr",
-    "keyPoints": {
-      "en": [
-        "Algerian subsidiary of global consumer group Hayat.",
-        "Major manufacturing plant producing Molfix, Bingo, and Familia brands.",
-        "Market leader in baby hygiene and household cleaning products."
-      ],
-      "fr": [
-        "Filiale algérienne du groupe turc Hayat, présente en Algérie depuis 2005.",
-        "Grand complexe industriel situé à Bouinan (Blida) fabriquant les marques Molfix et Bingo.",
-        "Leader sur le marché national de l'hygiène infantile et des produits d'entretien."
-      ],
-      "ar": [
-        "الفرع الجزائري لمجموعة حياة التركية، متواجد في الجزائر منذ عام 2005.",
-        "مجمع صناعي كبير في بوعينان (البليدة) لإنتاج حفاضات Molfix ومنظفات Bingo.",
-        "رائد في السوق الوطنية لمنتجات النظافة الشخصية والمنظفات المنزلية."
-      ]
-    }
-  },
-  {
     "name": "HIS University",
     "slug": "his-university",
-    "logo": "/partners/2024/his-university.png",
+    "logo": "/brand/his-official-logo.png",
     "edition": 2024,
-    "description": {
-      "fr": "HIS University (Higher Institute of Sciences / Institut Supérieur des Sciences) est le premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie. Situé à Alger, il propose des formations de niveau Licence, Master et Doctorat orientées vers l'excellence académique et l'innovation.",
-      "ar": "جامعة معهد العلوم العالي (HIS University / Higher Institute of Sciences) هي أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة من الدولة في الجزائر. تقع في الجزائر العاصمة، وتقدم برامج الليسانس والماستر والدكتوراه الموجهة نحو التميز الأكاديمي والابتكار."
-    },
-    "website": "https://his.edu.dz",
-    "keyPoints": {
-      "fr": [
-        "Premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie.",
-        "Programmes académiques d'excellence conçus pour l'insertion professionnelle et l'innovation.",
-        "Partenariats académiques et industriels solides au niveau national et international."
-      ],
-      "ar": [
-        "أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة رسمياً من الدولة في الجزائر.",
-        "برامج أكاديمية متميزة مصممة لتلبية متطلبات سوق العمل والابتكار.",
-        "شراكات أكاديمية وصناعية متينة على المستويين الوطني والدولي."
-      ]
-    }
+    "tier": "official"
   },
   {
-    "name": "IRAcademy By HIS University",
+    "name": "IRAcademy",
     "slug": "iracademy",
     "logo": "/shared/iracademy.png",
     "edition": 2024,
-    "description": {
-      "fr": "IRAcademy (International Research Academy) est un centre de formation linguistique et de préparation aux certifications internationales, affilié à HIS University (Higher Institute of Sciences) d'Alger. Basé à Bordj El Bahri, l'établissement propose des cursus intensifs en langues étrangères et un accompagnement complet pour les études à l'étranger.",
-      "ar": "آي آر أكاديمي (IRAcademy) هي مركز للتكوين اللغوي والتحضير للشهادات الدولية، تابعة لجامعة (HIS University) بالجزائر العاصمة. تقدم الأكاديمية دورات مكثفة في اللغات الأجنبية ومرافقة كاملة لمشاريع الدراسة في الخارج."
-    },
-    "website": "https://his.edu.dz",
-    "keyPoints": {
-      "fr": [
-        "Centre de langues et de préparation aux certifications internationales (TOEIC, TFI).",
-        "Affilié à HIS University, premier institut d'enseignement supérieur privé multidisciplinaire d'Algérie.",
-        "Accompagnement personnalisé pour l'orientation académique et la mobilité internationale."
-      ],
-      "ar": [
-        "مركز للغات والتحضير للامتحانات والشهادات الدولية المعتمدة (TOEIC و TFI).",
-        "تابع لجامعة (HIS University)، أول معهد تعليم عالي خاص متعدد التخصصات في الجزائر.",
-        "مرافقة وتوجيه مخصص للطلبة الراغبين في مواصلة دراستهم بالخارج."
-      ]
-    }
+    "tier": "official"
   },
   {
     "name": "HIS Training Center",
     "slug": "his-training-center",
     "logo": "/shared/his-training-center.png",
     "edition": 2024,
+    "tier": "official"
+  },
+  {
+    "name": "Yassir",
+    "slug": "yassir",
+    "logo": "/partners/2024/yassir.png",
+    "edition": 2024,
     "description": {
-      "fr": "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
-      "ar": "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
+      "fr": "Yassir est la super-app nord-africaine de référence, fondée en Algérie en 2017. Offrant une plateforme intégrée de VTC (transport de personnes), de livraison de repas, de courses et de services financiers, Yassir est aujourd'hui présente dans plusieurs pays d'Afrique et du Moyen-Orient avec des millions d'utilisateurs.",
+      "ar": "ياسير (Yassir) هي التطبيق الشامل المرجعي في شمال إفريقيا، تأسست في الجزائر عام 2017. تقدم منصة متكاملة لخدمات النقل الخاص بالسيارة (VTC)، وتوصيل الوجبات، والتسوق والخدمات المالية، وهي اليوم حاضرة في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين."
     },
-    "website": "https://his.edu.dz",
+    "website": "https://yassir.com",
     "keyPoints": {
       "fr": [
-        "Centre de formation continue et de perfectionnement professionnel de HIS University.",
-        "Formations qualifiantes et ateliers pratiques adaptés aux exigences du marché du travail.",
-        "Accompagnement des étudiants et professionnels dans le développement de leurs compétences."
+        "Super-app algérienne fondée en 2017, offrant VTC, livraison de repas et services financiers.",
+        "Présente dans plusieurs pays d'Afrique et du Moyen-Orient avec des millions d'utilisateurs actifs.",
+        "Licorne technologique africaine et l'une des startups les plus valorisées du continent."
       ],
       "ar": [
-        "مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي.",
-        "دورات تدريبية متخصصة وورش عمل تطبيقية تتماشى مع متطلبات سوق العمل.",
-        "مرافقة الطلبة والمهنيين لتطوير مهاراتهم وتدعيم خبراتهم العملية."
+        "تطبيق شامل جزائري تأسس عام 2017، يجمع النقل الخاص، توصيل الوجبات والخدمات المالية.",
+        "حاضر في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين النشطين.",
+        "شركة تكنولوجية أفريقية ذات قيمة مليارية وواحدة من أكثر الشركات الناشئة قيمةً في القارة."
+      ]
+    }
+  },
+  {
+    "name": "BNP Paribas",
+    "slug": "bnp-paribas",
+    "logo": "/partners/2024/bnp-paribas.png",
+    "edition": 2024,
+    "description": {
+      "fr": "BNP Paribas est l'un des groupes bancaires et financiers les plus importants au monde, présent dans plus de 65 pays. En Algérie, BNP Paribas El Djazaïr est une banque commerciale de référence, proposant une gamme complète de services financiers aux particuliers, aux professionnels et aux grandes entreprises depuis 2002.",
+      "ar": "بي إن بي باريبا (BNP Paribas) هي إحدى أكبر المجموعات المصرفية والمالية في العالم، حاضرة في أكثر من 65 دولة. في الجزائر، تعد بي إن بي باريبا الجزائر (BNP Paribas El Djazaïr) بنكاً تجارياً مرجعياً يقدم مجموعة كاملة من الخدمات المالية للأفراد والمهنيين والمؤسسات الكبرى منذ عام 2002."
+    },
+    "website": "https://www.bnpparibas.dz",
+    "keyPoints": {
+      "fr": [
+        "L'une des plus grandes banques mondiales, présente en Algérie sous le nom BNP Paribas El Djazaïr depuis 2002.",
+        "Offre une gamme complète de services bancaires aux particuliers, PME et grandes entreprises.",
+        "Acteur clé du financement de l'économie algérienne et du commerce international."
+      ],
+      "ar": [
+        "من أكبر البنوك العالمية، متواجدة في الجزائر تحت اسم BNP Paribas El Djazaïr منذ عام 2002.",
+        "تقدم مجموعة شاملة من الخدمات المصرفية للأفراد والمؤسسات الصغيرة والمتوسطة والكبرى.",
+        "فاعل رئيسي في تمويل الاقتصاد الجزائري والتجارة الدولية."
+      ]
+    }
+  },
+  {
+    "name": "Natixis Algérie",
+    "slug": "natixis",
+    "logo": "/partners/2024/natixis.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Natixis Algérie est la filiale du groupe BPCE, deuxième groupe bancaire en France. Établie en Algérie depuis 1999, elle propose une gamme diversifiée de produits et services financiers destinés aux grandes entreprises, PME et professionnels algériens.",
+      "ar": "ناتيكسيس الجزائر (Natixis Algérie) هي فرع من مجموعة BPCE، ثاني أكبر مجموعة مصرفية في فرنسا. تأسس في الجزائر عام 1999، ويقدم مجموعة متنوعة من المنتجات والخدمات المالية الموجهة للمؤسسات الكبرى، الشركات الصغيرة والمتوسطة، والمهنيين في الجزائر."
+    },
+    "website": "https://www.algerie.natixis.com",
+    "keyPoints": {
+      "fr": [
+        "Filiale du grand groupe bancaire international français BPCE.",
+        "Présente en Algérie depuis 1999, au service des entreprises et des professionnels.",
+        "Expertise solide en financement structuré, gestion de trésorerie et commerce international."
+      ],
+      "ar": [
+        "فرع من المجموعة المصرفية الفرنسية العالمية الكبرى BPCE.",
+        "متواجد في الجزائر منذ 1999 لخدمة المؤسسات والمهنيين.",
+        "خبرة قوية في التمويل المهيكل، إدارة الخزينة، والتجارة الدولية."
       ]
     }
   },
@@ -1062,29 +1161,6 @@ export const partners: Partner[] = [
         "مكتب متخصص في الاستشارات المالية، التدقيق وإدارة الجباية للمؤسسات.",
         "مرافقة استراتيجية مخصصة للمؤسسات الصغيرة والمتوسطة والمقاولين الجزائريين.",
         "خبرة في تحسين الأداء المالي والامتثال للمتطلبات التنظيمية."
-      ]
-    }
-  },
-  {
-    "name": "BNP Paribas",
-    "slug": "bnp-paribas",
-    "logo": "/partners/2024/bnp-paribas.png",
-    "edition": 2024,
-    "description": {
-      "fr": "BNP Paribas est l'un des groupes bancaires et financiers les plus importants au monde, présent dans plus de 65 pays. En Algérie, BNP Paribas El Djazaïr est une banque commerciale de référence, proposant une gamme complète de services financiers aux particuliers, aux professionnels et aux grandes entreprises depuis 2002.",
-      "ar": "بي إن بي باريبا (BNP Paribas) هي إحدى أكبر المجموعات المصرفية والمالية في العالم، حاضرة في أكثر من 65 دولة. في الجزائر، تعد بي إن بي باريبا الجزائر (BNP Paribas El Djazaïr) بنكاً تجارياً مرجعياً يقدم مجموعة كاملة من الخدمات المالية للأفراد والمهنيين والمؤسسات الكبرى منذ عام 2002."
-    },
-    "website": "https://www.bnpparibas.dz",
-    "keyPoints": {
-      "fr": [
-        "L'une des plus grandes banques mondiales, présente en Algérie sous le nom BNP Paribas El Djazaïr depuis 2002.",
-        "Offre une gamme complète de services bancaires aux particuliers, PME et grandes entreprises.",
-        "Acteur clé du financement de l'économie algérienne et du commerce international."
-      ],
-      "ar": [
-        "من أكبر البنوك العالمية، متواجدة في الجزائر تحت اسم BNP Paribas El Djazaïr منذ عام 2002.",
-        "تقدم مجموعة شاملة من الخدمات المصرفية للأفراد والمؤسسات الصغيرة والمتوسطة والكبرى.",
-        "فاعل رئيسي في تمويل الاقتصاد الجزائري والتجارة الدولية."
       ]
     }
   },
@@ -1319,29 +1395,6 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "Yassir",
-    "slug": "yassir",
-    "logo": "/partners/2024/yassir.png",
-    "edition": 2024,
-    "description": {
-      "fr": "Yassir est la super-app nord-africaine de référence, fondée en Algérie en 2017. Offrant une plateforme intégrée de VTC (transport de personnes), de livraison de repas, de courses et de services financiers, Yassir est aujourd'hui présente dans plusieurs pays d'Afrique et du Moyen-Orient avec des millions d'utilisateurs.",
-      "ar": "ياسير (Yassir) هي التطبيق الشامل المرجعي في شمال إفريقيا، تأسست في الجزائر عام 2017. تقدم منصة متكاملة لخدمات النقل الخاص بالسيارة (VTC)، وتوصيل الوجبات، والتسوق والخدمات المالية، وهي اليوم حاضرة في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين."
-    },
-    "website": "https://yassir.com",
-    "keyPoints": {
-      "fr": [
-        "Super-app algérienne fondée en 2017, offrant VTC, livraison de repas et services financiers.",
-        "Présente dans plusieurs pays d'Afrique et du Moyen-Orient avec des millions d'utilisateurs actifs.",
-        "Licorne technologique africaine et l'une des startups les plus valorisées du continent."
-      ],
-      "ar": [
-        "تطبيق شامل جزائري تأسس عام 2017، يجمع النقل الخاص، توصيل الوجبات والخدمات المالية.",
-        "حاضر في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين النشطين.",
-        "شركة تكنولوجية أفريقية ذات قيمة مليارية وواحدة من أكثر الشركات الناشئة قيمةً في القارة."
-      ]
-    }
-  },
-  {
     "name": "S.Five Groupe",
     "slug": "s-five-groupe",
     "logo": "/partners/2024/s-five-groupe.png",
@@ -1453,29 +1506,6 @@ export const partners: Partner[] = [
         "شركة متعددة الجنسيات كبرى في قطاع السلع الاستهلاكية مع حضور صناعي وتجاري قوي في الجزائر.",
         "مجموعة علامات تجارية ذات شهرة عالمية في مجالات النظافة الشخصية، العناية بالجمال، والعناية بالمنزل.",
         "التزام قوي بالتنمية المستدable، الإنتاج المحلي، وخلق فرص العمل."
-      ]
-    }
-  },
-  {
-    "name": "Natixis Algérie",
-    "slug": "natixis",
-    "logo": "/partners/2024/natixis.png",
-    "edition": 2024,
-    "description": {
-      "fr": "Natixis Algérie est la filiale du groupe BPCE, deuxième groupe bancaire en France. Établie en Algérie depuis 1999, elle propose une gamme diversifiée de produits et services financiers destinés aux grandes entreprises, PME et professionnels algériens.",
-      "ar": "ناتيكسيس الجزائر (Natixis Algérie) هي فرع من مجموعة BPCE، ثاني أكبر مجموعة مصرفية في فرنسا. تأسس في الجزائر عام 1999، ويقدم مجموعة متنوعة من المنتجات والخدمات المالية الموجهة للمؤسسات الكبرى، الشركات الصغيرة والمتوسطة، والمهنيين في الجزائر."
-    },
-    "website": "https://www.algerie.natixis.com",
-    "keyPoints": {
-      "fr": [
-        "Filiale du grand groupe bancaire international français BPCE.",
-        "Présente en Algérie depuis 1999, au service des entreprises et des professionnels.",
-        "Expertise solide en financement structuré, gestion de trésorerie et commerce international."
-      ],
-      "ar": [
-        "فرع من المجموعة المصرفية الفرنسية العالمية الكبرى BPCE.",
-        "متواجد في الجزائر منذ 1999 لخدمة المؤسسات والمهنيين.",
-        "خبرة قوية في التمويل المهيكل، إدارة الخزينة، والتجارة الدولية."
       ]
     }
   },
@@ -1708,12 +1738,6 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "Bitr Transpo",
-    "slug": "bitr-transpo",
-    "logo": "/shared/bitr-transpo.png",
-    "edition": 2024
-  },
-  {
     "name": "Club d'Activités Polyvalents",
     "slug": "cap",
     "logo": "/partners/2024/cap.png",
@@ -1757,66 +1781,7 @@ export const partners: Partner[] = [
         "خدمة دعم فني وصيانة احترافية للمؤسسات والشركات."
       ]
     }
-  },
-  {
-    "name": "DealZone",
-    "slug": "dealzone",
-    "logo": "/partners/2025/dealzone.png",
-    "edition": 2025,
-    "description": {
-      "en": "DealZone is an Algerian digital commerce and marketing platform offering smart promotions, corporate discounts, and innovative merchant loyalty solutions.",
-      "fr": "DealZone est une plateforme digitale algérienne de commerce et de marketing proposant des promotions intelligentes, des réductions d'entreprise et des solutions de fidélisation.",
-      "ar": "ديل زون (DealZone) هي منصة رقمية جزائرية رائدة في مجال التجارة الإلكترونية والتسويق الرقمي، تقدم عروضاً ترويجية وتخفيضات ذكية وحلول ولاء للشركات والمستهلكين."
-    },
-    "website": "https://www.dealzone.dz",
-    "keyPoints": {
-      "en": [
-        "Digital promotions and merchant loyalty platform in Algeria.",
-        "Exclusive commercial partnerships across retail, services, and technology.",
-        "Streamlined consumer savings and merchant traffic generation."
-      ],
-      "fr": [
-        "Plateforme digitale de bons plans et fidélisation commerçants en Algérie.",
-        "Partenariats commerciaux exclusifs à travers le commerce et les services.",
-        "Génération de trafic qualifié pour les entreprises partenaires."
-      ],
-      "ar": [
-        "منصة رقمية للعروض الذكية وبرامج الولاء في الجزائر.",
-        "شراكات تجارية حصرية عبر قطاعات التجزئة والخدمات والتكنولوجيا.",
-        "تعزيز المبيعات والوصول المباشر للزبائن والمؤسسات."
-      ]
-    }
-  },
-  {
-    "name": "Groupe Logitrans",
-    "slug": "groupe-logitrans",
-    "logo": "/partners/2025/logitrans.png",
-    "edition": 2025,
-    "description": {
-      "en": "Groupe Logitrans is Algeria's premier public transport and logistics holding, managing extensive multimodal freight transport, strategic regional logistics bases, and international trans-Saharan trade corridors.",
-      "fr": "Groupe Logitrans est le premier groupe public de transport routier de marchandises et de logistique en Algérie, opérant un réseau national de bases logistiques et des corridors d'échanges transsahariens.",
-      "ar": "مجمع لوجيترانس (Groupe Logitrans) هو المجمع العمومي الرائد في النقل البري للبضائع والخدمات اللوجستية في الجزائر، يدير شبكة وطنية واسعة من القواعد اللوجستية وممرات التبادل التجاري الإفريقي."
-    },
-    "website": "https://www.logitrans.dz",
-    "keyPoints": {
-      "en": [
-        "National leader in freight transport, warehousing, and multimodal logistics.",
-        "Modern fleet and strategic logistics platforms covering all Algerian wilayas.",
-        "Pioneering trans-Saharan trade corridors to Sahel and African markets."
-      ],
-      "fr": [
-        "Leader national du transport de marchandises, entreposage et logistique multimodale.",
-        "Flotte moderne et plateformes logistiques stratégiques réparties sur tout le territoire.",
-        "Pionnier des corridors de transport transsaharien vers les marchés africains."
-      ],
-      "ar": [
-        "الرائد الوطني في نقل البضائع، التخزين والخدمات اللوجستية متعددة الوسائط.",
-        "أسطول حديث وقواعد لوجستية استراتيجية تغطي كامل التراب الوطني.",
-        "رائد في قوافل النقل التجاري عبر الصحراء نحو دول الساحل والأسواق الإفريقية."
-      ]
-    }
   }
 ];
 
 export const partnersData: Partner[] = partners;
-export default partners;
