@@ -32,7 +32,7 @@ export default function SponsorshipPackages() {
   const [expanded, setExpanded] = useState(false);
 
   const formatPrice = (price: number) =>
-    price.toLocaleString(language === "ar" ? "ar-DZ" : "fr-DZ") + " " + t("packages.da");
+    price.toLocaleString(language === "ar" ? "ar-DZ" : "en-US") + " " + t("packages.da");
 
   const visibleBenefits = expanded ? packageBenefits : packageBenefits.slice(0, 9);
 
@@ -59,7 +59,7 @@ export default function SponsorshipPackages() {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-3.5 py-1 rounded-md text-xs font-bold uppercase tracking-widest bg-[#F05A22] text-white mb-3 shadow-sm">
-            {language === "ar" ? "باقات الرعاية والظهور" : "Offres & Packs Partenaires"}
+            {language === "ar" ? "باقات الرعاية والظهور" : "Exhibitor & Sponsoring Packages"}
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mt-2 text-balance leading-tight">
             {t("packages.title")}
@@ -109,7 +109,7 @@ export default function SponsorshipPackages() {
                             <span className="w-4 h-4 shrink-0 mt-1 flex items-center justify-center text-slate-200 font-bold">—</span>
                           )}
                           <span className={has ? "text-slate-700 font-bold" : "text-slate-300 line-through opacity-50 font-medium"}>
-                            {language === "ar" ? benefit.label.ar : benefit.label.fr}
+                            {language === "ar" ? benefit.label.ar : (benefit.label.en || benefit.label.fr)}
                           </span>
                         </div>
                       );
@@ -162,7 +162,7 @@ export default function SponsorshipPackages() {
               {visibleBenefits.map((benefit, idx) => (
                 <tr key={idx} className="hover:bg-his-cream/20 transition-colors">
                   <td className="p-4 text-slate-700 text-xs md:text-sm font-semibold">
-                    {language === "ar" ? benefit.label.ar : benefit.label.fr}
+                    {language === "ar" ? benefit.label.ar : (benefit.label.en || benefit.label.fr)}
                   </td>
                   {["bronze", "silver", "gold"].map((tier) => (
                     <td key={tier} className={`p-4 text-center ${tier === "gold" ? "bg-his-gold/3 border-x b-alpha-gold/30" : ""}`}>

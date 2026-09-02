@@ -1,5 +1,138 @@
 [
   {
+    "id": "lead_1788342595165_pfmv0",
+    "companyName": "Les Laboratoires Frater Razes",
+    "representativeName": "ZITOUNI Maya",
+    "role": "coordinatrice RH",
+    "email": "ma.zitouni@frater-razes.com",
+    "phone": "0550034894",
+    "representativesCount": 3,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ],
+    "targetProfiles": "profils avec cursus scientifiques et autres",
+    "equipmentNeeded": "",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-09-02T09:49:55.165Z",
+    "createdAt": "2026-09-02T09:49:55.205Z",
+    "updatedAt": "2026-09-02T10:30:02.360Z"
+  },
+  {
+    "id": "lead_1788095067613_gjr0f",
+    "companyName": "TECHNO STATIONERY",
+    "representativeName": "BELANAGUE Hadj Mohammed",
+    "role": "Marketing RH",
+    "email": "hadjmohammed.be@techno-dz.com",
+    "phone": "0560327497",
+    "representativesCount": 4,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ],
+    "targetProfiles": "Comptabilité – Finance – Gestion & Économie\nMarketing – Marketing Digital\nRessources Humaines – Administration\nSystèmes d’Information – Intelligence Artificielle\nGestion de Projets – Hygiène, Sécurité & Environnement (HSE)\nLogistique – Gestion des Stocks – Achats\nTechnique & Industrie\nVentes – Ventes B2B",
+    "equipmentNeeded": "\tBanners \n\tDrapeau TECHNO\n\tCadeaux\n\tFlayer\n\tCartes visite",
+    "remarks": "\tTable\n\tChaises",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-08-30T13:04:27.613Z",
+    "createdAt": "2026-08-30T13:04:28.152Z",
+    "updatedAt": "2026-08-30T15:40:24.558Z"
+  },
+  {
+    "id": "lead_1788073116527_0ousc",
+    "companyName": "CPH",
+    "representativeName": "Lokmane BOUHOUN",
+    "role": "Responsable de recrutement et de la formation",
+    "email": "lokmane.bouhoun@groupe-cph.com",
+    "phone": "0776542490",
+    "representativesCount": 4,
+    "opportunities": [
+      "pfe",
+      "emploi"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "Roll-up, pop-up, drapeau",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-08-30T06:58:36.527Z",
+    "createdAt": "2026-08-30T06:58:36.551Z",
+    "updatedAt": "2026-08-30T12:23:00.341Z"
+  },
+  {
+    "id": "lead_1787840869449_6ns5y",
+    "companyName": "Ouedkniss SARL",
+    "representativeName": "Chikouche Sabrina",
+    "role": "Responsable Communication et Infograhie",
+    "email": "c.sabrina@ouedkniss.com",
+    "phone": "0541657359",
+    "representativesCount": 4,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "Desk + roll up",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-08-27T14:27:49.449Z",
+    "createdAt": "2026-08-27T14:27:49.461Z",
+    "updatedAt": "2026-08-29T19:55:06.292Z"
+  },
+  {
+    "id": "lead_1787146853219_durmv",
+    "companyName": "Sarl Wafa Faile",
+    "representativeName": "LALAMI Yasmine",
+    "role": "HRBP",
+    "email": "lalami.yasmine@wafafaile.net",
+    "phone": "0560020579",
+    "representativesCount": 4,
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "2 Roll-up, fiche code QR pour candidater",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-08-19T13:40:53.219Z",
+    "createdAt": "2026-08-19T13:40:53.226Z",
+    "updatedAt": "2026-08-19T22:09:15.965Z"
+  },
+  {
+    "id": "lead_1787053371630_lobo3",
+    "companyName": "MAGHREB LEASING ALGERIE",
+    "representativeName": "BOUBRIT Leïla",
+    "role": "Responsable Formation et Recrutement",
+    "email": "leila.boubritokbi@mla.dz",
+    "phone": "0561857601",
+    "representativesCount": 2,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "decouverte",
+      "immersion"
+    ],
+    "targetProfiles": "Finances/Banque, Informatique, Commerciaux, juridique",
+    "equipmentNeeded": "Roll-up",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-08-18T11:42:51.630Z",
+    "createdAt": "2026-08-18T11:42:51.632Z",
+    "updatedAt": "2026-08-18T14:35:37.972Z"
+  },
+  {
+    "id": "lead_1786622173707_3gfw1",
     "companyName": "SPA MOUSTACHIR",
     "representativeName": "BAHNAS Younes",
     "role": "Directeur Marketing",
@@ -16,11 +149,13 @@
     "equipmentNeeded": "Supports marketing , Flayers , Rollups , Pc .. etc",
     "remarks": "tables et des chaises je pense seulement",
     "packageDesired": "Exposant",
-    "id": "lead_1786622173707_3gfw1",
     "status": "Confirmé",
-    "submittedAt": "2026-08-13T11:56:13.707Z"
+    "submittedAt": "2026-08-13T11:56:13.707Z",
+    "createdAt": "2026-08-17T16:36:12.568Z",
+    "updatedAt": "2026-08-30T13:38:10.096Z"
   },
   {
+    "id": "lead_1786612817101_h37c9",
     "companyName": "SARL AYAM",
     "representativeName": "HAIFI ABDELOUAHAB",
     "role": "RESPONSABLE RH",
@@ -36,11 +171,13 @@
     "equipmentNeeded": "FLYERS",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786612817101_h37c9",
     "status": "En cours",
-    "submittedAt": "2026-08-13T09:20:17.101Z"
+    "submittedAt": "2026-08-13T09:20:17.101Z",
+    "createdAt": "2026-08-17T16:36:12.584Z",
+    "updatedAt": "2026-08-30T13:38:10.174Z"
   },
   {
+    "id": "lead_1786536638514_scgrs",
     "companyName": "CANHYGINEN",
     "representativeName": "AMINA SADOU",
     "role": "MANAGER DEVELOPPEMENT",
@@ -55,11 +192,13 @@
     "equipmentNeeded": "UNE Baner",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786536638514_scgrs",
     "status": "Confirmé",
-    "submittedAt": "2026-08-12T12:10:38.514Z"
+    "submittedAt": "2026-08-12T12:10:38.514Z",
+    "createdAt": "2026-08-17T16:36:12.601Z",
+    "updatedAt": "2026-08-30T13:38:10.211Z"
   },
   {
+    "id": "lead_1786374061037_qzlog",
     "companyName": "Gam assurance",
     "representativeName": "ouadah sabrina",
     "role": "manager développement RH",
@@ -74,11 +213,13 @@
     "equipmentNeeded": "banners shops flayer",
     "remarks": "table espace ou mettre se matérielle",
     "packageDesired": "Exposant",
-    "id": "lead_1786374061037_qzlog",
     "status": "Confirmé",
-    "submittedAt": "2026-08-10T15:01:01.037Z"
+    "submittedAt": "2026-08-10T15:01:01.037Z",
+    "createdAt": "2026-08-17T16:36:12.608Z",
+    "updatedAt": "2026-08-30T13:38:10.244Z"
   },
   {
+    "id": "lead_1786363483142_orys7",
     "companyName": "EURL OUM DARMAN ENTREPOT PUBLIC",
     "representativeName": "Med Nadji LAHMARI",
     "role": "Directeur de la promotion commerciale",
@@ -94,11 +235,13 @@
     "equipmentNeeded": "un Snapap\nUn dex ( Petit bureu )\nQlq chaises",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786363483142_orys7",
     "status": "Confirmé",
-    "submittedAt": "2026-08-10T12:04:43.142Z"
+    "submittedAt": "2026-08-10T12:04:43.142Z",
+    "createdAt": "2026-08-17T16:36:12.616Z",
+    "updatedAt": "2026-08-30T13:38:10.253Z"
   },
   {
+    "id": "lead_1786302038327_hi7ng",
     "companyName": "BortoCall",
     "representativeName": "Billel AMIOUR",
     "role": "Directeur des opérations",
@@ -112,11 +255,13 @@
     "equipmentNeeded": "Roll-up",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786302038327_hi7ng",
     "status": "Confirmé",
-    "submittedAt": "2026-08-09T19:00:38.327Z"
+    "submittedAt": "2026-08-09T19:00:38.327Z",
+    "createdAt": "2026-08-17T16:36:12.624Z",
+    "updatedAt": "2026-08-30T13:38:10.263Z"
   },
   {
+    "id": "lead_1786277155406_mjj5z",
     "companyName": "VİTRİN CLİNİC",
     "representativeName": "Lazhari BEKKARİ",
     "role": "Manager",
@@ -132,11 +277,13 @@
     "equipmentNeeded": "Roll up, flyers, ...",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786277155406_mjj5z",
     "status": "En cours",
-    "submittedAt": "2026-08-09T12:05:55.406Z"
+    "submittedAt": "2026-08-09T12:05:55.406Z",
+    "createdAt": "2026-08-17T16:36:12.632Z",
+    "updatedAt": "2026-08-30T13:38:10.276Z"
   },
   {
+    "id": "lead_1786272150222_is1m9",
     "companyName": "ZAD AI",
     "representativeName": "Rayan Ibrahim Benatallah",
     "role": "General manager",
@@ -151,11 +298,13 @@
     "equipmentNeeded": "2 banners, notebooks, pens",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786272150222_is1m9",
     "status": "Confirmé",
-    "submittedAt": "2026-08-09T10:42:30.222Z"
+    "submittedAt": "2026-08-09T10:42:30.222Z",
+    "createdAt": "2026-08-17T16:36:12.638Z",
+    "updatedAt": "2026-08-30T13:38:10.287Z"
   },
   {
+    "id": "lead_1786271815110_kdi5j",
     "companyName": "SARL SOFICLEF",
     "representativeName": "CHANANE MOHAMED RAFIK",
     "role": "Responsable Emplois et Compétences",
@@ -172,11 +321,13 @@
     "equipmentNeeded": "Banners  muralle\nflayers",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786271815110_kdi5j",
     "status": "Confirmé",
-    "submittedAt": "2026-08-09T10:36:55.110Z"
+    "submittedAt": "2026-08-09T10:36:55.110Z",
+    "createdAt": "2026-08-17T16:36:12.649Z",
+    "updatedAt": "2026-08-30T13:38:10.296Z"
   },
   {
+    "id": "lead_1786260926128_9gymc",
     "companyName": "SARL AFC INDUSTRY",
     "representativeName": "Yasmine Ramdani",
     "role": "Chargée d'événementiel",
@@ -193,11 +344,13 @@
     "equipmentNeeded": "Flyers, roll up",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1786260926128_9gymc",
     "status": "Confirmé",
-    "submittedAt": "2026-08-09T07:35:26.128Z"
+    "submittedAt": "2026-08-09T07:35:26.128Z",
+    "createdAt": "2026-08-17T16:36:12.656Z",
+    "updatedAt": "2026-08-30T13:38:10.310Z"
   },
   {
+    "id": "lead_1786017516645_4d4ra",
     "companyName": "HYDRAPHARM Groupe",
     "representativeName": "Racha Yasmine BENDRIS",
     "role": "Talent Acquisition Specialist",
@@ -212,11 +365,13 @@
     "equipmentNeeded": "Tablettes et banners",
     "remarks": "/",
     "packageDesired": "Exposant",
-    "id": "lead_1786017516645_4d4ra",
     "status": "Confirmé",
-    "submittedAt": "2026-08-06T11:58:36.645Z"
+    "submittedAt": "2026-08-06T11:58:36.645Z",
+    "createdAt": "2026-08-17T16:36:12.663Z",
+    "updatedAt": "2026-08-30T13:38:10.318Z"
   },
   {
+    "id": "lead_1785857696100_w9xhc",
     "companyName": "Laboratoires Merinal",
     "representativeName": "Selma Goumeziane",
     "role": "Chargée de communication interne",
@@ -232,11 +387,13 @@
     "equipmentNeeded": "",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1785857696100_w9xhc",
     "status": "Confirmé",
-    "submittedAt": "2026-08-04T15:34:56.101Z"
+    "submittedAt": "2026-08-04T15:34:56.101Z",
+    "createdAt": "2026-08-17T16:36:12.670Z",
+    "updatedAt": "2026-08-30T13:38:10.322Z"
   },
   {
+    "id": "lead_1785768194136_xyceh",
     "companyName": "KAOUA FOOD",
     "representativeName": "ZEBOUCHI MOHAMED",
     "role": "DRH",
@@ -251,11 +408,13 @@
     "equipmentNeeded": "desk",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1785768194136_xyceh",
     "status": "Confirmé",
-    "submittedAt": "2026-08-03T14:43:14.136Z"
+    "submittedAt": "2026-08-03T14:43:14.136Z",
+    "createdAt": "2026-08-17T16:36:12.677Z",
+    "updatedAt": "2026-08-30T13:38:10.327Z"
   },
   {
+    "id": "lead_1785764709493_vgokz",
     "companyName": "MFG",
     "representativeName": "Yamina BOUHINI",
     "role": "Responsable développement RH",
@@ -272,11 +431,13 @@
     "equipmentNeeded": "banners , flyers..etc",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1785764709493_vgokz",
     "status": "Confirmé",
-    "submittedAt": "2026-08-03T13:45:09.493Z"
+    "submittedAt": "2026-08-03T13:45:09.493Z",
+    "createdAt": "2026-08-17T16:36:12.687Z",
+    "updatedAt": "2026-08-30T13:38:10.333Z"
   },
   {
+    "id": "lead_1785671872976_5kdpm",
     "companyName": "HIBOU CONSULTING RH",
     "representativeName": "ABDERRAHIM HAMMADI",
     "role": "gérant",
@@ -291,8 +452,9 @@
     "equipmentNeeded": "Roll up -2-",
     "remarks": "",
     "packageDesired": "Exposant",
-    "id": "lead_1785671872976_5kdpm",
     "status": "Confirmé",
-    "submittedAt": "2026-08-02T11:57:52.976Z"
+    "submittedAt": "2026-08-02T11:57:52.976Z",
+    "createdAt": "2026-08-17T16:36:12.693Z",
+    "updatedAt": "2026-08-30T13:38:10.344Z"
   }
 ]

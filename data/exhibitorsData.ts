@@ -6,14 +6,17 @@ export type Exhibitor = {
 };
 
 export const verifiedExhibitors2025: Exhibitor[] = [
+  { name: "SATIM", logo: "/partners/2025/satim.png", edition: "2025", website: "https://www.satim.dz" },
   { name: "HIS University", logo: "/partners/2025/his-university.png", edition: "2025", website: "https://his.edu.dz" },
   { name: "HIS Training Center", logo: "/shared/his-training-center.png", edition: "2025", website: "https://his.edu.dz" },
   { name: "IRAcademy", logo: "/shared/iracademy.png", edition: "2025", website: "https://his.edu.dz" },
   { name: "Profex", logo: "/partners/2025/prophex.png", edition: "2025", website: "https://www.profex.dz" },
-  { name: "Faderco", logo: "/partners/2025/faderco.png", edition: "2025" },
+  { name: "Faderco", logo: "/partners/2025/faderco.png", edition: "2025", website: "https://faderco.co" },
+  { name: "Henkel", logo: "/partners/2025/henkel.png", edition: "2025", website: "https://www.henkel-algerie.com" },
+  { name: "DealZone", logo: "/partners/2025/dealzone.png", edition: "2025", website: "https://www.dealzone.dz" },
+  { name: "Groupe Logitrans", logo: "/partners/2025/logitrans.png", edition: "2025", website: "https://www.logitrans.dz" },
   { name: "Cevital", logo: "/partners/2025/cevital.png", edition: "2025" },
   { name: "Djezzy", logo: "/partners/2025/djezzy.png", edition: "2025" },
-  { name: "Henkel", logo: "/partners/2025/henkel.png", edition: "2025" },
   { name: "SAA Assurances", logo: "/partners/2025/saa-assurances.png", edition: "2025" },
   { name: "GAM Assurances", logo: "/partners/2025/gam-assurances.png", edition: "2025" },
   { name: "GIG Algeria", logo: "/partners/2025/gig.png", edition: "2025" },
@@ -26,7 +29,6 @@ export const verifiedExhibitors2025: Exhibitor[] = [
   { name: "CyBears", logo: "/partners/2025/cybears.png", edition: "2025" },
   { name: "Beyn", logo: "/partners/2025/beyn.png", edition: "2025" },
   { name: "Canbebe", logo: "/partners/2025/canbebe.png", edition: "2025" },
-  { name: "DealZone", logo: "/partners/2025/dealzone.png", edition: "2025" },
   { name: "Sylabs", logo: "/partners/2025/sylabs.png", edition: "2025" },
   { name: "DZ-IT", logo: "/partners/2025/dz-it.png", edition: "2025" },
   { name: "Benslimane & Partners", logo: "/partners/2025/benslimane-partners.png", edition: "2025" },
@@ -36,14 +38,17 @@ export const verifiedExhibitors2025: Exhibitor[] = [
 ];
 
 export const verifiedExhibitors2024: Exhibitor[] = [
+  { name: "SATIM", logo: "/partners/2024/satim.png", edition: "2024", website: "https://www.satim.dz" },
+  { name: "Profex", logo: "/partners/2024/prophex.png", edition: "2024", website: "https://www.profex.dz" },
+  { name: "Hayat", logo: "/partners/2024/hayat.png", edition: "2024", website: "https://www.hayat.com.tr" },
+  { name: "El Djazair Takaful", logo: "/partners/2024/el-djazair-takaful.png", edition: "2024", website: "https://www.eldjazairtakaful.dz" },
+  { name: "El Kendi", logo: "/partners/2024/elkendi.png", edition: "2024", website: "https://www.elkendi.com" },
   { name: "HIS Training Center", logo: "/shared/his-training-center.png", edition: "2024", website: "https://his.edu.dz" },
   { name: "IRAcademy", logo: "/shared/iracademy.png", edition: "2024" },
   { name: "Apollo", edition: "2024" },
   { name: "Cabcof", edition: "2024" },
   { name: "CASH Assurances", edition: "2024" },
   { name: "DZ Déclic", edition: "2024" },
-  { name: "Algeria Takaful", edition: "2024" },
-  { name: "El Kendi", edition: "2024" },
   { name: "Fransabank", edition: "2024" },
   { name: "Comet Coworking", edition: "2024" },
   { name: "Innovation School", edition: "2024" },

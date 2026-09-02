@@ -2,41 +2,43 @@ export type Partner = {
   name: string;
   slug: string;
   logo: string;
-  edition: 2026 | 2025 | 2024;
-  sponsorTier?: "official" | "gold" | "silver" | "bronze";
+  edition: number;
+  tier?: "Gold" | "Silver" | "Bronze" | "official" | "gold" | "silver" | "bronze";
+  sponsorTier?: "gold" | "silver" | "bronze" | "official";
   featured?: boolean;
   description?: {
-    fr: string;
-    ar: string;
+    en?: string;
+    fr?: string;
+    ar?: string;
   };
   website?: string;
   keyPoints?: {
-    fr: string[];
-    ar: string[];
+    en?: string[];
+    fr?: string[];
+    ar?: string[];
   };
 };
 
-export const partnersData: Partner[] = [
-  // HFT 2026 Confirmed Sponsors & Partners
+export const partners: Partner[] = [
   {
-    name: "SATIM",
-    slug: "satim",
-    logo: "/partners/2026/satim.png",
-    edition: 2026,
-    sponsorTier: "silver",
-    featured: true,
-    description: {
-      fr: "SATIM (Société d'Automatisations des Transactions Interbancaires et de Monétique) est la société centrale d'interbancarité et de monétique en Algérie. Elle gère le réseau national de paiement électronique et de cartes bancaires interbancaires (CIB).",
-      ar: "شركة ساتيم (SATIM - الشركة التلقائية للمعاملات بين البنوك والدفع الإلكتروني) هي المؤسسة الوطنية المرجعية للبطاقات البنكية والدفع الإلكتروني في الجزائر (CIB)."
+    "name": "SATIM",
+    "slug": "satim",
+    "logo": "/partners/2026/satim.png",
+    "edition": 2026,
+    "sponsorTier": "silver",
+    "featured": true,
+    "description": {
+      "fr": "SATIM (Société d'Automatisations des Transactions Interbancaires et de Monétique) est la société centrale d'interbancarité et de monétique en Algérie. Elle gère le réseau national de paiement électronique et de cartes bancaires interbancaires (CIB).",
+      "ar": "شركة ساتيم (SATIM - الشركة التلقائية للمعاملات بين البنوك والدفع الإلكتروني) هي المؤسسة الوطنية المرجعية للبطاقات البنكية والدفع الإلكتروني في الجزائر (CIB)."
     },
-    website: "https://www.satim.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.satim.dz",
+    "keyPoints": {
+      "fr": [
         "Société nationale d'automatisations des transactions interbancaires et de monétique en Algérie.",
         "Opérateur et gestionnaire officiel du réseau de cartes bancaires CIB et du paiement en ligne.",
         "Sponsor Argent Officiel (Silver Sponsor) de HIS Future Talents 2026."
       ],
-      ar: [
+      "ar": [
         "المؤسسة الوطنية الرائدة في تسيير الشبكة البنكية للدفع الإلكتروني والبطاقات البنكية CIB.",
         "الراعي الفضي الرسمي (Silver Sponsor) لصالون HIS Future Talents 2026.",
         "داعم استراتيجي للابتكار والتحول الرقمي المالي والتوظيف في الجزائر."
@@ -44,24 +46,24 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "PROPHEX",
-    slug: "prophex",
-    logo: "/partners/2025/prophex.png",
-    edition: 2026,
-    sponsorTier: "bronze",
-    featured: true,
-    description: {
-      fr: "Profex est une entreprise spécialisée dans le domaine de la fabrication de produits de soins et de dispositifs médicaux de haute qualité, répondant aux exigences réglementaires et normatives internationales.",
-      ar: "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
+    "name": "PROPHEX",
+    "slug": "prophex",
+    "logo": "/partners/2025/prophex.png",
+    "edition": 2026,
+    "sponsorTier": "bronze",
+    "featured": true,
+    "description": {
+      "fr": "Profex est une entreprise spécialisée dans le domaine de la fabrication de produits de soins et de dispositifs médicaux de haute qualité, répondant aux exigences réglementaires et normatives internationales.",
+      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
     },
-    website: "https://www.profex.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.profex.dz",
+    "keyPoints": {
+      "fr": [
         "Fabrication de produits de soins et de dispositifs médicaux certifiés.",
         "Conformité avec les normes internationales de qualité et de sécurité.",
         "Sponsor Bronze Officiel de HIS Future Talents 2026."
       ],
-      ar: [
+      "ar": [
         "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
         "الامتثال للمعايير الدولية للجودة والسلامة.",
         "الراعي البرونزي الرسمي لصالون HIS Future Talents 2026."
@@ -69,22 +71,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "HIS University",
-    slug: "his-university",
-    logo: "/partners/2025/his-university.png",
-    edition: 2025,
-    description: {
-      fr: "HIS University (Higher Institute of Sciences / Institut Supérieur des Sciences) est le premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie. Situé à Alger, il propose des formations de niveau Licence, Master et Doctorat orientées vers l'excellence académique et l'innovation.",
-      ar: "جامعة معهد العلوم العالي (HIS University / Higher Institute of Sciences) هي أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة من الدولة في الجزائر. تقع في الجزائر العاصمة، وتقدم برامج الليسانس والماستر والدكتوراه الموجهة نحو التميز الأكاديمي والابتكار."
+    "name": "HIS University",
+    "slug": "his-university",
+    "logo": "/partners/2025/his-university.png",
+    "edition": 2025,
+    "description": {
+      "fr": "HIS University (Higher Institute of Sciences / Institut Supérieur des Sciences) est le premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie. Situé à Alger, il propose des formations de niveau Licence, Master et Doctorat orientées vers l'excellence académique et l'innovation.",
+      "ar": "جامعة معهد العلوم العالي (HIS University / Higher Institute of Sciences) هي أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة من الدولة في الجزائر. تقع في الجزائر العاصمة، وتقدم برامج الليسانس والماستر والدكتوراه الموجهة نحو التميز الأكاديمي والابتكار."
     },
-    website: "https://his.edu.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://his.edu.dz",
+    "keyPoints": {
+      "fr": [
         "Premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie.",
         "Programmes académiques d'excellence conçus pour l'insertion professionnelle et l'innovation.",
         "Partenariats académiques et industriels solides au niveau national et international."
       ],
-      ar: [
+      "ar": [
         "أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة رسمياً من الدولة في الجزائر.",
         "برامج أكاديمية متميزة مصممة لتلبية متطلبات سوق العمل والابتكار.",
         "شراكات أكاديمية وصناعية متينة على المستويين الوطني والدولي."
@@ -92,22 +94,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "IRAcademy By HIS University",
-    slug: "iracademy",
-    logo: "/shared/iracademy.png",
-    edition: 2025,
-    description: {
-      fr: "IRAcademy (International Research Academy) est un centre de formation linguistique et de préparation aux certifications internationales, affilié à HIS University (Higher Institute of Sciences) d'Alger. Basé à Bordj El Bahri, l'établissement propose des cursus intensifs en langues étrangères et un accompagnement complet pour les études à l'étranger.",
-      ar: "آي آر أكاديمي (IRAcademy) هي مركز للتكوين اللغوي والتحضير للشهادات الدولية، تابعة لجامعة (HIS University) بالجزائر العاصمة. تقدم الأكاديمية دورات مكثفة في اللغات الأجنبية ومرافقة كاملة لمشاريع الدراسة في الخارج."
+    "name": "IRAcademy By HIS University",
+    "slug": "iracademy",
+    "logo": "/shared/iracademy.png",
+    "edition": 2025,
+    "description": {
+      "fr": "IRAcademy (International Research Academy) est un centre de formation linguistique et de préparation aux certifications internationales, affilié à HIS University (Higher Institute of Sciences) d'Alger. Basé à Bordj El Bahri, l'établissement propose des cursus intensifs en langues étrangères et un accompagnement complet pour les études à l'étranger.",
+      "ar": "آي آر أكاديمي (IRAcademy) هي مركز للتكوين اللغوي والتحضير للشهادات الدولية، تابعة لجامعة (HIS University) بالجزائر العاصمة. تقدم الأكاديمية دورات مكثفة في اللغات الأجنبية ومرافقة كاملة لمشاريع الدراسة في الخارج."
     },
-    website: "https://his.edu.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://his.edu.dz",
+    "keyPoints": {
+      "fr": [
         "Centre de langues et de préparation aux certifications internationales (TOEIC, TFI).",
         "Affilié à HIS University, premier institut d'enseignement supérieur privé multidisciplinaire d'Algérie.",
         "Accompagnement personnalisé pour l'orientation académique et la mobilité internationale."
       ],
-      ar: [
+      "ar": [
         "مركز للغات والتحضير للامتحانات والشهادات الدولية المعتمدة (TOEIC و TFI).",
         "تابع لجامعة (HIS University)، أول معهد تعليم عالي خاص متعدد التخصصات في الجزائر.",
         "مرافقة وتوجيه مخصص للطلبة الراغبين في مواصلة دراستهم بالخارج."
@@ -115,22 +117,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "HIS Training Center",
-    slug: "his-training-center",
-    logo: "/shared/his-training-center.png",
-    edition: 2025,
-    description: {
-      fr: "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
-      ar: "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
+    "name": "HIS Training Center",
+    "slug": "his-training-center",
+    "logo": "/shared/his-training-center.png",
+    "edition": 2025,
+    "description": {
+      "fr": "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
+      "ar": "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
     },
-    website: "https://his.edu.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://his.edu.dz",
+    "keyPoints": {
+      "fr": [
         "Centre de formation continue et de perfectionnement professionnel de HIS University.",
         "Formations qualifiantes et ateliers pratiques adaptés aux exigences du marché du travail.",
         "Accompagnement des étudiants et professionnels dans le développement de leurs compétences."
       ],
-      ar: [
+      "ar": [
         "مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي.",
         "دورات تدريبية متخصصة وورش عمل تطبيقية تتماشى مع متطلبات سوق العمل.",
         "مرافقة الطلبة والمهنيين لتطوير مهاراتهم وتدعيم خبراتهم العملية."
@@ -138,46 +140,45 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Profex",
-    slug: "profex",
-    logo: "/partners/2025/prophex.png",
-    edition: 2025,
-    description: {
-      fr: "Profex est une entreprise spécialisée dans le domaine de la fabrication de produits de soins et de dispositifs médicaux de haute qualité, répondant aux exigences réglementaires et normatives internationales.",
-      ar: "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
+    "name": "Profex",
+    "slug": "profex",
+    "logo": "/partners/2025/prophex.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Profex est une entreprise spécialisée dans le domaine de la fabrication de produits de soins et de dispositifs médicaux de haute qualité, répondant aux exigences réglementaires et normatives internationales.",
+      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
     },
-    website: "https://www.profex.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.profex.dz",
+    "keyPoints": {
+      "fr": [
         "Fabrication de produits de soins et de dispositifs médicaux certifiés.",
         "Conformité avec les normes internationales de qualité et de sécurité.",
         "Marque de confiance pour les professionnels de la santé et les consommateurs."
       ],
-      ar: [
+      "ar": [
         "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
         "الامتثال للمعايير الدولية للجودة والسلامة.",
         "علامة تجارية موثوقة لمهنيي الصحة والمستهلكين على حد سواء."
       ]
     }
   },
-
   {
-    name: "SATIM",
-    slug: "satim",
-    logo: "/partners/2025/satim.png",
-    edition: 2025,
-    description: {
-      fr: "SATIM (Société d’Automatisation des Transactions Interbancaires et de Monétique) est l’opérateur national responsable de l'infrastructure de paiement électronique en Algérie. Fondée en 1995 par la communauté bancaire nationale, elle assure l'interopérabilité des paiements par carte bancaire (CIB et Edahabia) à travers son switch interbancaire.",
-      ar: "شركة ساتيم (شركة تسيير وسائط الدفع التلقائي بين البنوك) هي المتعامل الوطني المسؤول عن البنية التحتية للدفع الإلكتروني في الجزائر. تأسست عام 1995 بمبادرة من المجموعة البنكية الجزائرية، وتضمن التشغيل البيني لبطاقات الدفع (CIB والذهبية) عبر مقسمها البنكي المشترك."
+    "name": "SATIM",
+    "slug": "satim",
+    "logo": "/partners/2025/satim.png",
+    "edition": 2025,
+    "description": {
+      "fr": "SATIM (Société d’Automatisation des Transactions Interbancaires et de Monétique) est l’opérateur national responsable de l'infrastructure de paiement électronique en Algérie. Fondée en 1995 par la communauté bancaire nationale, elle assure l'interopérabilité des paiements par carte bancaire (CIB et Edahabia) à travers son switch interbancaire.",
+      "ar": "شركة ساتيم (شركة تسيير وسائط الدفع التلقائي بين البنوك) هي المتعامل الوطني المسؤول عن البنية التحتية للدفع الإلكتروني في الجزائر. تأسست عام 1995 بمبادرة من المجموعة البنكية الجزائرية، وتضمن التشغيل البيني لبطاقات الدفع (CIB والذهبية) عبر مقسمها البنكي المشترك."
     },
-    website: "https://www.satim.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.satim.dz",
+    "keyPoints": {
+      "fr": [
         "Gère le switch monétique interbancaire reliant les banques algériennes et Algérie Poste.",
         "Certifie et sécurise les terminaux de paiement (TPE) et les distributeurs automatiques (DAB/GAB) selon les normes internationales.",
         "Fournit la passerelle nationale de paiement en ligne sécurisée pour le e-commerce."
       ],
-      ar: [
+      "ar": [
         "إدارة مقسم الدفع الإلكتروني المشترك الذي يربط البنوك الجزائرية وبريد الجزائر.",
         "اعتماد وتأمين أجهزة الدفع الإلكتروني (TPE) والموزعات الآلية (DAB/GAB) وفقًا للمعايير الدولية.",
         "توفير البوابة الوطنية الآمنة للدفع الإلكتروني عبر الإنترنت لدعم التجارة الإلكترونية."
@@ -185,22 +186,28 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Faderco",
-    slug: "faderco",
-    logo: "/partners/2025/faderco.png",
-    edition: 2025,
-    description: {
-      fr: "Faderco est une entreprise algérienne de premier plan fondée en 1986, spécialisée dans la fabrication de produits d'hygiène corporelle. Leader du marché national, elle s'est développée à travers une intégration verticale majeure (ouate de cellulose, distribution) et un fort développement à l'exportation.",
-      ar: "فاديركو هي شركة جزائرية رائدة تأسست عام 1986، متخصصة في صناعة منتجات النظافة الشخصية والمنزلية. وهي رائدة في السوق الوطنية، وتوسعت بشكل كبير من خلال استراتيجية متكاملة للتصنيع والتوزيع وخطط طموحة للتصدير."
+    "name": "Faderco",
+    "slug": "faderco",
+    "logo": "/partners/2025/faderco.png",
+    "edition": 2025,
+    "description": {
+      "en": "Faderco is a leading Algerian hygiene and personal care manufacturing group founded in 1986. An undisputed national industry leader, it has achieved vertical integration with state-of-the-art cellulose wadding production and extensive international export distribution.",
+      "fr": "Faderco est une entreprise algérienne de premier plan fondée en 1986, spécialisée dans la fabrication de produits d'hygiène corporelle. Leader du marché national, elle s'est développée à travers une intégration verticale majeure (ouate de cellulose, distribution) et un fort développement à l'exportation.",
+      "ar": "فاديركو هي شركة جزائرية رائدة تأسست عام 1986، متخصصة في صناعة منتجات النظافة الشخصية والمنزلية. وهي رائدة في السوق الوطنية، وتوسعت بشكل كبير من خلال استراتيجية متكاملة للتصنيع والتوزيع وخطط طموحة للتصدير."
     },
-    website: "https://faderco.co",
-    keyPoints: {
-      fr: [
+    "website": "https://faderco.co",
+    "keyPoints": {
+      "en": [
+        "Algerian market leader in personal and domestic hygiene since 1986.",
+        "Recognized consumer portfolio (Awane, Cotex, Bimbies, Bello).",
+        "Vertically integrated manufacturing hub with its own cellulose mill (Warak)."
+      ],
+      "fr": [
         "Leader algérien de l'hygiène corporelle et domestique depuis 1986.",
         "Portefeuille de marques reconnues (Awane, Cotex, Bimbies, Bello).",
         "Acteur industriel intégré avec sa propre usine de ouate de cellulose (Warak)."
       ],
-      ar: [
+      "ar": [
         "الرائد الجزائري في مجال النظافة الشخصية والمنزلية منذ عام 1986.",
         "مجموعة متنوعة من العلامات التجارية المعروفة (أوان، كوتكس، بيمبيز، بيلو).",
         "صرح صناعي متكامل يضم مصنعًا لإنتاج عجينة السليلوز (ورق)."
@@ -208,22 +215,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Cevital",
-    slug: "cevital",
-    logo: "/partners/2025/cevital.png",
-    edition: 2025,
-    description: {
-      fr: "Cevital est le premier groupe privé algérien et un acteur majeur de l'économie nationale. Fondé en 1998, ce conglomérat diversifié est le leader incontournable du secteur agroalimentaire en Algérie et en Afrique, tout en opérant dans l'industrie (verre plat, électroménager) et les services.",
-      ar: "مجمع سيفيتال هو أول مجمع خاص في الجزائر وفاعل رئيسي في الاقتصاد الوطني. تأسست عام 1998، ويعد هذا التكتل المتنوع الرائد بلا منازع في قطاع الصناعات الغذائية في الجزائر وإفريقيا، إلى جانب نشاطه في الصناعة (الزجاج المسطح، الأجهزة الكهرومنزلية) والخدمات."
+    "name": "Cevital",
+    "slug": "cevital",
+    "logo": "/partners/2025/cevital.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Cevital est le premier groupe privé algérien et un acteur majeur de l'économie nationale. Fondé en 1998, ce conglomérat diversifié est le leader incontournable du secteur agroalimentaire en Algérie et en Afrique, tout en opérant dans l'industrie (verre plat, électroménager) et les services.",
+      "ar": "مجمع سيفيتال هو أول مجمع خاص في الجزائر وفاعل رئيسي في الاقتصاد الوطني. تأسست عام 1998، ويعد هذا التكتل المتنوع الرائد بلا منازع في قطاع الصناعات الغذائية في الجزائر وإفريقيا، إلى جانب نشاطه في الصناعة (الزجاج المسطح، الأجهزة الكهرومنزلية) والخدمات."
     },
-    website: "https://www.cevital.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.cevital.com",
+    "keyPoints": {
+      "fr": [
         "Premier groupe privé d'Algérie avec plus de 18 000 collaborateurs.",
         "Leader de l'agro-industrie en Afrique (sucre, huiles de table, boissons).",
         "Conglomérat diversifié présent dans l'industrie (MFG, Brandt) et la logistique (Numilog)."
       ],
-      ar: [
+      "ar": [
         "أكبر مجمع خاص في الجزائر يضم أكثر من 18,000 موظف.",
         "رائد الصناعات الغذائية في إفريقيا (السكر، زيوت المائدة، المشروبات).",
         "مجمع صناعي وخدماتي متنوع يضم شركات رائدة مثل (MFG) للزجاج و(براندت)."
@@ -231,21 +238,21 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Techno Stationery",
-    slug: "techno-stationery",
-    logo: "/shared/techno-stationery.png",
-    edition: 2025,
-    description: {
-      fr: "Techno Stationery (Techno Moderne Stationery) est le leader algérien de la distribution de fournitures scolaires, de bureau, de matériel artistique (beaux-arts) et de consommables informatiques. Présente à travers de nombreux points de vente nationaux, l'entreprise est un partenaire privilégié du milieu éducatif et professionnel.",
-      ar: "تكنو ستاتيوني (شركة تكنو الحديثة للمكتبات) هي الشركة الرائدة في الجزائر في مجال توزيع المستلزمات المدرسية والمكتبية، والأدوات الفنية والتشكيلية، ومستهلكات الإعلام الآلي. ومن خلال شبكتها الواسعة من نقاط البيع الوطنية، تعد شريكًا أساسيًا للوسطين التعليمي والمهني."
+    "name": "Techno Stationery",
+    "slug": "techno-stationery",
+    "logo": "/shared/techno-stationery.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Techno Stationery (Techno Moderne Stationery) est le leader algérien de la distribution de fournitures scolaires, de bureau, de matériel artistique (beaux-arts) et de consommables informatiques. Présente à travers de nombreux points de vente nationaux, l'entreprise est un partenaire privilégié du milieu éducatif et professionnel.",
+      "ar": "تكنو ستاتيوني (شركة تكنو الحديثة للمكتبات) هي الشركة الرائدة في الجزائر في مجال توزيع المستلزمات المدرسية والمكتبية، والأدوات الفنية والتشكيلية، ومستهلكات الإعلام الآلي. ومن خلال شبكتها الواسعة من نقاط البيع الوطنية، تعد شريكًا أساسيًا للوسطين التعليمي والمهني."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Leader national dans la distribution de fournitures de bureau et scolaires.",
         "Gamme complète pour les professionnels, les étudiants et les artistes (Beaux-Arts).",
         "Réseau de magasins moderne s'étendant sur plusieurs wilayas d'Algérie (Alger, Sétif, Mostaganem)."
       ],
-      ar: [
+      "ar": [
         "الرائد الوطني في توزيع المستلزمات المكتبية والمدرسية.",
         "مجموعة كاملة موجهة للمهنيين، الطلاب، والرسامين (الفنون الجميلة).",
         "شبكة محلات حديثة تغطي عدة ولايات جزائرية (الجزائر العاصمة، سطيف، مستغانم)."
@@ -253,46 +260,51 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "MFG",
-    slug: "mfg",
-    logo: "/shared/mfg.png",
-    edition: 2025,
-    description: {
-      fr: "Mediterranean Float Glass (MFG), filiale du groupe Cevital fondée en 2007, est le leader de la production, de la transformation et de la distribution de verre plat en Afrique. Disposant d'un complexe industriel majeur à Larbaâ, l'entreprise exporte une grande partie de sa production vers l'Europe.",
-      ar: "شركة ميديترانيان فلوت غلاس (MFG)، وهي شركة فرعية تابعة لمجمع سيفيتال تأسست عام 2007، وتعد الرائد في إنتاج ومعالجة وتوزيع الزجاج المسطح في إفريقيا. تمتلك الشركة مجمعًا صناعيًا ضخمًا في الأربعاء، وتصدر جزءًا كبيرًا من إنتاجها إلى أوروبا."
+    "name": "MFG",
+    "slug": "mfg",
+    "logo": "/shared/mfg.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Mediterranean Float Glass (MFG), filiale du groupe Cevital fondée en 2007, est le leader de la production, de la transformation et de la distribution de verre plat en Afrique. Disposant d'un complexe industriel majeur à Larbaâ, l'entreprise exporte une grande partie de sa production vers l'Europe.",
+      "ar": "شركة ميديترانيان فلوت غلاس (MFG)، وهي شركة فرعية تابعة لمجمع سيفيتال تأسست عام 2007، وتعد الرائد في إنتاج ومعالجة وتوزيع الزجاج المسطح في إفريقيا. تمتلك الشركة مجمعًا صناعيًا ضخمًا في الأربعاء، وتصدر جزءًا كبيرًا من إنتاجها إلى أوروبا."
     },
-    website: "https://www.mfg.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.mfg.dz",
+    "keyPoints": {
+      "fr": [
         "Leader de la production et de la transformation de verre plat en Afrique.",
         "Filiale clé du groupe Cevital dotée d'une capacité de production de 1 400 tonnes par jour.",
         "Forte orientation internationale avec 70% de la production exportée vers l'Europe."
       ],
-      ar: [
+      "ar": [
         "الرائد في إنتاج ومعالجة الزجاج المسطح في إفريقيا.",
         "شركة تابعة لمجمع سيفيتال بطاقة إنتاجية تبلغ 1,400 طن يوميًا.",
         "حضور دولي قوي مع تصدير 70٪ من الإنتاج إلى الأسواق الأوروبية."
       ]
     }
   },
-  { name: "Bitr Transpo", slug: "bitr-transpo", logo: "/shared/bitr-transpo.png", edition: 2025 },
   {
-    name: "CASH Assurances",
-    slug: "cash-assurances",
-    logo: "/shared/cash-assurances.png",
-    edition: 2025,
-    description: {
-      fr: "CASH Assurances (Compagnie d'Assurances des Hydrocarbures) est une compagnie d'assurance algérienne de référence, filiale du groupe Sonatrach. Fondée en 1999, elle est spécialisée dans la couverture des risques industriels, des grands risques d'entreprises ainsi que des assurances de dommages pour les particuliers.",
-      ar: "شركة كاش للتأمينات (شركة تأمين المحروقات) هي شركة تأمينات جزائرية رائدة، وهي تابعة لمجمع سوناطراك. تأسست عام 1999، وتتخصص في تغطية المخاطر الصناعية، والمخاطر الكبرى للمؤسسات، بالإضافة إلى تأمينات الأضرار للأفراد."
+    "name": "Bitr Transpo",
+    "slug": "bitr-transpo",
+    "logo": "/shared/bitr-transpo.png",
+    "edition": 2025
+  },
+  {
+    "name": "CASH Assurances",
+    "slug": "cash-assurances",
+    "logo": "/shared/cash-assurances.png",
+    "edition": 2025,
+    "description": {
+      "fr": "CASH Assurances (Compagnie d'Assurances des Hydrocarbures) est une compagnie d'assurance algérienne de référence, filiale du groupe Sonatrach. Fondée en 1999, elle est spécialisée dans la couverture des risques industriels, des grands risques d'entreprises ainsi que des assurances de dommages pour les particuliers.",
+      "ar": "شركة كاش للتأمينات (شركة تأمين المحروقات) هي شركة تأمينات جزائرية رائدة، وهي تابعة لمجمع سوناطراك. تأسست عام 1999، وتتخصص في تغطية المخاطر الصناعية، والمخاطر الكبرى للمؤسسات، بالإضافة إلى تأمينات الأضرار للأفراد."
     },
-    website: "http://www.cash-assurances.dz",
-    keyPoints: {
-      fr: [
+    "website": "http://www.cash-assurances.dz",
+    "keyPoints": {
+      "fr": [
         "Leader national dans la gestion et la couverture des risques industriels et énergétiques.",
         "Filiale majeure du groupe pétrolier national Sonatrach.",
         "Offre une large gamme d'assurances de dommages pour les entreprises et les particuliers."
       ],
-      ar: [
+      "ar": [
         "الرائد الوطني في إدارة وتغطية المخاطر الصناعية ومخاطر الطاقة.",
         "شركة فرعية رئيسية لمجمع المحروقات الوطني سوناطراك.",
         "توفر مجموعة واسعة من تأمينات الأضرار للمؤسسات والأفراد."
@@ -300,22 +312,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "CAARAMA Assurance",
-    slug: "caprama",
-    logo: "/partners/2025/caprama.png",
-    edition: 2025,
-    description: {
-      fr: "CAARAMA Assurance est une compagnie d'assurance algérienne de premier plan, filiale de la CAAR (Compagnie Algérienne d'Assurance et de Réassurance). Fondée en 2011, elle est exclusivement spécialisée dans les assurances de personnes, incluant la prévoyance collective, la santé et l'assurance voyage.",
-      ar: "شركة كرامة للتأمين (CAARAMA Assurance) هي شركة تأمين جزائرية رائدة، وهي فرع من الشركة الجزائرية للتأمين وإعادة التأمين (CAAR). تأسست عام 2011، وتتخصص حصريًا في تأمينات الأشخاص، بما في ذلك التأمين الجماعي، والتأمين الصحي، وتأمين السفر."
+    "name": "CAARAMA Assurance",
+    "slug": "caprama",
+    "logo": "/partners/2025/caprama.png",
+    "edition": 2025,
+    "description": {
+      "fr": "CAARAMA Assurance est une compagnie d'assurance algérienne de premier plan, filiale de la CAAR (Compagnie Algérienne d'Assurance et de Réassurance). Fondée en 2011, elle est exclusivement spécialisée dans les assurances de personnes, incluant la prévoyance collective, la santé et l'assurance voyage.",
+      "ar": "شركة كرامة للتأمين (CAARAMA Assurance) هي شركة تأمين جزائرية رائدة، وهي فرع من الشركة الجزائرية للتأمين وإعادة التأمين (CAAR). تأسست عام 2011، وتتخصص حصريًا في تأمينات الأشخاص، بما في ذلك التأمين الجماعي، والتأمين الصحي، وتأمين السفر."
     },
-    website: "https://www.caarama.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.caarama.dz",
+    "keyPoints": {
+      "fr": [
         "Filiale spécialisée dans les assurances de personnes de la compagnie historique CAAR.",
         "Offre une gamme complète de prévoyance, de santé (Sihati) et d'assistance voyage (Moussafer).",
         "Pionnière dans les solutions de paiement et de souscription en ligne en Algérie."
       ],
-      ar: [
+      "ar": [
         "فرع متخصص في تأمين الأشخاص تابع للشركة التاريخية CAAR.",
         "توفر مجموعة كاملة من حلول التأمين على الحياة، الصحة (صحتي) وتأمين السفر (مسافر).",
         "رائدة في تقديم خدمات الدفع والاشتراك الإلكتروني عبر الإنترنت في الجزائر."
@@ -323,22 +335,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "SAA Assurances",
-    slug: "saa-assurances",
-    logo: "/partners/2025/saa-assurances.png",
-    edition: 2025,
-    description: {
-      fr: "La SAA (Société Nationale d’Assurance) est l'un des leaders historiques du marché des assurances en Algérie. Fondée en 1963, elle propose une vaste gamme de solutions d'assurances de dommages, de responsabilité civile et de couverture des risques pour plus de 2 millions de clients particuliers et professionnels.",
-      ar: "الشركة الوطنية للتأمين (SAA) هي إحدى الشركات التاريخية الرائدة في سوق التأمينات في الجزائر. تأسست عام 1963، وتقدم مجموعة واسعة من حلول تأمين الأضرار، المسؤولية المدنية، وتغطية المخاطر لأكثر من مليوني عميل من الأفراد والمهنيين."
+    "name": "SAA Assurances",
+    "slug": "saa-assurances",
+    "logo": "/partners/2025/saa-assurances.png",
+    "edition": 2025,
+    "description": {
+      "fr": "La SAA (Société Nationale d’Assurance) est l'un des leaders historiques du marché des assurances en Algérie. Fondée en 1963, elle propose une vaste gamme de solutions d'assurances de dommages, de responsabilité civile et de couverture des risques pour plus de 2 millions de clients particuliers et professionnels.",
+      "ar": "الشركة الوطنية للتأمين (SAA) هي إحدى الشركات التاريخية الرائدة في سوق التأمينات في الجزائر. تأسست عام 1963، وتقدم مجموعة واسعة من حلول تأمين الأضرار، المسؤولية المدنية، وتغطية المخاطر لأكثر من مليوني عميل من الأفراد والمهنيين."
     },
-    website: "http://www.saa.dz",
-    keyPoints: {
-      fr: [
+    "website": "http://www.saa.dz",
+    "keyPoints": {
+      "fr": [
         "Leader historique du marché algérien des assurances dommages depuis sa création en 1963.",
         "Plus de 2 millions de clients particuliers, professionnels et grandes entreprises.",
         "Réseau d'agences étendu sur l'ensemble du territoire national algérien."
       ],
-      ar: [
+      "ar": [
         "الرائد التاريخي لسوق التأمين على الأضرار في الجزائر منذ تأسيسها عام 1963.",
         "قاعدة عملاء واسعة تضم أكثر من مليوني عميل من الأفراد والمؤسسات.",
         "شبكة وكالات تجارية تغطي كامل التراب الوطني الجزائري."
@@ -346,22 +358,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Legal Doctrine",
-    slug: "legal-doctrine",
-    logo: "/partners/2025/legal-doctrine.png",
-    edition: 2025,
-    description: {
-      fr: "Legal Doctrine est une startup algérienne pionnière de la LegalTech, fondée en 2018. Elle propose la première plateforme en ligne centralisant l'intégralité de la législation, de la réglementation et de la jurisprudence algérienne, devenant un outil indispensable pour les professionnels du droit et les entreprises.",
-      ar: "ليغال دوكترين (Legal Doctrine) هي شركة جزائرية ناشئة ورائدة في مجال التكنولوجيا القانونية (LegalTech) تأسست عام 2018. وتقدم أول منصة عبر الإنترنت تجمع كافة النصوص التشريعية والتنظيمية والأحكام القضائية الجزائرية، لتصبح أداة أساسية للمهنيين والشركات."
+    "name": "Legal Doctrine",
+    "slug": "legal-doctrine",
+    "logo": "/partners/2025/legal-doctrine.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Legal Doctrine est une startup algérienne pionnière de la LegalTech, fondée en 2018. Elle propose la première plateforme en ligne centralisant l'intégralité de la législation, de la réglementation et de la jurisprudence algérienne, devenant un outil indispensable pour les professionnels du droit et les entreprises.",
+      "ar": "ليغال دوكترين (Legal Doctrine) هي شركة جزائرية ناشئة ورائدة في مجال التكنولوجيا القانونية (LegalTech) تأسست عام 2018. وتقدم أول منصة عبر الإنترنت تجمع كافة النصوص التشريعية والتنظيمية والأحكام القضائية الجزائرية، لتصبح أداة أساسية للمهنيين والشركات."
     },
-    website: "https://www.legal-doctrine.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.legal-doctrine.com",
+    "keyPoints": {
+      "fr": [
         "Première plateforme de recherche juridique et fiscale en Algérie.",
         "Centralise les textes de loi, décrets exécutifs et arrêts de jurisprudence.",
         "Élue meilleure startup africaine lors de plusieurs événements de technologie juridique."
       ],
-      ar: [
+      "ar": [
         "أول منصة بحث قانوني وجبائي متكاملة في الجزائر.",
         "تجميع وتصنيف القوانين، المراسيم التنفيذية، والأحكام القضائية.",
         "حائزة على جوائز كأفضل شركة ناشئة في مجالات الابتكار التكنولوجي والقانوني في إفريقيا."
@@ -369,22 +381,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "PayPart",
-    slug: "paypart",
-    logo: "/shared/paypart.png",
-    edition: 2025,
-    description: {
-      fr: "PayPart (PayPart El-Djazair) est une solution fintech algérienne de tiers de confiance, spécialisée dans la sécurisation des transactions e-commerce. Elle permet de sécuriser le processus d'achat en ligne en bloquant les fonds jusqu'à la livraison et la validation finale par l'acheteur.",
-      ar: "باي بارت (PayPart El-Djazair) هي منصة تكنولوجيا مالية (FinTech) جزائرية تعمل كطرف ثالث موثوق لتأمين معاملات التجارة الإلكترونية. تضمن المنصة عملية الشراء والدفع عبر الإنترنت من خلال تجميد الأموال حتى يتم تسليم الطرود وتأكيد الاستلام النهائي من المشتري."
+    "name": "PayPart",
+    "slug": "paypart",
+    "logo": "/shared/paypart.png",
+    "edition": 2025,
+    "description": {
+      "fr": "PayPart (PayPart El-Djazair) est une solution fintech algérienne de tiers de confiance, spécialisée dans la sécurisation des transactions e-commerce. Elle permet de sécuriser le processus d'achat en ligne en bloquant les fonds jusqu'à la livraison et la validation finale par l'acheteur.",
+      "ar": "باي بارت (PayPart El-Djazair) هي منصة تكنولوجيا مالية (FinTech) جزائرية تعمل كطرف ثالث موثوق لتأمين معاملات التجارة الإلكترونية. تضمن المنصة عملية الشراء والدفع عبر الإنترنت من خلال تجميد الأموال حتى يتم تسليم الطرود وتأكيد الاستلام النهائي من المشتري."
     },
-    website: "https://paypart.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://paypart.dz",
+    "keyPoints": {
+      "fr": [
         "Solution fintech innovante faisant office de tiers de confiance pour le e-commerce.",
         "Mécanisme sécurisé de blocage et de déblocage des paiements à la livraison.",
         "Facilite l'intégration des paiements en ligne pour les marchands et réduit les taux de retour."
       ],
-      ar: [
+      "ar": [
         "حل تقني مالي مبتكر يعمل كطرف ثالث موثوق بين المشتري والبائع.",
         "آلية آمنة لتجميد وتحرير الأموال فور الاستلام الفعلي للمنتج.",
         "تسهيل دمج بوابات الدفع للمتاجر الإلكترونية وتقليل نسب إلغاء الطلبات."
@@ -392,22 +404,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Yalidine Express",
-    slug: "yalidine-express",
-    logo: "/partners/2025/yalidine-express.png",
-    edition: 2025,
-    description: {
-      fr: "Yalidine Express est l'un des leaders de la logistique et de la livraison express en Algérie. Spécialisée dans les solutions de transport pour le e-commerce, elle assure une couverture nationale complète sur les 58 wilayas du pays avec des services de paiement à la livraison et de suivi en temps réel.",
-      ar: "ياليدين إكسبريس (Yalidine Express) هي إحدى الشركات الرائدة في مجال اللوجستيات والتوصيل السريع في الجزائر. وهي متخصصة في حلول النقل المخصصة للتجارة الإلكترونية، وتوفر تغطية وطنية شاملة عبر 58 ولاية مع خدمات الدفع عند الاستلام والتتبع الفوري للطرود."
+    "name": "Yalidine Express",
+    "slug": "yalidine-express",
+    "logo": "/partners/2025/yalidine-express.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Yalidine Express est l'un des leaders de la logistique et de la livraison express en Algérie. Spécialisée dans les solutions de transport pour le e-commerce, elle assure une couverture nationale complète sur les 58 wilayas du pays avec des services de paiement à la livraison et de suivi en temps réel.",
+      "ar": "ياليدين إكسبريس (Yalidine Express) هي إحدى الشركات الرائدة في مجال اللوجستيات والتوصيل السريع في الجزائر. وهي متخصصة في حلول النقل المخصصة للتجارة الإلكترونية، وتوفر تغطية وطنية شاملة عبر 58 ولاية مع خدمات الدفع عند الاستلام والتتبع الفوري للطرود."
     },
-    website: "https://yalidine-express.com.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://yalidine-express.com.dz",
+    "keyPoints": {
+      "fr": [
         "Leader national de la livraison express et de la logistique e-commerce en Algérie.",
         "Couverture logistique complète s'étendant sur les 58 wilayas du pays.",
         "Pionnier des solutions de paiement à la livraison (Cash on Delivery) et de tracking de colis."
       ],
-      ar: [
+      "ar": [
         "الرائد الوطني في مجال التوصيل السريع ولوجستيات التجارة الإلكترونية في الجزائر.",
         "تغطية لوجستية شاملة وموثوقة تمتد لتشمل كافة ولايات الوطن الـ 58.",
         "رائد حلول الدفع عند الاستلام (Cash on Delivery) وتتبع حركة الشحنات فورياً."
@@ -415,22 +427,28 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Henkel",
-    slug: "henkel",
-    logo: "/partners/2025/henkel.png",
-    edition: 2025,
-    description: {
-      fr: "Henkel Algérie, filiale du groupe international Henkel présente en Algérie depuis 2000, est un acteur majeur dans les domaines des détergents (lessives, soins corporels et capillaires) et des technologies d'adhésifs. Le groupe dispose de deux sites de production de pointe à Réghaïa (Alger) et Chelghoum Laïd (Mila).",
-      ar: "هنكل الجزائر (Henkel Algérie)، وهي فرع من مجموعة هنكل العالمية المتواجدة في الجزائر منذ عام 2000، وتعد لاعباً رئيسياً في مجالات المنظفات (مساحيق الغسيل، العناية الشخصية والشعر) وتكنولوجيا الدولية للمواد اللاصقة. تمتلك المجموعة موقعين صناعيين متطورين في الرغاية (الجزائر العاصمة) وشلغوم العيد (ميلة)."
+    "name": "Henkel",
+    "slug": "henkel",
+    "logo": "/partners/2025/henkel.png",
+    "edition": 2025,
+    "description": {
+      "en": "Henkel Algeria, subsidiary of the multinational Henkel Group established in Algeria since 2000, is a major player in consumer laundry, home & beauty care as well as industrial adhesive technologies, with modern production facilities in Reghaïa (Algiers) and Chelghoum Laïd (Mila).",
+      "fr": "Henkel Algérie, filiale du groupe international Henkel présente en Algérie depuis 2000, est un acteur majeur dans les domaines des détergents (lessives, soins corporels et capillaires) et des technologies d'adhésifs. Le groupe dispose de deux sites de production de pointe à Réghaïa (Alger) et Chelghoum Laïd (Mila).",
+      "ar": "هنكل الجزائر (Henkel Algérie)، وهي فرع من مجموعة هنكل العالمية المتواجدة في الجزائر منذ عام 2000، وتعد لاعباً رئيسياً في مجالات المنظفات (مساحيق الغسيل، العناية الشخصية والشعر) وتكنولوجيا الدولية للمواد اللاصقة. تمتلك المجموعة موقعين صناعيين متطورين في الرغاية (الجزائر العاصمة) وشلغوم العيد (ميلة)."
     },
-    website: "https://www.henkel-algerie.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.henkel-algerie.com",
+    "keyPoints": {
+      "en": [
+        "Major industrial presence and manufacturing leadership in Algeria since 2000.",
+        "Modern digitalized production plants in Reghaïa and Chelghoum Laïd.",
+        "Leader in Consumer Brands (household & hair care) and industrial adhesive technologies."
+      ],
+      "fr": [
         "Présence industrielle majeure en Algérie depuis 2000.",
         "Deux usines de production modernes et digitalisées à Réghaïa et Chelghoum Laïd.",
         "Leader dans les produits de grande consommation (Consumer Brands) et les adhésifs industriels."
       ],
-      ar: [
+      "ar": [
         "حضور صناعي بارز في الجزائر منذ عام 2000.",
         "مصنعان إنتاجيان حديثان ورقمان في الرغاية وشلغوم العيد.",
         "ريادة في قطاع المنتجات الاستهلاكية (العناية بالمنزل والشعر) والمواد اللاصقة الصناعية."
@@ -438,22 +456,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Beyn",
-    slug: "beyn",
-    logo: "/partners/2025/beyn.png",
-    edition: 2025,
-    description: {
-      fr: "Beyn est une entreprise technologique (FinTech) algérienne de référence, fondée en 2004, spécialisée dans la transformation digitale des banques et institutions financières. Elle conçoit et déploie des solutions innovantes de paiement mobile et de banque en ligne (telles que la plateforme WimPay).",
-      ar: "بين (Beyn) هي شركة تكنولوجيا مالية (FinTech) جزائرية رائدة تأسست عام 2004، متخصصة في التحول الرقمي للبنوك والمؤسسات المالية. تقوم بتصميم ونشر حلول مبتكرة للدفع عبر الهاتف المحمول والخدمات المصرفية عبر الإنترنت (مثل منصة WimPay)."
+    "name": "Beyn",
+    "slug": "beyn",
+    "logo": "/partners/2025/beyn.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Beyn est une entreprise technologique (FinTech) algérienne de référence, fondée en 2004, spécialisée dans la transformation digitale des banques et institutions financières. Elle conçoit et déploie des solutions innovantes de paiement mobile et de banque en ligne (telles que la plateforme WimPay).",
+      "ar": "بين (Beyn) هي شركة تكنولوجيا مالية (FinTech) جزائرية رائدة تأسست عام 2004، متخصصة في التحول الرقمي للبنوك والمؤسسات المالية. تقوم بتصميم ونشر حلول مبتكرة للدفع عبر الهاتف المحمول والخدمات المصرفية عبر الإنترنت (مثل منصة WimPay)."
     },
-    website: "https://www.beyn.io",
-    keyPoints: {
-      fr: [
+    "website": "https://www.beyn.io",
+    "keyPoints": {
+      "fr": [
         "Acteur majeur de la technologie financière et du digital banking en Algérie depuis 2004.",
         "Partenaire stratégique de plus d'une dizaine de banques pour leur numérisation.",
         "Développeur de solutions mobiles populaires comme la plateforme de paiement WimPay."
       ],
-      ar: [
+      "ar": [
         "فاعل رئيسي في مجال التكنولوجيا المالية والخدمات المصرفية الرقمية في الجزائر منذ عام 2004.",
         "شريك استراتيجي لأكثر من عشرة بنوك لدعم التحول الرقمي والخدمات الإلكترونية.",
         "مطور حلول الدفع عبر الهاتف المحمول الرائجة مثل منصة الدفع (WimPay)."
@@ -461,21 +479,21 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Canbebe",
-    slug: "canbebe",
-    logo: "/partners/2025/canbebe.png",
-    edition: 2025,
-    description: {
-      fr: "Canbebe est la marque emblématique de couches pour bébés en Algérie, fabriquée localement à l'usine de Rouiba. Réputée pour sa qualité et son confort, la marque est aujourd'hui gérée par le groupe Hygianis, partenaire de confiance du secteur de l'hygiène depuis plus de 20 ans.",
-      ar: "كانبيبي (Canbebe) هي العلامة التجارية الرائدة لحفاضات الأطفال في الجزائر، وتُصنع محليًا في مصنع الرويبة. تشتهر العلامة بجودتها العالية وتوفير الراحة للأطفال، وتُدار اليوم من قِبل مجمع هيجيانيس (Hygianis)، الشريك الموثوق في قطاع النظافة منذ أكثر من 20 عامًا."
+    "name": "Canbebe",
+    "slug": "canbebe",
+    "logo": "/partners/2025/canbebe.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Canbebe est la marque emblématique de couches pour bébés en Algérie, fabriquée localement à l'usine de Rouiba. Réputée pour sa qualité et son confort, la marque est aujourd'hui gérée par le groupe Hygianis, partenaire de confiance du secteur de l'hygiène depuis plus de 20 ans.",
+      "ar": "كانبيبي (Canbebe) هي العلامة التجارية الرائدة لحفاضات الأطفال في الجزائر، وتُصنع محليًا في مصنع الرويبة. تشتهر العلامة بجودتها العالية وتوفير الراحة للأطفال، وتُدار اليوم من قِبل مجمع هيجيانيس (Hygianis)، الشريك الموثوق في قطاع النظافة منذ أكثر من 20 عامًا."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Marque leader de l'hygiène infantile en Algérie depuis plus de 15 ans.",
         "Production locale de haute qualité assurée au complexe industriel de Rouiba (Alger).",
         "Distribuée et gérée par Hygianis SPA, acteur majeur du secteur de la santé."
       ],
-      ar: [
+      "ar": [
         "العلامة التجارية الرائدة في مجال نظافة الأطفال في الجزائر منذ أكثر من 15 سنة.",
         "إنتاج محلي عالي الجودة في المركب الصناعي بالرويبة (الجزائر العاصمة).",
         "توزيع وإدارة من قِبل شركة هيجيانيس (Hygianis SPA)، الفاعل الرئيسي في القطاع."
@@ -483,22 +501,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Benslimane & Partners",
-    slug: "benslimane-partners",
-    logo: "/partners/2025/benslimane-partners.png",
-    edition: 2025,
-    description: {
-      fr: "Benslimane & Partners est un cabinet d'avocats algérien de premier plan, spécialisé en droit des affaires national et international. Fondé en 2007 par Me Samir Benslimane, le cabinet accompagne les entreprises et les investisseurs dans les domaines du droit des sociétés, de la fiscalité, du droit social et de l'arbitrage.",
-      ar: "بن سليمان وشركاؤه (Benslimane & Partners) هو مكتب محاماة جزائرية رائدة، متخصص في قانون الأعمال الوطني والدولي. تأسس المكتب عام 2007 من قِبل الأستاذ سمير بن سليمان، ويرافق الشركات والمستثمرين في مجالات قانون الشركات، الجبائية، قانون العمل والتحكيم."
+    "name": "Benslimane & Partners",
+    "slug": "benslimane-partners",
+    "logo": "/partners/2025/benslimane-partners.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Benslimane & Partners est un cabinet d'avocats algérien de premier plan, spécialisé en droit des affaires national et international. Fondé en 2007 par Me Samir Benslimane, le cabinet accompagne les entreprises et les investisseurs dans les domaines du droit des sociétés, de la fiscalité, du droit social et de l'arbitrage.",
+      "ar": "بن سليمان وشركاؤه (Benslimane & Partners) هو مكتب محاماة جزائرية رائدة، متخصص في قانون الأعمال الوطني والدولي. تأسس المكتب عام 2007 من قِبل الأستاذ سمير بن سليمان، ويرافق الشركات والمستثمرين في مجالات قانون الشركات، الجبائية، قانون العمل والتحكيم."
     },
-    website: "http://www.avocats-dz.com",
-    keyPoints: {
-      fr: [
+    "website": "http://www.avocats-dz.com",
+    "keyPoints": {
+      "fr": [
         "Cabinet de référence en droit des affaires et conseil aux entreprises en Algérie.",
         "Fondé en 2007 par Me Samir Benslimane, avocat agréé à la Cour Suprême.",
         "Accompagnement juridique sur-mesure pour les investisseurs locaux et internationaux."
       ],
-      ar: [
+      "ar": [
         "مكتب محاماة مرجعي في قانون الأعمال واستشارات الشركات في الجزائر.",
         "تأسس عام 2007 من قِبل الأستاذ سمير بن سليمان، المحامي المعتمد لدى المحكمة العليا.",
         "مرافقة قانونية مخصصة للمستثمرين المحليين والدوليين."
@@ -506,22 +524,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "DZ-IT",
-    slug: "dz-it",
-    logo: "/partners/2025/dz-it.png",
-    edition: 2025,
-    description: {
-      fr: "DZ IT (DZIT Solutions & Systems) est un intégrateur algérien majeur de solutions informatiques et de systèmes de sécurité électronique, fondé en 2009. L'entreprise accompagne les professionnels dans l'optimisation de leurs infrastructures réseaux, le stockage de données et la cybersécurité.",
-      ar: "دي زد آي تي (DZ IT - DZIT Solutions & Systems) هي شركة جزائرية رائدة في دمج الحلول البرمجية وأنظمة الأمن الإلكتروني، تأسست عام 2009. ترافق الشركة المؤسسات والمهنيين في تحسين وتأمين البنية التحتية لشبكاتهم، تخزين البيانات، والأمن السيبراني."
+    "name": "DZ-IT",
+    "slug": "dz-it",
+    "logo": "/partners/2025/dz-it.png",
+    "edition": 2025,
+    "description": {
+      "fr": "DZ IT (DZIT Solutions & Systems) est un intégrateur algérien majeur de solutions informatiques et de systèmes de sécurité électronique, fondé en 2009. L'entreprise accompagne les professionnels dans l'optimisation de leurs infrastructures réseaux, le stockage de données et la cybersécurité.",
+      "ar": "دي زد آي تي (DZ IT - DZIT Solutions & Systems) هي شركة جزائرية رائدة في دمج الحلول البرمجية وأنظمة الأمن الإلكتروني، تأسست عام 2009. ترافق الشركة المؤسسات والمهنيين في تحسين وتأمين البنية التحتية لشبكاتهم، تخزين البيانات، والأمن السيبراني."
     },
-    website: "https://dz-it.net",
-    keyPoints: {
-      fr: [
+    "website": "https://dz-it.net",
+    "keyPoints": {
+      "fr": [
         "Intégrateur d'infrastructures informatiques, de réseaux et de stockage de données.",
         "Expert en systèmes de sécurité électronique (vidéosurveillance, contrôle d'accès).",
         "Fondé en 2009 et basé à Dely Ibrahim, Alger."
       ],
-      ar: [
+      "ar": [
         "متخصص في دمج البنية التحتية للمعلوماتية، الشبكات، وحلول تخزين البيانات.",
         "خبير في أنظمة الأمن الإلكتروني (المراقبة البصرية، التحكم في الوصول).",
         "تأسست عام 2009 ويقع مقرها في دالي إبراهيم، الجزائر العاصمة."
@@ -529,21 +547,21 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Sylabs",
-    slug: "sylabs",
-    logo: "/partners/2025/sylabs.png",
-    edition: 2025,
-    description: {
-      fr: "Sylabs est un hub d'entrepreneuriat, espace de coworking et accélérateur de talents fondé en 2015 à Alger par Abdellah Mallek. Pionnier de l'écosystème startup en Algérie, Sylabs accompagne les freelances, développeurs et créateurs de projets à travers des espaces de travail collaboratifs, des formations et des événements communautaires.",
-      ar: "سايلابس (Sylabs) هو مركز لريادة الأعمال، مساحة عمل مشتركة، ومسرع مواهب تأسس عام 2015 في الجزائر العاصمة من قِبل عبد الله مالك. وتعتبر المنصة من رواد منظومة الشركات الناشئة في الجزائر، حيث ترافق المستقلين والمطورين وحاملي المشاريع من خلال مساحات العمل التعاونية والتكوينات."
+    "name": "Sylabs",
+    "slug": "sylabs",
+    "logo": "/partners/2025/sylabs.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Sylabs est un hub d'entrepreneuriat, espace de coworking et accélérateur de talents fondé en 2015 à Alger par Abdellah Mallek. Pionnier de l'écosystème startup en Algérie, Sylabs accompagne les freelances, développeurs et créateurs de projets à travers des espaces de travail collaboratifs, des formations et des événements communautaires.",
+      "ar": "سايلابس (Sylabs) هو مركز لريادة الأعمال، مساحة عمل مشتركة، ومسرع مواهب تأسس عام 2015 في الجزائر العاصمة من قِبل عبد الله مالك. وتعتبر المنصة من رواد منظومة الشركات الناشئة في الجزائر، حيث ترافق المستقلين والمطورين وحاملي المشاريع من خلال مساحات العمل التعاونية والتكوينات."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Premier espace de coworking et hub d'innovation privé à Alger depuis 2015.",
         "Accélérateur de startups et animateur clé de la scène tech algérienne.",
         "Programmes de formation et ateliers technologiques pour les jeunes talents."
       ],
-      ar: [
+      "ar": [
         "أول مساحة عمل مشتركة ومركز ابتكار خاص في الجزائر العاصمة منذ 2015.",
         "مسرع للشركات الناشئة ومنشط رئيسي للمشهد التكنولوجي الجزائري.",
         "برامج تدريبية وورش عمل تكنولوجية مخصصة لتطوير مهارات الشباب."
@@ -551,22 +569,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "GIG Algeria",
-    slug: "gig",
-    logo: "/partners/2025/gig.png",
-    edition: 2025,
-    description: {
-      fr: "GIG Algeria (Gulf Insurance Group Algeria), anciennement connue sous le nom de L'Algérienne des Assurances (2A), est une compagnie d'assurance algérienne de référence. Depuis 2015, elle est affiliée au groupe régional Gulf Insurance Group (GIG), l'un des plus grands réseaux d'assurance au Moyen-Orient et en Afrique du Nord.",
-      ar: "جي آي جي الجزائر (GIG Algeria)، والمعروفة سابقاً باسم (L'Algérienne des Assurances - 2A)، هي شركة تأمين جزائرية رائدة. منذ عام 2015، أصبحت الشركة تابعة لمجموعة الخليج للتأمين (GIG) الإقليمية، وهي إحدى أكبر شبكات التأمين في الشرق الأوسط وشمال إفريقيا."
+    "name": "GIG Algeria",
+    "slug": "gig",
+    "logo": "/partners/2025/gig.png",
+    "edition": 2025,
+    "description": {
+      "fr": "GIG Algeria (Gulf Insurance Group Algeria), anciennement connue sous le nom de L'Algérienne des Assurances (2A), est une compagnie d'assurance algérienne de référence. Depuis 2015, elle est affiliée au groupe régional Gulf Insurance Group (GIG), l'un des plus grands réseaux d'assurance au Moyen-Orient et en Afrique du Nord.",
+      "ar": "جي آي جي الجزائر (GIG Algeria)، والمعروفة سابقاً باسم (L'Algérienne des Assurances - 2A)، هي شركة تأمين جزائرية رائدة. منذ عام 2015، أصبحت الشركة تابعة لمجموعة الخليج للتأمين (GIG) الإقليمية، وهي إحدى أكبر شبكات التأمين في الشرق الأوسط وشمال إفريقيا."
     },
-    website: "https://www.gig.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.gig.dz",
+    "keyPoints": {
+      "fr": [
         "Filiale algérienne de Gulf Insurance Group (GIG), acteur majeur du secteur de l'assurance au Moyen-Orient.",
         "Issu de la transformation de la compagnie historique L'Algérienne des Assurances (2A).",
         "Offre une large gamme d'assurances de dommages pour les particuliers et les entreprises."
       ],
-      ar: [
+      "ar": [
         "الفرع الجزائري لمجموعة الخليج للتأمين (GIG)، الفاعل الرئيسي في قطاع التأمين بالشرق الأوسط.",
         "امتداد وتطور للشركة التاريخية (L'Algérienne des Assurances - 2A).",
         "توفر مجموعة واسعة من تأمينات الأضرار للأفراد والشركات."
@@ -574,21 +592,21 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Hibou Consulting RH",
-    slug: "hibou-consultingrh",
-    logo: "/partners/2025/hibou-consulting.png",
-    edition: 2025,
-    description: {
-      fr: "Hibou Consulting RH est un cabinet algérien spécialisé dans le conseil en ressources humaines, le recrutement et l'évaluation de talents. Basé à Blida, le cabinet accompagne les PME et grandes entreprises dans leurs stratégies d'acquisition de compétences et propose des solutions d'externalisation de la gestion RH.",
-      ar: "هيبو كونسلتينج (Hibou Consulting RH) هو مكتب استشارات جزائري متخصص في الموارد البشرية، التوظيف وتقييم الكفاءات. يقع مقر المكتب في البليدة، ويرافق الشركات الصغيرة والمتوسطة والمجموعات الكبرى في استراتيجيات استقطاب المواهب وتسيير الموارد البشرية."
+    "name": "Hibou Consulting RH",
+    "slug": "hibou-consultingrh",
+    "logo": "/partners/2025/hibou-consulting.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Hibou Consulting RH est un cabinet algérien spécialisé dans le conseil en ressources humaines, le recrutement et l'évaluation de talents. Basé à Blida, le cabinet accompagne les PME et grandes entreprises dans leurs stratégies d'acquisition de compétences et propose des solutions d'externalisation de la gestion RH.",
+      "ar": "هيبو كونسلتينج (Hibou Consulting RH) هو مكتب استشارات جزائري متخصص في الموارد البشرية، التوظيف وتقييم الكفاءات. يقع مقر المكتب في البليدة، ويرافق الشركات الصغيرة والمتوسطة والمجموعات الكبرى في استراتيجيات استقطاب المواهب وتسيير الموارد البشرية."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Cabinet spécialisé dans le recrutement de talents et le conseil en ressources humaines.",
         "Accompagnement sur-mesure pour les entreprises locales dans leur gestion RH.",
         "Basé à Blida et présent sur les principaux portails de l'emploi en Algérie."
       ],
-      ar: [
+      "ar": [
         "مكتب متخصص في توظيف الكفاءات والاستشارات المتعلقة بالموارد البشرية.",
         "مرافقة مخصصة للمؤسسات المحلية في إدارة رأس مالها البشري.",
         "يقع مقره في البليدة وله حضور بارز على منصات التوظيف الرئيسية في الجزائر."
@@ -596,22 +614,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Hayat",
-    slug: "hayat",
-    logo: "/partners/2025/hayat.png",
-    edition: 2025,
-    description: {
-      fr: "Hayat DHC Algérie, filiale du groupe international turc Hayat fondée en 2005, est un acteur leader du secteur de l'hygiène et des détergents en Algérie. Disposant d'un complexe industriel majeur à Bouinan (Blida), l'entreprise produit localement des marques de référence telles que Molfix, Bingo, Test et Familia.",
-      ar: "حياة دي إتش سي الجزائر (Hayat DHC Algérie)، وهي فرع من مجموعة حياة التركية العالمية تأسست عام 2005، وتعد من الشركات الرائدة في قطاع النظافة والمنظفات في الجزائر. تمتلك الشركة مجمعاً صناعياً ضخماً في بوعينان (ولاية البليدة) ينتج محلياً علامات مرجعية مثل Molfix و Bingo و Test و Familia."
+    "name": "Hayat",
+    "slug": "hayat",
+    "logo": "/partners/2025/hayat.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Hayat DHC Algérie, filiale du groupe international turc Hayat fondée en 2005, est un acteur leader du secteur de l'hygiène et des détergents en Algérie. Disposant d'un complexe industriel majeur à Bouinan (Blida), l'entreprise produit localement des marques de référence telles que Molfix, Bingo, Test et Familia.",
+      "ar": "حياة دي إتش سي الجزائر (Hayat DHC Algérie)، وهي فرع من مجموعة حياة التركية العالمية تأسست عام 2005، وتعد من الشركات الرائدة في قطاع النظافة والمنظفات في الجزائر. تمتلك الشركة مجمعاً صناعياً ضخماً في بوعينان (ولاية البليدة) ينتج محلياً علامات مرجعية مثل Molfix و Bingo و Test و Familia."
     },
-    website: "https://www.hayat.com.tr",
-    keyPoints: {
-      fr: [
+    "website": "https://www.hayat.com.tr",
+    "keyPoints": {
+      "fr": [
         "Filiale algérienne du groupe turc Hayat, présente en Algérie depuis 2005.",
         "Grand complexe industriel situé à Bouinan (Blida) fabriquant les marques Molfix et Bingo.",
         "Leader sur le marché national de l'hygiène infantile et des produits d'entretien."
       ],
-      ar: [
+      "ar": [
         "الفرع الجزائري لمجموعة حياة التركية، متواجد في الجزائر منذ عام 2005.",
         "مجمع صناعي كبير في بوعينان (البليدة) لإنتاج حفاضات Molfix ومنظفات Bingo.",
         "رائد في السوق الوطنية لمنتجات النظافة الشخصية والمنظفات المنزلية."
@@ -619,22 +637,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "National Civil Aviation Agency",
-    slug: "national-civil-aviation",
-    logo: "/partners/2025/national-civil-aviation.png",
-    edition: 2025,
-    description: {
-      fr: "L'ANAC (Agence Nationale de l'Aviation Civile) est l'autorité publique chargée de la régulation, de la surveillance et du contrôle des activités de l'aviation civile en Algérie. Instituée en 2019, elle garantit l'application des normes internationales de sûreté, de sécurité et de protection des passagers.",
-      ar: "الوكالة الوطنية للطيران المدني (ANAC) هي الهيئة العمومية المكلفة بتنظيم ومراقبة والإشراف على أنشطة الطيران المدني في الجزائر. تأسست عام 2019، وتضمن تطبيق المعايير الدولية للسلامة والأمن وحماية حقوق المسافرين."
+    "name": "National Civil Aviation Agency",
+    "slug": "national-civil-aviation",
+    "logo": "/partners/2025/national-civil-aviation.png",
+    "edition": 2025,
+    "description": {
+      "fr": "L'ANAC (Agence Nationale de l'Aviation Civile) est l'autorité publique chargée de la régulation, de la surveillance et du contrôle des activités de l'aviation civile en Algérie. Instituée en 2019, elle garantit l'application des normes internationales de sûreté, de sécurité et de protection des passagers.",
+      "ar": "الوكالة الوطنية للطيران المدني (ANAC) هي الهيئة العمومية المكلفة بتنظيم ومراقبة والإشراف على أنشطة الطيران المدني في الجزائر. تأسست عام 2019، وتضمن تطبيق المعايير الدولية للسلامة والأمن وحماية حقوق المسافرين."
     },
-    website: "https://anac.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://anac.dz",
+    "keyPoints": {
+      "fr": [
         "Autorité publique de régulation et de contrôle de l'aviation civile en Algérie.",
         "Garante de la conformité aux normes internationales de sûreté et de sécurité (OACI).",
         "Chargée de la protection des droits des passagers et du développement du secteur aérien."
       ],
-      ar: [
+      "ar": [
         "الهيئة العمومية لتنظيم ومراقبة قطاع الطيران المدني في الجزائر.",
         "ضمان مطابقة معايير السلامة والأمن الجوي الدولية (منظمة الطيران المدني الدولي).",
         "المكلفة بحماية حقوق المسافرين وتطوير النقل الجوي."
@@ -642,22 +660,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Ouedkniss",
-    slug: "ouedkniss",
-    logo: "/partners/2025/ouedkniss.png",
-    edition: 2025,
-    description: {
-      fr: "Ouedkniss est le portail de petites annonces et le site d'e-commerce leader et historique en Algérie, fondé en 2006. Avec plus d'un million d'annonces en ligne, il est le carrefour incontournable pour l'achat, la vente et la location de véhicules, d'immobilier et de produits de consommation.",
-      ar: "واد كنيس (Ouedkniss) هو بوابة الإعلانات المبوبة وموقع التجارة الإلكترونية التاريخي والرائد في الجزائر، تأسس عام 2006. مع أكثر من مليون إعلان على الإنترنت، يعتبر المنصة الأولى لشراء وبيع وتأجير السيارات، العقارات، والمنتجات الاستهلاكية."
+    "name": "Ouedkniss",
+    "slug": "ouedkniss",
+    "logo": "/partners/2025/ouedkniss.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Ouedkniss est le portail de petites annonces et le site d'e-commerce leader et historique en Algérie, fondé en 2006. Avec plus d'un million d'annonces en ligne, il est le carrefour incontournable pour l'achat, la vente et la location de véhicules, d'immobilier et de produits de consommation.",
+      "ar": "واد كنيس (Ouedkniss) هو بوابة الإعلانات المبوبة وموقع التجارة الإلكترونية التاريخي والرائد في الجزائر، تأسس عام 2006. مع أكثر من مليون إعلان على الإنترنت، يعتبر المنصة الأولى لشراء وبيع وتأجير السيارات، العقارات، والمنتجات الاستهلاكية."
     },
-    website: "https://www.ouedkniss.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.ouedkniss.com",
+    "keyPoints": {
+      "fr": [
         "Premier site de petites annonces et de commerce en ligne en Algérie depuis 2006.",
         "Plus d'un million d'annonces actives dans l'automobile, l'immobilier, la technologie et l'emploi.",
         "Plateforme de référence comptant des millions de visiteurs mensuels et des milliers de boutiques pros."
       ],
-      ar: [
+      "ar": [
         "الموقع الأول للإعلانات المبوبة والتجارة الإلكترونية في الجزائر منذ 2006.",
         "أكثر من مليون إعلان نشط في مجالات السيارات، العقارات، التكنولوجيا، والتوظيف.",
         "منصة مرجعية تسجل ملايين الزيارات شهرياً وتضم آلاف المتاجر الرقمية للمحترفين."
@@ -665,22 +683,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "El Kendi",
-    slug: "elkendi",
-    logo: "/shared/elkendi.png",
-    edition: 2025,
-    description: {
-      fr: "El Kendi est une filiale du groupe pharmaceutique multinational MS Pharma et l'un des leaders de l'industrie pharmaceutique en Algérie. Fondé en 2006, le laboratoire est le premier fabricant de médicaments génériques dans le pays, disposant d'un complexe industriel de pointe à Sidi Abdellah (Alger).",
-      ar: "الكندي (El Kendi) هي شركة فرعية تابعة لمجموعة الأدوية متعددة الجنسيات (MS Pharma) وواحدة من الشركات الرائدة في قطاع صناعة الأدوية في الجزائر. تأسس المختبر عام 2006، ويعد المصنع الأول للأدوية الجنيسة في البلاد، ويمتلك مجمعًا صناعيًا متطورًا في سيدي عبد الله (الجزائر العاصمة)."
+    "name": "El Kendi",
+    "slug": "elkendi",
+    "logo": "/shared/elkendi.png",
+    "edition": 2025,
+    "description": {
+      "fr": "El Kendi est une filiale du groupe pharmaceutique multinational MS Pharma et l'un des leaders de l'industrie pharmaceutique en Algérie. Fondé en 2006, le laboratoire est le premier fabricant de médicaments génériques dans le pays, disposant d'un complexe industriel de pointe à Sidi Abdellah (Alger).",
+      "ar": "الكندي (El Kendi) هي شركة فرعية تابعة لمجموعة الأدوية متعددة الجنسيات (MS Pharma) وواحدة من الشركات الرائدة في قطاع صناعة الأدوية في الجزائر. تأسس المختبر عام 2006، ويعد المصنع الأول للأدوية الجنيسة في البلاد، ويمتلك مجمعًا صناعيًا متطورًا في سيدي عبد الله (الجزائر العاصمة)."
     },
-    website: "https://www.mspharma.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.mspharma.com",
+    "keyPoints": {
+      "fr": [
         "Premier fabricant de médicaments génériques en Algérie.",
         "Filiale clé du groupe régional MS Pharma employant plus de 1 000 collaborateurs.",
         "Unité de production moderne de premier plan située à Sidi Abdellah (Alger)."
       ],
-      ar: [
+      "ar": [
         "المصنع الأول والمنتج الرائد للأدوية الجنيسة في الجزائر.",
         "شركة فرعية رئيسية لمجموعة (MS Pharma) الإقليمية تضم أكثر من 1,000 موظف.",
         "وحدة إنتاج حديثة ومتطورة تقع في المدينة الجديدة سيدي عبد الله (الجزائر العاصمة)."
@@ -688,22 +706,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Oussama Promotion Immobilière",
-    slug: "oussama",
-    logo: "/partners/2025/oussama-promotion.png",
-    edition: 2025,
-    description: {
-      fr: "Oussama Promotion Immobilière (SARL Oussama Promotion) est une entreprise algérienne de promotion immobilière de premier plan, spécialisée dans la conception et la construction de résidences résidentielles haut de gamme et de grand standing à Alger (notamment à Chéraga, Dely Brahim et Ouled Fayet).",
-      ar: "أسامة للترقية العقارية (Oussama Promotion Immobilière) هي شركة جزائرية رائدة في مجال التطوير العقاري، متخصصة في تصميم وبناء الإقامات السكنية الفاخرة وذات التصميم العصري في الجزائر العاصمة (خاصة في الشراقة، دالي إبراهيم وأولاد فايت)."
+    "name": "Oussama Promotion Immobilière",
+    "slug": "oussama",
+    "logo": "/partners/2025/oussama-promotion.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Oussama Promotion Immobilière (SARL Oussama Promotion) est une entreprise algérienne de promotion immobilière de premier plan, spécialisée dans la conception et la construction de résidences résidentielles haut de gamme et de grand standing à Alger (notamment à Chéraga, Dely Brahim et Ouled Fayet).",
+      "ar": "أسامة للترقية العقارية (Oussama Promotion Immobilière) هي شركة جزائرية رائدة في مجال التطوير العقاري، متخصصة في تصميم وبناء الإقامات السكنية الفاخرة وذات التصميم العصري في الجزائر العاصمة (خاصة في الشراقة، دالي إبراهيم وأولاد فايت)."
     },
-    website: "http://www.oussamapromotion.com",
-    keyPoints: {
-      fr: [
+    "website": "http://www.oussamapromotion.com",
+    "keyPoints": {
+      "fr": [
         "Promoteur immobilier de référence spécialisé dans les résidences haut de standing à Alger.",
         "Développeur de projets résidentiels modernes (Résidence Syrma, Veranda, L'Empreinte).",
         "Basé à Chéraga, Alger, au service des investisseurs locaux et de la diaspora."
       ],
-      ar: [
+      "ar": [
         "مطور عقاري مرجعي متخصص في الإقامات السكنية الفاخرة ذات التصميم الراقي بالجزائر العاصمة.",
         "إنجاز مشاريع سكنية حديثة ومبتكرة (إقامة سيرما، فيراندا، لومبرانت).",
         "يقع مقر الشركة في الشراقة، الجزائر العاصمة، لخدمة المستثمرين المحليين والجالية بالخارج."
@@ -711,21 +729,21 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Data Intuition",
-    slug: "data-intuition",
-    logo: "/partners/2025/data-intuition.png",
-    edition: 2025,
-    description: {
-      fr: "Data Intuition est une startup technologique algérienne spécialisée dans la Data Science, l'analytique de données et l'Intelligence Artificielle. Elle édite notamment la plateforme S4AI, une solution d'analytics propulsée par l'IA pour aider les entreprises à transformer leurs données en décisions stratégiques.",
-      ar: "داتا إنتويشن (Data Intuition) هي شركة تكنولوجية ناشئة جزائرية متخصصة في علم البيانات، تحليل البيانات، والذكاء الاصطناعي. تقوم بتطوير منصة S4AI، وهي حل تحليلي مدعوم بالذكاء الاصطناعي لمساعدة الشركات على تحويل البيانات الخام إلى قرارات استراتيجية."
+    "name": "Data Intuition",
+    "slug": "data-intuition",
+    "logo": "/partners/2025/data-intuition.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Data Intuition est une startup technologique algérienne spécialisée dans la Data Science, l'analytique de données et l'Intelligence Artificielle. Elle édite notamment la plateforme S4AI, une solution d'analytics propulsée par l'IA pour aider les entreprises à transformer leurs données en décisions stratégiques.",
+      "ar": "داتا إنتويشن (Data Intuition) هي شركة تكنولوجية ناشئة جزائرية متخصصة في علم البيانات، تحليل البيانات، والذكاء الاصطناعي. تقوم بتطوير منصة S4AI، وهي حل تحليلي مدعوم بالذكاء الاصطناعي لمساعدة الشركات على تحويل البيانات الخام إلى قرارات استراتيجية."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Startup spécialisée dans les solutions de valorisation de données et d'analytique.",
         "Éditeur de S4AI, une plateforme d'analytics propulsée par l'Intelligence Artificielle.",
         "Expertise dans l'accompagnement des entreprises vers une culture data-driven."
       ],
-      ar: [
+      "ar": [
         "شركة ناشئة متخصصة في حلول تحليل البيانات واستغلالها.",
         "مطور منصة (S4AI) للتحليلات المتقدمة المدعومة بالذكاء الاصطناعي.",
         "خبرة في مرافقة المؤسسات نحو التحول الرقمي القائم على البيانات."
@@ -733,22 +751,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Global Job",
-    slug: "global-job",
-    logo: "/shared/global-job.png",
-    edition: 2025,
-    description: {
-      fr: "Global Job est un cabinet de recrutement et de placement agréé par l'État en Algérie, fondé en 2021. Basé à Chéraga (Alger), le cabinet met en relation les candidats et les recruteurs grâce à une plateforme technologique moderne exploitant l'intelligence artificielle pour optimiser le matching des compétences.",
-      ar: "غلوبال جوب (Global Job) هو مكتب توظيف واستشارات مرخص من قِبل الدولة في الجزائر (ترخيص رقم 0270 الصادر عام 2021). يقع مقر المكتب في الشراقة (الجزائر العاصمة)، ويعمل على ربط طالبي العمل بالشركات عبر منصة تكنولوجية حديثة تستخدم الذكاء الاصطناعي لتحسين مطابقة المهارات."
+    "name": "Global Job",
+    "slug": "global-job",
+    "logo": "/shared/global-job.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Global Job est un cabinet de recrutement et de placement agréé par l'État en Algérie, fondé en 2021. Basé à Chéraga (Alger), le cabinet met en relation les candidats et les recruteurs grâce à une plateforme technologique moderne exploitant l'intelligence artificielle pour optimiser le matching des compétences.",
+      "ar": "غلوبال جوب (Global Job) هو مكتب توظيف واستشارات مرخص من قِبل الدولة في الجزائر (ترخيص رقم 0270 الصادر عام 2021). يقع مقر المكتب في الشراقة (الجزائر العاصمة)، ويعمل على ربط طالبي العمل بالشركات عبر منصة تكنولوجية حديثة تستخدم الذكاء الاصطناعي لتحسين مطابقة المهارات."
     },
-    website: "https://globaljob.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://globaljob.dz",
+    "keyPoints": {
+      "fr": [
         "Cabinet de recrutement et de placement agréé par l'État algérien (Agrément N° 0270).",
         "Plateforme innovante utilisant l'Intelligence Artificielle pour la mise en relation candidats-recruteurs.",
         "Basé au centre d'affaires El Qods à Chéraga, Alger."
       ],
-      ar: [
+      "ar": [
         "مكتب توظيف واستقطاب كفاءات معتمد من قِبل الدولة الجزائرية (ترخيص رقم 0270).",
         "منصة رقمية مبتكرة تستخدم تقنيات الذكاء الاصطناعي لمطابقة السير الذاتية بالوظائف.",
         "يقع مقر الشركة في مركز القدس التجاري بالشراقة، الجزائر العاصمة."
@@ -756,46 +774,45 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Djezzy",
-    slug: "djezzy",
-    logo: "/partners/2025/djezzy.png",
-    edition: 2025,
-    description: {
-      fr: "Djezzy (Optimum Telecom Algérie) est l'un des leaders de la téléphonie mobile et des télécommunications en Algérie, fondé en 2001. Depuis 2022, l'entreprise est détenue à 96,57 % par le Fonds National d'Investissement (FNI), qui pilote sa transformation technologique et le déploiement du réseau 4G/5G à l'échelle nationale.",
-      ar: "جازي (Djezzy - Optimum Telecom Algérie) هي إحدى الشركات الرائدة في مجال الهاتف المحمول والاتصالات في الجزائر، تأسست عام 2001. منذ عام 2022، أصبحت الشركة مملوكة بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI)، الذي يقود تحولها التكنولوجي وتوسيع شبكة الجيل الرابع والخامس."
+    "name": "Djezzy",
+    "slug": "djezzy",
+    "logo": "/partners/2025/djezzy.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Djezzy (Optimum Telecom Algérie) est l'un des leaders de la téléphonie mobile et des télécommunications en Algérie, fondé en 2001. Depuis 2022, l'entreprise est détenue à 96,57 % par le Fonds National d'Investissement (FNI), qui pilote sa transformation technologique et le déploiement du réseau 4G/5G à l'échelle nationale.",
+      "ar": "جازي (Djezzy - Optimum Telecom Algérie) هي إحدى الشركات الرائدة في مجال الهاتف المحمول والاتصالات في الجزائر، تأسست عام 2001. منذ عام 2022، أصبحت الشركة مملوكة بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI)، الذي يقود تحولها التكنولوجي وتوسيع شبكة الجيل الرابع والخامس."
     },
-    website: "https://www.djezzy.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.djezzy.dz",
+    "keyPoints": {
+      "fr": [
         "Opérateur mobile leader comptant des millions d'abonnés en Algérie depuis 2001.",
         "Détenu à 96,57% par l'État algérien via le Fonds National d'Investissement (FNI).",
         "Acteur majeur de l'économie numérique nationale, engagé dans la couverture 4G et le déploiement de la 5G."
       ],
-      ar: [
+      "ar": [
         "متعامل هاتف محمول رائد يضم ملايين المشتركين في الجزائر منذ عام 2001.",
         "مملوك بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI).",
         "فاعل رئيسي في الاقتصاد الرقمي الوطني، ملتزم بتغطية الجيل الرابع والتحضير للجيل الخامس."
       ]
     }
   },
-
   {
-    name: "GAM Assurances",
-    slug: "gam-assurances",
-    logo: "/partners/2025/gam-assurances.png",
-    edition: 2025,
-    description: {
-      fr: "GAM Assurances (Générale Assurance Méditerranéenne) est une compagnie d'assurance algérienne de dommages fondée en 2001, aujourd'hui sous contrôle d'un groupe familial algérien. Pionnière en Algérie dans l'assurance Takaful (conforme à la finance islamique), elle couvre aussi bien les particuliers que les entreprises à travers un réseau national d'agences.",
-      ar: "شركة GAM للتأمينات (Générale Assurance Méditerranéenne) هي شركة تأمين جزائرية متخصصة في تأمينات الأضرار، تأسست عام 2001 وتعمل تحت سيطرة مجموعة عائلية جزائرية. تُعدّ رائدة في الجزائر في مجال التأمين التكافلي (المتوافق مع أحكام الشريعة الإسلامية)، وتخدم الأفراد والمؤسسات عبر شبكة وكالات وطنية."
+    "name": "GAM Assurances",
+    "slug": "gam-assurances",
+    "logo": "/partners/2025/gam-assurances.png",
+    "edition": 2025,
+    "description": {
+      "fr": "GAM Assurances (Générale Assurance Méditerranéenne) est une compagnie d'assurance algérienne de dommages fondée en 2001, aujourd'hui sous contrôle d'un groupe familial algérien. Pionnière en Algérie dans l'assurance Takaful (conforme à la finance islamique), elle couvre aussi bien les particuliers que les entreprises à travers un réseau national d'agences.",
+      "ar": "شركة GAM للتأمينات (Générale Assurance Méditerranéenne) هي شركة تأمين جزائرية متخصصة في تأمينات الأضرار، تأسست عام 2001 وتعمل تحت سيطرة مجموعة عائلية جزائرية. تُعدّ رائدة في الجزائر في مجال التأمين التكافلي (المتوافق مع أحكام الشريعة الإسلامية)، وتخدم الأفراد والمؤسسات عبر شبكة وكالات وطنية."
     },
-    website: "https://www.gam.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.gam.dz",
+    "keyPoints": {
+      "fr": [
         "Première compagnie algérienne agréée pour proposer des produits d'assurance Takaful.",
         "Fondée en 2001, couvrant particuliers et entreprises avec une gamme complète de produits de dommages.",
         "Lauréate du prix du meilleur service client en 2021 et 2022, engagée dans la transformation digitale."
       ],
-      ar: [
+      "ar": [
         "أولى شركة تأمين جزائرية حاصلة على الاعتماد لتقديم منتجات التأمين التكافلي.",
         "تأسست عام 2001 وتقدم تغطية متكاملة للأفراد والمؤسسات في مجال تأمينات الأضرار.",
         "حائزة على جائزة أفضل خدمة عملاء لعامَي 2021 و2022، وملتزمة بالتحول الرقمي."
@@ -803,22 +820,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Namlatic",
-    slug: "namlatic",
-    logo: "/shared/namlatic.png",
-    edition: 2025,
-    description: {
-      fr: "Namlatic est une super-app de voyage 100 % algérienne, labellisée startup innovante par le ministère algérien. Elle permet de réserver en ligne des hôtels (plus de 300 établissements à travers le pays), des billets d'avion et des billets de ferry, avec des paiements via CIB/Edahabia et cartes internationales.",
-      ar: "نملاتيك (Namlatic) هي تطبيق سفر شامل 100% جزائري، حاصل على تصنيف مشروع مبتكر من وزارة السياحة ووزارة الناشئات. يتيح حجز الفنادق (أكثر من 300 فندق) وتذاكر الطيران والعبّارات، مع دعم الدفع ببطاقات CIB/Edahabia والبطاقات الدولية."
+    "name": "Namlatic",
+    "slug": "namlatic",
+    "logo": "/shared/namlatic.png",
+    "edition": 2025,
+    "description": {
+      "fr": "Namlatic est une super-app de voyage 100 % algérienne, labellisée startup innovante par le ministère algérien. Elle permet de réserver en ligne des hôtels (plus de 300 établissements à travers le pays), des billets d'avion et des billets de ferry, avec des paiements via CIB/Edahabia et cartes internationales.",
+      "ar": "نملاتيك (Namlatic) هي تطبيق سفر شامل 100% جزائري، حاصل على تصنيف مشروع مبتكر من وزارة السياحة ووزارة الناشئات. يتيح حجز الفنادق (أكثر من 300 فندق) وتذاكر الطيران والعبّارات، مع دعم الدفع ببطاقات CIB/Edahabia والبطاقات الدولية."
     },
-    website: "https://www.namlatic.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.namlatic.com",
+    "keyPoints": {
+      "fr": [
         "Super-app de voyage algérienne: réservation d'hôtels, vols et traversées maritimes en un seul endroit.",
         "Plus de 300 hôtels référencés à travers toute l'Algérie, avec confirmation immédiate.",
         "Labellisée startup innovante par les ministères du Tourisme et des Startups, avec support 24h/7j."
       ],
-      ar: [
+      "ar": [
         "تطبيق سفر جزائري شامل: حجز الفنادق وتذاكر الطيران والعبّارات في مكان واحد.",
         "أكثر من 300 فندق مصنف عبر كامل التراب الجزائري مع تأكيد فوري.",
         "مصنّف مشروع مبتكر من وزارتي السياحة والناشئات، مع دعم عملاء على مدار الساعة."
@@ -826,46 +843,131 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "CyBears",
-    slug: "cybears",
-    logo: "/partners/2025/cybears.png",
-    edition: 2025,
-    description: {
-      fr: "CyBears est une startup algérienne innovante spécialisée dans le domaine de la cybersécurité. Fondée pour sécuriser les infrastructures numériques nationales et régionales, elle propose des services d'audit, de conseil, de détection et de réponse aux menaces en temps réel.",
-      ar: "سايبيرز (CyBears) هي شركة جزائرية ناشئة ومبتكرة متخصصة في مجال الأمن السيبراني. تأسست لحماية البنية التحتية الرقمية الوطنية والإقليمية، وتقدم خدمات التدقيق والاستشارات، والكشف عن التهديدات والاستجابة لها في الوقت الفعلي."
+    "name": "CyBears",
+    "slug": "cybears",
+    "logo": "/partners/2025/cybears.png",
+    "edition": 2025,
+    "description": {
+      "fr": "CyBears est une startup algérienne innovante spécialisée dans le domaine de la cybersécurité. Fondée pour sécuriser les infrastructures numériques nationales et régionales, elle propose des services d'audit, de conseil, de détection et de réponse aux menaces en temps réel.",
+      "ar": "سايبيرز (CyBears) هي شركة جزائرية ناشئة ومبتكرة متخصصة في مجال الأمن السيبراني. تأسست لحماية البنية التحتية الرقمية الوطنية والإقليمية، وتقدم خدمات التدقيق والاستشارات، والكشف عن التهديدات والاستجابة لها في الوقت الفعلي."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Startup spécialisée dans la cybersécurité et la souveraineté numérique.",
         "Solutions complètes d'audit de sécurité, de détection et réponse aux incidents.",
         "Partenaire stratégique d'acteurs de premier plan comme WALLIX."
       ],
-      ar: [
+      "ar": [
         "شركة ناشئة متخصصة في الأمن السيبراني والسيادة الرقمية.",
         "حلول متكاملة لتدقيق الأمن، الكشف عن الحوادث والاستجابة الفورية لها.",
         "شراكات استراتيجية مع كبار الفاعلين التكنولوجيين الدوليين مثل WALLIX."
       ]
     }
   },
-
-  // HFT 2024 Partners
   {
-    name: "HIS University",
-    slug: "his-university",
-    logo: "/partners/2024/his-university.png",
-    edition: 2024,
-    description: {
-      fr: "HIS University (Higher Institute of Sciences / Institut Supérieur des Sciences) est le premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie. Situé à Alger, il propose des formations de niveau Licence, Master et Doctorat orientées vers l'excellence académique et l'innovation.",
-      ar: "جامعة معهد العلوم العالي (HIS University / Higher Institute of Sciences) هي أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة من الدولة في الجزائر. تقع في الجزائر العاصمة، وتقدم برامج الليسانس والماستر والدكتوراه الموجهة نحو التميز الأكاديمي والابتكار."
+    "name": "SATIM",
+    "slug": "satim",
+    "logo": "/partners/2024/satim.png",
+    "edition": 2024,
+    "description": {
+      "en": "SATIM is the national interbank electronic payment and transaction switch operator in Algeria.",
+      "fr": "SATIM (Société d’Automatisation des Transactions Interbancaires et de Monétique) est l’opérateur national responsable de l'infrastructure de paiement électronique en Algérie.",
+      "ar": "شركة ساتيم (شركة تسيير وسائط الدفع التلقائي بين البنوك) هي المتعامل الوطني المسؤول عن البنية التحتية للدفع الإلكتروني في الجزائر."
     },
-    website: "https://his.edu.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.satim.dz",
+    "keyPoints": {
+      "en": [
+        "National interbank electronic payment and transaction switch operator.",
+        "Official manager of the CIB card network and e-commerce payment gateway.",
+        "Strategic partner for digital financial inclusion and economic innovation."
+      ],
+      "fr": [
+        "Gère le switch monétique interbancaire reliant les banques algériennes et Algérie Poste.",
+        "Certifie et sécurise les terminaux de paiement (TPE) et les distributeurs automatiques (DAB/GAB).",
+        "Fournit la passerelle nationale de paiement en ligne sécurisée pour le e-commerce."
+      ],
+      "ar": [
+        "إدارة مقسم الدفع الإلكتروني المشترك الذي يربط البنوك الجزائرية وبريد الجزائر.",
+        "اعتماد وتأمين أجهزة الدفع الإلكتروني (TPE) والموزعات الآلية (DAB/GAB) وفقًا للمعايير الدولية.",
+        "توفير البوابة الوطنية الآمنة للدفع الإلكتروني عبر الإنترنت لدعم التجارة الإلكترونية."
+      ]
+    }
+  },
+  {
+    "name": "Profex",
+    "slug": "prophex",
+    "logo": "/partners/2024/prophex.png",
+    "edition": 2024,
+    "description": {
+      "en": "Profex is a specialized manufacturer of certified personal care products and medical devices adhering to international quality standards.",
+      "fr": "Profex est une entreprise spécialisée dans le domaine de la fabrication de produits de soins et de dispositifs médicaux de haute qualité.",
+      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة."
+    },
+    "website": "https://www.profex.dz",
+    "keyPoints": {
+      "en": [
+        "Manufacturing of certified healthcare products and medical devices.",
+        "Full compliance with international quality and safety benchmarks.",
+        "Trusted healthcare brand in the Algerian market."
+      ],
+      "fr": [
+        "Fabrication de produits de soins et de dispositifs médicaux certifiés.",
+        "Conformité avec les normes internationales de qualité et de sécurité.",
+        "Marque de confiance pour les professionnels de la santé et les consommateurs."
+      ],
+      "ar": [
+        "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
+        "الامتثال للمعايير الدولية للجودة والسلامة.",
+        "علامة تجارية موثوقة لمهنيي الصحة والمستهلكين على حد سواء."
+      ]
+    }
+  },
+  {
+    "name": "Hayat",
+    "slug": "hayat",
+    "logo": "/partners/2024/hayat.png",
+    "edition": 2024,
+    "description": {
+      "en": "Hayat DHC Algeria, subsidiary of the global Turkish Hayat Group, is a leading manufacturer of hygiene and detergent consumer brands.",
+      "fr": "Hayat DHC Algérie, filiale du groupe international turc Hayat fondée en 2005, est un acteur leader du secteur de l'hygiène et des détergents en Algérie.",
+      "ar": "حياة دي إتش سي الجزائر (Hayat DHC Algérie)، وهي فرع من مجموعة حياة التركية العالمية، وتعد من الشركات الرائدة في قطاع النظافة والمنظفات في الجزائر."
+    },
+    "website": "https://www.hayat.com.tr",
+    "keyPoints": {
+      "en": [
+        "Algerian subsidiary of global consumer group Hayat.",
+        "Major manufacturing plant producing Molfix, Bingo, and Familia brands.",
+        "Market leader in baby hygiene and household cleaning products."
+      ],
+      "fr": [
+        "Filiale algérienne du groupe turc Hayat, présente en Algérie depuis 2005.",
+        "Grand complexe industriel situé à Bouinan (Blida) fabriquant les marques Molfix et Bingo.",
+        "Leader sur le marché national de l'hygiène infantile et des produits d'entretien."
+      ],
+      "ar": [
+        "الفرع الجزائري لمجموعة حياة التركية، متواجد في الجزائر منذ عام 2005.",
+        "مجمع صناعي كبير في بوعينان (البليدة) لإنتاج حفاضات Molfix ومنظفات Bingo.",
+        "رائد في السوق الوطنية لمنتجات النظافة الشخصية والمنظفات المنزلية."
+      ]
+    }
+  },
+  {
+    "name": "HIS University",
+    "slug": "his-university",
+    "logo": "/partners/2024/his-university.png",
+    "edition": 2024,
+    "description": {
+      "fr": "HIS University (Higher Institute of Sciences / Institut Supérieur des Sciences) est le premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie. Situé à Alger, il propose des formations de niveau Licence, Master et Doctorat orientées vers l'excellence académique et l'innovation.",
+      "ar": "جامعة معهد العلوم العالي (HIS University / Higher Institute of Sciences) هي أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة من الدولة في الجزائر. تقع في الجزائر العاصمة، وتقدم برامج الليسانس والماستر والدكتوراه الموجهة نحو التميز الأكاديمي والابتكار."
+    },
+    "website": "https://his.edu.dz",
+    "keyPoints": {
+      "fr": [
         "Premier établissement d'enseignement supérieur privé multidisciplinaire agréé par l'État en Algérie.",
         "Programmes académiques d'excellence conçus pour l'insertion professionnelle et l'innovation.",
         "Partenariats académiques et industriels solides au niveau national et international."
       ],
-      ar: [
+      "ar": [
         "أول مؤسسة تعليم عالي خاصة متعددة التخصصات معتمدة رسمياً من الدولة في الجزائر.",
         "برامج أكاديمية متميزة مصممة لتلبية متطلبات سوق العمل والابتكار.",
         "شراكات أكاديمية وصناعية متينة على المستويين الوطني والدولي."
@@ -873,22 +975,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "IRAcademy By HIS University",
-    slug: "iracademy",
-    logo: "/shared/iracademy.png",
-    edition: 2024,
-    description: {
-      fr: "IRAcademy (International Research Academy) est un centre de formation linguistique et de préparation aux certifications internationales, affilié à HIS University (Higher Institute of Sciences) d'Alger. Basé à Bordj El Bahri, l'établissement propose des cursus intensifs en langues étrangères et un accompagnement complet pour les études à l'étranger.",
-      ar: "آي آر أكاديمي (IRAcademy) هي مركز للتكوين اللغوي والتحضير للشهادات الدولية، تابعة لجامعة (HIS University) بالجزائر العاصمة. تقدم الأكاديمية دورات مكثفة في اللغات الأجنبية ومرافقة كاملة لمشاريع الدراسة في الخارج."
+    "name": "IRAcademy By HIS University",
+    "slug": "iracademy",
+    "logo": "/shared/iracademy.png",
+    "edition": 2024,
+    "description": {
+      "fr": "IRAcademy (International Research Academy) est un centre de formation linguistique et de préparation aux certifications internationales, affilié à HIS University (Higher Institute of Sciences) d'Alger. Basé à Bordj El Bahri, l'établissement propose des cursus intensifs en langues étrangères et un accompagnement complet pour les études à l'étranger.",
+      "ar": "آي آر أكاديمي (IRAcademy) هي مركز للتكوين اللغوي والتحضير للشهادات الدولية، تابعة لجامعة (HIS University) بالجزائر العاصمة. تقدم الأكاديمية دورات مكثفة في اللغات الأجنبية ومرافقة كاملة لمشاريع الدراسة في الخارج."
     },
-    website: "https://his.edu.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://his.edu.dz",
+    "keyPoints": {
+      "fr": [
         "Centre de langues et de préparation aux certifications internationales (TOEIC, TFI).",
         "Affilié à HIS University, premier institut d'enseignement supérieur privé multidisciplinaire d'Algérie.",
         "Accompagnement personnalisé pour l'orientation académique et la mobilité internationale."
       ],
-      ar: [
+      "ar": [
         "مركز للغات والتحضير للامتحانات والشهادات الدولية المعتمدة (TOEIC و TFI).",
         "تابع لجامعة (HIS University)، أول معهد تعليم عالي خاص متعدد التخصصات في الجزائر.",
         "مرافقة وتوجيه مخصص للطلبة الراغبين في مواصلة دراستهم بالخارج."
@@ -896,22 +998,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "HIS Training Center",
-    slug: "his-training-center",
-    logo: "/shared/his-training-center.png",
-    edition: 2024,
-    description: {
-      fr: "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
-      ar: "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
+    "name": "HIS Training Center",
+    "slug": "his-training-center",
+    "logo": "/shared/his-training-center.png",
+    "edition": 2024,
+    "description": {
+      "fr": "HIS Training Center (مركز التكوين المستمر للمعهد العالي للعلوم) est le centre de formation continue de l'Institut Supérieur des Sciences (HIS University). Il propose des programmes de formation professionnelle certifiants, des ateliers pratiques et du renforcement de compétences pour les étudiants, cadres et professionnels.",
+      "ar": "مركز التكوين المستمر للمعهد العالي للعلوم (HIS Training Center) هو مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي (HIS University). يقدم برامج تدريبية مهنية متخصصة وشهادات للتأهيل وتطوير المهارات للطلبة والإطارات والمهنيين."
     },
-    website: "https://his.edu.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://his.edu.dz",
+    "keyPoints": {
+      "fr": [
         "Centre de formation continue et de perfectionnement professionnel de HIS University.",
         "Formations qualifiantes et ateliers pratiques adaptés aux exigences du marché du travail.",
         "Accompagnement des étudiants et professionnels dans le développement de leurs compétences."
       ],
-      ar: [
+      "ar": [
         "مركز التكوين المستمر والتطوير المهني التابع لجامعة معهد العلوم العالي.",
         "دورات تدريبية متخصصة وورش عمل تطبيقية تتماشى مع متطلبات سوق العمل.",
         "مرافقة الطلبة والمهنيين لتطوير مهاراتهم وتدعيم خبراتهم العملية."
@@ -919,22 +1021,22 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Apollo Digital Solutions",
-    slug: "apollo",
-    logo: "/partners/2024/apollo.png",
-    edition: 2024,
-    description: {
-      fr: "Apollo Digital Solutions est une entreprise algérienne spécialisée dans les solutions numériques et le développement de logiciels sur mesure. Elle accompagne les entreprises dans leur transformation digitale à travers des services d'intégration de systèmes, de développement web et mobile, et de conseil en technologies de l'information.",
-      ar: "أبولو للحلول الرقمية (Apollo Digital Solutions) هي شركة جزائرية متخصصة في الحلول الرقمية وتطوير البرمجيات المخصصة. ترافق الشركات في تحولها الرقمي من خلال خدمات دمج الأنظمة، التطوير للويب والهواتف الذكية، والاستشارات في تكنولوجيا المعلومات."
+    "name": "Apollo Digital Solutions",
+    "slug": "apollo",
+    "logo": "/partners/2024/apollo.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Apollo Digital Solutions est une entreprise algérienne spécialisée dans les solutions numériques et le développement de logiciels sur mesure. Elle accompagne les entreprises dans leur transformation digitale à travers des services d'intégration de systèmes, de développement web et mobile, et de conseil en technologies de l'information.",
+      "ar": "أبولو للحلول الرقمية (Apollo Digital Solutions) هي شركة جزائرية متخصصة في الحلول الرقمية وتطوير البرمجيات المخصصة. ترافق الشركات في تحولها الرقمي من خلال خدمات دمج الأنظمة، التطوير للويب والهواتف الذكية، والاستشارات في تكنولوجيا المعلومات."
     },
-    website: "https://apollo-ds.com",
-    keyPoints: {
-      fr: [
+    "website": "https://apollo-ds.com",
+    "keyPoints": {
+      "fr": [
         "Spécialiste des solutions numériques et du développement de logiciels sur mesure en Algérie.",
         "Accompagnement des entreprises dans leur transformation digitale (web, mobile, intégration SI).",
         "Partenaire technologique de confiance pour les PME et grandes entreprises algériennes."
       ],
-      ar: [
+      "ar": [
         "متخصص في الحلول الرقمية وتطوير البرامج المخصصة في الجزائر.",
         "مرافقة المؤسسات في تحولها الرقمي (ويب، تطبيقات الهاتف، دمج أنظمة المعلومات).",
         "شريك تكنولوجي موثوق للمؤسسات الصغيرة والمتوسطة والكبرى في الجزائر."
@@ -942,21 +1044,21 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "Cabcofi",
-    slug: "cabcofi",
-    logo: "/partners/2024/cabcofi.png",
-    edition: 2024,
-    description: {
-      fr: "Cabcofi (Cabinet Conseil en Finances) est un cabinet de conseil financier algérien spécialisé dans l'accompagnement des entreprises et des entrepreneurs en matière de gestion financière, d'audit, de fiscalité et de stratégie d'entreprise. Il propose des solutions sur mesure pour optimiser la performance financière de ses clients.",
-      ar: "كابكوفي (مكتب الاستشارة في المالية) هو مكتب استشارات مالية جزائري متخصص في مرافقة الشركات والمقاولين في مجال الإدارة المالية، التدقيق، الجباية، واستراتيجية الأعمال. يقدم حلولاً مخصصة لتحسين الأداء المالي لعملائه."
+    "name": "Cabcofi",
+    "slug": "cabcofi",
+    "logo": "/partners/2024/cabcofi.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Cabcofi (Cabinet Conseil en Finances) est un cabinet de conseil financier algérien spécialisé dans l'accompagnement des entreprises et des entrepreneurs en matière de gestion financière, d'audit, de fiscalité et de stratégie d'entreprise. Il propose des solutions sur mesure pour optimiser la performance financière de ses clients.",
+      "ar": "كابكوفي (مكتب الاستشارة في المالية) هو مكتب استشارات مالية جزائري متخصص في مرافقة الشركات والمقاولين في مجال الإدارة المالية، التدقيق، الجباية، واستراتيجية الأعمال. يقدم حلولاً مخصصة لتحسين الأداء المالي لعملائه."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Cabinet spécialisé dans le conseil financier, l'audit et la gestion fiscale des entreprises.",
         "Accompagnement stratégique sur mesure pour les PME et les entrepreneurs algériens.",
         "Expertise en optimisation de la performance financière et en conformité réglementaire."
       ],
-      ar: [
+      "ar": [
         "مكتب متخصص في الاستشارات المالية، التدقيق وإدارة الجباية للمؤسسات.",
         "مرافقة استراتيجية مخصصة للمؤسسات الصغيرة والمتوسطة والمقاولين الجزائريين.",
         "خبرة في تحسين الأداء المالي والامتثال للمتطلبات التنظيمية."
@@ -964,549 +1066,527 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "BNP Paribas",
-    slug: "bnp-paribas",
-    logo: "/partners/2024/bnp-paribas.png",
-    edition: 2024,
-    description: {
-      fr: "BNP Paribas est l'un des groupes bancaires et financiers les plus importants au monde, présent dans plus de 65 pays. En Algérie, BNP Paribas El Djazaïr est une banque commerciale de référence, proposant une gamme complète de services financiers aux particuliers, aux professionnels et aux grandes entreprises depuis 2002.",
-      ar: "بي إن بي باريبا (BNP Paribas) هي إحدى أكبر المجموعات المصرفية والمالية في العالم، حاضرة في أكثر من 65 دولة. في الجزائر، تعد بي إن بي باريبا الجزائر (BNP Paribas El Djazaïr) بنكاً تجارياً مرجعياً يقدم مجموعة كاملة من الخدمات المالية للأفراد والمهنيين والمؤسسات الكبرى منذ عام 2002."
+    "name": "BNP Paribas",
+    "slug": "bnp-paribas",
+    "logo": "/partners/2024/bnp-paribas.png",
+    "edition": 2024,
+    "description": {
+      "fr": "BNP Paribas est l'un des groupes bancaires et financiers les plus importants au monde, présent dans plus de 65 pays. En Algérie, BNP Paribas El Djazaïr est une banque commerciale de référence, proposant une gamme complète de services financiers aux particuliers, aux professionnels et aux grandes entreprises depuis 2002.",
+      "ar": "بي إن بي باريبا (BNP Paribas) هي إحدى أكبر المجموعات المصرفية والمالية في العالم، حاضرة في أكثر من 65 دولة. في الجزائر، تعد بي إن بي باريبا الجزائر (BNP Paribas El Djazaïr) بنكاً تجارياً مرجعياً يقدم مجموعة كاملة من الخدمات المالية للأفراد والمهنيين والمؤسسات الكبرى منذ عام 2002."
     },
-    website: "https://www.bnpparibas.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.bnpparibas.dz",
+    "keyPoints": {
+      "fr": [
         "L'une des plus grandes banques mondiales, présente en Algérie sous le nom BNP Paribas El Djazaïr depuis 2002.",
         "Offre une gamme complète de services bancaires aux particuliers, PME et grandes entreprises.",
         "Acteur clé du financement de l'économie algérienne et du commerce international."
       ],
-      ar: [
+      "ar": [
         "من أكبر البنوك العالمية، متواجدة في الجزائر تحت اسم BNP Paribas El Djazaïr منذ عام 2002.",
         "تقدم مجموعة شاملة من الخدمات المصرفية للأفراد والمؤسسات الصغيرة والمتوسطة والكبرى.",
         "فاعل رئيسي في تمويل الاقتصاد الجزائري والتجارة الدولية."
       ]
     }
   },
-
   {
-    name: "DZ Déclic",
-    slug: "dz-declic",
-    logo: "/partners/2024/dz-declic.png",
-    edition: 2024,
-    description: {
-      fr: "DZ Déclic est un média et plateforme algérienne dédié à la vulgarisation de l'entrepreneuriat, de l'innovation et de l'écosystème startup en Algérie. À travers ses contenus vidéo, ses podcasts et ses événements, DZ Déclic connecte et inspire la nouvelle génération d'entrepreneurs algériens.",
-      ar: "دي زد دكليك (DZ Déclic) هي منصة إعلامية جزائرية متخصصة في تبسيط مفاهيم ريادة الأعمال، الابتكار ومنظومة الشركات الناشئة في الجزائر. من خلال محتواها المرئي والبودكاست والفعاليات، تربط المنصة وتلهم الجيل الجديد من رواد الأعمال الجزائريين."
+    "name": "DZ Déclic",
+    "slug": "dz-declic",
+    "logo": "/partners/2024/dz-declic.png",
+    "edition": 2024,
+    "description": {
+      "fr": "DZ Déclic est un média et plateforme algérienne dédié à la vulgarisation de l'entrepreneuriat, de l'innovation et de l'écosystème startup en Algérie. À travers ses contenus vidéo, ses podcasts et ses événements, DZ Déclic connecte et inspire la nouvelle génération d'entrepreneurs algériens.",
+      "ar": "دي زد دكليك (DZ Déclic) هي منصة إعلامية جزائرية متخصصة في تبسيط مفاهيم ريادة الأعمال، الابتكار ومنظومة الشركات الناشئة في الجزائر. من خلال محتواها المرئي والبودكاست والفعاليات، تربط المنصة وتلهم الجيل الجديد من رواد الأعمال الجزائريين."
     },
-    website: "https://www.dzdeclic.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.dzdeclic.com",
+    "keyPoints": {
+      "fr": [
         "Plateforme média algérienne spécialisée dans la vulgarisation de l'entrepreneuriat et des startups.",
         "Contenus variés (vidéos, podcasts, articles) pour inspirer les entrepreneurs algériens.",
         "Acteur incontournable de la scène startup algérienne et des événements tech locaux."
       ],
-      ar: [
+      "ar": [
         "منصة إعلامية جزائرية متخصصة في تبسيط مفاهيم ريادة الأعمال والشركات الناشئة.",
         "محتوى متنوع (مقاطع مرئية، بودكاست، مقالات) لإلهام رواد الأعمال الجزائريين.",
         "فاعل رئيسي في المشهد الريادي الجزائري وفعاليات التكنولوجيا المحلية."
       ]
     }
   },
-
   {
-    name: "El Djazair Takaful",
-    slug: "el-djazair-takaful",
-    logo: "/partners/2024/el-djazair-takaful.png",
-    edition: 2024,
-    description: {
-      fr: "El Djazair Takaful est une compagnie d'assurance algérienne spécialisée dans les produits d'assurance conformes à la finance islamique (Takaful). Elle propose une gamme complète de garanties pour les particuliers et les entreprises selon les principes de la mutualité et de la solidarité islamique.",
-      ar: "الجزائر تكافل (El Djazair Takaful) هي شركة تأمين جزائرية متخصصة في منتجات التأمين المتوافقة مع أحكام الشريعة الإسلامية (التكافل). تقدم مجموعة كاملة من الضمانات للأفراد والمؤسسات وفق مبادئ التعاون والتضامن الإسلامي."
+    "name": "El Djazair Takaful",
+    "slug": "el-djazair-takaful",
+    "logo": "/partners/2024/el-djazair-takaful.png",
+    "edition": 2024,
+    "description": {
+      "fr": "El Djazair Takaful est une compagnie d'assurance algérienne spécialisée dans les produits d'assurance conformes à la finance islamique (Takaful). Elle propose une gamme complète de garanties pour les particuliers et les entreprises selon les principes de la mutualité et de la solidarité islamique.",
+      "ar": "الجزائر تكافل (El Djazair Takaful) هي شركة تأمين جزائرية متخصصة في منتجات التأمين المتوافقة مع أحكام الشريعة الإسلامية (التكافل). تقدم مجموعة كاملة من الضمانات للأفراد والمؤسسات وفق مبادئ التعاون والتضامن الإسلامي."
     },
-    website: "https://www.eldjazairtakaful.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.eldjazairtakaful.dz",
+    "keyPoints": {
+      "fr": [
         "Compagnie d'assurance algérienne spécialisée dans les produits Takaful conformes à la charia.",
         "Offre une gamme complète de garanties islamiques pour les particuliers et les entreprises.",
         "Acteur engagé dans le développement de la finance islamique et de l'assurance éthique en Algérie."
       ],
-      ar: [
+      "ar": [
         "شركة تأمين جزائرية متخصصة في منتجات التكافل المتوافقة مع أحكام الشريعة الإسلامية.",
         "تقدم مجموعة شاملة من ضمانات التكافل للأفراد والمؤسسات.",
         "فاعل رئيسي في تطوير التمويل الإسلامي والتأمين الأخلاقي في الجزائر."
       ]
     }
   },
-
   {
-    name: "Elkindi Engineering",
-    slug: "elkindi-engineering",
-    logo: "/partners/2024/elkindi-engineering.png",
-    edition: 2024,
-    description: {
-      fr: "Elkindi Engineering est une entreprise algérienne spécialisée dans l'ingénierie industrielle, la maintenance des équipements et les solutions techniques pour les secteurs de l'énergie, de l'industrie et des travaux publics. Elle accompagne ses clients avec des prestations sur mesure alliant expertise technique et innovation.",
-      ar: "الكندي للهندسة (Elkindi Engineering) هي شركة جزائرية متخصصة في الهندسة الصناعية، صيانة المعدات والحلول التقنية لقطاعات الطاقة، الصناعة والأشغال العمومية. ترافق عملاءها بخدمات مخصصة تجمع بين الخبرة التقنية والابتكار."
+    "name": "Elkindi Engineering",
+    "slug": "elkindi-engineering",
+    "logo": "/partners/2024/elkindi-engineering.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Elkindi Engineering est une entreprise algérienne spécialisée dans l'ingénierie industrielle, la maintenance des équipements et les solutions techniques pour les secteurs de l'énergie, de l'industrie et des travaux publics. Elle accompagne ses clients avec des prestations sur mesure alliant expertise technique et innovation.",
+      "ar": "الكندي للهندسة (Elkindi Engineering) هي شركة جزائرية متخصصة في الهندسة الصناعية، صيانة المعدات والحلول التقنية لقطاعات الطاقة، الصناعة والأشغال العمومية. ترافق عملاءها بخدمات مخصصة تجمع بين الخبرة التقنية والابتكار."
     },
-    website: "https://www.elkindi-engineering.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.elkindi-engineering.com",
+    "keyPoints": {
+      "fr": [
         "Spécialiste en ingénierie industrielle et maintenance d'équipements pour les secteurs de l'énergie et de l'industrie.",
         "Solutions techniques sur mesure pour les entreprises algériennes des travaux publics et de l'industrie lourde.",
         "Expertise reconnue dans l'accompagnement technique et le conseil en solutions d'ingénierie avancées."
       ],
-      ar: [
+      "ar": [
         "متخصص في الهندسة الصناعية وصيانة المعدات لقطاعَي الطاقة والصناعة.",
         "حلول تقنية مخصصة للمؤسسات الجزائرية في مجال الأشغال العمومية والصناعة الثقيلة.",
         "خبرة معترف بها في المرافقة التقنية والاستشارات في مجال الحلول الهندسية المتقدمة."
       ]
     }
   },
-
   {
-    name: "Equatorial Coca-Cola Bottling Company Algeria",
-    slug: "eccbc-algeria",
-    logo: "/partners/2024/eccbc-algeria.png",
-    edition: 2024,
-    description: {
-      fr: "Equatorial Coca-Cola Bottling Company Algeria (ECCBC Algeria) est l'embouteilleur officiel des produits Coca-Cola en Algérie. Filiale du groupe ECCBC, présent dans plusieurs pays africains, elle assure la production, la distribution et la commercialisation des boissons de la marque Coca-Cola sur l'ensemble du territoire national.",
-      ar: "شركة إيكوتوريال كوكا-كولا لتعبئة المشروبات الجزائر (ECCBC Algeria) هي المعبِّئ الرسمي لمنتجات كوكا-كولا في الجزائر. وهي فرع من مجموعة ECCBC المتواجدة في عدة دول إفريقية، وتضمن إنتاج وتوزيع وتسويق مشروبات العلامة التجارية كوكا-كولا عبر كامل التراب الوطني."
+    "name": "Equatorial Coca-Cola Bottling Company Algeria",
+    "slug": "eccbc-algeria",
+    "logo": "/partners/2024/eccbc-algeria.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Equatorial Coca-Cola Bottling Company Algeria (ECCBC Algeria) est l'embouteilleur officiel des produits Coca-Cola en Algérie. Filiale du groupe ECCBC, présent dans plusieurs pays africains, elle assure la production, la distribution et la commercialisation des boissons de la marque Coca-Cola sur l'ensemble du territoire national.",
+      "ar": "شركة إيكوتوريال كوكا-كولا لتعبئة المشروبات الجزائر (ECCBC Algeria) هي المعبِّئ الرسمي لمنتجات كوكا-كولا في الجزائر. وهي فرع من مجموعة ECCBC المتواجدة في عدة دول إفريقية، وتضمن إنتاج وتوزيع وتسويق مشروبات العلامة التجارية كوكا-كولا عبر كامل التراب الوطني."
     },
-    website: "https://www.eccbc.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.eccbc.com",
+    "keyPoints": {
+      "fr": [
         "Embouteilleur officiel et exclusif des produits Coca-Cola en Algérie.",
         "Filiale du groupe ECCBC, l'un des plus grands embouteilleurs de Coca-Cola en Afrique.",
         "Assure la production locale, la chaîne logistique et la distribution nationale des boissons Coca-Cola."
       ],
-      ar: [
+      "ar": [
         "المعبِّئ الرسمي والحصري لمنتجات كوكا-كولا في الجزائر.",
         "فرع من مجموعة ECCBC، إحدى أكبر شركات تعبئة كوكا-كولا في إفريقيا.",
         "تضمن الإنتاج المحلي وسلسلة التوريد والتوزيع الوطني لمشروبات كوكا-كولا."
       ]
     }
   },
-
   {
-    name: "Fransabank El Djazaïr SPA",
-    slug: "fransabank",
-    logo: "/partners/2024/fransabank.png",
-    edition: 2024,
-    description: {
-      fr: "Fransabank El Djazaïr SPA est une banque commerciale privée agréée en Algérie, filiale du groupe bancaire libanais Fransabank. Présente en Algérie depuis 2006, elle offre une gamme complète de services bancaires aux particuliers, aux PME et aux grandes entreprises, en intégrant des valeurs de proximité et d'innovation financière.",
-      ar: "فرنسابنك الجزائر (Fransabank El Djazaïr SPA) هي بنك تجاري خاص معتمد في الجزائر، وهو فرع من مجموعة فرنسابنك اللبنانية. متواجد في الجزائر منذ عام 2006، يقدم مجموعة كاملة من الخدمات المصرفية للأفراد والمؤسسات الصغيرة والمتوسطة والكبرى، مع الالتزام بقيم القرب والابتكار المالي."
+    "name": "Fransabank El Djazaïr SPA",
+    "slug": "fransabank",
+    "logo": "/partners/2024/fransabank.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Fransabank El Djazaïr SPA est une banque commerciale privée agréée en Algérie, filiale du groupe bancaire libanais Fransabank. Présente en Algérie depuis 2006, elle offre une gamme complète de services bancaires aux particuliers, aux PME et aux grandes entreprises, en intégrant des valeurs de proximité et d'innovation financière.",
+      "ar": "فرنسابنك الجزائر (Fransabank El Djazaïr SPA) هي بنك تجاري خاص معتمد في الجزائر، وهو فرع من مجموعة فرنسابنك اللبنانية. متواجد في الجزائر منذ عام 2006، يقدم مجموعة كاملة من الخدمات المصرفية للأفراد والمؤسسات الصغيرة والمتوسطة والكبرى، مع الالتزام بقيم القرب والابتكار المالي."
     },
-    website: "https://www.fransabank.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.fransabank.dz",
+    "keyPoints": {
+      "fr": [
         "Banque commerciale privée filiale du groupe Fransabank, établissement bancaire libanais de référence.",
         "Présente en Algérie depuis 2006, offrant des services bancaires aux particuliers et aux entreprises.",
         "Engagée dans la modernisation et la digitalisation des services financiers en Algérie."
       ],
-      ar: [
+      "ar": [
         "بنك تجاري خاص تابع لمجموعة فرنسابنك، المؤسسة المصرفية اللبنانية المرجعية.",
         "متواجد في الجزائر منذ 2006، يقدم خدمات مصرفية شاملة للأفراد والمؤسسات.",
         "ملتزم بتحديث ورقمنة الخدمات المالية في الجزائر."
       ]
     }
   },
-
   {
-    name: "Comet Coworking",
-    slug: "comet-coworking",
-    logo: "/partners/2024/comet-coworking.png",
-    edition: 2024,
-    description: {
-      fr: "Comet Coworking est un espace de coworking et hub d'innovation algérien dédié aux freelances, startups et entrepreneurs. Offrant des bureaux flexibles, des salles de réunion et un écosystème communautaire dynamique, Comet Coworking est un lieu de travail collaboratif moderne favorisant la créativité et le networking professionnel.",
-      ar: "كومِت كووركينغ (Comet Coworking) هو فضاء عمل مشترك ومركز ابتكار جزائري مخصص للمستقلين والشركات الناشئة ورواد الأعمال. يوفر مكاتب مرنة وقاعات اجتماعات ومنظومة مجتمعية نشطة، ليكون فضاءً عصرياً للعمل التعاوني يعزز الإبداع والتواصل المهني."
+    "name": "Comet Coworking",
+    "slug": "comet-coworking",
+    "logo": "/partners/2024/comet-coworking.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Comet Coworking est un espace de coworking et hub d'innovation algérien dédié aux freelances, startups et entrepreneurs. Offrant des bureaux flexibles, des salles de réunion et un écosystème communautaire dynamique, Comet Coworking est un lieu de travail collaboratif moderne favorisant la créativité et le networking professionnel.",
+      "ar": "كومِت كووركينغ (Comet Coworking) هو فضاء عمل مشترك ومركز ابتكار جزائري مخصص للمستقلين والشركات الناشئة ورواد الأعمال. يوفر مكاتب مرنة وقاعات اجتماعات ومنظومة مجتمعية نشطة، ليكون فضاءً عصرياً للعمل التعاوني يعزز الإبداع والتواصل المهني."
     },
-    website: "https://www.cometcoworking.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.cometcoworking.com",
+    "keyPoints": {
+      "fr": [
         "Espace de coworking moderne offrant des bureaux flexibles et des salles de réunion équipées.",
         "Hub communautaire pour freelances, startups et entrepreneurs algériens.",
         "Lieu de networking et d'innovation favorisant la collaboration et la créativité."
       ],
-      ar: [
+      "ar": [
         "فضاء عمل مشترك عصري يوفر مكاتب مرنة وقاعات اجتماعات مجهزة.",
         "مركز مجتمعي للمستقلين والشركات الناشئة ورواد الأعمال الجزائريين.",
         "فضاء للتواصل والابتكار يعزز التعاون والإبداع."
       ]
     }
   },
-
   {
-    name: "Innovation School",
-    slug: "innovation-school",
-    logo: "/partners/2024/innovation-school.png",
-    edition: 2024,
-    description: {
-      fr: "Innovation School est un établissement d'enseignement supérieur privé algérien spécialisé dans les formations aux métiers du numérique, de l'innovation et de l'entrepreneuriat. Elle prépare les étudiants aux défis de l'économie digitale en proposant des cursus innovants orientés pratique et insertion professionnelle.",
-      ar: "إينوفيشن سكول (Innovation School) هي مؤسسة تعليم عالي خاصة جزائرية متخصصة في التكوين في مهن الرقمنة والابتكار وريادة الأعمال. تُعدّ الطلاب لتحديات الاقتصاد الرقمي من خلال مناهج مبتكرة موجهة نحو التطبيق العملي والإدماج المهني."
+    "name": "Innovation School",
+    "slug": "innovation-school",
+    "logo": "/partners/2024/innovation-school.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Innovation School est un établissement d'enseignement supérieur privé algérien spécialisé dans les formations aux métiers du numérique, de l'innovation et de l'entrepreneuriat. Elle prépare les étudiants aux défis de l'économie digitale en proposant des cursus innovants orientés pratique et insertion professionnelle.",
+      "ar": "إينوفيشن سكول (Innovation School) هي مؤسسة تعليم عالي خاصة جزائرية متخصصة في التكوين في مهن الرقمنة والابتكار وريادة الأعمال. تُعدّ الطلاب لتحديات الاقتصاد الرقمي من خلال مناهج مبتكرة موجهة نحو التطبيق العملي والإدماج المهني."
     },
-    website: "https://www.innovation-school.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.innovation-school.dz",
+    "keyPoints": {
+      "fr": [
         "École supérieure privée spécialisée dans les formations aux métiers du numérique et de l'innovation.",
         "Cursus pratiques et innovants orientés vers l'employabilité et l'entrepreneuriat.",
         "Partenaire de l'écosystème startup algérien pour la formation des talents de demain."
       ],
-      ar: [
+      "ar": [
         "مدرسة عليا خاصة متخصصة في تكوين كفاءات مهن الرقمنة والابتكار.",
         "مناهج عملية ومبتكرة موجهة نحو التوظيف وريادة الأعمال.",
         "شريك لمنظومة الشركات الناشئة الجزائرية في تكوين مواهب الغد."
       ]
     }
   },
-
   {
-    name: "Maystro Delivery",
-    slug: "maystro-delivery",
-    logo: "/partners/2024/maystro-delivery.png",
-    edition: 2024,
-    description: {
-      fr: "Maystro Delivery est une startup algérienne spécialisée dans les solutions logistiques et la livraison express pour le e-commerce. Elle propose une plateforme technologique innovante permettant aux marchands de gérer leurs expéditions, suivre leurs colis en temps réel et optimiser leur chaîne logistique.",
-      ar: "مايسترو ديليفري (Maystro Delivery) هي شركة جزائرية ناشئة متخصصة في الحلول اللوجستية والتوصيل السريع للتجارة الإلكترونية. تقدم منصة تكنولوجية مبتكرة تتيح للتجار إدارة شحناتهم وتتبع طرودهم في الوقت الفعلي وتحسين سلسلة توريدهم."
+    "name": "Maystro Delivery",
+    "slug": "maystro-delivery",
+    "logo": "/partners/2024/maystro-delivery.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Maystro Delivery est une startup algérienne spécialisée dans les solutions logistiques et la livraison express pour le e-commerce. Elle propose une plateforme technologique innovante permettant aux marchands de gérer leurs expéditions, suivre leurs colis en temps réel et optimiser leur chaîne logistique.",
+      "ar": "مايسترو ديليفري (Maystro Delivery) هي شركة جزائرية ناشئة متخصصة في الحلول اللوجستية والتوصيل السريع للتجارة الإلكترونية. تقدم منصة تكنولوجية مبتكرة تتيح للتجار إدارة شحناتهم وتتبع طرودهم في الوقت الفعلي وتحسين سلسلة توريدهم."
     },
-    website: "https://www.maystro.io",
-    keyPoints: {
-      fr: [
+    "website": "https://www.maystro.io",
+    "keyPoints": {
+      "fr": [
         "Startup logistique algérienne spécialisée dans la livraison express pour le e-commerce.",
         "Plateforme technologique de gestion des expéditions avec suivi des colis en temps réel.",
         "Solution complète pour les marchands : collecte, traitement, livraison et gestion des retours."
       ],
-      ar: [
+      "ar": [
         "شركة لوجستية ناشئة جزائرية متخصصة في التوصيل السريع للتجارة الإلكترونية.",
         "منصة تكنولوجية لإدارة الشحنات مع تتبع الطرود في الوقت الفعلي.",
         "حل متكامل للتجار: استلام، معالجة، توصيل وإدارة المرتجعات."
       ]
     }
   },
-
   {
-    name: "Moustachir",
-    slug: "moustachir",
-    logo: "/partners/2024/moustachir.png",
-    edition: 2024,
-    description: {
-      fr: "Moustachir est une plateforme algérienne de conseil et d'accompagnement entrepreneurial, dédiée à aider les porteurs de projets et les entrepreneurs à lancer et développer leurs entreprises. Elle met en relation les entrepreneurs avec des experts, mentors et investisseurs pour accélérer la croissance de leurs projets.",
-      ar: "مستشير (Moustachir) هي منصة جزائرية للاستشارات ومرافقة رواد الأعمال، مخصصة لمساعدة حاملي المشاريع والمقاولين على إطلاق وتطوير مؤسساتهم. تربط المنصة رواد الأعمال بالخبراء والمرشدين والمستثمرين لتسريع نمو مشاريعهم."
+    "name": "Moustachir",
+    "slug": "moustachir",
+    "logo": "/partners/2024/moustachir.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Moustachir est une plateforme algérienne de conseil et d'accompagnement entrepreneurial, dédiée à aider les porteurs de projets et les entrepreneurs à lancer et développer leurs entreprises. Elle met en relation les entrepreneurs avec des experts, mentors et investisseurs pour accélérer la croissance de leurs projets.",
+      "ar": "مستشير (Moustachir) هي منصة جزائرية للاستشارات ومرافقة رواد الأعمال، مخصصة لمساعدة حاملي المشاريع والمقاولين على إطلاق وتطوير مؤسساتهم. تربط المنصة رواد الأعمال بالخبراء والمرشدين والمستثمرين لتسريع نمو مشاريعهم."
     },
-    website: "https://www.moustachir.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.moustachir.com",
+    "keyPoints": {
+      "fr": [
         "Plateforme algérienne de conseil et d'accompagnement dédiée aux entrepreneurs et porteurs de projets.",
         "Mise en relation avec des experts, mentors et investisseurs pour accélérer la croissance des startups.",
         "Écosystème digital complet pour le lancement, le développement et la structuration des entreprises."
       ],
-      ar: [
+      "ar": [
         "منصة جزائرية للاستشارات والمرافقة مخصصة للمقاولين وحاملي المشاريع.",
         "ربط رواد الأعمال بالخبراء والمرشدين والمستثمرين لتسريع نمو الشركات الناشئة.",
         "منظومة رقمية متكاملة لإطلاق وتطوير وهيكلة المؤسسات."
       ]
     }
   },
-
   {
-    name: "MS Pharma",
-    slug: "ms-pharma",
-    logo: "/partners/2024/ms-pharma.png",
-    edition: 2024,
-    description: {
-      fr: "MS Pharma est un groupe pharmaceutique régional de référence, actif dans la fabrication, la distribution et la commercialisation de médicaments génériques et de spécialités pharmaceutiques. Présent dans plusieurs pays du Moyen-Orient et d'Afrique du Nord, le groupe est notamment connu en Algérie à travers sa filiale El Kendi Pharmaceuticals.",
-      ar: "مجموعة MS فارما هي مجموعة صيدلانية إقليمية مرجعية، تعمل في مجال تصنيع وتوزيع وتسويق الأدوية الجنيسة والمستحضرات الصيدلانية المتخصصة. حاضرة في عدة دول من الشرق الأوسط وشمال إفريقيا، وتُعرف في الجزائر من خلال فرعها الكندي للأدوية."
+    "name": "MS Pharma",
+    "slug": "ms-pharma",
+    "logo": "/partners/2024/ms-pharma.png",
+    "edition": 2024,
+    "description": {
+      "fr": "MS Pharma est un groupe pharmaceutique régional de référence, actif dans la fabrication, la distribution et la commercialisation de médicaments génériques et de spécialités pharmaceutiques. Présent dans plusieurs pays du Moyen-Orient et d'Afrique du Nord, le groupe est notamment connu en Algérie à travers sa filiale El Kendi Pharmaceuticals.",
+      "ar": "مجموعة MS فارما هي مجموعة صيدلانية إقليمية مرجعية، تعمل في مجال تصنيع وتوزيع وتسويق الأدوية الجنيسة والمستحضرات الصيدلانية المتخصصة. حاضرة في عدة دول من الشرق الأوسط وشمال إفريقيا، وتُعرف في الجزائر من خلال فرعها الكندي للأدوية."
     },
-    website: "https://www.mspharma.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.mspharma.com",
+    "keyPoints": {
+      "fr": [
         "Groupe pharmaceutique régional leader dans la fabrication et la distribution de médicaments génériques.",
         "Présent dans plusieurs pays MENA, dont l'Algérie à travers sa filiale El Kendi Pharmaceuticals.",
         "Engagé dans l'accessibilité aux médicaments de qualité et dans le développement de l'industrie pharmaceutique locale."
       ],
-      ar: [
+      "ar": [
         "مجموعة صيدلانية إقليمية رائدة في تصنيع وتوزيع الأدوية الجنيسة.",
         "حاضرة في دول منطقة الشرق الأوسط وشمال إفريقيا (MENA)، ومنها الجزائر عبر شركة الكندي للأدوية.",
         "ملتزمة بتيسير الوصول إلى الأدوية الجيدة وتطوير الصناعة الدوائية المحلية."
       ]
     }
   },
-
   {
-    name: "Yassir",
-    slug: "yassir",
-    logo: "/partners/2024/yassir.png",
-    edition: 2024,
-    description: {
-      fr: "Yassir est la super-app nord-africaine de référence, fondée en Algérie en 2017. Offrant une plateforme intégrée de VTC (transport de personnes), de livraison de repas, de courses et de services financiers, Yassir est aujourd'hui présente dans plusieurs pays d'Afrique et du Moyen-Orient avec des millions d'utilisateurs.",
-      ar: "ياسير (Yassir) هي التطبيق الشامل المرجعي في شمال إفريقيا، تأسست في الجزائر عام 2017. تقدم منصة متكاملة لخدمات النقل الخاص بالسيارة (VTC)، وتوصيل الوجبات، والتسوق والخدمات المالية، وهي اليوم حاضرة في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين."
+    "name": "Yassir",
+    "slug": "yassir",
+    "logo": "/partners/2024/yassir.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Yassir est la super-app nord-africaine de référence, fondée en Algérie en 2017. Offrant une plateforme intégrée de VTC (transport de personnes), de livraison de repas, de courses et de services financiers, Yassir est aujourd'hui présente dans plusieurs pays d'Afrique et du Moyen-Orient avec des millions d'utilisateurs.",
+      "ar": "ياسير (Yassir) هي التطبيق الشامل المرجعي في شمال إفريقيا، تأسست في الجزائر عام 2017. تقدم منصة متكاملة لخدمات النقل الخاص بالسيارة (VTC)، وتوصيل الوجبات، والتسوق والخدمات المالية، وهي اليوم حاضرة في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين."
     },
-    website: "https://yassir.com",
-    keyPoints: {
-      fr: [
+    "website": "https://yassir.com",
+    "keyPoints": {
+      "fr": [
         "Super-app algérienne fondée en 2017, offrant VTC, livraison de repas et services financiers.",
         "Présente dans plusieurs pays d'Afrique et du Moyen-Orient avec des millions d'utilisateurs actifs.",
         "Licorne technologique africaine et l'une des startups les plus valorisées du continent."
       ],
-      ar: [
+      "ar": [
         "تطبيق شامل جزائري تأسس عام 2017، يجمع النقل الخاص، توصيل الوجبات والخدمات المالية.",
         "حاضر في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين النشطين.",
         "شركة تكنولوجية أفريقية ذات قيمة مليارية وواحدة من أكثر الشركات الناشئة قيمةً في القارة."
       ]
     }
   },
-
   {
-    name: "S.Five Groupe",
-    slug: "s-five-groupe",
-    logo: "/partners/2024/s-five-groupe.png",
-    edition: 2024,
-    description: {
-      fr: "S.Five Groupe est une entreprise algérienne spécialisée dans l'ingénierie, la construction métallique, et les solutions industrielles intégrées. Le groupe accompagne les acteurs économiques nationaux dans la réalisation de leurs infrastructures techniques et de leurs projets d'aménagement industriel.",
-      ar: "مجموعة إس فايف (S.Five Groupe) هي شركة جزائرية متخصصة في الهندسة، الإنشاءات المعدنية، والحلول الصناعية المتكاملة. ترافق المجموعة الفاعلين الاقتصاديين الوطنيين في إنجاز بناهم التحتية التقنية ومشاريع التهيئة الصناعية."
+    "name": "S.Five Groupe",
+    "slug": "s-five-groupe",
+    "logo": "/partners/2024/s-five-groupe.png",
+    "edition": 2024,
+    "description": {
+      "fr": "S.Five Groupe est une entreprise algérienne spécialisée dans l'ingénierie, la construction métallique, et les solutions industrielles intégrées. Le groupe accompagne les acteurs économiques nationaux dans la réalisation de leurs infrastructures techniques et de leurs projets d'aménagement industriel.",
+      "ar": "مجموعة إس فايف (S.Five Groupe) هي شركة جزائرية متخصصة في الهندسة، الإنشاءات المعدنية، والحلول الصناعية المتكاملة. ترافق المجموعة الفاعلين الاقتصاديين الوطنيين في إنجاز بناهم التحتية التقنية ومشاريع التهيئة الصناعية."
     },
-    website: "https://sfivegroupe.com",
-    keyPoints: {
-      fr: [
+    "website": "https://sfivegroupe.com",
+    "keyPoints": {
+      "fr": [
         "Spécialiste de la construction métallique et de la chaudronnerie industrielle en Algérie.",
         "Ingénierie de précision et solutions d'infrastructures techniques clés en main.",
         "Accompagnement de projets industriels d'envergure sur l'ensemble du territoire national."
       ],
-      ar: [
+      "ar": [
         "متخصص في الإنشاءات المعدنية والغلايات الصناعية في الجزائر.",
         "هندسة دقيقة وحلول جاهزة للبنى التحتية التقنية.",
         "مرافقة المشاريع الصناعية الكبرى عبر كامل التراب الوطني."
       ]
     }
   },
-
   {
-    name: "Societe Generale",
-    slug: "societe-generale",
-    logo: "/partners/2024/societe-generale.png",
-    edition: 2024,
-    description: {
-      fr: "Société Générale Algérie est l'une des premières banques privées installées en Algérie. Filiale du grand groupe bancaire international Société Générale, elle offre un accompagnement financier de premier plan et des services bancaires innovants aux particuliers, professionnels et grandes entreprises depuis 2000.",
-      ar: "سوسيتيه جنرال الجزائر (Société Générale Algérie) هي واحدة من أولى البنوك الخاصة التي استقرت في الجزائر. بصفتها فرعاً للمجموعة المصرفية العالمية الكبرى سوسيتيه جنرال، فإنها تقدم مرافقة مالية رائدة وخدمات مصرفية مبتكرة للأفراد والمهنيين والمؤسسات الكبرى منذ عام 2000."
+    "name": "Societe Generale",
+    "slug": "societe-generale",
+    "logo": "/partners/2024/societe-generale.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Société Générale Algérie est l'une des premières banques privées installées en Algérie. Filiale du grand groupe bancaire international Société Générale, elle offre un accompagnement financier de premier plan et des services bancaires innovants aux particuliers, professionnels et grandes entreprises depuis 2000.",
+      "ar": "سوسيتيه جنرال الجزائر (Société Générale Algérie) هي واحدة من أولى البنوك الخاصة التي استقرت في الجزائر. بصفتها فرعاً للمجموعة المصرفية العالمية الكبرى سوسيتيه جنرال، فإنها تقدم مرافقة مالية رائدة وخدمات مصرفية مبتكرة للأفراد والمهنيين والمؤسسات الكبرى منذ عام 2000."
     },
-    website: "https://www.societegenerale.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.societegenerale.dz",
+    "keyPoints": {
+      "fr": [
         "L'un des principaux acteurs bancaires privés du pays, filiale du groupe international Société Générale.",
         "Une gamme complète de solutions de financement, de gestion de compte et de services de banque en ligne.",
         "Un réseau d'agences étendu à travers les principales wilayas d'Algérie pour un service de proximité."
       ],
-      ar: [
+      "ar": [
         "أحد الفاعلين الرئيسيين في القطاع المصرفي الخاص في البلاد، فرع للمجموعة الدولية سوسيتيه جنرال.",
         "مجموعة كاملة من حلول التمويل، إدارة الحسابات، والخدمات المصرفية عبر الإنترنت.",
         "شبكة وكالات واسعة تغطي الولايات الرئيسية في الجزائر لتقديم خدمة قريبة من العملاء."
       ]
     }
   },
-
   {
-    name: "Tassili Airlines",
-    slug: "tassili-airlines",
-    logo: "/partners/2024/tassili-airlines.png",
-    edition: 2024,
-    description: {
-      fr: "Tassili Airlines est une compagnie aérienne algérienne, filiale à 100% du groupe pétrolier Sonatrach. Fondée en 1998 pour répondre initialement aux besoins de transport du secteur des hydrocarbures, elle opère aujourd'hui un réseau de vols passagers réguliers et charters au niveau national et international.",
-      ar: "طيران الطاسيلي (Tassili Airlines) هي شركة طيران جزائرية مملوكة بنسبة 100% لمجمع المحروقات سوناطراك. تأسست عام 1998 لتلبية احتياجات النقل في قطاع النفط والغاز، وتدير اليوم شبكة رحلات منتظمة وعارضة (Charter) لنقل المسافرين على المستويين الوطني والدولي."
+    "name": "Tassili Airlines",
+    "slug": "tassili-airlines",
+    "logo": "/partners/2024/tassili-airlines.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Tassili Airlines est une compagnie aérienne algérienne, filiale à 100% du groupe pétrolier Sonatrach. Fondée en 1998 pour répondre initialement aux besoins de transport du secteur des hydrocarbures, elle opère aujourd'hui un réseau de vols passagers réguliers et charters au niveau national et international.",
+      "ar": "طيران الطاسيلي (Tassili Airlines) هي شركة طيران جزائرية مملوكة بنسبة 100% لمجمع المحروقات سوناطراك. تأسست عام 1998 لتلبية احتياجات النقل في قطاع النفط والغاز، وتدير اليوم شبكة رحلات منتظمة وعارضة (Charter) لنقل المسافرين على المستويين الوطني والدولي."
     },
-    website: "https://www.tassiliairlines.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.tassiliairlines.dz",
+    "keyPoints": {
+      "fr": [
         "Filiale à 100% du groupe pétrolier national Sonatrach.",
         "Réseau de vols domestiques et liaisons internationales régulières vers l'Europe.",
         "Acteur clé du transport charter pour les compagnies pétrolières et industrielles."
       ],
-      ar: [
+      "ar": [
         "شركة تابعة بنسبة 100% للمجمع البترولي الوطني سوناطراك.",
         "شبكة رحلات داخلية وخطوط دولية منتظمة نحو أوروبا.",
         "فاعل رئيسي في النقل العارض لشركات النفط والشركات الصناعية."
       ]
     }
   },
-
   {
-    name: "TriEmploi",
-    slug: "triemploi",
-    logo: "/partners/2024/triemploi.png",
-    edition: 2024,
-    description: {
-      fr: "TriEmploi est une agence de recrutement et de travail temporaire en Algérie, proposant des solutions de gestion des ressources humaines et de placement de personnel pour les entreprises de divers secteurs industriels et tertiaires.",
-      ar: "تراي أومبلوا (TriEmploi) هي وكالة توظيف وعمل مؤقت في الجزائر، تقدم حلولاً لإدارة الموارد البشرية وتوظيف العمالة للمؤسسات في مختلف القطاعات الصناعية والخدمية."
+    "name": "TriEmploi",
+    "slug": "triemploi",
+    "logo": "/partners/2024/triemploi.png",
+    "edition": 2024,
+    "description": {
+      "fr": "TriEmploi est une agence de recrutement et de travail temporaire en Algérie, proposant des solutions de gestion des ressources humaines et de placement de personnel pour les entreprises de divers secteurs industriels et tertiaires.",
+      "ar": "تراي أومبلوا (TriEmploi) هي وكالة توظيف وعمل مؤقت في الجزائر، تقدم حلولاً لإدارة الموارد البشرية وتوظيف العمالة للمؤسسات في مختلف القطاعات الصناعية والخدمية."
     },
-    website: "https://www.triemploi.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.triemploi.com",
+    "keyPoints": {
+      "fr": [
         "Agence de recrutement et de mise à disposition de personnel qualifié.",
         "Solutions RH flexibles adaptées aux besoins spécifiques des entreprises algériennes.",
         "Accompagnement complet des candidats dans leur recherche d'emploi et leur insertion."
       ],
-      ar: [
+      "ar": [
         "وكالة توظيف وتوفير عمالة مؤهلة للمؤسسات.",
         "حلول مرنة للموارد البشرية تتكيف مع الاحتياجات المحددة للشركات الجزائرية.",
         "مرافقة كاملة للمرشحين في بحثهم عن عمل وإدماجهم المهني."
       ]
     }
   },
-
   {
-    name: "Unilever",
-    slug: "unilever",
-    logo: "/partners/2024/unilever.png",
-    edition: 2024,
-    description: {
-      fr: "Unilever est l'une des plus importantes multinationales de produits de grande consommation au monde. Présente en Algérie à travers sa filiale locale, elle fabrique et distribue une large gamme de marques grand public réputées dans les secteurs des produits d'entretien ménager, d'hygiène personnelle et de beauté.",
-      ar: "يونيليفر (Unilever) هي واحدة من أكبر الشركات متعددة الجنسيات للمنتجات الاستهلاكية في العالم. متواجدة في الجزائر من خلال فرعها المحلي، حيث تقوم بتصنيع وتوزيع مجموعة واسعة من العلامات التجارية الاستهلاكية الشهيرة في قطاعات مستحضرات التنظيف المنزلية، النظافة الشخصية والعناية بالجمال."
+    "name": "Unilever",
+    "slug": "unilever",
+    "logo": "/partners/2024/unilever.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Unilever est l'une des plus importantes multinationales de produits de grande consommation au monde. Présente en Algérie à travers sa filiale locale, elle fabrique et distribue une large gamme de marques grand public réputées dans les secteurs des produits d'entretien ménager, d'hygiène personnelle et de beauté.",
+      "ar": "يونيليفر (Unilever) هي واحدة من أكبر الشركات متعددة الجنسيات للمنتجات الاستهلاكية في العالم. متواجدة في الجزائر من خلال فرعها المحلي، حيث تقوم بتصنيع وتوزيع مجموعة واسعة من العلامات التجارية الاستهلاكية الشهيرة في قطاعات مستحضرات التنظيف المنزلية، النظافة الشخصية والعناية بالجمال."
     },
-    website: "https://www.unilever.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.unilever.com",
+    "keyPoints": {
+      "fr": [
         "Multinationale majeure de biens de consommation avec une forte présence industrielle et commerciale en Algérie.",
         "Portefeuille de marques de renommée mondiale dans l'hygiène, la beauté et l'entretien de la maison.",
         "Engagement fort pour le développement durable, la production locale et la création d'emplois."
       ],
-      ar: [
+      "ar": [
         "شركة متعددة الجنسيات كبرى في قطاع السلع الاستهلاكية مع حضور صناعي وتجاري قوي في الجزائر.",
         "مجموعة علامات تجارية ذات شهرة عالمية في مجالات النظافة الشخصية، العناية بالجمال، والعناية بالمنزل.",
         "التزام قوي بالتنمية المستدable، الإنتاج المحلي، وخلق فرص العمل."
       ]
     }
   },
-
   {
-    name: "Natixis Algérie",
-    slug: "natixis",
-    logo: "/partners/2024/natixis.png",
-    edition: 2024,
-    description: {
-      fr: "Natixis Algérie est la filiale du groupe BPCE, deuxième groupe bancaire en France. Établie en Algérie depuis 1999, elle propose une gamme diversifiée de produits et services financiers destinés aux grandes entreprises, PME et professionnels algériens.",
-      ar: "ناتيكسيس الجزائر (Natixis Algérie) هي فرع من مجموعة BPCE، ثاني أكبر مجموعة مصرفية في فرنسا. تأسس في الجزائر عام 1999، ويقدم مجموعة متنوعة من المنتجات والخدمات المالية الموجهة للمؤسسات الكبرى، الشركات الصغيرة والمتوسطة، والمهنيين في الجزائر."
+    "name": "Natixis Algérie",
+    "slug": "natixis",
+    "logo": "/partners/2024/natixis.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Natixis Algérie est la filiale du groupe BPCE, deuxième groupe bancaire en France. Établie en Algérie depuis 1999, elle propose une gamme diversifiée de produits et services financiers destinés aux grandes entreprises, PME et professionnels algériens.",
+      "ar": "ناتيكسيس الجزائر (Natixis Algérie) هي فرع من مجموعة BPCE، ثاني أكبر مجموعة مصرفية في فرنسا. تأسس في الجزائر عام 1999، ويقدم مجموعة متنوعة من المنتجات والخدمات المالية الموجهة للمؤسسات الكبرى، الشركات الصغيرة والمتوسطة، والمهنيين في الجزائر."
     },
-    website: "https://www.algerie.natixis.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.algerie.natixis.com",
+    "keyPoints": {
+      "fr": [
         "Filiale du grand groupe bancaire international français BPCE.",
         "Présente en Algérie depuis 1999, au service des entreprises et des professionnels.",
         "Expertise solide en financement structuré, gestion de trésorerie et commerce international."
       ],
-      ar: [
+      "ar": [
         "فرع من المجموعة المصرفية الفرنسية العالمية الكبرى BPCE.",
         "متواجد في الجزائر منذ 1999 لخدمة المؤسسات والمهنيين.",
         "خبرة قوية في التمويل المهيكل، إدارة الخزينة، والتجارة الدولية."
       ]
     }
   },
-
   {
-    name: "ABC Corporation",
-    slug: "abc-corporation",
-    logo: "/partners/2024/abc-corporation.png",
-    edition: 2024,
-    description: {
-      fr: "ABC Corporation (Arab Banking Corporation) est une banque internationale de premier plan opérant en Algérie. Elle offre des solutions de banque de financement et d'investissement, de gestion de trésorerie et de services bancaires aux entreprises et aux particuliers.",
-      ar: "المؤسسة العربية المصرفية (ABC Corporation / Arab Banking Corporation) هي بنك دولي رائد يعمل في الجزائر. تقدم حلولاً مصرفية للتمويل والاستثمار، إدارة الخزينة، والخدمات البنكية للمؤسسات والأفراد."
+    "name": "ABC Corporation",
+    "slug": "abc-corporation",
+    "logo": "/partners/2024/abc-corporation.png",
+    "edition": 2024,
+    "description": {
+      "fr": "ABC Corporation (Arab Banking Corporation) est une banque internationale de premier plan opérant en Algérie. Elle offre des solutions de banque de financement et d'investissement, de gestion de trésorerie et de services bancaires aux entreprises et aux particuliers.",
+      "ar": "المؤسسة العربية المصرفية (ABC Corporation / Arab Banking Corporation) هي بنك دولي رائد يعمل في الجزائر. تقدم حلولاً مصرفية للتمويل والاستثمار، إدارة الخزينة، والخدمات البنكية للمؤسسات والأفراد."
     },
-    website: "https://www.bank-abc.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.bank-abc.com",
+    "keyPoints": {
+      "fr": [
         "Filiale d'un des groupes bancaires internationaux les plus importants de la région MENA.",
         "Gamme complète de services financiers innovants pour les entreprises et les particuliers.",
         "Expertise reconnue dans les transactions financières internationales et le commerce extérieur."
       ],
-      ar: [
+      "ar": [
         "فرع من أحد أكبر المجموعات المصrafية الدولية في منطقة الشرق الأوسط وشمال إفريقيا.",
         "مجموعة متكاملة من الخدمات المالية المبتكرة للمؤسسات والأفراد.",
         "خبرة معترف بها في المعاملات المالية الدولية والتجارة الخارجية."
       ]
     }
   },
-
   {
-    name: "SARL Energical",
-    slug: "energical",
-    logo: "/partners/2024/energical.png",
-    edition: 2024,
-    description: {
-      fr: "SARL Energical est une entreprise algérienne spécialisée dans la fabrication, la distribution et la commercialisation d'équipements de chauffage, de climatisation et de solutions thermiques pour les secteurs résidentiel et tertiaire.",
-      ar: "شركة إنرجيكال (SARL Energical) هي شركة جزائرية متخصصة في تصنيع وتوزيع وتسويق معدات التدفئة والتكييف والحلول الحرارية للقطاعين السكني والمهني."
+    "name": "SARL Energical",
+    "slug": "energical",
+    "logo": "/partners/2024/energical.png",
+    "edition": 2024,
+    "description": {
+      "fr": "SARL Energical est une entreprise algérienne spécialisée dans la fabrication, la distribution et la commercialisation d'équipements de chauffage, de climatisation et de solutions thermiques pour les secteurs résidentiel et tertiaire.",
+      "ar": "شركة إنرجيكال (SARL Energical) هي شركة جزائرية متخصصة في تصنيع وتوزيع وتسويق معدات التدفئة والتكييف والحلول الحرارية للقطاعين السكني والمهني."
     },
-    website: "https://www.energical.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.energical.com",
+    "keyPoints": {
+      "fr": [
         "Fabricant et distributeur d'équipements de chauffage et de climatisation de qualité.",
         "Solutions énergétiques performantes et adaptées au marché algérien.",
         "Engagement pour le confort thermique et l'efficacité énergétique."
       ],
-      ar: [
+      "ar": [
         "مصنع وموزع لمعدات التدفئة والتكييف عالية الجودة.",
         "حلول طاقة فعالة ومصممة لتلائم السوق الجزائرية.",
         "التزام بتوفير الراحة الحرارية ورفع كفاءة استهلاك الطاقة."
       ]
     }
   },
-
   {
-    name: "AEPI New Vision Club",
-    slug: "aepi",
-    logo: "/partners/2024/aepi.png",
-    edition: 2024,
-    description: {
-      fr: "AEPI New Vision Club est un club scientifique et technologique étudiant algérien. Il a pour but de réunir les étudiants passionnés d'innovation, d'électronique, d'informatique et d'automatique afin de développer des projets technologiques concrets et d'organiser des événements scientifiques.",
-      ar: "نادي الرؤية الجديدة AEPI (AEPI New Vision Club) هو نادي علمي وتكنولوجي طلابي جزائري. يهدف إلى جمع الطلاب الشغوفين بالابتكار، الإلكترونيات، الإعلام الآلي، والتحكم الآلي لتطوير مشاريع تكنولوجية ملموسة وتنظيم فعاليات علمية."
+    "name": "AEPI New Vision Club",
+    "slug": "aepi",
+    "logo": "/partners/2024/aepi.png",
+    "edition": 2024,
+    "description": {
+      "fr": "AEPI New Vision Club est un club scientifique et technologique étudiant algérien. Il a pour but de réunir les étudiants passionnés d'innovation, d'électronique, d'informatique et d'automatique afin de développer des projets technologiques concrets et d'organiser des événements scientifiques.",
+      "ar": "نادي الرؤية الجديدة AEPI (AEPI New Vision Club) هو نادي علمي وتكنولوجي طلابي جزائري. يهدف إلى جمع الطلاب الشغوفين بالابتكار، الإلكترونيات، الإعلام الآلي، والتحكم الآلي لتطوير مشاريع تكنولوجية ملموسة وتنظيم فعاليات علمية."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Club scientifique et technologique étudiant dynamique.",
         "Promotion de l'innovation technologique et de l'esprit d'initiative chez les étudiants.",
         "Organisation de formations, de hackathons et de compétitions scientifiques."
       ],
-      ar: [
+      "ar": [
         "نادي علمي وتكنولوجي طلابي نشط.",
         "ترقية الابتكار التكنولوجي وروح المبادرة لدى الطلاب.",
         "تنظيم دورات تكوينية، مسابقات هاكاثون، ومنافسات علمية."
       ]
     }
   },
-
   {
-    name: "CASH Assurances",
-    slug: "cash-assurances",
-    logo: "/shared/cash-assurances.png",
-    edition: 2024,
-    description: {
-      fr: "CASH Assurances (Compagnie d'Assurances des Hydrocarbures) est une compagnie d'assurance algérienne de référence, filiale du groupe Sonatrach. Fondée en 1999, elle est spécialisée dans la couverture des risques industriels, des grands risques d'entreprises ainsi que des assurances de dommages pour les particuliers.",
-      ar: "شركة كاش للتأمينات (شركة تأمين المحروقات) هي شركة تأمينات جزائرية رائدة، وهي تابعة لمجمع سوناطراك. تأسست عام 1999، وتتخصص في تغطية المخاطر الصناعية، والمخاطر الكبرى للمؤسسات، بالإضافة إلى تأمينات الأضرار للأفراد."
+    "name": "CASH Assurances",
+    "slug": "cash-assurances",
+    "logo": "/shared/cash-assurances.png",
+    "edition": 2024,
+    "description": {
+      "fr": "CASH Assurances (Compagnie d'Assurances des Hydrocarbures) est une compagnie d'assurance algérienne de référence, filiale du groupe Sonatrach. Fondée en 1999, elle est spécialisée dans la couverture des risques industriels, des grands risques d'entreprises ainsi que des assurances de dommages pour les particuliers.",
+      "ar": "شركة كاش للتأمينات (شركة تأمين المحروقات) هي شركة تأمينات جزائرية رائدة، وهي تابعة لمجمع سوناطراك. تأسست عام 1999، وتتخصص في تغطية المخاطر الصناعية، والمخاطر الكبرى للمؤسسات، بالإضافة إلى تأمينات الأضرار للأفراد."
     },
-    website: "http://www.cash-assurances.dz",
-    keyPoints: {
-      fr: [
+    "website": "http://www.cash-assurances.dz",
+    "keyPoints": {
+      "fr": [
         "Leader national dans la gestion et la couverture des risques industriels et énergétiques.",
         "Filiale majeure du groupe pétrolier national Sonatrach.",
         "Offre une large gamme d'assurances de dommages pour les entreprises et les particuliers."
       ],
-      ar: [
+      "ar": [
         "الرائد الوطني في إدارة وتغطية المخاطر الصناعية ومخاطر الطاقة.",
         "شركة فرعية رئيسية لمجمع المحروقات الوطني سوناطراك.",
         "توفر مجموعة واسعة من تأمينات الأضرار للمؤسسات والأفراد."
       ]
     }
   },
-
   {
-    name: "Namlatic",
-    slug: "namlatic",
-    logo: "/shared/namlatic.png",
-    edition: 2024,
-    description: {
-      fr: "Namlatic est une super-app de voyage 100 % algérienne, labellisée startup innovante par le ministère algérien. Elle permet de réserver en ligne des hôtels (plus de 300 établissements à travers le pays), des billets d'avion et des billets de ferry, avec des paiements via CIB/Edahabia et cartes internationales.",
-      ar: "نملاتيك (Namlatic) هي تطبيق سفر شامل 100% جزائري، حاصل على تصنيف مشروع مبتكر من وزارة السياحة ووزارة الناشئات. يتيح حجز الفنادق (أكثر من 300 فندق) وتذاكر الطيران والعبّارات، مع دعم الدفع ببطاقات CIB/Edahabia والبطاقات الدولية."
+    "name": "Namlatic",
+    "slug": "namlatic",
+    "logo": "/shared/namlatic.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Namlatic est une super-app de voyage 100 % algérienne, labellisée startup innovante par le ministère algérien. Elle permet de réserver en ligne des hôtels (plus de 300 établissements à travers le pays), des billets d'avion et des billets de ferry, avec des paiements via CIB/Edahabia et cartes internationales.",
+      "ar": "نملاتيك (Namlatic) هي تطبيق سفر شامل 100% جزائري، حاصل على تصنيف مشروع مبتكر من وزارة السياحة ووزارة الناشئات. يتيح حجز الفنادق (أكثر من 300 فندق) وتذاكر الطيران والعبّارات، مع دعم الدفع ببطاقات CIB/Edahabia والبطاقات الدولية."
     },
-    website: "https://www.namlatic.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.namlatic.com",
+    "keyPoints": {
+      "fr": [
         "Super-app de voyage algérienne: réservation d'hôtels, vols et traversées maritimes en un seul endroit.",
         "Plus de 300 hôtels référencés à travers toute l'Algérie, avec confirmation immédiate.",
         "Labellisée startup innovante par les ministères du Tourisme et des Startups, avec support 24h/7j."
       ],
-      ar: [
+      "ar": [
         "تطبيق سفر جزائري شامل: حجز الفنادق وتذاكر الطيران والعبّارات في مكان واحد.",
         "أكثر من 300 فندق مصنف عبر كامل التراب الجزائري مع تأكيد فوري.",
         "مصنّف مشروع مبتكر من وزارتي السياحة والناشئات، مع دعم عملاء على مدار الساعة."
@@ -1514,171 +1594,229 @@ export const partnersData: Partner[] = [
     }
   },
   {
-    name: "El Kendi",
-    slug: "elkendi",
-    logo: "/shared/elkendi.png",
-    edition: 2024,
-    description: {
-      fr: "El Kendi est une filiale du groupe pharmaceutique multinational MS Pharma et l'un des leaders de l'industrie pharmaceutique en Algérie. Fondé en 2006, le laboratoire est le premier fabricant de médicaments génériques dans le pays, disposant d'un complexe industriel de pointe à Sidi Abdellah (Alger).",
-      ar: "الكندي (El Kendi) هي شركة فرعية تابعة لمجموعة الأدوية متعددة الجنسيات (MS Pharma) وواحدة من الشركات الرائدة في قطاع صناعة الأدوية في الجزائر. تأسس المختبر عام 2006، ويعد المصنع الأول للأدوية الجنيسة في البلاد، ويمتلك مجمعًا صناعيًا متطورًا في سيدي عبد الله (الجزائر العاصمة)."
+    "name": "El Kendi",
+    "slug": "elkendi",
+    "logo": "/shared/elkendi.png",
+    "edition": 2024,
+    "description": {
+      "fr": "El Kendi est une filiale du groupe pharmaceutique multinational MS Pharma et l'un des leaders de l'industrie pharmaceutique en Algérie. Fondé en 2006, le laboratoire est le premier fabricant de médicaments génériques dans le pays, disposant d'un complexe industriel de pointe à Sidi Abdellah (Alger).",
+      "ar": "الكندي (El Kendi) هي شركة فرعية تابعة لمجموعة الأدوية متعددة الجنسيات (MS Pharma) وواحدة من الشركات الرائدة في قطاع صناعة الأدوية في الجزائر. تأسس المختبر عام 2006، ويعد المصنع الأول للأدوية الجنيسة في البلاد، ويمتلك مجمعًا صناعيًا متطورًا في سيدي عبد الله (الجزائر العاصمة)."
     },
-    website: "https://www.mspharma.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.mspharma.com",
+    "keyPoints": {
+      "fr": [
         "Premier fabricant de médicaments génériques en Algérie.",
         "Filiale clé du groupe régional MS Pharma employant plus de 1 000 collaborateurs.",
         "Unité de production moderne de premier plan située à Sidi Abdellah (Alger)."
       ],
-      ar: [
+      "ar": [
         "المصنع الأول والمنتج الرائد للأدوية الجنيسة في الجزائر.",
         "شركة فرعية رئيسية لمجموعة (MS Pharma) الإقليمية تضم أكثر من 1,000 موظف.",
         "وحدة إنتاج حديثة ومتطورة تقع في المدينة الجديدة سيدي عبد الله (الجزائر العاصمة)."
       ]
     }
   },
-
   {
-    name: "Techno Stationery",
-    slug: "techno-stationery",
-    logo: "/shared/techno-stationery.png",
-    edition: 2024,
-    description: {
-      fr: "Techno Stationery (Techno Moderne Stationery) est le leader algérien de la distribution de fournitures scolaires, de bureau, de matériel artistique (beaux-arts) et de consommables informatiques. Présente à travers de nombreux points de vente nationaux, l'entreprise est un partenaire privilégié du milieu éducatif et professionnel.",
-      ar: "تكنو ستاتيوني (شركة تكنو الحديثة للمكتبات) هي الشركة الرائدة في الجزائر في مجال توزيع المستلزمات المدرسية والمكتبية، والأدوات الفنية والتشكيلية، ومستهلكات الإعلام الآلي. ومن خلال شبكتها الواسعة من نقاط البيع الوطنية، تعد شريكًا أساسيًا للوسطين التعليمي والمهني."
+    "name": "Techno Stationery",
+    "slug": "techno-stationery",
+    "logo": "/shared/techno-stationery.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Techno Stationery (Techno Moderne Stationery) est le leader algérien de la distribution de fournitures scolaires, de bureau, de matériel artistique (beaux-arts) et de consommables informatiques. Présente à travers de nombreux points de vente nationaux, l'entreprise est un partenaire privilégié du milieu éducatif et professionnel.",
+      "ar": "تكنو ستاتيوني (شركة تكنو الحديثة للمكتبات) هي الشركة الرائدة في الجزائر في مجال توزيع المستلزمات المدرسية والمكتبية، والأدوات الفنية والتشكيلية، ومستهلكات الإعلام الآلي. ومن خلال شبكتها الواسعة من نقاط البيع الوطنية، تعد شريكًا أساسيًا للوسطين التعليمي والمهني."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Leader national dans la distribution de fournitures de bureau et scolaires.",
         "Gamme complète pour les professionnels, les étudiants et les artistes (Beaux-Arts).",
         "Réseau de magasins moderne s'étendant sur plusieurs wilayas d'Algérie (Alger, Sétif, Mostaganem)."
       ],
-      ar: [
+      "ar": [
         "الرائد الوطني في توزيع المستلزمات المكتبية والمدرسية.",
         "مجموعة كاملة موجهة للمهنيين، الطلاب، والرسامين (الفنون الجميلة).",
         "شبكة محلات حديثة تغطي عدة ولايات جزائرية (الجزائر العاصمة، سطيف، مستغانم)."
       ]
     }
   },
-
   {
-    name: "PayPart",
-    slug: "paypart",
-    logo: "/shared/paypart.png",
-    edition: 2024,
-    description: {
-      fr: "PayPart (PayPart El-Djazair) est une solution fintech algérienne de tiers de confiance, spécialisée dans la sécurisation des transactions e-commerce. Elle permet de sécuriser le processus d'achat en ligne en bloquant les fonds jusqu'à la livraison et la validation finale par l'acheteur.",
-      ar: "باي بارت (PayPart El-Djazair) هي منصة تكنولوجيا مالية (FinTech) جزائرية تعمل كطرف ثالث موثوق لتأمين معاملات التجارة الإلكترونية. تضمن المنصة عملية الشراء والدفع عبر الإنترنت من خلال تجميد الأموال حتى يتم تسليم الطرود وتأكيد الاستلام النهائي من المشتري."
+    "name": "PayPart",
+    "slug": "paypart",
+    "logo": "/shared/paypart.png",
+    "edition": 2024,
+    "description": {
+      "fr": "PayPart (PayPart El-Djazair) est une solution fintech algérienne de tiers de confiance, spécialisée dans la sécurisation des transactions e-commerce. Elle permet de sécuriser le processus d'achat en ligne en bloquant les fonds jusqu'à la livraison et la validation finale par l'acheteur.",
+      "ar": "باي بارت (PayPart El-Djazair) هي منصة تكنولوجيا مالية (FinTech) جزائرية تعمل كطرف ثالث موثوق لتأمين معاملات التجارة الإلكترونية. تضمن المنصة عملية الشراء والدفع عبر الإنترنت من خلال تجميد الأموال حتى يتم تسليم الطرود وتأكيد الاستلام النهائي من المشتري."
     },
-    website: "https://paypart.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://paypart.dz",
+    "keyPoints": {
+      "fr": [
         "Solution fintech innovante faisant office de tiers de confiance pour le e-commerce.",
         "Mécanisme sécurisé de blocage et de déblocage des paiements à la livraison.",
         "Facilite l'intégration des paiements en ligne pour les marchands et réduit les taux de retour."
       ],
-      ar: [
+      "ar": [
         "حل تقني مالي مبتكر يعمل كطرف ثالث موثوق بين المشتري والبائع.",
         "آلية آمنة لتجميد وتحرير الأموال فور الاستلام الفعلي للمنتج.",
         "تسهيل دمج بوابات الدفع للمتاجر الإلكترونية وتقليل نسب إلغاء الطلبات."
       ]
     }
   },
-
   {
-    name: "MFG",
-    slug: "mfg",
-    logo: "/shared/mfg.png",
-    edition: 2024,
-    description: {
-      fr: "Mediterranean Float Glass (MFG), filiale du groupe Cevital fondée en 2007, est le leader de la production, de la transformation et de la distribution de verre plat en Afrique. Disposant d'un complexe industriel majeur à Larbaâ, l'entreprise exporte une grande partie de sa production vers l'Europe.",
-      ar: "شركة ميديترانيان فلوت غلاس (MFG)، وهي شركة فرعية تابعة لمجمع سيفيتال تأسست عام 2007، وتعد الرائد في إنتاج ومعالجة وتوزيع الزجاج المسطح في إفريقيا. تمتلك الشركة مجمعًا صناعيًا ضخمًا في الأربعاء، وتصدر جزءًا كبيرًا من إنتاجها إلى أوروبا."
+    "name": "MFG",
+    "slug": "mfg",
+    "logo": "/shared/mfg.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Mediterranean Float Glass (MFG), filiale du groupe Cevital fondée en 2007, est le leader de la production, de la transformation et de la distribution de verre plat en Afrique. Disposant d'un complexe industriel majeur à Larbaâ, l'entreprise exporte une grande partie de sa production vers l'Europe.",
+      "ar": "شركة ميديترانيان فلوت غلاس (MFG)، وهي شركة فرعية تابعة لمجمع سيفيتال تأسست عام 2007، وتعد الرائد في إنتاج ومعالجة وتوزيع الزجاج المسطح في إفريقيا. تمتلك الشركة مجمعًا صناعيًا ضخمًا في الأربعاء، وتصدر جزءًا كبيرًا من إنتاجها إلى أوروبا."
     },
-    website: "https://www.mfg.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://www.mfg.dz",
+    "keyPoints": {
+      "fr": [
         "Leader de la production et de la transformation de verre plat en Afrique.",
         "Filiale clé du groupe Cevital dotée d'une capacité de production de 1 400 tonnes par jour.",
         "Forte orientation internationale avec 70% de la production exportée vers l'Europe."
       ],
-      ar: [
+      "ar": [
         "الرائد في إنتاج ومعالجة الزجاج المسطح في إفريقيا.",
         "شركة تابعة لمجمع سيفيتال بطاقة إنتاجية تبلغ 1,400 طن يوميًا.",
         "حضور دولي قوي مع تصدير 70٪ من الإنتاج إلى الأسواق الأوروبية."
       ]
     }
   },
-
   {
-    name: "Global Job",
-    slug: "global-job",
-    logo: "/shared/global-job.png",
-    edition: 2024,
-    description: {
-      fr: "Global Job est un cabinet de recrutement et de placement agréé par l'État en Algérie, fondé en 2021. Basé à Chéraga (Alger), le cabinet met en relation les candidats et les recruteurs grâce à une plateforme technologique moderne exploitant l'intelligence artificielle pour optimiser le matching des compétences.",
-      ar: "غلوبال جوب (Global Job) هو مكتب توظيف واستشارات مرخص من قِبل الدولة في الجزائر (ترخيص رقم 0270 الصادر عام 2021). يقع مقر المكتب في الشراقة (الجزائر العاصمة)، ويعمل على ربط طالبي العمل بالشركات عبر منصة تكنولوجية حديثة تستخدم الذكاء الاصطناعي لتحسين مطابقة المهارات."
+    "name": "Global Job",
+    "slug": "global-job",
+    "logo": "/shared/global-job.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Global Job est un cabinet de recrutement et de placement agréé par l'État en Algérie, fondé en 2021. Basé à Chéraga (Alger), le cabinet met en relation les candidats et les recruteurs grâce à une plateforme technologique moderne exploitant l'intelligence artificielle pour optimiser le matching des compétences.",
+      "ar": "غلوبال جوب (Global Job) هو مكتب توظيف واستشارات مرخص من قِبل الدولة في الجزائر (ترخيص رقم 0270 الصادر عام 2021). يقع مقر المكتب في الشراقة (الجزائر العاصمة)، ويعمل على ربط طالبي العمل بالشركات عبر منصة تكنولوجية حديثة تستخدم الذكاء الاصطناعي لتحسين مطابقة المهارات."
     },
-    website: "https://globaljob.dz",
-    keyPoints: {
-      fr: [
+    "website": "https://globaljob.dz",
+    "keyPoints": {
+      "fr": [
         "Cabinet de recrutement et de placement agréé par l'État algérien (Agrément N° 0270).",
         "Plateforme innovante utilisant l'Intelligence Artificielle pour la mise en relation candidats-recruteurs.",
         "Basé au centre d'affaires El Qods à Chéraga, Alger."
       ],
-      ar: [
+      "ar": [
         "مكتب توظيف واستقطاب كفاءات معتمد من قِبل الدولة الجزائرية (ترخيص رقم 0270).",
         "منصة رقمية مبتكرة تستخدم تقنيات الذكاء الاصطناعي لمطابقة السير الذاتية بالوظائف.",
         "يقع مقر الشركة في مركز القدس التجاري بالشراقة، الجزائر العاصمة."
       ]
     }
   },
-
-  { name: "Bitr Transpo", slug: "bitr-transpo", logo: "/shared/bitr-transpo.png", edition: 2024 },
-
-
   {
-    name: "Club d'Activités Polyvalents",
-    slug: "cap",
-    logo: "/partners/2024/cap.png",
-    edition: 2024,
-    description: {
-      fr: "Le Club d'Activités Polyvalents (CAP) est un club étudiant scientifique algérien de l'École Nationale Polytechnique (ENP) d'Alger. Fondé pour stimuler la créativité et le leadership chez les futurs ingénieurs, il organise régulièrement des événements culturels, scientifiques et humanitaires d'envergure nationale.",
-      ar: "نادي الأنشطة المتعددة (Club d'Activités Polyvalents - CAP) هو نادي طلابي علمي وثقافي جزائري بالمدرسة الوطنية المتعددة التقنيات بالحراش (ENP). تأسس بهدف تنمية القيادة والإبداع لدى المهندسين المستقبليين، وينظم بانتظام فعاليات علمية، ثقافية، وإنسانية على المستوى الوطني."
+    "name": "Bitr Transpo",
+    "slug": "bitr-transpo",
+    "logo": "/shared/bitr-transpo.png",
+    "edition": 2024
+  },
+  {
+    "name": "Club d'Activités Polyvalents",
+    "slug": "cap",
+    "logo": "/partners/2024/cap.png",
+    "edition": 2024,
+    "description": {
+      "fr": "Le Club d'Activités Polyvalents (CAP) est un club étudiant scientifique algérien de l'École Nationale Polytechnique (ENP) d'Alger. Fondé pour stimuler la créativité et le leadership chez les futurs ingénieurs, il organise régulièrement des événements culturels, scientifiques et humanitaires d'envergure nationale.",
+      "ar": "نادي الأنشطة المتعددة (Club d'Activités Polyvalents - CAP) هو نادي طلابي علمي وثقافي جزائري بالمدرسة الوطنية المتعددة التقنيات بالحراش (ENP). تأسس بهدف تنمية القيادة والإبداع لدى المهندسين المستقبليين، وينظم بانتظام فعاليات علمية، ثقافية، وإنسانية على المستوى الوطني."
     },
-    keyPoints: {
-      fr: [
+    "keyPoints": {
+      "fr": [
         "Club étudiant majeur de l'École Nationale Polytechnique d'Alger.",
         "Organisation d'événements nationaux à fort impact social et scientifique.",
         "Développement des compétences en gestion de projet, communication et leadership."
       ],
-      ar: [
+      "ar": [
         "نادي طلابي رئيسي في المدرسة الوطنية المتعددة التقنيات بالجزائر العاصمة.",
         "تنظيم فعاليات وطنية ذات أثر اجتماعي وعلمي كبير.",
         "تطوير المهارات القيادية والتواصلية وإدارة المشاريع للطلبة."
       ]
     }
   },
-
   {
-    name: "MPI DZ",
-    slug: "mpi",
-    logo: "/partners/2024/mpi.png",
-    edition: 2024,
-    description: {
-      fr: "MPI DZ est une entreprise algérienne spécialisée dans la distribution, l'installation et la maintenance d'équipements de sécurité électronique, de réseaux informatiques et de solutions de télécommunication pour les entreprises.",
-      ar: "إم بي آي الجزائر (MPI DZ) هي شركة جزائرية متخصصة في توزيع، تركيب وصيانة أجهزة الأمن الإلكتروني، الشبكات المعلوماتية، وحلول الاتصالات للمؤسسات."
+    "name": "MPI DZ",
+    "slug": "mpi",
+    "logo": "/partners/2024/mpi.png",
+    "edition": 2024,
+    "description": {
+      "fr": "MPI DZ est une entreprise algérienne spécialisée dans la distribution, l'installation et la maintenance d'équipements de sécurité électronique, de réseaux informatiques et de solutions de télécommunication pour les entreprises.",
+      "ar": "إم بي آي الجزائر (MPI DZ) هي شركة جزائرية متخصصة في توزيع، تركيب وصيانة أجهزة الأمن الإلكتروني، الشبكات المعلوماتية، وحلول الاتصالات للمؤسسات."
     },
-    website: "https://www.mpi-dz.com",
-    keyPoints: {
-      fr: [
+    "website": "https://www.mpi-dz.com",
+    "keyPoints": {
+      "fr": [
         "Distributeur et installateur de solutions de sécurité électronique de pointe.",
         "Expertise en câblage structuré, réseaux informatiques et télécommunications.",
         "Service d'assistance technique et de maintenance professionnelle pour les professionnels."
       ],
-      ar: [
+      "ar": [
         "موزع ومثبت لحلول الأمن الإلكتروني المتقدمة.",
         "خبرة في التوصيل الهيكلي، شبكات المعلومات، والاتصالات.",
         "خدمة دعم فني وصيانة احترافية للمؤسسات والشركات."
       ]
     }
+  },
+  {
+    "name": "DealZone",
+    "slug": "dealzone",
+    "logo": "/partners/2025/dealzone.png",
+    "edition": 2025,
+    "description": {
+      "en": "DealZone is an Algerian digital commerce and marketing platform offering smart promotions, corporate discounts, and innovative merchant loyalty solutions.",
+      "fr": "DealZone est une plateforme digitale algérienne de commerce et de marketing proposant des promotions intelligentes, des réductions d'entreprise et des solutions de fidélisation.",
+      "ar": "ديل زون (DealZone) هي منصة رقمية جزائرية رائدة في مجال التجارة الإلكترونية والتسويق الرقمي، تقدم عروضاً ترويجية وتخفيضات ذكية وحلول ولاء للشركات والمستهلكين."
+    },
+    "website": "https://www.dealzone.dz",
+    "keyPoints": {
+      "en": [
+        "Digital promotions and merchant loyalty platform in Algeria.",
+        "Exclusive commercial partnerships across retail, services, and technology.",
+        "Streamlined consumer savings and merchant traffic generation."
+      ],
+      "fr": [
+        "Plateforme digitale de bons plans et fidélisation commerçants en Algérie.",
+        "Partenariats commerciaux exclusifs à travers le commerce et les services.",
+        "Génération de trafic qualifié pour les entreprises partenaires."
+      ],
+      "ar": [
+        "منصة رقمية للعروض الذكية وبرامج الولاء في الجزائر.",
+        "شراكات تجارية حصرية عبر قطاعات التجزئة والخدمات والتكنولوجيا.",
+        "تعزيز المبيعات والوصول المباشر للزبائن والمؤسسات."
+      ]
+    }
+  },
+  {
+    "name": "Groupe Logitrans",
+    "slug": "groupe-logitrans",
+    "logo": "/partners/2025/logitrans.png",
+    "edition": 2025,
+    "description": {
+      "en": "Groupe Logitrans is Algeria's premier public transport and logistics holding, managing extensive multimodal freight transport, strategic regional logistics bases, and international trans-Saharan trade corridors.",
+      "fr": "Groupe Logitrans est le premier groupe public de transport routier de marchandises et de logistique en Algérie, opérant un réseau national de bases logistiques et des corridors d'échanges transsahariens.",
+      "ar": "مجمع لوجيترانس (Groupe Logitrans) هو المجمع العمومي الرائد في النقل البري للبضائع والخدمات اللوجستية في الجزائر، يدير شبكة وطنية واسعة من القواعد اللوجستية وممرات التبادل التجاري الإفريقي."
+    },
+    "website": "https://www.logitrans.dz",
+    "keyPoints": {
+      "en": [
+        "National leader in freight transport, warehousing, and multimodal logistics.",
+        "Modern fleet and strategic logistics platforms covering all Algerian wilayas.",
+        "Pioneering trans-Saharan trade corridors to Sahel and African markets."
+      ],
+      "fr": [
+        "Leader national du transport de marchandises, entreposage et logistique multimodale.",
+        "Flotte moderne et plateformes logistiques stratégiques réparties sur tout le territoire.",
+        "Pionnier des corridors de transport transsaharien vers les marchés africains."
+      ],
+      "ar": [
+        "الرائد الوطني في نقل البضائع، التخزين والخدمات اللوجستية متعددة الوسائط.",
+        "أسطول حديث وقواعد لوجستية استراتيجية تغطي كامل التراب الوطني.",
+        "رائد في قوافل النقل التجاري عبر الصحراء نحو دول الساحل والأسواق الإفريقية."
+      ]
+    }
   }
 ];
+
+export const partnersData: Partner[] = partners;
+export default partners;

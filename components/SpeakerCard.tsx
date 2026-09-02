@@ -15,7 +15,7 @@ export default function SpeakerCard({ speaker }: SpeakerCardProps) {
     speaker.category === "conference"
       ? language === "ar"
         ? "محاضرة"
-        : "Conférence"
+        : "Conference"
       : language === "ar"
       ? "ورشة عمل"
       : "Workshop";

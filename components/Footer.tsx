@@ -24,25 +24,23 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="md:col-span-6 space-y-5">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
               <img
-                src="/brand/Future Talents White-03.png"
-                alt="Future Talents"
-                className="h-10 md:h-12 w-auto object-contain"
-                onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/logo-hft-white.svg"; }}
+                src="/logo-hft-white.svg"
+                alt="HIS Future Talents"
+                className="h-10 sm:h-12 md:h-13 w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
               />
-              <div className="w-px h-8 bg-white/20" />
+              <span className="text-white/40 text-xs sm:text-sm font-black select-none px-0.5">✕</span>
               <img
-                src="/brand/his-official-logo.png"
-                alt="HIS University — المعهد العالي للعلوم"
-                className="h-10 md:h-12 w-auto object-contain brightness-0 invert opacity-95 hover:opacity-100 transition-opacity"
-                onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/logo-his.png"; }}
+                src="/brand/his-logo-white.png"
+                alt="HIS University"
+                className="h-8 sm:h-9 md:h-10 w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
               />
             </div>
             <p className="text-white/70 text-xs md:text-sm leading-relaxed max-w-sm font-medium">
               {language === "ar"
                 ? "المنصة الرسمية لشراكات ملتقى المواهب المستقبلية — الإصدار 3، منظم من طرف المعهد العالي للعلوم."
-                : "La plateforme officielle de partenariat pour HIS Future Talents Édition 3, organisée par le Higher Institute of Sciences."}
+                : "The official partnership and talent acquisition platform for HIS Future Talents Edition 3, hosted by Higher Institute of Sciences."}
             </p>
 
             {/* CTA */}
@@ -58,12 +56,12 @@ export default function Footer() {
           {/* Contact column */}
           <div className="md:col-span-5 md:col-start-8 space-y-4">
             <h4 className="text-[9px] font-black uppercase tracking-widest text-his-electric/60">
-              {language === "ar" ? "التواصل الرسمي" : "Contact officiel"}
+              {language === "ar" ? "التواصل الرسمي" : "Official Contact"}
             </h4>
             <ul className="space-y-3 text-xs md:text-sm text-white/40 font-semibold">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-his-electric/40 shrink-0 mt-0.5" />
-                <span>Higher Institute of Sciences, Chemin de la Wilaya, Alger</span>
+                <span>Higher Institute of Sciences, Bordj El Kiffan, Algiers</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-his-electric/40 shrink-0" />
@@ -75,22 +73,26 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-his-electric/40 shrink-0" />
                 <span dir="ltr">+213 (0) 770 941 174</span>
               </li>
-              <li className="text-white/20 text-[10px] pt-1">
-                Chef de projet : DELHOUM Imad Eddine
+              <li className="text-white/40 text-xs pt-1">
+                {language === "ar" ? "مسؤول المشروع : دلهوم عماد الدين" : "Project Lead : DELHOUM Imad Eddine"}
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] text-white/20 font-bold">
-          <p>© {year} HIS Future Talents. Tous droits réservés.</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] text-white/40 font-bold">
+          <p>© {year} HIS Future Talents. {language === "ar" ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
           <div className="flex gap-6 items-center">
-            <a href="/fr/admin" className="hover:text-[#58B9FF] transition-colors flex items-center gap-1">
-              <span>Espace Admin</span>
+            <a href={`/${language}/admin`} className="hover:text-[#58B9FF] transition-colors flex items-center gap-1">
+              <span>{language === "ar" ? "فضاء الإدارة" : "Admin Portal"}</span>
             </a>
-            <a href="#" className="hover:text-white/50 transition-colors">Mentions légales</a>
-            <a href="#" className="hover:text-white/50 transition-colors">Confidentialité</a>
+            <a href="#" className="hover:text-white/70 transition-colors">
+              {language === "ar" ? "الشروط القانونية" : "Legal Notice"}
+            </a>
+            <a href="#" className="hover:text-white/70 transition-colors">
+              {language === "ar" ? "سياسة الخصوصية" : "Privacy Policy"}
+            </a>
           </div>
         </div>
       </div>

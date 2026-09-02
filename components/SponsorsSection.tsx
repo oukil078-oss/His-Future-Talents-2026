@@ -78,15 +78,15 @@ export default function SponsorsSection() {
           <div className="space-y-3 max-w-2xl">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22]/10 border border-[#F05A22]/25 text-[#F05A22] text-xs font-bold uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" />
-              {language === "ar" ? "SPONSORS | شركاؤنا — 03" : "— NOS SPONSORS"}
+              {language === "ar" ? "SPONSORS | شركاؤنا — 03" : "— OUR SPONSORS"}
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-              {language === "ar" ? "الرعاة الرسميون" : "Nos Sponsors"}
+              {language === "ar" ? "الرعاة الرسميون" : "Our Official Sponsors"}
             </h2>
             <p className="text-white/80 text-sm md:text-base font-normal leading-relaxed">
               {language === "ar"
                 ? "لقد رأوا امكانيتكم ... و قرروا أن يفتحوا لكم الباب."
-                : "Ils ont vu le potentiel. Ils ont choisi d’ouvrir la porte."}
+                : "They recognized the talent. They chose to open the door."}
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export default function SponsorsSection() {
             href="#contact-form"
             className="inline-flex items-center gap-2.5 px-6 h-12 rounded-xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shrink-0 self-start md:self-auto cursor-pointer shadow-sm"
           >
-            <span>{language === "ar" ? "الانضمام كرعاة" : "Devenir partenaire"}</span>
+            <span>{language === "ar" ? "الانضمام كرعاة" : "Become a Sponsor"}</span>
             <ArrowRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
           </a>
         </div>
@@ -102,14 +102,14 @@ export default function SponsorsSection() {
         {/* Sponsorship Tiers Showcase */}
         <div className="space-y-10">
           
-          {/* 1. GOLD SPONSORS TIER */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-400" />
-              {language === "ar" ? "الرعاية الذهبية (Sponsors Gold)" : "Sponsors Gold"}
-            </h3>
+          {/* 1. GOLD SPONSORS TIER (Rendered only when gold sponsors exist) */}
+          {goldSponsors.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-400" />
+                {language === "ar" ? "الرعاية الذهبية (Sponsors Gold)" : "Gold Sponsors"}
+              </h3>
 
-            {goldSponsors.length > 0 ? (
               <div className="grid grid-cols-1 gap-4">
                 {goldSponsors.map((sponsor) => (
                   <div
@@ -124,7 +124,7 @@ export default function SponsorsSection() {
                         {sponsor.logo ? (
                           <img
                             src={sponsor.logo}
-                            alt={`Logo de ${sponsor.name}`}
+                            alt={`Logo ${sponsor.name}`}
                             className="w-full h-full object-contain"
                           />
                         ) : (
@@ -134,14 +134,14 @@ export default function SponsorsSection() {
 
                       <div className="flex-1 space-y-2">
                         <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                          ★ {language === "ar" ? "الراعي الذهبي الرسمي 2026" : "SPONSOR OR 2026"}
+                          ★ {language === "ar" ? "الراعي الذهبي الرسمي 2026" : "OFFICIAL GOLD SPONSOR 2026"}
                         </span>
                         <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                           {sponsor.name}
                         </h4>
                         {sponsor.description && (
                           <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
-                            {language === "ar" ? sponsor.description.ar : sponsor.description.fr}
+                            {language === "ar" ? sponsor.description.ar : ((sponsor.description as any).en || sponsor.description.fr)}
                           </p>
                         )}
                         {sponsor.website && (
@@ -151,7 +151,7 @@ export default function SponsorsSection() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-200 transition-colors pt-1"
                           >
-                            <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Site officiel de la société"}</span>
+                            <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Visit official website"}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
                           </a>
                         )}
@@ -160,28 +160,17 @@ export default function SponsorsSection() {
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="border border-dashed border-amber-400/20 rounded-2xl p-6 text-center space-y-1 bg-amber-400/5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400">
-                  {language === "ar" ? "الرعاية الذهبية (Sponsors Gold)" : "Sponsors Gold"}
-                </h4>
-                <p className="text-xs text-white/60 font-normal">
-                  {language === "ar"
-                    ? "سيتم الإعلان عن رعاة هذه الدورة قريباً."
-                    : "Les sponsors de cette édition seront annoncés prochainement."}
-                </p>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* 2. SILVER SPONSORS TIER */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[#58B9FF] flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#58B9FF]" />
-              {language === "ar" ? "الرعاية الفضية (Sponsors Silver)" : "Sponsors Silver"}
-            </h3>
+          {silverSponsors.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-[#58B9FF] flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#58B9FF]" />
+                {language === "ar" ? "الرعاية الفضية (Sponsors Silver)" : "Silver Sponsors"}
+              </h3>
 
-            {silverSponsors.length > 0 ? (
               <div className="grid grid-cols-1 gap-4">
                 {silverSponsors.map((sponsor) => (
                   <div
@@ -196,7 +185,7 @@ export default function SponsorsSection() {
                         {sponsor.logo ? (
                           <img
                             src={sponsor.logo}
-                            alt={`Logo de ${sponsor.name}`}
+                            alt={`Logo ${sponsor.name}`}
                             className="w-full h-full object-contain"
                           />
                         ) : (
@@ -206,14 +195,14 @@ export default function SponsorsSection() {
 
                       <div className="flex-1 space-y-2">
                         <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-[#58B9FF]/20 text-[#58B9FF] border border-[#58B9FF]/30">
-                          ★ {language === "ar" ? "الراعي الفضي الرسمي 2026" : "SPONSOR ARGENT 2026"}
+                          ★ {language === "ar" ? "الراعي الفضي الرسمي 2026" : "OFFICIAL SILVER SPONSOR 2026"}
                         </span>
                         <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                           {sponsor.name}
                         </h4>
                         {sponsor.description && (
                           <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
-                            {language === "ar" ? sponsor.description.ar : sponsor.description.fr}
+                            {language === "ar" ? sponsor.description.ar : ((sponsor.description as any).en || sponsor.description.fr)}
                           </p>
                         )}
                         {sponsor.website && (
@@ -223,7 +212,7 @@ export default function SponsorsSection() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#58B9FF] hover:text-white transition-colors pt-1"
                           >
-                            <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Site officiel de la société"}</span>
+                            <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Visit official website"}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
                           </a>
                         )}
@@ -232,28 +221,17 @@ export default function SponsorsSection() {
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="border border-dashed border-[#58B9FF]/20 rounded-2xl p-6 text-center space-y-1 bg-[#58B9FF]/5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#58B9FF]">
-                  {language === "ar" ? "الرعاية الفضية (Sponsors Silver)" : "Sponsors Silver"}
-                </h4>
-                <p className="text-xs text-white/60 font-normal">
-                  {language === "ar"
-                    ? "سيتم الإعلان عن رعاة هذه الدورة قريباً."
-                    : "Les sponsors de cette édition seront annoncés prochainement."}
-                </p>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* 3. BRONZE SPONSORS TIER */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-amber-500 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-500" />
-              {language === "ar" ? "الرعاية البرونزية (Sponsors Bronze)" : "Sponsors Bronze"}
-            </h3>
+          {bronzeSponsors.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-amber-500 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-500" />
+                {language === "ar" ? "الرعاية البرونزية (Sponsors Bronze)" : "Bronze Sponsors"}
+              </h3>
 
-            {bronzeSponsors.length > 0 ? (
               <div className="grid grid-cols-1 gap-4">
                 {bronzeSponsors.map((sponsor) => (
                   <div
@@ -268,7 +246,7 @@ export default function SponsorsSection() {
                         {sponsor.logo ? (
                           <img
                             src={sponsor.logo}
-                            alt={`Logo de ${sponsor.name}`}
+                            alt={`Logo ${sponsor.name}`}
                             className="w-full h-full object-contain"
                           />
                         ) : (
@@ -278,14 +256,14 @@ export default function SponsorsSection() {
 
                       <div className="flex-1 space-y-2">
                         <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-amber-600/20 text-amber-400 border border-amber-600/30">
-                          ★ {language === "ar" ? "الراعي البرونزي الرسمي 2026" : "SPONSOR BRONZE 2026"}
+                          ★ {language === "ar" ? "الراعي البرونزي الرسمي 2026" : "OFFICIAL BRONZE SPONSOR 2026"}
                         </span>
                         <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                           {sponsor.name}
                         </h4>
                         {sponsor.description && (
                           <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
-                            {language === "ar" ? sponsor.description.ar : sponsor.description.fr}
+                            {language === "ar" ? sponsor.description.ar : ((sponsor.description as any).en || sponsor.description.fr)}
                           </p>
                         )}
                         {sponsor.website && (
@@ -295,7 +273,7 @@ export default function SponsorsSection() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-white transition-colors pt-1"
                           >
-                            <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Site officiel de la société"}</span>
+                            <span>{language === "ar" ? "زيارة الموقع الرسمي" : "Visit official website"}</span>
                             <ExternalLink className="w-3.5 h-3.5" />
                           </a>
                         )}
@@ -304,19 +282,8 @@ export default function SponsorsSection() {
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="border border-dashed border-amber-600/20 rounded-2xl p-6 text-center space-y-1 bg-amber-600/5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-amber-500">
-                  {language === "ar" ? "الرعاية البرونزية (Sponsors Bronze)" : "Sponsors Bronze"}
-                </h4>
-                <p className="text-xs text-white/60 font-normal">
-                  {language === "ar"
-                    ? "سيتم الإعلان عن رعاة هذه الدورة قريباً."
-                    : "Les sponsors de cette édition seront annoncés prochainement."}
-                </p>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
 
         </div>
 

@@ -17,7 +17,7 @@ export default function StickyTopCTA() {
   }, []);
 
   const toggleLanguage = () => {
-    setLanguage(language === "fr" ? "ar" : "fr");
+    setLanguage(language === "en" ? "ar" : "en");
   };
 
   const scrollToForm = (e: React.MouseEvent) => {
@@ -38,19 +38,18 @@ export default function StickyTopCTA() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logos Container */}
-        <div className="flex items-center gap-6">
-          <a href="#" className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a href="#" className="flex items-center gap-2 sm:gap-2.5">
             <img
               src="/logo-hft.svg"
               alt="HIS Future Talents"
-              className="h-12 md:h-16 object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-                const span = document.createElement("span");
-                span.style.cssText = "font-weight:900;font-size:15px;color:#003876;letter-spacing:0.05em;";
-                span.textContent = "FUTURE TALENTS";
-                e.currentTarget.parentNode?.appendChild(span);
-              }}
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+            />
+            <span className="text-[#003876]/40 text-xs sm:text-sm font-black select-none">✕</span>
+            <img
+              src="/brand/his-logo-blue.png"
+              alt="HIS University"
+              className="h-6 sm:h-8 md:h-9 w-auto object-contain"
             />
           </a>
         </div>
@@ -61,10 +60,10 @@ export default function StickyTopCTA() {
           <button
             onClick={toggleLanguage}
             className="flex items-center gap-2 px-3 py-1.5 r-control border border-slate-200 text-sm font-semibold hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-[#0060C1] hover:border-slate-300"
-            aria-label="Changer de langue / Switch Language"
+            aria-label="Switch Language / تغيير اللغة"
           >
             <Globe className="w-4 h-4 text-slate-500" />
-            <span>{language === "fr" ? "AR" : "FR"}</span>
+            <span>{language === "en" ? "AR" : "EN"}</span>
           </button>
 
           {/* Sticky CTA Button */}

@@ -8,17 +8,45 @@ export const revalidate = 0;
 export async function GET() {
   try {
     const localLeads = await getLeads();
+
+    // 1. Fetch live production leads from hisfuturetalent.his.edu.dz
+    let liveLeads: any[] = [];
+    try {
+      const liveRes = await fetch("https://hisfuturetalent.his.edu.dz/api/leads", {
+        next: { revalidate: 0 },
+        signal: AbortSignal.timeout(3000),
+      });
+      if (liveRes.ok) {
+        const liveJson = await liveRes.json();
+        if (liveJson.success && Array.isArray(liveJson.data)) {
+          liveLeads = liveJson.data;
+        }
+      }
+    } catch (liveErr) {
+      // Production unreachable / offline, continue with local data
+    }
+
     const sheetLeads = await fetchLeadsFromGoogleSheet();
 
     const leadMap = new Map<string, any>();
 
-    for (const lead of localLeads) {
-      const key = `${lead.companyName.toLowerCase().trim()}_${lead.email.toLowerCase().trim()}`;
+    // Add live production leads first
+    for (const lead of liveLeads) {
+      const key = `${lead.companyName?.toLowerCase()?.trim() || lead.id}_${lead.email?.toLowerCase()?.trim() || ""}`;
       leadMap.set(key, lead);
     }
 
+    // Merge local leads
+    for (const lead of localLeads) {
+      const key = `${lead.companyName?.toLowerCase()?.trim() || lead.id}_${lead.email?.toLowerCase()?.trim() || ""}`;
+      if (!leadMap.has(key)) {
+        leadMap.set(key, lead);
+      }
+    }
+
+    // Merge Google Sheet leads
     for (const sheetLead of sheetLeads) {
-      const key = `${sheetLead.companyName.toLowerCase().trim()}_${sheetLead.email.toLowerCase().trim()}`;
+      const key = `${sheetLead.companyName?.toLowerCase()?.trim() || sheetLead.id}_${sheetLead.email?.toLowerCase()?.trim() || ""}`;
       if (!leadMap.has(key)) {
         leadMap.set(key, sheetLead);
       }

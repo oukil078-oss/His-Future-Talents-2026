@@ -7,7 +7,7 @@ import { bahij, neulis } from "@/lib/fonts";
 
 export function Providers({ children, locale }: { children: React.ReactNode; locale: any }) {
   return (
-    <LanguageProvider locale={locale} bahijClass={bahij.variable} montserratClass={neulis.variable}>
+    <LanguageProvider locale={locale} bahijClass={bahij.variable} neulisClass={neulis.variable}>
       <ChakraProvider theme={theme}>
         {children}
       </ChakraProvider>

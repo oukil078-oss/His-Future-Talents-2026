@@ -1,10 +1,10 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import frTranslations from "../messages/fr.json";
+import enTranslations from "../messages/en.json";
 import arTranslations from "../messages/ar.json";
 
-type Language = "fr" | "ar";
+type Language = "en" | "ar";
 type Direction = "ltr" | "rtl";
 
 interface LanguageContextType {
@@ -16,7 +16,7 @@ interface LanguageContextType {
 }
 
 const translations: Record<Language, any> = {
-  fr: frTranslations,
+  en: enTranslations,
   ar: arTranslations,
 };
 
@@ -26,39 +26,39 @@ export function LanguageProvider({
   children,
   locale,
   bahijClass,
-  montserratClass,
+  neulisClass,
 }: {
   children: React.ReactNode;
   locale: Language;
   bahijClass: string;
-  montserratClass: string;
+  neulisClass: string;
 }) {
-  // Guard locale value to only support 'fr' or 'ar', default to 'fr'
-  const initialLang: Language = locale === "ar" || locale === "fr" ? locale : "fr";
+  // Guard locale value to only support 'en' or 'ar', default to 'en'
+  const initialLang: Language = locale === "ar" || locale === "en" ? locale : "en";
   
   const [language, setLanguageState] = useState<Language>(initialLang);
   const [dir, setDir] = useState<Direction>(initialLang === "ar" ? "rtl" : "ltr");
-  const [fontClass, setFontClass] = useState<string>(initialLang === "ar" ? bahijClass : montserratClass);
+  const [fontClass, setFontClass] = useState<string>(initialLang === "ar" ? bahijClass : neulisClass);
 
   useEffect(() => {
     // Keep internal language and direction state synced if locale prop changes
-    const currentLang: Language = locale === "ar" || locale === "fr" ? locale : "fr";
+    const currentLang: Language = locale === "ar" || locale === "en" ? locale : "en";
     setLanguageState(currentLang);
     const newDir = currentLang === "ar" ? "rtl" : "ltr";
     setDir(newDir);
-    setFontClass(currentLang === "ar" ? bahijClass : montserratClass);
+    setFontClass(currentLang === "ar" ? bahijClass : neulisClass);
     
     if (typeof window !== "undefined") {
       document.documentElement.dir = newDir;
       document.documentElement.lang = currentLang;
     }
-  }, [locale, bahijClass, montserratClass]);
+  }, [locale, bahijClass, neulisClass]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     const newDir = lang === "ar" ? "rtl" : "ltr";
     setDir(newDir);
-    setFontClass(lang === "ar" ? bahijClass : montserratClass);
+    setFontClass(lang === "ar" ? bahijClass : neulisClass);
     if (typeof window !== "undefined") {
       document.documentElement.dir = newDir;
       document.documentElement.lang = lang;
@@ -69,8 +69,8 @@ export function LanguageProvider({
 
       // Preserve current route (e.g. /students, /admin) when switching language
       let newPath = pathname;
-      if (pathname.startsWith("/fr") || pathname.startsWith("/ar")) {
-        newPath = pathname.replace(/^\/(fr|ar)(\/|$)/, `/${lang}$2`);
+      if (pathname.startsWith("/en") || pathname.startsWith("/ar") || pathname.startsWith("/fr")) {
+        newPath = pathname.replace(/^\/(en|ar|fr)(\/|$)/, `/${lang}$2`);
       } else {
         newPath = `/${lang}${pathname.startsWith("/") ? pathname : `/${pathname}`}`;
       }

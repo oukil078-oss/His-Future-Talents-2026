@@ -278,7 +278,7 @@ export default function Home() {
           ref={heroRef}
           data-theme="dark"
           className="relative flex items-center pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-24 lg:pb-12 hero-adaptive bg-[#0E1B2C] text-white"
-          aria-label="Présentation HIS Future Talents"
+          aria-label={language === "ar" ? "عرض صالون HIS Future Talents" : "HIS Future Talents Presentation"}
         >
           <HeroBg />
 
@@ -319,10 +319,10 @@ export default function Home() {
                   <div className="relative z-10 p-5 sm:p-6 flex items-center justify-between">
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
                       <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                      {language === "ar" ? "الدورة السابقة" : "Édition précédente"}
+                      {language === "ar" ? "الدورة السابقة" : "Previous Edition"}
                     </span>
                     <span className="text-[11px] font-bold uppercase tracking-widest text-white/90 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-md border border-white/15">
-                      Vidéo HD • 02:15
+                      HD Video • 02:15
                     </span>
                   </div>
 
@@ -333,25 +333,25 @@ export default function Home() {
                         e.stopPropagation();
                         setIsVideoModalOpen(true);
                       }}
-                      aria-label="Regarder la vidéo officielle"
+                      aria-label={language === "ar" ? "مشاهدة الفيديو الرسمي" : "Watch the official video"}
                       className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 border-2 border-white/40 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:bg-[#F05A22] group-hover:border-[#F05A22] transition-all duration-300 shadow-2xl group/btn cursor-pointer"
                     >
                       <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-white text-white ms-1 group-hover/btn:scale-110 transition-transform" />
                     </button>
                     <span className="mt-3 text-xs font-black uppercase tracking-widest text-white/90 drop-shadow-md">
-                      {language === "ar" ? "شاهد الفيديو الرسمي" : "Voir le film officiel"}
+                      {language === "ar" ? "شاهد الفيديو الرسمي" : "Watch Official Film"}
                     </span>
                   </div>
 
                   {/* Bottom Caption inside Video Card */}
                   <div className="relative z-10 p-5 sm:p-6 bg-gradient-to-t from-[#0E1B2C] via-[#0E1B2C]/90 to-transparent border-t border-white/10 text-start">
                     <p className="text-xs font-black uppercase tracking-widest text-[#58B9FF]">
-                      {language === "ar" ? "المعهد العالي للعلوم — HIS University" : "Higher Institute of Sciences"}
+                      {language === "ar" ? "المعهد العالي للعلوم — HIS University" : "Higher Institute of Sciences — HIS University"}
                     </p>
                     <p className="text-sm sm:text-base font-extrabold text-white mt-1 leading-snug">
                       {language === "ar"
                         ? "أبرز لحظات ومحطات الصالون الوطني للتوظيف والشراكات"
-                        : "Retour en images sur les temps forts du salon et la rencontre des décideurs RH"}
+                        : "Key highlights of the national recruitment fair and executive HR meetings"}
                     </p>
                   </div>
                 </div>
@@ -371,7 +371,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-[#002855]/85 via-transparent to-[#0E1B2C]/90" />
                     <div className="absolute inset-0 flex items-center px-4 justify-between">
                       <span className="text-[11px] font-black uppercase tracking-widest text-white/90 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
-                        {language === "ar" ? "الصالون المرجعي للتوظيف" : "Salon de recrutement & B2B"}
+                        {language === "ar" ? "الصالون المرجعي للتوظيف" : "Premier Recruitment & B2B Fair"}
                       </span>
                       <span className="text-[11px] font-extrabold text-[#58B9FF] bg-[#003876]/80 backdrop-blur-md px-3 py-1 rounded-full border border-[#58B9FF]/30">
                         2026
@@ -383,21 +383,21 @@ export default function Home() {
                   <p className="text-xs sm:text-sm font-black text-[#58B9FF] tracking-wide uppercase">
                     {language === "ar"
                       ? "مرحباً بكم في HIS Future Talents الدورة 3"
-                      : "Bienvenue à HIS Future Talents 3ème édition"}
+                      : "Welcome to HIS Future Talents — 3rd Edition"}
                   </p>
 
                   {/* Main H1 Headline */}
                   <h1 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-black leading-snug tracking-tight text-white">
                     {language === "ar"
                       ? "اربطوا مؤسستكم بنخبة الكفاءات التي تصنع المستقبل"
-                      : "Connectez votre entreprise aux talents qui façonneront demain"}
+                      : "Connect Your Company to the Talents Shaping Tomorrow"}
                   </h1>
 
                   {/* Subtitle / Paragraph */}
                   <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-medium">
                     {language === "ar"
                       ? "المنصة الوطنية المرجعية للتوظيف، الشراكات المهنية، الورشات التطبيقية والتبادل المباشر بين قادة المؤسسات وخريجي المعهد العالي للعلوم."
-                      : "Le rendez-vous annuel incontournable reliant les recruteurs et décideurs RH aux diplômés et jeunes talents à haute valeur ajoutée."}
+                      : "The annual flagship event connecting corporate recruiters and HR leaders with high-value graduates and emerging talents."}
                   </p>
 
                   {/* Information Rail */}
@@ -412,22 +412,22 @@ export default function Home() {
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-[#58B9FF] shrink-0" />
                       <div>
-                        <span className="block text-[9px] font-black uppercase text-white/50">Lieu</span>
-                        <span className="text-xs font-bold text-white">HIS Univ, Alger</span>
+                        <span className="block text-[9px] font-black uppercase text-white/50">{language === "ar" ? "المكان" : "Location"}</span>
+                        <span className="text-xs font-bold text-white">{language === "ar" ? "الجزائر العاصمة" : "HIS Univ, Algiers"}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <Users className="w-4 h-4 text-[#58B9FF] shrink-0" />
                       <div>
-                        <span className="block text-[9px] font-black uppercase text-white/50">Audience</span>
-                        <span className="text-xs font-bold text-white">1 000 Candidats</span>
+                        <span className="block text-[9px] font-black uppercase text-white/50">{language === "ar" ? "الجمهور" : "Audience"}</span>
+                        <span className="text-xs font-bold text-white">{language === "ar" ? "+1 000 مرشح" : "1,000+ Candidates"}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <Briefcase className="w-4 h-4 text-[#58B9FF] shrink-0" />
                       <div>
-                        <span className="block text-[9px] font-black uppercase text-white/50">Entreprises</span>
-                        <span className="text-xs font-bold text-white">45 Partenaires</span>
+                        <span className="block text-[9px] font-black uppercase text-white/50">{language === "ar" ? "الشركاء" : "Companies"}</span>
+                        <span className="text-xs font-bold text-white">{language === "ar" ? "+45 شريك" : "45+ Partners"}</span>
                       </div>
                     </div>
                   </div>
@@ -439,7 +439,7 @@ export default function Home() {
                     aria-label={`Compte à rebours: ${countdown.days} jours, ${countdown.hours} heures, ${countdown.minutes} minutes`}
                   >
                     <p className="text-[11px] font-extrabold uppercase tracking-widest text-white/60">
-                      {language === "ar" ? "يبدأ الصالون خلال" : "Le salon commence dans"}
+                      {language === "ar" ? "يبدأ الصالون خلال" : "The Forum Begins In"}
                     </p>
                     <div className="inline-flex bg-white/10 border border-white/15 rounded-2xl p-1.5 backdrop-blur-md shadow-inner">
                       <CountdownUnit value={countdown.days} label={t("hero.days")} />
@@ -510,7 +510,7 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end p-2.5">
-                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">Flux Candidats & Sourcing</span>
+                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">{language === "ar" ? "توافد المرشحين والاستقطاب" : "Candidate Flow & Sourcing"}</span>
                   </div>
                 </div>
                 <div className="rounded-2xl overflow-hidden border border-slate-100 shadow-md aspect-square bg-slate-100 group/img relative">
@@ -520,7 +520,7 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end p-2.5">
-                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">Stand SATIM Sponsor</span>
+                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">{language === "ar" ? "جناح ساتيم الراعي الرسمي" : "SATIM Official Sponsor Stand"}</span>
                   </div>
                 </div>
               </div>
@@ -543,7 +543,7 @@ export default function Home() {
                   <p className="text-slate-600 text-sm md:text-base leading-relaxed font-normal">
                     {language === "ar"
                       ? "يجمع صالون HIS Future Talents بين نخبة الخريجين، الطلبة المتفوقين في المعهد العالي للعلوم وأبرز مسيري الموارد البشرية والشركات الرائدة لبناء شراكات توظيف واستقطاب كفاءات مستدامة."
-                      : "Le salon HIS Future Talents est le pont stratégique reliant les talents émergents issus de formations d'excellence aux entreprises partenaires désireuses de renforcer leur capital humain."}
+                      : "The HIS Future Talents forum serves as a strategic bridge connecting high-potential emerging talents with leading partner companies looking to strengthen their human capital."}
                   </p>
                 </div>
 
@@ -629,17 +629,17 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest bg-[#F05A22] text-white">
-                {language === "ar" ? "رؤية دورة 2026" : "Vision Édition 2026"}
+                {language === "ar" ? "رؤية دورة 2026" : "2026 Edition Vision"}
               </span>
               <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight">
                 {language === "ar"
                   ? "الدورة 3: قفزة نوعية في ربط الكفاءات بالمؤسسات"
-                  : "Édition 3 : L'Évolution Stratégique de HFT"}
+                  : "Edition 3: Strategic Evolution of HFT"}
               </h2>
               <p className="text-white/80 text-base md:text-lg leading-relaxed font-medium">
                 {language === "ar"
                   ? "تضع الدورة الثالثة معايير جديدة للتعاون بين الجامعة والمؤسسات، مع برامج توظيف مخصصة ورعاية عالية المستوى."
-                  : "L'Édition 3 élève les standards d'accompagnement et multiplie les opportunités de synergie entre l'écosystème éducatif et économique."}
+                  : "Edition 3 elevates coaching standards and unlocks powerful synergies between academia and the corporate ecosystem."}
               </p>
             </div>
 
@@ -653,25 +653,25 @@ export default function Home() {
                     <Users className="w-6 h-6 text-[#58B9FF]" />
                   </div>
                   <h3 className="text-2xl font-black text-white">
-                    {language === "ar" ? "للطلبة والشباب المتطلعين" : "Pour les Étudiants & Jeunes Talents"}
+                    {language === "ar" ? "للطلبة والشباب المتطلعين" : "For Students & Emerging Talents"}
                   </h3>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed font-normal">
                     {language === "ar"
                       ? "تواصل مباشر مع مسؤولي التوظيف، ورشات عمل لتطوير المهارات، وعروض تربص وتوظيف سريعة."
-                      : "Accédez directement aux recruteurs clés, bénéficiez de coaching de carrière et décrochez des opportunités de stages et de premier emploi."}
+                      : "Gain direct access to key corporate recruiters, receive executive career coaching, and secure top internship and first-job opportunities."}
                   </p>
                   <ul className="space-y-3 text-sm text-white/90 font-semibold pt-2">
                     <li className="flex items-center gap-3">
                       <CheckCircle className="w-4 h-4 text-[#58B9FF] shrink-0" />
-                      <span>{language === "ar" ? "مقابلات توظيف مباشرة مع قادة HR" : "Entretiens de recrutement directs"}</span>
+                      <span>{language === "ar" ? "مقابلات توظيف مباشرة مع قادة HR" : "Direct On-Site Job Interviews"}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <CheckCircle className="w-4 h-4 text-[#58B9FF] shrink-0" />
-                      <span>{language === "ar" ? "ورشات تدريبية متخصصة ومرافقة" : "Ateliers pratiques et aide au CV"}</span>
+                      <span>{language === "ar" ? "ورشات تدريبية متخصصة ومرافقة" : "Practical Workshops & CV Coaching"}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <CheckCircle className="w-4 h-4 text-[#58B9FF] shrink-0" />
-                      <span>{language === "ar" ? "فرص حصرية للتربص والتوظيف" : "Offres exclusives de stages & emploi"}</span>
+                      <span>{language === "ar" ? "فرص حصرية للتربص والتوظيف" : "Exclusive Internship & Job Offers"}</span>
                     </li>
                   </ul>
                 </div>
@@ -684,22 +684,22 @@ export default function Home() {
                     <Briefcase className="w-6 h-6 text-[#F05A22]" />
                   </div>
                   <h3 className="text-2xl font-black text-white">
-                    {language === "ar" ? "للمؤسسات والشركاء الرعاة" : "Pour les Entreprises & Recruteurs"}
+                    {language === "ar" ? "للمؤسسات والشركاء الرعاة" : "For Companies & Recruiters"}
                   </h3>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed font-medium">
                     {language === "ar"
                       ? "استقطاب مباشر لأفضل خريجي المعهد العالي للعلوم وتأكيد حضور علامتكم التجارية كرب عمل مرجعي."
-                      : "Sourcez vos futurs collaborateurs parmi l'élite académique et renforcez votre visibilité de marque employeur auprès des jeunes talents."}
+                      : "Source your future talent from the academic elite and reinforce your employer brand with top graduates."}
                   </p>
                   <ul className="space-y-3.5 text-sm text-white/95 font-semibold pt-2">
                     <li className="flex items-start gap-3">
                       <Target className="w-5 h-5 text-[#F05A22] shrink-0 mt-0.5" />
                       <div>
                         <span className="font-extrabold text-white block">
-                          {language === "ar" ? "استقطاب كفاءات الغد" : "Attirez les talents de demain"}
+                          {language === "ar" ? "استقطاب كفاءات الغد" : "Attract Tomorrow's Talents"}
                         </span>
                         <span className="text-xs text-white/70 font-normal">
-                          {language === "ar" ? "مقابلات توظيف مباشرة وسورسينغ مخصص للكفاءات" : "Recrutement direct & sourcing auprès des futurs diplômés"}
+                          {language === "ar" ? "مقابلات توظيف مباشرة وسورسينغ مخصص للكفاءات" : "Direct hiring and targeted sourcing from graduating cohorts"}
                         </span>
                       </div>
                     </li>
@@ -707,10 +707,10 @@ export default function Home() {
                       <Globe2 className="w-5 h-5 text-[#58B9FF] shrink-0 mt-0.5" />
                       <div>
                         <span className="font-extrabold text-white block">
-                          {language === "ar" ? "الظهور والانتشار للعلامة التجارية" : "Visibilité de Marque"}
+                          {language === "ar" ? "الظهور والانتشار للعلامة التجارية" : "Brand Visibility & Exposure"}
                         </span>
                         <span className="text-xs text-white/70 font-normal">
-                          {language === "ar" ? "تغطية إعلامية وظهور استثنائي عبر كافة الوسائط" : "Rayonnement national sur nos supports et médias"}
+                          {language === "ar" ? "تغطية إعلامية وظهور استثنائي عبر كافة الوسائط" : "Nationwide exposure across all exhibition platforms and media"}
                         </span>
                       </div>
                     </li>
@@ -718,10 +718,10 @@ export default function Home() {
                       <HeartHandshake className="w-5 h-5 text-[#F05A22] shrink-0 mt-0.5" />
                       <div>
                         <span className="font-extrabold text-white block">
-                          {language === "ar" ? "المسؤولية المجتمعية للمؤسسة (RSE)" : "Responsabilité RSE"}
+                          {language === "ar" ? "المسؤولية المجتمعية للمؤسسة (RSE)" : "CSR & Social Impact"}
                         </span>
                         <span className="text-xs text-white/70 font-normal">
-                          {language === "ar" ? "دعم إدماج الشباب وتجسيد الالتزام المجتمعي" : "Engagement sociétal actif pour l'employabilité des jeunes"}
+                          {language === "ar" ? "دعم إدماج الشباب وتجسيد الالتزام المجتمعي" : "Active corporate engagement driving youth employment and career insertion"}
                         </span>
                       </div>
                     </li>
@@ -729,10 +729,10 @@ export default function Home() {
                       <Award className="w-5 h-5 text-[#58B9FF] shrink-0 mt-0.5" />
                       <div>
                         <span className="font-extrabold text-white block">
-                          {language === "ar" ? "تعزيز العلامة التجارية كجهة عمل" : "Marque Employeur"}
+                          {language === "ar" ? "تعزيز العلامة التجارية كجهة عمل" : "Employer Brand Leadership"}
                         </span>
                         <span className="text-xs text-white/70 font-normal">
-                          {language === "ar" ? "ترسيخ مكانة مؤسستكم كوجهة مفضلة للمواهب" : "Positionnement d'employeur de choix auprès des talents"}
+                          {language === "ar" ? "ترسيخ مكانة مؤسستكم كوجهة مفضلة للمواهب" : "Position your organization as an employer of choice among top graduates"}
                         </span>
                       </div>
                     </li>
@@ -740,10 +740,10 @@ export default function Home() {
                       <Building2 className="w-5 h-5 text-[#F05A22] shrink-0 mt-0.5" />
                       <div>
                         <span className="font-extrabold text-white block">
-                          {language === "ar" ? "شبكة علاقات B2B حصرية" : "Réseau B2B Exclusif"}
+                          {language === "ar" ? "شبكة علاقات B2B حصرية" : "Exclusive B2B Network"}
                         </span>
                         <span className="text-xs text-white/70 font-normal">
-                          {language === "ar" ? "تواصل حصيري مع 45+ من صناع القرار والمدراء" : "Rencontres VIP et synergies avec 45+ dirigeants d'entreprises"}
+                          {language === "ar" ? "تواصل حصري مع 45+ من صناع القرار والمدراء" : "VIP executive networking and synergies with 45+ corporate leaders"}
                         </span>
                       </div>
                     </li>
@@ -795,7 +795,7 @@ export default function Home() {
                   badge: language === "ar" ? "توظيف مباشر" : "Sourcing & Recrutement",
                   desc: language === "ar"
                     ? "استقطبوا ووظفوا كفاءات المستقبل من بين جيل جديد من طلبة وخريجي المعهد العالي للعلوم والتخصصات الواعدة."
-                    : "Identifiez et recrutez en direct l'élite des diplômés et jeunes talents hautement qualifiés pour vos équipes.",
+                    : "Identify and recruit top-tier graduates and highly qualified young professionals directly for your teams.",
                   icon: <Target className="w-6 h-6 text-[#F05A22]" />,
                   accentBorder: "hover:border-[#F05A22]/40",
                   badgeBg: "bg-[#F05A22]/10 text-[#F05A22] border-[#F05A22]/20",
@@ -805,7 +805,7 @@ export default function Home() {
                   badge: language === "ar" ? "حضور وطني" : "Rayonnement Média",
                   desc: language === "ar"
                     ? "احصلوا على حضور استثنائي وانتشار واسع لعلامتكم التجارية عبر الوسائط الإعلامية والدعاية الرقمية للفعالية."
-                    : "Bénéficiez d'un rayonnement exceptionnel sur nos supports d'exposition, médias nationaux et canaux digitaux.",
+                    : "Gain premier brand exposure across on-site spaces, national media coverage, and digital campaign channels.",
                   icon: <Globe2 className="w-6 h-6 text-[#003876]" />,
                   accentBorder: "hover:border-[#003876]/40",
                   badgeBg: "bg-[#003876]/10 text-[#003876] border-[#003876]/20",
@@ -815,7 +815,7 @@ export default function Home() {
                   badge: language === "ar" ? "التزام مجتمعي" : "Impact Sociétal",
                   desc: language === "ar"
                     ? "جسدوا التزام مؤسستكم بالمسؤولية المجتمعية من خلال الدعم الفعلي لتوظيف وإدماج الكفاءات الشابة."
-                    : "Concrétisez vos engagements sociétaux en soutenant l'insertion professionnelle et l'employabilité de la jeunesse.",
+                    : "Demonstrate your societal commitment by actively supporting professional insertion and youth employability.",
                   icon: <HeartHandshake className="w-6 h-6 text-[#F05A22]" />,
                   accentBorder: "hover:border-[#F05A22]/40",
                   badgeBg: "bg-[#F05A22]/10 text-[#F05A22] border-[#F05A22]/20",
@@ -825,7 +825,7 @@ export default function Home() {
                   badge: language === "ar" ? "بيئة عمل مفضلة" : "Employeur de Choix",
                   desc: language === "ar"
                     ? "ابرزوا ثقافة مؤسستكم وفرص النمو المهني لترسيخ مكانتكم كبيئة العمل الأولى المفضلة لدى الكفاءات."
-                    : "Valorisez votre culture d'entreprise et affirmez votre statut d'employeur préféré des jeunes diplômés.",
+                    : "Showcase your company culture and career growth pathways to stand out as a preferred employer.",
                   icon: <Award className="w-6 h-6 text-[#003876]" />,
                   accentBorder: "hover:border-[#003876]/40",
                   badgeBg: "bg-[#003876]/10 text-[#003876] border-[#003876]/20",
@@ -835,7 +835,7 @@ export default function Home() {
                   badge: language === "ar" ? "لقاءات VIP" : "Synergies & Partenariats",
                   desc: language === "ar"
                     ? "تواصلوا مباشرة مع صناع القرار ومسؤولي التوظيف في أزيد من 45 مؤسسة عارضة لبناء شراكات استراتيجية."
-                    : "Échangez avec les décideurs RH, dirigeants et leaders d'entreprises partenaires pour créer des synergies d'affaires.",
+                    : "Engage with HR directors, executives, and corporate leaders across 45+ partner organizations to build business synergies.",
                   icon: <Building2 className="w-6 h-6 text-[#F05A22]" />,
                   accentBorder: "hover:border-[#F05A22]/40",
                   badgeBg: "bg-[#F05A22]/10 text-[#F05A22] border-[#F05A22]/20",
@@ -904,19 +904,19 @@ export default function Home() {
                 <div className="lg:col-span-8 space-y-4">
                   <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
                     <TrendingUp className="w-4 h-4 text-white" />
-                    {language === "ar" ? "فرصة الشراكة والاستقطاب" : "Opportunité Partenaires & Recruteurs"}
+                    {language === "ar" ? "فرصة الشراكة والاستقطاب" : "Partner & Recruiter Opportunity"}
                   </span>
                   
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tight text-white max-w-2xl">
                     {language === "ar"
                       ? "هل أنت مستعد لتعزيز هويتك كجهة عمل واستقطاب نخبة الكفاءات؟"
-                      : "Prêt à propulser votre marque employeur et recruter l'élite ?"}
+                      : "Ready to Elevate Your Employer Brand and Hire Top Talents?"}
                   </h2>
                   
                   <p className="text-white/85 text-sm sm:text-base leading-relaxed font-medium max-w-2xl">
                     {language === "ar"
                       ? "احجز جناحك الآن في صالون HIS Future Talents الدورة 3 واحصل على وصول حصري لأكثر من 1 000 خريج وطالب متميز."
-                      : "Réservez dès aujourd'hui votre emplacement au salon HIS Future Talents Édition 3 et bénéficiez d'un accès privilégié aux 1 000+ diplômés et jeunes talents à haute valeur ajoutée."}
+                      : "Reserve your exhibition booth today at HIS Future Talents Edition 3 and gain privileged access to 1,000+ top graduates and professionals."}
                   </p>
                 </div>
 
@@ -1032,7 +1032,7 @@ export default function Home() {
                 <div className="relative z-10 flex items-center justify-between gap-4">
                   <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F05A22] text-white text-xs font-bold uppercase tracking-widest shadow-sm">
                     <Film className="w-3.5 h-3.5" />
-                    Édition 2025
+                    {language === "ar" ? "دورة 2025" : "Edition 2025"}
                   </span>
                   <span className="text-[11px] font-bold text-white/90 uppercase tracking-widest bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-md border border-white/15">
                     Live Motion HD
@@ -1045,7 +1045,7 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedRecapVideo({
                       src: "/video/hft-recap-2025.mp4",
-                      title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2025" : "Rétrospective Officielle — HIS Future Talents 2025",
+                      title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2025" : "Official Retrospective Video — HIS Future Talents 2025",
                       year: "2025"
                     })}
                     className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#F05A22] hover:bg-[#d84a15] text-white shadow-xl shadow-black/40 transition-all duration-300 transform group-hover:scale-110 cursor-pointer relative"
@@ -1058,12 +1058,12 @@ export default function Home() {
                 {/* Bottom Title & Action */}
                 <div className="relative z-10 space-y-3 border-t border-white/15 pt-5">
                   <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
-                    {language === "ar" ? "الملخص الفيديوي للدورة الثانية 2025" : "Rétrospective Vidéo — Édition 2025"}
+                    {language === "ar" ? "الملخص الفيديوي للدورة الثانية 2025" : "Video Retrospective — 2025 Edition"}
                   </h3>
                   <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed">
                     {language === "ar"
                       ? "استعيدوا أجواء اللقاءات والفرص التي شهدتها الدورة الثانية بمركب المعهد العالي للعلوم."
-                      : "Revivez l'atmosphère vibrante, les recrutements et les échanges forts de la 2e édition sur le campus HIS."}
+                      : "Relive the vibrant atmosphere, recruitment sessions, and inspiring exchanges of the 2nd edition on the HIS campus."}
                   </p>
                   <button
                     type="button"
@@ -1074,7 +1074,7 @@ export default function Home() {
                     })}
                     className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#58B9FF] hover:text-white transition-colors cursor-pointer pt-1"
                   >
-                    <span>{language === "ar" ? "مشاهدة التقرير بالصوت الكامل" : "Regarder avec son en plein écran"}</span>
+                    <span>{language === "ar" ? "مشاهدة التقرير بالصوت الكامل" : "Watch Full Video in Fullscreen"}</span>
                     <ArrowRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
                   </button>
                 </div>
@@ -1103,7 +1103,7 @@ export default function Home() {
                 <div className="relative z-10 flex items-center justify-between gap-4">
                   <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#003876] text-white text-xs font-bold uppercase tracking-widest border border-white/20 shadow-sm">
                     <Film className="w-3.5 h-3.5" />
-                    Édition 2024
+                    {language === "ar" ? "دورة 2024" : "Edition 2024"}
                   </span>
                   <span className="text-[11px] font-bold text-white/90 uppercase tracking-widest bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-md border border-white/15">
                     Live Motion HD
@@ -1116,7 +1116,7 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedRecapVideo({
                       src: "/video/hft-recap-2024.mp4",
-                      title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2024" : "Rétrospective Officielle — HIS Future Talents 2024",
+                      title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2024" : "Official Retrospective Video — HIS Future Talents 2024",
                       year: "2024"
                     })}
                     className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#003876] hover:bg-[#F05A22] text-white shadow-[0_0_40px_rgba(0,56,118,0.6)] transition-all duration-300 transform group-hover:scale-110 cursor-pointer relative border border-white/30"
@@ -1129,12 +1129,12 @@ export default function Home() {
                 {/* Bottom Title & Action */}
                 <div className="relative z-10 space-y-3 border-t border-white/15 pt-5">
                   <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
-                    {language === "ar" ? "الملخص الفيديوي للدورة الأولى 2024" : "Rétrospective Vidéo — Édition 2024"}
+                    {language === "ar" ? "الملخص الفيديوي للدورة الأولى 2024" : "Video Retrospective — 2024 Edition"}
                   </h3>
                   <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed">
                     {language === "ar"
                       ? "اكتشفوا انطلاقة المعرض والأجواء الحماسية لمشاريع وورشات التوظيف الأولى."
-                      : "Découvrez le lancement fondateur du salon et les premiers grands ateliers d'insertion."}
+                      : "Discover the inaugural launch of the forum and the very first cohort workshops."}
                   </p>
                   <button
                     type="button"
@@ -1164,7 +1164,7 @@ export default function Home() {
             <button
               onClick={() => setLightboxIndex(null)}
               className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all focus:outline-none z-30"
-              aria-label="Fermer"
+              aria-label={language === "ar" ? "إغلاق" : "Close"}
             >
               <X className="w-6 h-6" />
             </button>
@@ -1181,7 +1181,7 @@ export default function Home() {
                 setLightboxIndex((prev) => (prev !== null ? (prev === 0 ? galleryPhotos.length - 1 : prev - 1) : null));
               }}
               className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-[#F05A22] text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all duration-300 shadow-xl focus:outline-none z-30 hover:scale-105"
-              aria-label="Photo précédente"
+              aria-label={language === "ar" ? "الصورة السابقة" : "Previous photo"}
             >
               <ChevronLeft className="w-7 h-7 md:w-8 md:h-8" />
             </button>
@@ -1202,7 +1202,7 @@ export default function Home() {
                 setLightboxIndex((prev) => (prev !== null ? (prev === galleryPhotos.length - 1 ? 0 : prev + 1) : null));
               }}
               className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 hover:bg-[#F05A22] text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all duration-300 shadow-xl focus:outline-none z-30 hover:scale-105"
-              aria-label="Photo suivante"
+              aria-label={language === "ar" ? "الصورة التالية" : "Next photo"}
             >
               <ChevronRight className="w-7 h-7 md:w-8 md:h-8" />
             </button>
@@ -1219,7 +1219,7 @@ export default function Home() {
             <button
               onClick={() => setIsVideoModalOpen(false)}
               className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors focus:outline-none z-30 hover:scale-105 cursor-pointer"
-              aria-label="Fermer la vidéo"
+              aria-label={language === "ar" ? "إغلاق الفيديو" : "Close video"}
             >
               <X className="w-6 h-6" />
             </button>
@@ -1244,7 +1244,7 @@ export default function Home() {
                 }}
               >
                 <source src="/video/hft-hero-background.mp4" type="video/mp4" />
-                {language === "ar" ? "متصفحك لا يدعم تشغيل الفيديو." : "Votre navigateur ne prend pas en charge la lecture de vidéos."}
+                {language === "ar" ? "متصفحك لا يدعم تشغيل الفيديو." : "Your browser does not support video playback."}
               </video>
             </div>
           </div>
@@ -1337,16 +1337,16 @@ export default function Home() {
 
               {/* Description */}
               <p className="text-white/85 text-xs sm:text-sm font-medium leading-relaxed bg-white/5 border border-white/10 p-4 rounded-2xl">
-                {language === "ar" ? selectedMedia.description.ar : selectedMedia.description.fr}
+                {language === "ar" ? selectedMedia.description.ar : (selectedMedia.description.en || selectedMedia.description.fr)}
               </p>
 
               {/* Key Points */}
               <div className="space-y-2">
                 <h4 className="text-xs font-black uppercase tracking-wider text-[#58B9FF]">
-                  {language === "ar" ? "تفاصيل التغطية الإعلامية" : "Points Forts de la Couverture"}
+                  {language === "ar" ? "تفاصيل التغطية الإعلامية" : "Media Coverage Highlights"}
                 </h4>
                 <ul className="space-y-2">
-                  {(language === "ar" ? selectedMedia.keyPoints.ar : selectedMedia.keyPoints.fr).map((pt, i) => (
+                  {(language === "ar" ? selectedMedia.keyPoints.ar : (selectedMedia.keyPoints.en || selectedMedia.keyPoints.fr)).map((pt, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-xs text-white/90 font-medium">
                       <CheckCircle className="w-4 h-4 text-[#F05A22] shrink-0 mt-0.5" />
                       <span>{pt}</span>
@@ -1363,7 +1363,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="w-full h-13 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visiter le site officiel du média"}</span>
+                  <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visit Official Media Website"}</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>

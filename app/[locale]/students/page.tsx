@@ -89,46 +89,48 @@ export default function StudentsPage() {
               : "bg-[#0E1B2C]/80 backdrop-blur-sm py-3.5"
           }`}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 h-12 md:h-14">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 h-13 md:h-15">
             
-            {/* Logo */}
-            <a href={`/${language}`} className="flex items-center shrink-0 h-10 sm:h-12">
-              <img src="/logo-hft-white.svg" alt="HIS Future Talents" className="h-10 sm:h-12 w-auto object-contain" />
+            {/* Dual Logos (HFT + X + HIS) */}
+            <a href={`/${language}`} className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0 focus:outline-none rounded-lg hover:opacity-95 transition-opacity" aria-label="HIS Future Talents & HIS University">
+              <img src="/logo-hft-white.svg" alt="HIS Future Talents" className="h-8 sm:h-9 md:h-10 w-auto object-contain" />
+              <span className="text-white/40 text-[10px] sm:text-xs md:text-sm font-black select-none">✕</span>
+              <img src="/brand/his-logo-white.png" alt="HIS University" className="h-6 sm:h-7 md:h-8 w-auto object-contain" />
             </a>
 
             {/* Nav Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-3 text-white text-xs xl:text-sm font-bold">
-              <a href={`/${language}`} className="px-3 py-2 hover:text-[#F05A22] transition-colors">
-                {language === "ar" ? "الرئيسية" : "Accueil"}
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-2 text-white text-xs xl:text-[13px] font-bold">
+              <a href={`/${language}`} className="px-2.5 py-1.5 hover:text-[#F05A22] transition-colors whitespace-nowrap">
+                {language === "ar" ? "الرئيسية" : "Home"}
               </a>
-              <a href="#register-hero" className="px-3 py-2 text-[#F05A22] font-black hover:underline">
-                {language === "ar" ? "احجز مكانك" : "Je réserve ma place"}
+              <a href="#register-hero" className="px-2.5 py-1.5 text-[#F05A22] font-black hover:underline whitespace-nowrap">
+                {language === "ar" ? "احجز مكانك" : "Book Your Pass"}
               </a>
-              <a href="#nouveautes-section" className="px-3 py-2 hover:text-[#F05A22] transition-colors">
-                {language === "ar" ? "المستجدات" : "Nouveautés 2026"}
+              <a href="#nouveautes-section" className="px-2.5 py-1.5 hover:text-[#F05A22] transition-colors whitespace-nowrap">
+                {language === "ar" ? "المستجدات" : "2026 Highlights"}
               </a>
-              <a href="#sponsors-section" className="px-3 py-2 hover:text-[#F05A22] transition-colors">
-                {language === "ar" ? "الرعاة" : "Nos Sponsors"}
+              <a href="#sponsors-section" className="px-2.5 py-1.5 hover:text-[#F05A22] transition-colors whitespace-nowrap">
+                {language === "ar" ? "الرعاة" : "Our Sponsors"}
               </a>
-              <a href="#exhibitors-section" className="px-3 py-2 hover:text-[#F05A22] transition-colors">
-                {language === "ar" ? "الشركات المشاركة" : "Exposants"}
+              <a href="#exhibitors-section" className="px-2.5 py-1.5 hover:text-[#F05A22] transition-colors whitespace-nowrap">
+                {language === "ar" ? "الشركات المشاركة" : "Exhibitors"}
               </a>
-              <a href="#speakers-section" className="px-3 py-2 hover:text-[#F05A22] transition-colors">
-                {language === "ar" ? "المحاضرات والورشات" : "Conférences & Ateliers"}
+              <a href="#speakers-section" className="px-2.5 py-1.5 hover:text-[#F05A22] transition-colors whitespace-nowrap">
+                {language === "ar" ? "المحاضرات والورشات" : "Conferences & Workshops"}
               </a>
-              <a href="#program-section" className="px-3 py-2 hover:text-[#F05A22] transition-colors">
-                {language === "ar" ? "البرنامج" : "Programme"}
+              <a href="#program-section" className="px-2.5 py-1.5 hover:text-[#F05A22] transition-colors whitespace-nowrap">
+                {language === "ar" ? "البرنامج" : "Schedule"}
               </a>
             </nav>
 
             {/* Language Switcher & CTA */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <button
-                onClick={() => setLanguage(language === "fr" ? "ar" : "fr")}
-                className="flex items-center gap-1.5 h-9 px-3 rounded-xl border border-white/20 bg-white/10 text-white text-xs font-extrabold hover:bg-white/20 transition-all"
+                onClick={() => setLanguage(language === "en" ? "ar" : "en")}
+                className="flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border border-white/20 bg-white/10 text-white text-xs font-extrabold hover:bg-white/20 transition-all"
               >
                 <Globe className="w-3.5 h-3.5 text-white/70" />
-                <span>{language === "fr" ? "العربية" : "Français"}</span>
+                <span>{language === "en" ? "العربية" : "English"}</span>
               </button>
 
               {submittedStudent ? (
@@ -137,14 +139,14 @@ export default function StudentsPage() {
                   className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black uppercase tracking-wider transition-all shadow-sm"
                 >
                   <User className="w-3.5 h-3.5 text-emerald-200" />
-                  <span>{language === "ar" ? "شارة الدخول" : "Mon Pass Badge"}</span>
+                  <span>{language === "ar" ? "شارة الدخول" : "My Pass Badge"}</span>
                 </a>
               ) : (
                 <a
                   href="#register-hero"
                   className="hidden sm:inline-flex items-center gap-1.5 h-9 px-4 rounded-xl bg-[#F05A22] text-white text-xs font-black uppercase tracking-wider hover:bg-[#FFBD0E] hover:text-[#0E1B2C] transition-all shadow-sm"
                 >
-                  <span>{language === "ar" ? "احجز مكانك الآن" : "Pass 100% Gratuit"}</span>
+                  <span>{language === "ar" ? "احجز مكانك الآن" : "100% Free Pass"}</span>
                   <ChevronRight className={`w-3.5 h-3.5 ${dir === "rtl" ? "rotate-180" : ""}`} />
                 </a>
               )}
@@ -162,25 +164,25 @@ export default function StudentsPage() {
           {mobileMenuOpen && (
             <div className="lg:hidden bg-[#0E1B2C] border-b border-white/10 px-6 py-4 space-y-2 text-white text-sm font-bold">
               <a href={`/${language}`} className="block py-2">
-                {language === "ar" ? "الرئيسية" : "Accueil"}
+                {language === "ar" ? "الرئيسية" : "Home"}
               </a>
               <a href="#register-hero" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-[#F05A22]">
-                {language === "ar" ? "احجز مكانك الآن" : "Je réserve ma place"}
+                {language === "ar" ? "احجز مكانك الآن" : "Book Your Pass"}
               </a>
               <a href="#nouveautes-section" onClick={() => setMobileMenuOpen(false)} className="block py-2">
-                {language === "ar" ? "المستجدات" : "Nouveautés 2026"}
+                {language === "ar" ? "المستجدات" : "2026 Highlights"}
               </a>
               <a href="#sponsors-section" onClick={() => setMobileMenuOpen(false)} className="block py-2">
-                {language === "ar" ? "الرعاة" : "Nos Sponsors"}
+                {language === "ar" ? "الرعاة" : "Our Sponsors"}
               </a>
               <a href="#exhibitors-section" onClick={() => setMobileMenuOpen(false)} className="block py-2">
-                {language === "ar" ? "الشركات المشاركة" : "Exposants"}
+                {language === "ar" ? "الشركات المشاركة" : "Exhibitors"}
               </a>
               <a href="#speakers-section" onClick={() => setMobileMenuOpen(false)} className="block py-2">
-                {language === "ar" ? "المحاضرات والورشات" : "Conférences & Ateliers"}
+                {language === "ar" ? "المحاضرات والورشات" : "Conferences & Workshops"}
               </a>
               <a href="#program-section" onClick={() => setMobileMenuOpen(false)} className="block py-2">
-                {language === "ar" ? "البرنامج" : "Programme"}
+                {language === "ar" ? "البرنامج" : "Schedule"}
               </a>
             </div>
           )}
@@ -235,14 +237,14 @@ export default function StudentsPage() {
                 <span>
                   {language === "ar"
                     ? "الطبعة الثالثة • 29 سبتمبر 2026 • المعهد العالي للعلوم، برج الكيفان الجزائر العاصمة"
-                    : "ÉDITION 2026 • 29 SEPTEMBRE • HIS UNIVERSITY, ALGER"}
+                    : "3RD EDITION • SEPTEMBER 29, 2026 • HIS UNIVERSITY, ALGIERS"}
                 </span>
               </div>
 
               {/* High-Impact Headline with Official Slogan */}
               <div className="space-y-1">
                 <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#58B9FF] block">
-                  {language === "ar" ? "HIS FUTURE TALENTS — الطبعة الثالثة" : "HIS FUTURE TALENTS — ÉDITION 3"}
+                  {language === "ar" ? "HIS FUTURE TALENTS — الطبعة الثالثة" : "HIS FUTURE TALENTS — 3RD EDITION"}
                 </span>
                 <h1 className="text-2xl sm:text-3.5xl lg:text-4xl xl:text-4.5xl font-black tracking-tight text-white leading-tight">
                   {language === "ar" ? (
@@ -256,7 +258,7 @@ export default function StudentsPage() {
                     <>
                       FROM POTENTIAL TO PROFESSION
                       <span className="text-[#F05A22] text-lg sm:text-2xl lg:text-3xl block mt-1">
-                        Ton prochain stage. Ton premier job. Ton futur réseau.
+                        Your next internship. Your first job. Your future network.
                       </span>
                     </>
                   )}
@@ -266,34 +268,34 @@ export default function StudentsPage() {
               <p className="text-xs sm:text-sm lg:text-base text-white/80 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
                 {language === "ar"
                   ? "التقِ بالشركات، اكتشف الفرص، استمع إلى الخبراء والمتخصصين، شارك في المحاضرات والورشات التطبيقية، وخض تحديات HIS Talent Awards."
-                  : "Rencontre les entreprises, découvre des opportunités, assiste à des conférences et panels, participe à des workshops et relève les challenges de HIS Talent Awards."}
+                  : "Meet companies, discover opportunities, attend keynotes and panels, participate in hands-on workshops, and take on the HIS Talent Awards challenges."}
               </p>
 
-              {/* Compact 4-Card Stats Bar (1000+ Étudiants • 45 Entreprises • 90+ Offres • 100% Gratuit) */}
+              {/* Compact 4-Card Stats Bar (1000+ Students • 45 Companies • 90+ Opportunities • 100% Free) */}
               <div className="pt-1">
                 <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 grid grid-cols-4 gap-2 text-center divide-x divide-white/10 max-w-xl mx-auto lg:mx-0">
                   <div className="space-y-0.5">
                     <p className="text-lg sm:text-2xl font-black text-[#F05A22]">1 000+</p>
                     <p className="text-[9px] sm:text-[10px] font-bold text-white/70 uppercase">
-                      {language === "ar" ? "طالب وخريج" : "Étudiants & Diplômés"}
+                      {language === "ar" ? "طالب وخريج" : "Students & Grads"}
                     </p>
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-lg sm:text-2xl font-black text-[#58B9FF]">45</p>
                     <p className="text-[9px] sm:text-[10px] font-bold text-white/70 uppercase">
-                      {language === "ar" ? "شركة مستهدفة" : "Entreprises Ciblées"}
+                      {language === "ar" ? "شركة مستهدفة" : "Target Companies"}
                     </p>
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-lg sm:text-2xl font-black text-[#FFBD0E]">90+</p>
                     <p className="text-[9px] sm:text-[10px] font-bold text-white/70 uppercase">
-                      {language === "ar" ? "فرصة وتوظيف" : "Offres"}
+                      {language === "ar" ? "فرصة وتوظيف" : "Opportunities"}
                     </p>
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-lg sm:text-2xl font-black text-emerald-400">100%</p>
                     <p className="text-[9px] sm:text-[10px] font-bold text-white/70 uppercase">
-                      {language === "ar" ? "مجاني" : "Gratuit"}
+                      {language === "ar" ? "مجاني" : "Free"}
                     </p>
                   </div>
                 </div>
@@ -303,10 +305,10 @@ export default function StudentsPage() {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-bold text-white/70 pt-1">
                 <span className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-[#F05A22] animate-ping" />
-                  <span>{language === "ar" ? "الثلاثاء 29 سبتمبر 2026" : "Mardi 29 Septembre 2026"}</span>
+                  <span>{language === "ar" ? "الثلاثاء 29 سبتمبر 2026" : "Tuesday, September 29, 2026"}</span>
                 </span>
                 <span>•</span>
-                <span>{language === "ar" ? "المعهد العالي للعلوم، برج الكيفان الجزائر" : "HIS University, Alger"}</span>
+                <span>{language === "ar" ? "المعهد العالي للعلوم، برج الكيفان الجزائر" : "HIS University, Algiers"}</span>
               </div>
             </div>
 
@@ -328,10 +330,10 @@ export default function StudentsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" dir={dir}>
             <div className="text-center space-y-2 max-w-2xl mx-auto">
               <span className="text-xs font-black uppercase tracking-widest text-[#F05A22] bg-[#F05A22]/10 px-3.5 py-1 rounded-full">
-                {language === "ar" ? "مستجدات الطبعة الثالثة 2026 — 02" : "— NOUVEAUTÉS 2026"}
+                {language === "ar" ? "مستجدات الطبعة الثالثة 2026 — 02" : "— 2026 HIGHLIGHTS"}
               </span>
               <h2 className="text-2xl sm:text-4xl font-black text-[#003876]">
-                {language === "ar" ? "الطبعة الثالثة تأخذك إلى أبعد من ذلك." : "Cette 3ᵉ édition va plus loin."}
+                {language === "ar" ? "الطبعة الثالثة تأخذك إلى أبعد من ذلك." : "This 3rd edition goes further."}
               </h2>
             </div>
 
@@ -339,43 +341,43 @@ export default function StudentsPage() {
               {[
                 {
                   icon: MessageSquare,
-                  title: language === "ar" ? "المحاضرات والـ Panels" : "CONFÉRENCES & PANELS",
+                  title: language === "ar" ? "المحاضرات والـ Panels" : "CONFERENCES & PANELS",
                   desc1: language === "ar"
                     ? "يلتقي بك نخبة من المهنيين والخبراء لمشاركة تجاربهم ومساراتهم ورؤيتهم لعالم العمل."
-                    : "Des professionnels et experts partagent leurs expériences, leurs parcours et leur vision du monde professionnel.",
+                    : "Industry professionals and experts share their experiences, career journeys, and corporate insights.",
                   desc2: language === "ar"
                     ? "نقاشات حول المهن والمهارات المطلوبة، وتحولات سوق العمل، والواقع المهني الذي يستعد له جيل المواهب الجديد."
-                    : "Des échanges autour des métiers, des compétences et des transformations du marché.",
+                    : "Discussions on emerging careers, essential skills, and market evolutions.",
                 },
                 {
                   icon: Zap,
-                  title: language === "ar" ? "الورشات التطبيقية" : "WORKSHOPS PRATIQUES",
+                  title: language === "ar" ? "الورشات التطبيقية" : "HANDS-ON WORKSHOPS",
                   desc1: language === "ar"
                     ? "ورشات تفاعلية تمنحك فرصة للتعلم والتجربة وتطوير مهارات تحتاجها فعلاً في مسارك الأكاديمي والمهني."
-                    : "Des ateliers interactifs pour apprendre, expérimenter et développer des compétences directement utiles dans ton parcours.",
+                    : "Interactive workshops to learn, experiment, and develop actionable skills for your career path.",
                   desc2: language === "ar"
                     ? "تعلّم. جرّب. طوّر نفسك."
-                    : "Apprends. Expérimente. Progresse.",
+                    : "Learn. Build. Excel.",
                 },
                 {
                   icon: User,
-                  title: language === "ar" ? "لقاءات مباشرة مع الشركات" : "RENCONTRES AVEC LES ENTREPRISES",
+                  title: language === "ar" ? "لقاءات مباشرة مع الشركات" : "DIRECT RECRUITER SESSIONS",
                   desc1: language === "ar"
                     ? "تواصل مباشرة مع مسؤولي التوظيف، تعرّف على المهن والقطاعات، واكتشف ما الذي تبحث عنه الشركات في المواهب الشابة."
-                    : "Échange directement avec des recruteurs, découvre leurs métiers et comprends ce qu'ils recherchent chez les jeunes talents.",
+                    : "Engage directly with hiring managers, discover industries, and learn what top employers seek in young talent.",
                   desc2: language === "ar"
                     ? "فقد تبدأ فرصتك المهنية من محادثة واحدة."
-                    : "Une conversation peut être le début d'une opportunité.",
+                    : "A single conversation can unlock your next opportunity.",
                 },
                 {
                   icon: Rocket,
                   title: "HIS TALENT AWARDS",
                   desc1: language === "ar"
                     ? "تحديات. جوائز. شارك في تحديات صُممت خصيصاً للطلبة، وأظهر مهاراتك وقدراتك، ونافس للفوز بجوائز ومفاجآت خلال الحدث."
-                    : "Des challenges. Des récompenses. Participe à des challenges spécialement conçus pour les étudiants et tente de remporter des surprises tout au long de l'événement.",
+                    : "Challenges and recognitions. Compete in tailored student challenges, demonstrate your skills, and win exclusive prizes.",
                   desc2: language === "ar"
                     ? "هل ستكون من المواهب التي ستلفت الأنظار؟"
-                    : "",
+                    : "Will you be among the standout talents?",
                 },
               ].map((item, idx) => (
                 <div
@@ -417,15 +419,15 @@ export default function StudentsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center space-y-2 max-w-3xl mx-auto">
               <span className="text-xs font-black uppercase tracking-widest text-[#F05A22] bg-[#F05A22]/10 px-3.5 py-1 rounded-full">
-                {language === "ar" ? "المتحدثون والخبراء" : "Intervenants & Experts"}
+                {language === "ar" ? "المتحدثون والخبراء" : "Speakers & Experts"}
               </span>
               <h2 className="text-2xl sm:text-4xl font-black text-[#003876]">
-                {language === "ar" ? "محاضرات وورشات الدورات السابقة" : "Conférences & Ateliers Pratiques"}
+                {language === "ar" ? "محاضرات وورشات الدورات السابقة" : "Conferences & Practical Workshops"}
               </h2>
               <p className="text-slate-500 text-xs sm:text-sm font-medium">
                 {language === "ar"
                   ? "نخبة من القيادات ورواد الأعمال يشاركونكم أسرار النجاح والتميز المهني."
-                  : "Des dirigeants, experts RH et leaders d'industrie qui partagent leurs clés de réussite."}
+                  : "Executive leaders, HR directors, and industry pioneers sharing keys to professional success."}
               </p>
             </div>
 
@@ -444,7 +446,7 @@ export default function StudentsPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center">
             <div className="space-y-2 max-w-2xl mx-auto">
               <span className="text-xs font-black uppercase tracking-widest text-[#F05A22] bg-[#F05A22]/10 px-3.5 py-1 rounded-full">
-                {language === "ar" ? "فيديو الدورات السابقة" : "Rétrospective Vidéo"}
+                {language === "ar" ? "فيديو الدورات السابقة" : "Video Highlights"}
               </span>
               <h2 className="text-2xl sm:text-4xl font-black text-[#003876]">
                 {t("editions.title")}
@@ -455,7 +457,7 @@ export default function StudentsPage() {
               {/* Recap Video 2025 */}
               <div className="bg-[#0E1B2C] border border-white/10 rounded-2xl p-4 space-y-3 shadow-lg group">
                 <div
-                  onClick={() => setSelectedRecapVideo({ src: "/video/hft-recap-2025.mp4", title: "Retour sur l'édition 2025", year: "Édition 2025" })}
+                  onClick={() => setSelectedRecapVideo({ src: "/video/hft-recap-2025.mp4", title: language === "ar" ? "أبرز لقطات دورة 2025" : "Highlights from 2025 Edition", year: language === "ar" ? "دورة 2025" : "2025 Edition" })}
                   className="relative aspect-video rounded-xl overflow-hidden cursor-pointer bg-slate-900"
                 >
                   <video muted loop playsInline className="w-full h-full object-cover opacity-75">
@@ -467,7 +469,7 @@ export default function StudentsPage() {
                     </div>
                   </div>
                   <span className="absolute top-2.5 left-2.5 bg-[#F05A22] text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full">
-                    Édition 2025
+                    {language === "ar" ? "دورة 2025" : "2025 Edition"}
                   </span>
                 </div>
                 <h3 className="text-sm font-black text-white">{t("editions.video1_title")}</h3>
@@ -476,7 +478,7 @@ export default function StudentsPage() {
               {/* Recap Video 2024 */}
               <div className="bg-[#0E1B2C] border border-white/10 rounded-2xl p-4 space-y-3 shadow-lg group">
                 <div
-                  onClick={() => setSelectedRecapVideo({ src: "/video/hft-recap-2024.mp4", title: "Retour sur l'édition 2024", year: "Édition 2024" })}
+                  onClick={() => setSelectedRecapVideo({ src: "/video/hft-recap-2024.mp4", title: language === "ar" ? "أبرز لقطات دورة 2024" : "Highlights from 2024 Edition", year: language === "ar" ? "دورة 2024" : "2024 Edition" })}
                   className="relative aspect-video rounded-xl overflow-hidden cursor-pointer bg-slate-900"
                 >
                   <video muted loop playsInline className="w-full h-full object-cover opacity-75">
@@ -488,7 +490,7 @@ export default function StudentsPage() {
                     </div>
                   </div>
                   <span className="absolute top-2.5 left-2.5 bg-[#003876] text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full">
-                    Édition 2024
+                    {language === "ar" ? "دورة 2024" : "2024 Edition"}
                   </span>
                 </div>
                 <h3 className="text-sm font-black text-white">{t("editions.video2_title")}</h3>
@@ -507,27 +509,27 @@ export default function StudentsPage() {
                 <span>{language === "ar" ? "FINAL REGISTRATION | التسجيل النهائي — 05" : "— FINAL REGISTRATION"}</span>
               </div>
               <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
-                {language === "ar" ? "FROM POTENTIAL TO PROFESSION" : "Prêt à passer du potentiel à la profession ?"}
+                {language === "ar" ? "FROM POTENTIAL TO PROFESSION" : "Ready to transition from potential to profession?"}
               </h2>
               <p className="text-[#FFBD0E] text-sm sm:text-base font-black">
-                {language === "ar" ? "تربصك القادم. وظيفتك الأولى. شبكتك المهنية المستقبلية." : "Ton prochain stage. Ton premier job. Ton futur réseau."}
+                {language === "ar" ? "تربصك القادم. وظيفتك الأولى. شبكتك المهنية المستقبلية." : "Your next internship. Your first job. Your future network."}
               </p>
               <p className="text-white/80 text-xs sm:text-sm font-medium max-w-2xl mx-auto leading-relaxed">
                 {language === "ar"
                   ? "احجز مقعدك مجاناً، وتعال لتلتقي، وتتعلّم، وتتواصل، وتشارك، وتكتشف الفرص التي يمكن أن تدفع بمسارك نحو الأمام."
-                  : "Réserve ta place 100% gratuit et viens rencontrer, apprendre, échanger, participer et découvrir les opportunités qui peuvent faire avancer ton parcours."}
+                  : "Book your 100% free pass and join us to meet employers, learn actionable skills, connect with industry leaders, and accelerate your career path."}
               </p>
 
               {/* Event Coordinates Badge */}
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs font-extrabold text-white/90">
                 <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/15">
-                  {language === "ar" ? "الثلاثاء 29 سبتمبر 2026" : "Mardi 29 SEPTEMBRE 2026"}
+                  {language === "ar" ? "الثلاثاء 29 سبتمبر 2026" : "Tuesday, September 29, 2026"}
                 </span>
                 <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/15">
-                  {language === "ar" ? "المعهد العالي للعلوم — برج الكيفان الجزائر" : "HIS UNIVERSITY — ALGER"}
+                  {language === "ar" ? "المعهد العالي للعلوم — برج الكيفان الجزائر" : "HIS University — Algiers"}
                 </span>
                 <span className="px-3 py-1 rounded-lg bg-[#F05A22]/20 border border-[#F05A22]/40 text-[#FFBD0E]">
-                  {language === "ar" ? "🎟 الدخول مجاني 100%" : "🎟 PASS 100% GRATUIT"}
+                  {language === "ar" ? "🎟 الدخول مجاني 100%" : "🎟 100% FREE PASS"}
                 </span>
               </div>
             </div>

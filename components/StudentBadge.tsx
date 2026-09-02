@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { StudentApplication } from "@/lib/dataStore";
 import { Download, Printer, ShieldCheck, Mail, CheckCircle2 } from "lucide-react";
 import QRCode from "qrcode";
@@ -53,6 +54,7 @@ function RealScannableQRCode({ value, size = 80 }: { value: string; size?: numbe
 }
 
 export default function StudentBadge({ student, showActions = true }: StudentBadgeProps) {
+  const { language } = useLanguage();
   const badgeRef = useRef<HTMLDivElement>(null);
   const [downloadingPng, setDownloadingPng] = useState(false);
   const [downloadingPdf, setDownloadingPdf] = useState(false);
@@ -61,9 +63,9 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
 
   const firstName = (student.firstName || "").toUpperCase();
   const lastName = (student.lastName || "").toUpperCase();
-  const fullName = `${firstName} ${lastName}`.trim() || "TALENT ÉTUDIANT";
+  const fullName = `${firstName} ${lastName}`.trim() || (language === "ar" ? "طالب مشارك" : "STUDENT ATTENDEE");
   const badgeCode = student.badgeId || `HFT-2026-${student.id.slice(-4).toUpperCase()}`;
-  const domain = (student.fieldOfStudyOrWork || student.currentStatus || "Informatique & IA").trim().toUpperCase();
+  const domain = (student.fieldOfStudyOrWork || student.currentStatus || "Computer Science & AI").trim().toUpperCase();
   const university = (student.university || "HIS University").trim().toUpperCase();
 
   const qrUrl = `https://hisfuturetalents.his.edu.dz/verify?id=${student.id}&code=${badgeCode}&name=${encodeURIComponent(fullName)}`;
@@ -82,18 +84,18 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
       if (data.success) {
         setEmailStatusMessage({
           type: "success",
-          text: `✓ Ticket envoyé à ${student.email} !`,
+          text: language === "ar" ? `✓ تم إرسال البطاقة إلى ${student.email} !` : `✓ Pass sent to ${student.email} !`,
         });
       } else {
         setEmailStatusMessage({
           type: "error",
-          text: data.error || "Erreur lors de l'envoi.",
+          text: data.error || (language === "ar" ? "خطأ أثناء الإرسال." : "Error sending email."),
         });
       }
     } catch (err) {
       setEmailStatusMessage({
         type: "error",
-        text: "Erreur réseau.",
+        text: language === "ar" ? "خطأ في الشبكة." : "Network error.",
       });
     } finally {
       setSendingEmail(false);
@@ -119,7 +121,7 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
       link.click();
     } catch (err) {
       console.error("Error exporting ticket PNG:", err);
-      alert("Erreur lors de la génération de l'image.");
+      alert(language === "ar" ? "خطأ أثناء توليد الصورة." : "Error generating image.");
     } finally {
       setDownloadingPng(false);
     }
@@ -162,7 +164,7 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
       link.click();
     } catch (err) {
       console.error("Error exporting ticket PDF:", err);
-      alert("Erreur lors de la génération du PDF.");
+      alert(language === "ar" ? "خطأ أثناء توليد ملف PDF." : "Error generating PDF.");
     } finally {
       setDownloadingPdf(false);
     }
@@ -223,13 +225,13 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
             {/* Top Left: Institutional Patronage in HFT Gold */}
             <div className="text-start leading-tight space-y-0.5 max-w-[240px]">
               <span className="text-[6.5px] sm:text-[7.5px] font-black text-[#FFBD0E] tracking-wider uppercase block">
-                SOUS LE HAUT PATRONAGE DE
+                {language === "ar" ? "تحت الرعاية السامية لـ" : "UNDER THE HIGH PATRONAGE OF"}
               </span>
               <span className="text-[6px] sm:text-[6.5px] font-bold text-white tracking-wide uppercase block">
-                MINISTÈRE DE L'ENSEIGNEMENT SUPÉRIEUR &amp; R.S
+                {language === "ar" ? "وزارة التعليم العالي والبحث العلمي" : "MINISTRY OF HIGHER EDUCATION & S.R"}
               </span>
               <span className="text-[6px] sm:text-[6.5px] font-bold text-slate-300 tracking-wide uppercase block">
-                MINISTÈRE DE L'ÉCONOMIE DE LA CONNAISSANCE
+                {language === "ar" ? "وزارة اقتصاد المعرفة والمؤسسات الناشئة" : "MINISTRY OF KNOWLEDGE ECONOMY & STARTUPS"}
               </span>
             </div>
 
@@ -239,14 +241,14 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
                 HIS UNIVERSITY
               </span>
               <span className="text-[6.5px] sm:text-[7px] font-extrabold text-[#58B9FF] tracking-wider uppercase block">
-                ALGER
+                {language === "ar" ? "الجزائر العاصمة" : "ALGIERS"}
               </span>
               <div className="pt-0.5">
                 <span className="text-xs sm:text-sm font-black text-[#FFBD0E] tracking-tight block font-mono">
                   29
                 </span>
                 <span className="text-[8px] font-black text-white tracking-widest uppercase block -mt-0.5">
-                  SEPTEMBRE 2026
+                  {language === "ar" ? "سبتمبر 2026" : "SEPTEMBER 2026"}
                 </span>
               </div>
             </div>
@@ -269,10 +271,10 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
           {/* Bottom Right Event Highlights in Top Banner */}
           <div className="text-end relative z-10 pt-1 border-t border-white/10 mt-1.5">
             <span className="text-[6.5px] sm:text-[7.5px] font-black text-[#FFBD0E] tracking-wider uppercase block">
-              LE 1ER SALON DES TALENTS &amp; RECRUTEMENT EN ALGÉRIE
+              {language === "ar" ? "الصالون الأول للمواهب والتوظيف في الجزائر" : "THE #1 TALENT & RECRUITMENT FAIR IN ALGERIA"}
             </span>
             <span className="text-[5.5px] sm:text-[6.5px] font-bold text-slate-200 tracking-wide uppercase block">
-              STAGES, EMPLOIS, NETWORKING, ATELIERS &amp; CONFÉRENCES
+              {language === "ar" ? "تربصات، وظائف، تواصل مهني، ورشات ومحاضرات" : "INTERNSHIPS, JOBS, NETWORKING, WORKSHOPS & CONFERENCES"}
             </span>
           </div>
 
@@ -290,7 +292,7 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
               </span>
               <div className="flex items-center gap-1.5 pt-0.5">
                 <span className="text-[10px] sm:text-[11px] font-bold text-slate-700">
-                  Inscription N°
+                  {language === "ar" ? "رقم التسجيل :" : "Registration N°"}
                 </span>
                 <span className="text-[11px] sm:text-xs font-black text-[#F05A22] font-mono">
                   {badgeCode}
@@ -310,9 +312,11 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
 
             {/* Venue & Date */}
             <div className="text-[8px] sm:text-[9px] text-slate-600 font-bold space-y-0.5 pt-1 border-t border-slate-100">
-              <p className="truncate">Campus HIS University, Chéraga, Alger, Algérie</p>
+              <p className="truncate">
+                {language === "ar" ? "المعهد العالي للعلوم، برج الكيفان، الجزائر العاصمة" : "Campus HIS University, Bordj El Kiffan, Algiers"}
+              </p>
               <p className="text-[#003876] font-extrabold truncate">
-                Mercredi 13 &amp; Jeudi 14 Mai 2026 à partir de 09:00
+                {language === "ar" ? "الثلاثاء 29 سبتمبر 2026 ابتداءً من 08:30" : "Tuesday, September 29, 2026 from 08:30 AM"}
               </p>
             </div>
 
@@ -348,17 +352,17 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
             onClick={handleSendEmail}
             disabled={sendingEmail}
             className="h-8.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all border border-emerald-500/30 cursor-pointer"
-            title="Recevoir le Ticket par email"
+            title={language === "ar" ? "إرسال إلى البريد الإلكتروني" : "Send ticket via email"}
           >
             {sendingEmail ? (
               <span className="animate-pulse flex items-center gap-1">
                 <span className="w-2.5 h-2.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Envoi...
+                {language === "ar" ? "إرسال..." : "Sending..."}
               </span>
             ) : (
               <>
                 <Mail className="w-3.5 h-3.5" />
-                <span>Par Email</span>
+                <span>{language === "ar" ? "بالبريد" : "By Email"}</span>
               </>
             )}
           </button>
@@ -401,7 +405,7 @@ export default function StudentBadge({ student, showActions = true }: StudentBad
             className="h-8.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all border border-white/20 cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
-            <span>Imprimer</span>
+            <span>{language === "ar" ? "طباعة" : "Print"}</span>
           </button>
         </div>
       )}

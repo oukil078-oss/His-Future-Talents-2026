@@ -6,9 +6,58 @@
 
 @font-face {
   font-family: 'Neulis';
+  src: url('/Neulis/Neulis-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-ThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-ExtraLightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
   src: url('/Neulis/Neulis-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
@@ -20,9 +69,23 @@
 }
 @font-face {
   font-family: 'Neulis';
+  src: url('/Neulis/Neulis-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
   src: url('/Neulis/Neulis-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-SemiBoldItalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
@@ -34,6 +97,13 @@
 }
 @font-face {
   font-family: 'Neulis';
+  src: url('/Neulis/Neulis-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
   src: url('/Neulis/Neulis-ExtraBold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
@@ -41,9 +111,23 @@
 }
 @font-face {
   font-family: 'Neulis';
+  src: url('/Neulis/Neulis-ExtraBoldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
   src: url('/Neulis/Neulis-Black.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neulis';
+  src: url('/Neulis/Neulis-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -86,9 +170,11 @@
 /* ─── CUSTOM PROPERTIES ───────────────────────────────────────── */
 
 :root {
-  --font-sans:    var(--font-neulis), 'Neulis', system-ui, sans-serif;
-  --font-heading: var(--font-neulis), 'Neulis', sans-serif;
-  --font-arabic:  var(--font-bahij), 'Bahij', sans-serif;
+  --font-sans:    'Neulis', var(--font-neulis), system-ui, sans-serif;
+  --font-heading: 'Neulis', var(--font-neulis), sans-serif;
+  --font-neulis:  'Neulis', sans-serif;
+  --font-bahij:   'Bahij', sans-serif;
+  --font-arabic:  'Bahij', var(--font-bahij), sans-serif;
   --his-deep:     #003876;
   --his-blue:     #0060C1;
   --his-electric: #58B9FF;
@@ -125,21 +211,30 @@ body {
   scrollbar-width: none;
 }
 
-h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: var(--font-heading);
+/* Headings in English / default LTR: strict Neulis */
+h1, h2, h3, h4, h5, h6, .font-heading,
+[lang="en"] h1, [lang="en"] h2, [lang="en"] h3, [lang="en"] h4, [lang="en"] h5, [lang="en"] h6,
+[lang="en"] .font-heading,
+[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6,
+[dir="ltr"] .font-heading {
+  font-family: 'Neulis', var(--font-neulis), sans-serif !important;
 }
 
 /* Arabic font switch */
 [lang="ar"] body,
 [lang="ar"] .font-body,
-.font-arabic {
-  font-family: var(--font-arabic);
+.font-arabic,
+[dir="rtl"] .font-arabic {
+  font-family: 'Bahij', var(--font-bahij), sans-serif;
   line-height: 1.85;
   letter-spacing: 0;
 }
 
-[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6, [lang="ar"] .font-heading {
-  font-family: var(--font-arabic);
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6,
+[lang="ar"] .font-heading,
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+[dir="rtl"] .font-heading {
+  font-family: 'Bahij', var(--font-bahij), sans-serif !important;
 }
 
 /* ─── SCROLL PROGRESS BAR ─────────────────────────────────────── */

@@ -24,9 +24,8 @@ export default function PartnerLogoGrid() {
     fetchSponsors();
   }, []);
 
-  // Filter exhibitors (exclude SATIM to avoid duplication with main 2026 partner banner)
+  // Filter exhibitors for active edition (including SATIM in 2024 and 2025)
   const filteredPartners = allPartners.filter((p) => {
-    if (p.slug === "satim") return false;
     return p.edition === activeEdition;
   });
 
@@ -36,23 +35,23 @@ export default function PartnerLogoGrid() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4 text-start">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#003876]/10 text-[#003876] text-[10px] font-black uppercase tracking-wider mb-1.5">
-            <span>{language === "ar" ? "شبكة الشركاء" : "Réseau Entreprises"}</span>
+            <span>{language === "ar" ? "شبكة الشركاء" : "Partner Network"}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-[#003876] tracking-tight">
-            {language === "ar" ? "المؤسسات والشركات المشاركة" : "Les exposants des éditions précédentes"}
+            {language === "ar" ? "المؤسسات والشركات المشاركة" : "Exhibitors from Previous Editions"}
           </h2>
           <p className="text-slate-500 text-xs sm:text-sm font-medium mt-0.5">
             {language === "ar"
               ? "أكثر من 120 مؤسسة وطنية ودولية شاركت في دورات HIS Future Talents"
-              : "Plus de 120 entreprises de premier plan ont recruté lors de nos événements."}
+              : "Over 120 leading companies recruited and partnered in our previous editions."}
           </p>
         </div>
 
         {/* Edition Switcher Tabs - Strictly 2025 and 2024 */}
         <div className="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200 shrink-0 self-start sm:self-auto">
           {[
-            { id: 2025, label: language === "ar" ? "دورة 2025" : "Édition 2025" },
-            { id: 2024, label: language === "ar" ? "دورة 2024" : "Édition 2024" },
+            { id: 2025, label: language === "ar" ? "دورة 2025" : "2025 Edition" },
+            { id: 2024, label: language === "ar" ? "دورة 2024" : "2024 Edition" },
           ].map((tab) => {
             const isActive = activeEdition === tab.id;
             return (

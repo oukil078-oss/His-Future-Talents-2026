@@ -69,7 +69,7 @@ export default function StudentRegistrationForm({
       setCvUploadError(
         language === "ar"
           ? "ملف السيرة الذاتية يجب أن يكون بصيغة PDF."
-          : "Le fichier CV doit être au format PDF."
+          : "CV file must be in PDF format."
       );
       return;
     }
@@ -78,7 +78,7 @@ export default function StudentRegistrationForm({
       setCvUploadError(
         language === "ar"
           ? "حجم الملف لا يجب أن يتجاوز 10 ميغابايت."
-          : "La taille du fichier ne doit pas dépasser 10 Mo."
+          : "File size must not exceed 10 MB."
       );
       return;
     }
@@ -101,10 +101,10 @@ export default function StudentRegistrationForm({
           cvFileName: file.name,
         }));
       } else {
-        setCvUploadError(json.error || "Erreur de téléversement du CV.");
+        setCvUploadError(json.error || (language === "ar" ? "خطأ في رفع السيرة الذاتية." : "Failed to upload CV."));
       }
     } catch (err) {
-      setCvUploadError("Erreur de connexion. Veuillez réessayer.");
+      setCvUploadError(language === "ar" ? "خطأ في الاتصال. يرجى إعادة المحاولة." : "Network error. Please try again.");
     } finally {
       setIsUploadingCv(false);
     }
@@ -129,7 +129,7 @@ export default function StudentRegistrationForm({
         setFormError(
           language === "ar"
             ? "يرجى ملء جميع الحقول الإلزامية في الخطوة 1 (الاسم، البريد، الهاتف، الفئة العمرية)."
-            : "Veuillez remplir tous les champs obligatoires de l'étape 1."
+            : "Please fill all required fields in Step 1 (First Name, Email, Phone, Age Category)."
         );
         return false;
       }
@@ -138,7 +138,7 @@ export default function StudentRegistrationForm({
         setFormError(
           language === "ar"
             ? "يرجى تحديد وضعك الحالي ومجال دراستك أو عملك."
-            : "Veuillez renseigner votre statut actuel et votre domaine d'études."
+            : "Please select your current status and field of study/work."
         );
         return false;
       }
@@ -146,7 +146,7 @@ export default function StudentRegistrationForm({
         setFormError(
           language === "ar"
             ? "رفع ملف السيرة الذاتية بصيغة PDF إلزامي جداً."
-            : "Le téléversement de votre CV PDF est obligatoire."
+            : "Uploading your PDF CV is mandatory."
         );
         return false;
       }
@@ -155,7 +155,7 @@ export default function StudentRegistrationForm({
         setFormError(
           language === "ar"
             ? "يرجى اختيار هدف واحد على الأقل مما تبحث عنه."
-            : "Veuillez sélectionner au moins un objectif de recherche."
+            : "Please select at least one objective."
         );
         return false;
       }
@@ -194,10 +194,10 @@ export default function StudentRegistrationForm({
           localStorage.setItem("hft_student_registration", JSON.stringify(data.data));
         } catch (e) {}
       } else {
-        setFormError(data.error || "Une erreur s'est produite lors de l'enregistrement.");
+        setFormError(data.error || (language === "ar" ? "حدث خطأ أثناء التسجيل." : "An error occurred during registration."));
       }
     } catch (err) {
-      setFormError("Erreur réseau. Veuillez réessayer.");
+      setFormError(language === "ar" ? "خطأ في الشبكة. يرجى المحاولة لاحقاً." : "Network error. Please try again.");
     } finally {
       setFormSubmitting(false);
     }
@@ -236,7 +236,7 @@ export default function StudentRegistrationForm({
               }`}
             >
               <Award className="w-3 h-3 text-white" />
-              <span>{language === "ar" ? "شارة الدخول" : "Mon Pass Badge"}</span>
+              <span>{language === "ar" ? "شارة الدخول" : "My Event Pass"}</span>
             </button>
 
             <button
@@ -250,7 +250,7 @@ export default function StudentRegistrationForm({
               }`}
             >
               <User className="w-3 h-3 text-[#58B9FF]" />
-              <span>{language === "ar" ? "بيانات التسجيل" : "Mes Informations"}</span>
+              <span>{language === "ar" ? "بيانات التسجيل" : "My Information"}</span>
             </button>
           </div>
 
@@ -258,7 +258,7 @@ export default function StudentRegistrationForm({
             <div className="space-y-2 py-0.5">
               <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 text-[10px] font-bold">
                 <CheckCircle2 className="w-3 h-3" />
-                <span>{language === "ar" ? "تم تأكيد الدخول وإرسال الشارة" : "Accréditation confirmée & envoyée par email"}</span>
+                <span>{language === "ar" ? "تم تأكيد الدخول وإرسال الشارة" : "Accreditation confirmed & sent to your email"}</span>
               </div>
 
               <StudentBadge student={submittedStudent} showActions={true} />
@@ -266,7 +266,7 @@ export default function StudentRegistrationForm({
               <div className="pt-1 border-t border-white/10">
                 <button
                   onClick={() => {
-                    if (confirm(language === "ar" ? "هل تريد إجراء تسجيل جديد؟" : "Souhaitez-vous effectuer une nouvelle inscription ?")) {
+                    if (confirm(language === "ar" ? "هل تريد إجراء تسجيل جديد؟" : "Would you like to register another attendee?")) {
                       setSubmittedStudent(null);
                       setFormStep(1);
                       try { localStorage.removeItem("hft_student_registration"); } catch (e) {}
@@ -274,7 +274,7 @@ export default function StudentRegistrationForm({
                   }}
                   className="text-[10px] font-bold text-white/50 hover:text-[#FFBD0E] underline transition-colors cursor-pointer"
                 >
-                  {language === "ar" ? "تسجيل طالب آخر" : "Effectuer une autre inscription"}
+                  {language === "ar" ? "تسجيل طالب آخر" : "Register another attendee"}
                 </button>
               </div>
             </div>
@@ -283,17 +283,21 @@ export default function StudentRegistrationForm({
           {accountTab === "details" && (
             <div className="text-start space-y-3 text-xs font-semibold">
               <div className={`p-3.5 rounded-2xl space-y-1.5 ${isDark ? "bg-white/5 border border-white/10" : "bg-slate-50 border border-slate-200"}`}>
-                <h4 className={`font-black text-xs uppercase ${isDark ? "text-[#FFBD0E]" : "text-[#003876]"}`}>1. Informations Personnelles</h4>
-                <p><span className="opacity-60">Nom :</span> <span className="font-bold">{submittedStudent.firstName} {submittedStudent.lastName}</span></p>
-                <p><span className="opacity-60">Email :</span> <span className="font-bold">{submittedStudent.email}</span></p>
-                <p><span className="opacity-60">Téléphone :</span> <span className="font-bold">{submittedStudent.phone}</span></p>
-                <p><span className="opacity-60">Wilaya :</span> <span className="font-bold">{submittedStudent.wilaya || "Non spécifiée"}</span></p>
+                <h4 className={`font-black text-xs uppercase ${isDark ? "text-[#FFBD0E]" : "text-[#003876]"}`}>
+                  {language === "ar" ? "1. المعلومات الشخصية" : "1. Personal Details"}
+                </h4>
+                <p><span className="opacity-60">{language === "ar" ? "الاسم :" : "Name :"}</span> <span className="font-bold">{submittedStudent.firstName} {submittedStudent.lastName}</span></p>
+                <p><span className="opacity-60">{language === "ar" ? "البريد الإلكتروني :" : "Email :"}</span> <span className="font-bold">{submittedStudent.email}</span></p>
+                <p><span className="opacity-60">{language === "ar" ? "رقم الهاتف :" : "Phone :"}</span> <span className="font-bold">{submittedStudent.phone}</span></p>
+                <p><span className="opacity-60">{language === "ar" ? "الولاية :" : "Wilaya / City :"}</span> <span className="font-bold">{submittedStudent.wilaya || (language === "ar" ? "غير محددة" : "Not specified")}</span></p>
               </div>
 
               <div className={`p-3.5 rounded-2xl space-y-1.5 ${isDark ? "bg-white/5 border border-white/10" : "bg-slate-50 border border-slate-200"}`}>
-                <h4 className={`font-black text-xs uppercase ${isDark ? "text-[#58B9FF]" : "text-[#003876]"}`}>2. Parcours & CV</h4>
-                <p><span className="opacity-60">Statut :</span> <span className="font-bold">{submittedStudent.currentStatus}</span></p>
-                <p><span className="opacity-60">Domaine :</span> <span className="font-bold">{submittedStudent.fieldOfStudyOrWork}</span></p>
+                <h4 className={`font-black text-xs uppercase ${isDark ? "text-[#58B9FF]" : "text-[#003876]"}`}>
+                  {language === "ar" ? "2. المسار الأكاديمي والـ CV" : "2. Academic Track & CV"}
+                </h4>
+                <p><span className="opacity-60">{language === "ar" ? "الوضع الحالي :" : "Status :"}</span> <span className="font-bold">{submittedStudent.currentStatus}</span></p>
+                <p><span className="opacity-60">{language === "ar" ? "مجال الدراسة / العمل :" : "Field :"}</span> <span className="font-bold">{submittedStudent.fieldOfStudyOrWork}</span></p>
                 {submittedStudent.cvUrl && (
                   <div className="pt-1.5">
                     <a
@@ -303,7 +307,7 @@ export default function StudentRegistrationForm({
                       className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-600 text-white text-[11px] font-bold hover:bg-emerald-700"
                     >
                       <FileText className="w-3 h-3" />
-                      <span>Ouvrir mon CV PDF</span>
+                      <span>{language === "ar" ? "فتح ملف السيرة الذاتية PDF" : "Open My PDF CV"}</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
@@ -322,8 +326,8 @@ export default function StudentRegistrationForm({
             <div className="flex items-center justify-between gap-1 pb-1 border-b border-white/10 overflow-x-auto no-scrollbar">
               {[
                 { num: 1, title: language === "ar" ? "1. المعلومات" : "1. Info" },
-                { num: 2, title: language === "ar" ? "2. المسار & CV" : "2. Parcours & CV" },
-                { num: 3, title: language === "ar" ? "3. أهدافك" : "3. Objectifs" },
+                { num: 2, title: language === "ar" ? "2. المسار & CV" : "2. Career & CV" },
+                { num: 3, title: language === "ar" ? "3. أهدافك" : "3. Goals" },
                 { num: 4, title: language === "ar" ? "4. التأكيد" : "4. Pass" },
               ].map((item) => {
                 const isActive = formStep === item.num;
@@ -375,16 +379,16 @@ export default function StudentRegistrationForm({
             </div>
           )}
 
-          {/* ── STEP 1: Informations Personnelles ── */}
+          {/* ── STEP 1: Personal Information ── */}
           {formStep === 1 && (
             <div className="space-y-3 animate-fadeIn">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "الاسم *" : "Prénom *"}</label>
+                  <label className={labelClass}>{language === "ar" ? "الاسم *" : "First Name *"}</label>
                   <input
                     type="text"
                     required
-                    placeholder={language === "ar" ? "اسمك" : "Votre prénom"}
+                    placeholder={language === "ar" ? "اسمك" : "First Name"}
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     className={inputClass}
@@ -392,10 +396,10 @@ export default function StudentRegistrationForm({
                 </div>
 
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "اللقب *" : "Nom *"}</label>
+                  <label className={labelClass}>{language === "ar" ? "اللقب *" : "Last Name *"}</label>
                   <input
                     type="text"
-                    placeholder={language === "ar" ? "لقبك" : "Votre nom"}
+                    placeholder={language === "ar" ? "لقبك" : "Last Name"}
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     className={inputClass}
@@ -405,7 +409,7 @@ export default function StudentRegistrationForm({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "البريد الإلكتروني *" : "Email *"}</label>
+                  <label className={labelClass}>{language === "ar" ? "البريد الإلكتروني *" : "Email Address *"}</label>
                   <input
                     type="email"
                     required
@@ -417,7 +421,7 @@ export default function StudentRegistrationForm({
                 </div>
 
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "رقم الهاتف *" : "Téléphone *"}</label>
+                  <label className={labelClass}>{language === "ar" ? "رقم الهاتف *" : "Phone Number *"}</label>
                   <input
                     type="tel"
                     required
@@ -431,10 +435,10 @@ export default function StudentRegistrationForm({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "الولاية" : "Wilaya"}</label>
+                  <label className={labelClass}>{language === "ar" ? "الولاية" : "Wilaya / City"}</label>
                   <input
                     type="text"
-                    placeholder="Alger, Oran, Blida..."
+                    placeholder="Algiers, Oran, Constantine..."
                     value={formData.wilaya}
                     onChange={(e) => setFormData({ ...formData, wilaya: e.target.value })}
                     className={inputClass}
@@ -442,7 +446,7 @@ export default function StudentRegistrationForm({
                 </div>
 
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "الفئة العمرية *" : "Tranche d'âge *"}</label>
+                  <label className={labelClass}>{language === "ar" ? "الفئة العمرية *" : "Age Category *"}</label>
                   <select
                     required
                     value={formData.ageCategory}
@@ -450,23 +454,31 @@ export default function StudentRegistrationForm({
                     className={inputClass}
                   >
                     <option value="" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                      {language === "ar" ? "اختر الفئة العمرية" : "Sélectionnez votre âge"}
+                      {language === "ar" ? "اختر الفئة العمرية" : "Select age range"}
                     </option>
-                    <option value="أقل من 18 سنة" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>&lt; 18 ans</option>
-                    <option value="18–24 سنة" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>18–24 ans</option>
-                    <option value="25–34 سنة" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>25–34 ans</option>
-                    <option value="35 سنة فأكثر" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>35 ans et plus</option>
+                    <option value="أقل من 18 سنة" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
+                      {language === "ar" ? "أقل من 18 سنة" : "< 18 years"}
+                    </option>
+                    <option value="18–24 سنة" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
+                      {language === "ar" ? "18–24 سنة" : "18–24 years"}
+                    </option>
+                    <option value="25–34 سنة" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
+                      {language === "ar" ? "25–34 سنة" : "25–34 years"}
+                    </option>
+                    <option value="35 سنة فأكثر" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
+                      {language === "ar" ? "35 سنة فأكثر" : "35+ years"}
+                    </option>
                   </select>
                 </div>
               </div>
             </div>
           )}
 
-          {/* ── STEP 2: Parcours Académique & CV PDF ── */}
+          {/* ── STEP 2: Academic Background & PDF CV ── */}
           {formStep === 2 && (
             <div className="space-y-3 animate-fadeIn">
               <div>
-                <label className={labelClass}>{language === "ar" ? "الوضع الحالي *" : "Statut Actuel *"}</label>
+                <label className={labelClass}>{language === "ar" ? "الوضع الحالي *" : "Current Status *"}</label>
                 <select
                   required
                   value={formData.currentStatus}
@@ -474,36 +486,36 @@ export default function StudentRegistrationForm({
                   className={inputClass}
                 >
                   <option value="" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    {language === "ar" ? "اختر وضعك الحالي" : "Sélectionnez votre statut"}
+                    {language === "ar" ? "اختر وضعك الحالي" : "Select your status"}
                   </option>
                   <option value="طالب (Licence / Master / Ingénieur)" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    طالب (Étudiant en Licence / Master / Ingénieur)
+                    {language === "ar" ? "طالب (Licence / Master / Ingénieur)" : "Student (Bachelor / Master / Engineering)"}
                   </option>
                   <option value="خريج حديث" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    خريج حديث (Jeune diplômé)
+                    {language === "ar" ? "خريج حديث (Jeune diplômé)" : "Recent Graduate / Alumni"}
                   </option>
                   <option value="باحث عن عمل / تربص" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    باحث عن عمل أو تربص (En recherche d'emploi / stage)
+                    {language === "ar" ? "باحث عن عمل أو تربص" : "Job / Internship Seeker"}
                   </option>
                   <option value="موظف" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    موظف (Employé en poste)
+                    {language === "ar" ? "موظف" : "Employed Professional"}
                   </option>
                   <option value="رائد أعمال / صاحب مشروع" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    رائد أعمال / صاحب مشروع (Entrepreneur)
+                    {language === "ar" ? "رائد أعمال / صاحب مشروع" : "Entrepreneur / Founder"}
                   </option>
                   <option value="أخرى" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    أخرى (Autre)
+                    {language === "ar" ? "أخرى" : "Other"}
                   </option>
                 </select>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "مجال الدراسة أو العمل *" : "Domaine d'Études / Travail *"}</label>
+                  <label className={labelClass}>{language === "ar" ? "مجال الدراسة أو العمل *" : "Field of Study or Specialty *"}</label>
                   <input
                     type="text"
                     required
-                    placeholder="Informatique, Management, Marketing..."
+                    placeholder="Computer Science, AI, Business, Marketing..."
                     value={formData.fieldOfStudyOrWork}
                     onChange={(e) => setFormData({ ...formData, fieldOfStudyOrWork: e.target.value })}
                     className={inputClass}
@@ -511,10 +523,10 @@ export default function StudentRegistrationForm({
                 </div>
 
                 <div>
-                  <label className={labelClass}>{language === "ar" ? "الجامعة / المعهد" : "Université / Établissement"}</label>
+                  <label className={labelClass}>{language === "ar" ? "الجامعة / المعهد" : "University / Institution"}</label>
                   <input
                     type="text"
-                    placeholder="HIS University, USTHB..."
+                    placeholder="HIS University, USTHB, ESI..."
                     value={formData.university}
                     onChange={(e) => setFormData({ ...formData, university: e.target.value })}
                     className={inputClass}
@@ -524,7 +536,7 @@ export default function StudentRegistrationForm({
 
               {/* Integrated CV PDF Upload Box */}
               <div>
-                <label className={labelClass}>{language === "ar" ? "تحميل السيرة الذاتية (CV PDF إلزامي) *" : "Votre CV en format PDF (Obligatoire) *"}</label>
+                <label className={labelClass}>{language === "ar" ? "تحميل السيرة الذاتية (CV PDF إلزامي) *" : "Upload Resume (PDF format required) *"}</label>
                 <div
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={(e) => {
@@ -544,7 +556,7 @@ export default function StudentRegistrationForm({
                   {isUploadingCv ? (
                     <div className="flex items-center justify-center gap-2 text-white text-xs font-bold py-1">
                       <Loader2 className="w-4 h-4 animate-spin text-[#F05A22]" />
-                      <span>{language === "ar" ? "جاري رفع الـ CV..." : "Téléversement en cours..."}</span>
+                      <span>{language === "ar" ? "جاري رفع الـ CV..." : "Uploading CV..."}</span>
                     </div>
                   ) : formData.cvUrl ? (
                     <div className="flex items-center justify-between gap-2 text-start">
@@ -553,7 +565,7 @@ export default function StudentRegistrationForm({
                         <span className="font-bold text-xs truncate text-emerald-300">{formData.cvFileName || "CV.pdf"}</span>
                       </div>
                       <label className="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-bold cursor-pointer shrink-0">
-                        <span>{language === "ar" ? "تغيير" : "Modifier"}</span>
+                        <span>{language === "ar" ? "تغيير" : "Replace"}</span>
                         <input
                           type="file"
                           accept="application/pdf"
@@ -570,10 +582,10 @@ export default function StudentRegistrationForm({
                     <label className="cursor-pointer flex items-center justify-center gap-2 block py-1">
                       <Upload className="w-4 h-4 text-[#F05A22]" />
                       <span className="text-xs font-bold opacity-90">
-                        {language === "ar" ? "اختر ملف السيرة الذاتية (PDF فقط)" : "Déposez ou choisissez votre CV PDF"}
+                        {language === "ar" ? "اختر ملف السيرة الذاتية (PDF فقط)" : "Drop or select your PDF resume"}
                       </span>
                       <span className="px-2.5 py-0.5 rounded-lg bg-[#F05A22] text-white text-[10px] font-black uppercase">
-                        {language === "ar" ? "استعراض" : "Parcourir"}
+                        {language === "ar" ? "استعراض" : "Browse"}
                       </span>
                       <input
                         type="file"
@@ -593,18 +605,18 @@ export default function StudentRegistrationForm({
             </div>
           )}
 
-          {/* ── STEP 3: Que recherchez-vous ? (6 Choix) ── */}
+          {/* ── STEP 3: Goals & Objectives ── */}
           {formStep === 3 && (
             <div className="space-y-3 animate-fadeIn">
-              <label className={labelClass}>{language === "ar" ? "ما الذي تبحث عنه في الصالون ؟ (اختيارات متعددة) *" : "Que recherchez-vous à HIS Future Talents ? *"}</label>
+              <label className={labelClass}>{language === "ar" ? "ما الذي تبحث عنه في الصالون ؟ (اختيارات متعددة) *" : "What are your primary goals at HIS Future Talents? *"}</label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {[
-                  { id: "فرص تدريب", label: language === "ar" ? "فرص تدريب (Stages / PFE)" : "Stages & PFE" },
-                  { id: "فرص عمل", label: language === "ar" ? "فرص عمل (Offres d'emploi)" : "Offres d'emploi & Recrutement" },
-                  { id: "بناء شبكة علاقات مهنية", label: language === "ar" ? "بناء شبكة علاقات مهنية" : "Networking & Réseau Pro" },
-                  { id: "التعرف على الشركات والمؤسسات", label: language === "ar" ? "التعرف على الشركات والمؤسسات" : "Découvrir les Entreprises" },
-                  { id: "حضور المحاضرات والورشات", label: language === "ar" ? "حضور المحاضرات والورشات" : "Conférences & Ateliers" },
-                  { id: "أخرى", label: language === "ar" ? "أخرى" : "Autre" },
+                  { id: "فرص تدريب", label: language === "ar" ? "فرص تدريب (Stages / PFE)" : "Internships & End-of-Studies Projects (PFE)" },
+                  { id: "فرص عمل", label: language === "ar" ? "فرص عمل (Offres d'emploi)" : "Job Offers & Career Recruitment" },
+                  { id: "بناء شبكة علاقات مهنية", label: language === "ar" ? "بناء شبكة علاقات مهنية" : "Professional Networking" },
+                  { id: "التعرف على الشركات والمؤسسات", label: language === "ar" ? "التعرف على الشركات والمؤسسات" : "Discovering Leading Companies" },
+                  { id: "حضور المحاضرات والورشات", label: language === "ar" ? "حضور المحاضرات والورشات" : "Attending Keynotes & Masterclasses" },
+                  { id: "أخرى", label: language === "ar" ? "أخرى" : "Other Interests" },
                 ].map((item) => {
                   const checked = formData.seekingObjectives.includes(item.id);
                   return (
@@ -633,13 +645,13 @@ export default function StudentRegistrationForm({
             </div>
           )}
 
-          {/* ── STEP 4: Finalisation ── */}
+          {/* ── STEP 4: Finalization ── */}
           {formStep === 4 && (
             <div className="space-y-3 animate-fadeIn">
               <div>
-                <label className={labelClass}>{language === "ar" ? "كيف تعرفت على الحدث ؟" : "Comment avez-vous connu l'événement ?"}</label>
+                <label className={labelClass}>{language === "ar" ? "كيف تعرفت على الحدث ؟" : "How did you hear about HIS Future Talents?"}</label>
                 <div className="grid grid-cols-3 gap-1.5">
-                  {["Instagram", "LinkedIn", "Facebook", "TikTok", "Université", "Autre"].map((src) => (
+                  {["Instagram", "LinkedIn", "Facebook", "TikTok", "University", "Other"].map((src) => (
                     <button
                       type="button"
                       key={src}
@@ -659,10 +671,10 @@ export default function StudentRegistrationForm({
               </div>
 
               <div>
-                <label className={labelClass}>{language === "ar" ? "ملاحظات أو أسئلة (اختياري)" : "Remarques (Optionnel)"}</label>
+                <label className={labelClass}>{language === "ar" ? "ملاحظات أو أسئلة (اختياري)" : "Questions or Remarks (Optional)"}</label>
                 <textarea
                   rows={2}
-                  placeholder={language === "ar" ? "ملاحظاتك..." : "Vos remarques..."}
+                  placeholder={language === "ar" ? "ملاحظاتك..." : "Any additional notes..."}
                   value={formData.additionalComments}
                   onChange={(e) => setFormData({ ...formData, additionalComments: e.target.value })}
                   className={inputClass}
@@ -670,7 +682,7 @@ export default function StudentRegistrationForm({
               </div>
 
               <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs">
-                ✨ {language === "ar" ? "سيتم إرسال بطاقة دخولك الرسمية PDF فوراً إلى بريدك الإلكتروني." : "Votre badge d'accès VIP PDF sera expédié immédiatement par courriel."}
+                ✨ {language === "ar" ? "سيتم إرسال بطاقة دخولك الرسمية PDF فوراً إلى بريدك الإلكتروني." : "Your official PDF VIP event pass will be generated and emailed immediately."}
               </div>
             </div>
           )}
@@ -681,10 +693,10 @@ export default function StudentRegistrationForm({
               <button
                 type="button"
                 onClick={handlePrevStep}
-                className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase transition-all flex items-center gap-1"
+                className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase transition-all flex items-center gap-1 cursor-pointer"
               >
                 <ChevronRight className={`w-3.5 h-3.5 ${dir === "rtl" ? "" : "rotate-180"}`} />
-                <span>{language === "ar" ? "السابق" : "Précédent"}</span>
+                <span>{language === "ar" ? "السابق" : "Back"}</span>
               </button>
             ) : <span />}
 
@@ -692,26 +704,26 @@ export default function StudentRegistrationForm({
               <button
                 type="button"
                 onClick={handleNextStep}
-                className="px-5 py-2 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-1"
+                className="px-5 py-2 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-1 cursor-pointer"
               >
-                <span>{language === "ar" ? "المتابعة" : "Continuer"}</span>
+                <span>{language === "ar" ? "المتابعة" : "Continue"}</span>
                 <ChevronRight className={`w-3.5 h-3.5 ${dir === "rtl" ? "rotate-180" : ""}`} />
               </button>
             ) : (
               <button
                 type="submit"
                 disabled={formSubmitting}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#F05A22] to-[#FFBD0E] text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-lg flex items-center gap-2"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#F05A22] to-[#FFBD0E] text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-lg flex items-center gap-2 cursor-pointer"
               >
                 {formSubmitting ? (
                   <span className="animate-pulse flex items-center gap-1.5">
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    {language === "ar" ? "جاري الإرسال..." : "Génération du Pass..."}
+                    {language === "ar" ? "جاري الإرسال..." : "Generating Pass..."}
                   </span>
                 ) : (
                   <>
                     <CheckCircle2 className="w-4 h-4" />
-                    <span>{language === "ar" ? "تأكيد واستلام البطاقة" : "Valider & Obtenir Mon Pass VIP"}</span>
+                    <span>{language === "ar" ? "تأكيد واستلام البطاقة" : "Confirm & Get My VIP Pass"}</span>
                   </>
                 )}
               </button>

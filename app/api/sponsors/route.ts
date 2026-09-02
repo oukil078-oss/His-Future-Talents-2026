@@ -7,8 +7,39 @@ export const revalidate = 0;
 
 export async function GET() {
   try {
-    const sponsors = getSponsors();
-    return NextResponse.json({ success: true, data: sponsors });
+    const localSponsors = getSponsors();
+
+    let liveSponsors: any[] = [];
+    try {
+      const liveRes = await fetch("https://hisfuturetalent.his.edu.dz/api/sponsors", {
+        next: { revalidate: 0 },
+        signal: AbortSignal.timeout(3000),
+      });
+      if (liveRes.ok) {
+        const liveJson = await liveRes.json();
+        if (liveJson.success && Array.isArray(liveJson.data)) {
+          liveSponsors = liveJson.data;
+        }
+      }
+    } catch (liveErr) {
+      // offline fallback
+    }
+
+    if (liveSponsors.length > 0) {
+      const sponsorMap = new Map<string, any>();
+      for (const s of liveSponsors) {
+        sponsorMap.set(`${s.edition}_${s.slug || s.name}`, s);
+      }
+      for (const s of localSponsors) {
+        const key = `${s.edition}_${s.slug || s.name}`;
+        if (!sponsorMap.has(key)) {
+          sponsorMap.set(key, s);
+        }
+      }
+      return NextResponse.json({ success: true, data: Array.from(sponsorMap.values()) });
+    }
+
+    return NextResponse.json({ success: true, data: localSponsors });
   } catch (error) {
     return NextResponse.json({ success: false, error: "Failed to fetch sponsors" }, { status: 500 });
   }

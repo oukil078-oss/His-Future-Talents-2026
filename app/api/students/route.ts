@@ -12,8 +12,37 @@ export const revalidate = 0;
 
 export async function GET() {
   try {
-    const students = await getStudentApplications();
-    return NextResponse.json({ success: true, data: students });
+    const localStudents = await getStudentApplications();
+
+    let liveStudents: any[] = [];
+    try {
+      const liveRes = await fetch("https://hisfuturetalent.his.edu.dz/api/students", {
+        next: { revalidate: 0 },
+        signal: AbortSignal.timeout(3000),
+      });
+      if (liveRes.ok) {
+        const liveJson = await liveRes.json();
+        if (liveJson.success && Array.isArray(liveJson.data)) {
+          liveStudents = liveJson.data;
+        }
+      }
+    } catch (liveErr) {
+      // offline fallback
+    }
+
+    const studentMap = new Map<string, any>();
+    for (const s of liveStudents) {
+      const key = `${s.email?.toLowerCase()?.trim() || s.id}`;
+      studentMap.set(key, s);
+    }
+    for (const s of localStudents) {
+      const key = `${s.email?.toLowerCase()?.trim() || s.id}`;
+      if (!studentMap.has(key)) {
+        studentMap.set(key, s);
+      }
+    }
+
+    return NextResponse.json({ success: true, data: Array.from(studentMap.values()) });
   } catch (error) {
     return NextResponse.json({ success: false, error: "Failed to fetch student applications" }, { status: 500 });
   }

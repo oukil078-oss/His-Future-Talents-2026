@@ -17,18 +17,21 @@ import {
 export type DocumentItem = {
   id: "guide" | "sponsoring";
   title: {
-    fr: string;
+    en?: string;
+    fr?: string;
     ar: string;
   };
   subtitle: {
-    fr: string;
+    en?: string;
+    fr?: string;
     ar: string;
   };
   pages: number;
   pdfUrl: string;
   driveUrl: string;
   tag: {
-    fr: string;
+    en?: string;
+    fr?: string;
     ar: string;
   };
   badgeColor: string;
@@ -38,10 +41,12 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
   {
     id: "guide",
     title: {
+      en: "Exhibitor Participation Guide — Career Fair & Internships",
       fr: "Guide de Participation — Forum Carrières & Stages",
       ar: "دليل المشاركة — صالون التوظيف والتربصات",
     },
     subtitle: {
+      en: "Practical event information, fair schedule, target academic profiles, and booth logistics (9 pages).",
       fr: "Informations pratiques, déroulement du forum, profils ciblés et modalités d'organisation pour les exposants (9 pages).",
       ar: "المعلومات التطبيقية، سير الفعالية، الملفات المستهدفة والتنظيم اللوجستي للعارضين (9 صفحات).",
     },
@@ -49,6 +54,7 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
     pdfUrl: "/docs/Guide-de-Participation-HFT-2026.pdf",
     driveUrl: "https://drive.google.com/drive/folders/15RIU4KXb1zHrkVr6VKDH3bmXGFyMXPjD",
     tag: {
+      en: "Exhibitor Guide",
       fr: "Guide Exposants",
       ar: "دليل العارضين",
     },
@@ -57,10 +63,12 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
   {
     id: "sponsoring",
     title: {
+      en: "Official Sponsoring Dossier & Packages 2026",
       fr: "Dossier de Sponsoring & Grille des Packs 2026",
       ar: "ملف الرعاية وباقات المشاركة 2026",
     },
     subtitle: {
+      en: "Detailed breakdown of Bronze, Silver, and Gold sponsorship tiers, media benefits, and brand visibility (15 pages).",
       fr: "Présentation complète des formules de sponsoring (Bronze, Silver, Gold), avantages média et visibilité scénique (15 pages).",
       ar: "عرض شامل لباقات الرعاية (برونزي، فضي، ذهبي)، المزايا الإعلامية وتغطية العلامة التجارية (15 صفحة).",
     },
@@ -68,6 +76,7 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
     pdfUrl: "/docs/Dossier-de-Sponsoring-HFT-2026.pdf",
     driveUrl: "https://drive.google.com/drive/folders/15RIU4KXb1zHrkVr6VKDH3bmXGFyMXPjD",
     tag: {
+      en: "Packages & Rates",
       fr: "Packs & Tarifs",
       ar: "الباقات والأسعار",
     },
@@ -117,7 +126,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
   const handleDownloadFile = (doc: DocumentItem) => {
     const a = document.createElement("a");
     a.href = doc.pdfUrl;
-    a.download = `${doc.id === "guide" ? "Guide-de-Participation" : "Dossier-de-Sponsoring"}-HFT-2026.pdf`;
+    a.download = `${doc.id === "guide" ? "Exhibitor-Guide" : "Sponsoring-Dossier"}-HFT-2026.pdf`;
     a.target = "_blank";
     document.body.appendChild(a);
     a.click();
@@ -145,7 +154,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
             type="button"
             onClick={onClose}
             className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-colors cursor-pointer"
-            aria-label="Fermer"
+            aria-label="Close"
           >
             <X className="w-5 h-5" />
           </button>
@@ -154,15 +163,15 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
           <div className="space-y-2 max-w-xl">
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F05A22]/20 border border-[#F05A22]/40 text-[#F05A22] text-xs font-black uppercase tracking-widest backdrop-blur-md">
               <Sparkles className="w-3.5 h-3.5" />
-              {language === "ar" ? "الوثائق الرسمية لصالون HFT 2026" : "Espace Documents Officiels HFT 2026"}
+              {language === "ar" ? "الوثائق الرسمية لصالون HFT 2026" : "Official Documents • HFT 2026"}
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
-              {language === "ar" ? "اختر الملف المطلوب للاطلاع أو التحميل" : "Sélectionnez le document à consulter ou télécharger"}
+              {language === "ar" ? "اختر الملف المطلوب للاطلاع أو التحميل" : "Select a document to preview or download"}
             </h2>
             <p className="text-white/75 text-xs sm:text-sm font-medium leading-relaxed">
               {language === "ar"
                 ? "تفضلوا باختيار دليل المشاركة للعارضين أو ملف باقات الرعاية الكامل لقراءته مباشرة في المتصفح أو تحميله."
-                : "Consultez le Guide de Participation ou le Dossier de Sponsoring directement dans notre lecteur intégré ou téléchargez-les."}
+                : "Explore the Exhibitor Participation Guide or full Sponsoring Dossier directly in your browser or download high-res PDF copies."}
             </p>
           </div>
 
@@ -176,7 +185,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 {/* Top Badge & Page Count */}
                 <div className="flex items-center justify-between gap-2">
                   <span className={`px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider border ${doc.badgeColor}`}>
-                    {language === "ar" ? doc.tag.ar : doc.tag.fr}
+                    {language === "ar" ? doc.tag.ar : (doc.tag.en || doc.tag.fr)}
                   </span>
                   <span className="text-xs font-bold text-white/60 flex items-center gap-1">
                     <BookOpen className="w-3.5 h-3.5 text-[#58B9FF]" />
@@ -187,10 +196,10 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 {/* Title & Subtitle */}
                 <div className="space-y-2">
                   <h3 className="text-lg font-black text-white group-hover:text-[#F05A22] transition-colors leading-snug">
-                    {language === "ar" ? doc.title.ar : doc.title.fr}
+                    {language === "ar" ? doc.title.ar : (doc.title.en || doc.title.fr)}
                   </h3>
                   <p className="text-white/70 text-xs font-medium leading-relaxed">
-                    {language === "ar" ? doc.subtitle.ar : doc.subtitle.fr}
+                    {language === "ar" ? doc.subtitle.ar : (doc.subtitle.en || doc.subtitle.fr)}
                   </p>
                 </div>
 
@@ -205,14 +214,14 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                     className="flex-1 h-12 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Eye className="w-4 h-4" />
-                    <span>{language === "ar" ? "قراءة الملف" : "Aperçu & Lecteur"}</span>
+                    <span>{language === "ar" ? "قراءة الملف" : "Preview PDF"}</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => handleDownloadFile(doc)}
                     className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-all hover:scale-105 cursor-pointer shrink-0"
-                    title={language === "ar" ? "تحميل PDF" : "Télécharger PDF"}
+                    title={language === "ar" ? "تحميل PDF" : "Download PDF"}
                   >
                     <Download className="w-4 h-4" />
                   </button>
@@ -224,7 +233,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
           {/* Footer Drive Link */}
           <div className="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-white/60">
             <span className="font-semibold">
-              {language === "ar" ? "يتوفر أيضاً مجلد Google Drive كامل لكافة الملفات:" : "Dossier complet également accessible sur Google Drive :"}
+              {language === "ar" ? "يتوفر أيضاً مجلد Google Drive كامل لكافة الملفات:" : "All documents are also accessible on Google Drive:"}
             </span>
             <a
               href="https://drive.google.com/drive/folders/15RIU4KXb1zHrkVr6VKDH3bmXGFyMXPjD"
@@ -232,7 +241,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-bold text-[#58B9FF] hover:text-[#58B9FF]/80 transition-colors"
             >
-              <span>{language === "ar" ? "فتح مجلد Google Drive" : "Ouvrir le dossier Drive"}</span>
+              <span>{language === "ar" ? "فتح مجلد Google Drive" : "Open Google Drive Folder"}</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -265,7 +274,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                   }`}
                 >
                   <FileText className="w-3.5 h-3.5" />
-                  <span>{language === "ar" ? doc.tag.ar : doc.tag.fr}</span>
+                  <span>{language === "ar" ? doc.tag.ar : (doc.tag.en || doc.tag.fr)}</span>
                 </button>
               ))}
             </div>
@@ -273,7 +282,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
             {/* Title & Page Info (Hidden on small mobile) */}
             <div className="hidden lg:flex items-center gap-3 text-white">
               <span className="text-xs font-extrabold truncate max-w-xs">
-                {language === "ar" ? activeDoc.title.ar : activeDoc.title.fr}
+                {language === "ar" ? activeDoc.title.ar : (activeDoc.title.en || activeDoc.title.fr)}
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-white/70">
                 PDF • {activeDoc.pages} {language === "ar" ? "صفحات" : "pages"}
@@ -287,10 +296,10 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 type="button"
                 onClick={() => handleDownloadFile(activeDoc)}
                 className="h-9 px-3 sm:px-4 rounded-xl bg-white/10 hover:bg-[#F05A22] text-white font-bold text-xs transition-all flex items-center gap-2 border border-white/15 cursor-pointer"
-                title={language === "ar" ? "تحميل PDF" : "Télécharger PDF"}
+                title={language === "ar" ? "تحميل PDF" : "Download PDF"}
               >
                 <Download className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{language === "ar" ? "تحميل" : "Télécharger"}</span>
+                <span className="hidden sm:inline">{language === "ar" ? "تحميل" : "Download"}</span>
               </button>
 
               {/* Google Drive Link */}
@@ -310,10 +319,10 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 type="button"
                 onClick={() => setViewMode("hub")}
                 className="h-9 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all flex items-center gap-1.5 border border-white/15 cursor-pointer"
-                title={language === "ar" ? "تغيير الملف" : "Changer de document"}
+                title={language === "ar" ? "تغيير الملف" : "Choose Document"}
               >
                 <BookOpen className="w-3.5 h-3.5 text-[#FFBD0E]" />
-                <span className="hidden md:inline">{language === "ar" ? "الوثائق" : "Choix"}</span>
+                <span className="hidden md:inline">{language === "ar" ? "الوثائق" : "Documents"}</span>
               </button>
 
               {/* Fullscreen Toggle */}
@@ -321,7 +330,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 type="button"
                 onClick={() => setIsFullscreen(!isFullscreen)}
                 className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-white/15 cursor-pointer"
-                title={isFullscreen ? "Réduire" : "Plein écran"}
+                title={isFullscreen ? (language === "ar" ? "تصغير" : "Minimize") : (language === "ar" ? "ملء الشاشة" : "Fullscreen")}
               >
                 {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
               </button>
@@ -331,7 +340,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 type="button"
                 onClick={onClose}
                 className="w-9 h-9 rounded-xl bg-white/10 hover:bg-red-500 text-white flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Fermer"
+                aria-label="Close"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -349,17 +358,17 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
               <iframe
                 src={`${activeDoc.pdfUrl}#toolbar=1`}
                 className="w-full h-full border-none"
-                title={activeDoc.title.fr}
+                title={activeDoc.title.en || activeDoc.title.fr}
               >
                 <div className="p-8 text-center text-white space-y-4">
-                  <p>Votre navigateur ne supporte pas l&apos;affichage direct des fichiers PDF.</p>
+                  <p>{language === "ar" ? "متصفحك لا يدعم العرض المباشر لملفات PDF." : "Your browser does not support direct inline PDF viewing."}</p>
                   <a
                     href={activeDoc.pdfUrl}
                     download
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#F05A22] text-white font-bold"
                   >
                     <Download className="w-4 h-4" />
-                    <span>Télécharger {activeDoc.title.fr}</span>
+                    <span>{language === "ar" ? "تحميل الملف" : "Download PDF"}</span>
                   </a>
                 </div>
               </iframe>

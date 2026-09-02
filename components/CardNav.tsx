@@ -6,18 +6,18 @@ import { Globe, ChevronRight, X, Menu, ArrowRight } from "lucide-react";
 
 interface NavLink {
   href: string;
-  label: { fr: string; ar: string };
+  label: { en: string; ar: string };
 }
 
 const NAV_LINKS: NavLink[] = [
-  { href: "#value-section", label: { fr: "L'Événement", ar: "الحدث" } },
-  { href: "#edition3-section", label: { fr: "Édition 2026", ar: "دورة 2026" } },
-  { href: "#sponsors-section", label: { fr: "Nos Sponsors", ar: "الرعاة" } },
-  { href: "#why-section", label: { fr: "Pourquoi Exposer", ar: "لماذا المشاركة؟" } },
-  { href: "#program-section", label: { fr: "Programme", ar: "البرنامج" } },
-  { href: "#speakers-section", label: { fr: "Intervenants", ar: "المتحدثون" } },
-  { href: "#media-section", label: { fr: "Médias", ar: "الإعلام" } },
-  { href: "#contact-form", label: { fr: "Contact", ar: "تواصل معنا" } },
+  { href: "#value-section", label: { en: "The Event", ar: "الحدث" } },
+  { href: "#edition3-section", label: { en: "2026 Edition", ar: "دورة 2026" } },
+  { href: "#sponsors-section", label: { en: "Our Sponsors", ar: "الرعاة" } },
+  { href: "#why-section", label: { en: "Why Exhibit", ar: "لماذا المشاركة؟" } },
+  { href: "#program-section", label: { en: "Program", ar: "البرنامج" } },
+  { href: "#speakers-section", label: { en: "Speakers", ar: "المتحدثون" } },
+  { href: "#media-section", label: { en: "Media", ar: "الإعلام" } },
+  { href: "#contact-form", label: { en: "Contact", ar: "تواصل معنا" } },
 ];
 
 export default function CardNav() {
@@ -80,7 +80,7 @@ export default function CardNav() {
     }
   }, []);
 
-  const getLabel = (l: { fr: string; ar: string }) => (language === "ar" ? l.ar : l.fr);
+  const getLabel = (l: { en: string; ar: string }) => (language === "ar" ? l.ar : l.en);
 
   return (
     <header
@@ -103,43 +103,47 @@ export default function CardNav() {
         style={{ width: "0%" }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 h-12 md:h-14">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 h-13 md:h-15">
 
-        {/* ── LEFT: Official Stacked HFT Logo (Smooth cross-fade between white & dark logo) ── */}
+        {/* ── LEFT: Dual Brand Logos (HFT + X + HIS) ── */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="relative flex items-center shrink-0 h-11 sm:h-12 md:h-14 focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue rounded-lg transition-transform hover:opacity-95"
-          aria-label="HIS Future Talents — Page d'accueil"
+          className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue rounded-lg transition-transform hover:opacity-95"
+          aria-label="HIS Future Talents & HIS University"
         >
-          {/* White Logo for Dark Sections */}
+          {/* HFT Logo (White for dark, Colorful/Navy for light) */}
           <img
-            src="/logo-hft-white.svg"
+            src={isDarkSection ? "/logo-hft-white.svg" : "/logo-hft.svg"}
             alt="HIS Future Talents"
-            className={`h-11 sm:h-12 md:h-14 w-auto object-contain transition-opacity duration-300 ${
-              isDarkSection ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
+            className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-all duration-300"
           />
-          {/* Dark Navy Logo for Light Sections */}
+
+          {/* Separator X */}
+          <span className={`text-[10px] sm:text-xs md:text-sm font-black select-none transition-colors ${
+            isDarkSection ? "text-white/40" : "text-[#003876]/40"
+          }`}>
+            ✕
+          </span>
+
+          {/* HIS University Logo (White for dark, Blue for light) */}
           <img
-            src="/logo-hft.svg"
-            alt="HIS Future Talents"
-            className={`absolute top-0 start-0 h-11 sm:h-12 md:h-14 w-auto object-contain transition-opacity duration-300 ${
-              isDarkSection ? "opacity-0 pointer-events-none" : "opacity-100"
-            }`}
+            src={isDarkSection ? "/brand/his-logo-white.png" : "/brand/his-logo-blue.png"}
+            alt="HIS University"
+            className="h-6 sm:h-7 md:h-8 w-auto object-contain transition-all duration-300"
           />
         </a>
 
         {/* ── CENTER: Desktop Navigation Links (White over dark bg, dark over light bg) ── */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
           {NAV_LINKS.map((link, idx) => (
             <button
               key={idx}
               onClick={() => handleNavClick(link.href)}
-              className={`px-3 py-2 text-xs xl:text-sm font-bold transition-colors rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue ${
+              className={`px-2 xl:px-2.5 py-1.5 text-xs xl:text-[13px] font-bold transition-colors rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue whitespace-nowrap ${
                 isDarkSection
                   ? "text-white hover:text-[#F05A22]"
                   : "text-[#0E1B2C] hover:text-[#F05A22]"
@@ -151,19 +155,19 @@ export default function CardNav() {
         </nav>
 
         {/* ── RIGHT: Language Toggle + Single Header CTA ── */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           {/* Language Switcher */}
           <button
-            onClick={() => setLanguage(language === "fr" ? "ar" : "fr")}
-            className={`flex items-center gap-1.5 h-10 px-3.5 rounded-xl border text-xs font-extrabold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue shadow-xs ${
+            onClick={() => setLanguage(language === "en" ? "ar" : "en")}
+            className={`flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border text-xs font-extrabold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue shadow-xs ${
               isDarkSection
                 ? "bg-white/10 text-white border-white/20 hover:bg-white/20"
                 : "bg-white text-[#003876] border-[#003876]/15 hover:bg-his-blue/5"
             }`}
-            aria-label="Changer de langue / تغيير اللغة"
+            aria-label="Switch Language / تغيير اللغة"
           >
             <Globe className={`w-3.5 h-3.5 shrink-0 ${isDarkSection ? "text-white/70" : "text-slate-400"}`} />
-            <span>{language === "fr" ? "العربية" : "Français"}</span>
+            <span>{language === "en" ? "العربية" : "English"}</span>
           </button>
 
           {/* Primary Header CTA */}
@@ -173,7 +177,7 @@ export default function CardNav() {
               e.preventDefault();
               handleNavClick("#contact-form");
             }}
-            className="hidden sm:inline-flex items-center gap-2 h-10 px-5 rounded-xl bg-[#F05A22] text-white text-xs font-black uppercase tracking-wider hover:bg-[#003876] transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-his-orange"
+            className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3.5 sm:px-4 rounded-xl bg-[#F05A22] text-white text-xs font-black uppercase tracking-wider hover:bg-[#003876] transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-his-orange whitespace-nowrap"
           >
             <span>{t("common.cta_partner")}</span>
             <ChevronRight className={`w-3.5 h-3.5 ${dir === "rtl" ? "rotate-180" : ""}`} />
@@ -184,7 +188,7 @@ export default function CardNav() {
             aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden w-10 h-10 rounded-xl border flex items-center justify-center transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue shadow-xs ${
+            className={`lg:hidden w-9 h-9 rounded-xl border flex items-center justify-center transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-his-blue shadow-xs ${
               isDarkSection
                 ? "bg-white/10 text-white border-white/20 hover:bg-white/20"
                 : "bg-white text-[#003876] border-[#003876]/15 hover:bg-his-blue/5"

@@ -22,9 +22,11 @@ const config: Config = {
         "his-border":  "rgba(0,56,118,0.08)",
       },
       fontFamily: {
-        sans:    ["var(--font-sans)", "sans-serif"],
-        heading: ["var(--font-heading)", "sans-serif"],
-        arabic:  ["var(--font-arabic)", "sans-serif"],
+        sans:    ["var(--font-neulis)", "Neulis", "system-ui", "sans-serif"],
+        heading: ["var(--font-neulis)", "Neulis", "sans-serif"],
+        neulis:  ["var(--font-neulis)", "Neulis", "sans-serif"],
+        arabic:  ["var(--font-bahij)", "Bahij", "sans-serif"],
+        bahij:   ["var(--font-bahij)", "Bahij", "sans-serif"],
       },
       boxShadow: {
         card:      "0 4px 24px -4px rgba(0,56,118,0.07)",

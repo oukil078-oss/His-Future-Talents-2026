@@ -7,17 +7,17 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export function generateStaticParams() {
-  return [{ locale: "fr" }, { locale: "ar" }];
+  return [{ locale: "en" }, { locale: "ar" }];
 }
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale === "ar" ? "ar" : "fr";
+  const locale = params.locale === "ar" ? "ar" : "en";
   const title = locale === "ar" 
     ? "HIS Future Talents — الدورة 3 | فضاء الرعاية والشراكات" 
-    : "HIS Future Talents — Édition 3 | Espace Partenaires & Sponsoring";
+    : "HIS Future Talents — 3rd Edition | Exhibitor & Sponsoring Portal";
   const description = locale === "ar"
     ? "اربطوا مؤسستكم بنخبة الكفاءات في الجزائر. اكتشفوا باقات الرعاية والظهور في صالون المهن والتكنولوجيا الخاص بنا."
-    : "Associez votre marque au premier salon de recrutement et de formation de l'enseignement supérieur en Algérie. Découvrez nos packs de sponsoring.";
+    : "Partner your brand with Algeria's premier private higher education recruitment and training fair. Discover our sponsorship packages.";
   
   return {
     metadataBase: new URL("https://futuretalents.his.edu.dz"),
@@ -30,14 +30,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     alternates: {
       canonical: `https://futuretalents.his.edu.dz/${locale}`,
       languages: {
-        fr: "https://futuretalents.his.edu.dz/fr",
+        en: "https://futuretalents.his.edu.dz/en",
         ar: "https://futuretalents.his.edu.dz/ar",
       },
     },
     openGraph: {
       title,
       description,
-      locale: locale === "ar" ? "ar_DZ" : "fr_FR",
+      locale: locale === "ar" ? "ar_DZ" : "en_US",
       type: "website",
       images: [
         {
@@ -58,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const locale = params.locale === "ar" ? "ar" : "fr";
+  const locale = params.locale === "ar" ? "ar" : "en";
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (

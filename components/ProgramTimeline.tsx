@@ -21,7 +21,7 @@ export default function ProgramTimeline() {
       <div className="max-w-4xl mx-auto px-6">
         {/* Section header */}
         <div className="mb-14 text-start">
-          <span className="section-pill mb-4">{language === "ar" ? "برنامج الصالون" : "Programme Officiel"}</span>
+          <span className="section-pill mb-4">{language === "ar" ? "برنامج الصالون" : "Official Schedule"}</span>
           <h2 className="text-3xl md:text-5xl font-black text-his-deep leading-tight tracking-tight mt-4">
             {t("program.title")}
           </h2>
@@ -84,7 +84,7 @@ export default function ProgramTimeline() {
                     <h3 className={`font-black text-sm md:text-base leading-snug mb-0.5 ${
                       isKeynote ? "text-his-orange" : isAwards ? "text-[#9d7a0a]" : "text-his-deep"
                     }`}>
-                      {language === "ar" ? item.title.ar : item.title.fr}
+                      {language === "ar" ? item.title.ar : (item.title.en || item.title.fr)}
                     </h3>
 
                     {/* Contextual note for Talent Awards */}
@@ -93,7 +93,7 @@ export default function ProgramTimeline() {
                         <Award className="w-3.5 h-3.5 text-his-gold shrink-0" />
                         {language === "ar"
                           ? "منح جوائز المعهد تمنح للشركاء الراعين تواجداً مميزاً خلال حفل الاختتام الرسمي"
-                          : "Les HIS Talent Awards offrent une visibilité exclusive aux sponsors lors de la clôture officielle"}
+                          : "HIS Talent Awards ceremony provides exclusive visibility to our headline sponsors"}
                       </p>
                     )}
                   </div>

@@ -29,17 +29,17 @@ export default function MediaCoverage() {
           {/* Editorial Heading Column (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[#003876]/70 block">
-              {language === "ar" ? "الدورة الثانية" : "2e édition"}
+              {language === "ar" ? "الدورة الثانية" : "2nd Edition"}
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003876] tracking-tight leading-tight">
               {language === "ar"
                 ? "وسائل الإعلام التي غطت فعاليات صالون HIS Future Talents"
-                : "Ils ont couvert HIS Future Talents"}
+                : "Broadcasters Who Covered HIS Future Talents"}
             </h2>
             <p className="text-slate-600 text-sm md:text-base font-medium leading-relaxed max-w-md">
               {language === "ar"
                 ? "تغطية القنوات التلفزيونية الوطنية لفعاليات الدورة الثانية."
-                : "Retour sur les chaînes de télévision présentes lors de la 2e édition."}
+                : "National television networks and broadcast media that covered our event."}
             </p>
           </div>
 
@@ -89,7 +89,7 @@ export default function MediaCoverage() {
               type="button"
               onClick={() => setSelectedChannel(null)}
               className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-colors cursor-pointer"
-              aria-label="Fermer"
+              aria-label="Close"
             >
               <X className="w-5 h-5" />
             </button>
@@ -99,14 +99,14 @@ export default function MediaCoverage() {
               <div className="w-24 h-24 rounded-2xl bg-white p-3 flex items-center justify-center shrink-0 border-2 border-white/20 shadow-lg">
                 <img
                   src={selectedChannel.logo}
-                  alt={`Logo de ${selectedChannel.name}`}
+                  alt={`Logo ${selectedChannel.name}`}
                   className="w-full h-full object-contain"
                 />
               </div>
               <div className="space-y-1 flex-1 min-w-0">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-[#58B9FF]/20 text-[#58B9FF] border border-[#58B9FF]/30">
                   <Tv className="w-3 h-3" />
-                  2e Édition • Couverture TV
+                  {language === "ar" ? "الدورة الثانية • تغطية تلفزيونية" : "2nd Edition • TV Coverage"}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight truncate">
                   {selectedChannel.name}
@@ -117,13 +117,13 @@ export default function MediaCoverage() {
               </div>
             </div>
 
-            {/* Description (FR & AR) */}
+            {/* Description (EN & AR) */}
             <div className="space-y-3">
               <h4 className="text-xs font-black uppercase tracking-wider text-[#F05A22]">
-                {language === "ar" ? "حول القناة وتغطية الصالون" : "À propos du média & de la couverture"}
+                {language === "ar" ? "حول القناة وتغطية الصالون" : "About the Broadcaster & Event Coverage"}
               </h4>
               <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-medium">
-                {language === "ar" ? selectedChannel.description.ar : selectedChannel.description.fr}
+                {language === "ar" ? selectedChannel.description.ar : ((selectedChannel.description as any).en || selectedChannel.description.fr)}
               </p>
             </div>
 
@@ -131,10 +131,10 @@ export default function MediaCoverage() {
             {selectedChannel.keyPoints && (
               <div className="space-y-2.5 bg-white/5 border border-white/10 rounded-2xl p-4">
                 <h4 className="text-xs font-black uppercase tracking-wider text-[#58B9FF]">
-                  {language === "ar" ? "أبرز محطات التغطية" : "Points clés de la couverture"}
+                  {language === "ar" ? "أبرز محطات التغطية" : "Coverage Highlights"}
                 </h4>
                 <ul className="space-y-2 text-xs text-white/80 font-medium">
-                  {(language === "ar" ? selectedChannel.keyPoints.ar : selectedChannel.keyPoints.fr).map((pt, i) => (
+                  {(language === "ar" ? selectedChannel.keyPoints.ar : ((selectedChannel.keyPoints as any).en || selectedChannel.keyPoints.fr)).map((pt: string, i: number) => (
                     <li key={i} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#58B9FF] shrink-0 mt-0.5" />
                       <span>{pt}</span>
@@ -153,7 +153,7 @@ export default function MediaCoverage() {
                   rel="noopener noreferrer"
                   className="w-full h-12 rounded-2xl bg-[#F05A22] hover:bg-[#d84a15] text-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visiter le site officiel du média"}</span>
+                  <span>{language === "ar" ? "زيارة الموقع الرسمي للمؤسسة الإعلامية" : "Visit Official Media Website"}</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>

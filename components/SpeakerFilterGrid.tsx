@@ -16,7 +16,7 @@ const GroupHeader = ({ title, count }: { title: string; count: number }) => (
       </h3>
     </div>
     <span className="text-[10px] font-black uppercase text-slate-400 bg-slate-100 px-2.5 py-0.5 rounded-full">
-      {count} Intervenants
+      {count} {count > 1 ? "Speakers" : "Speaker"}
     </span>
   </div>
 );
@@ -30,18 +30,18 @@ export default function SpeakerFilterGrid() {
   const workshop2025 = speakersData.filter((s) => s.edition === 2025 && s.category === "workshop");
 
   const filterTabs = [
-    { id: "all", fr: "Tous", ar: "الكل" },
-    { id: "conf-2025", fr: "Conférences 2025", ar: "محاضرات 2025" },
-    { id: "conf-2024", fr: "Conférences 2024", ar: "محاضرات 2024" },
-    { id: "workshop-2025", fr: "Ateliers & Workshops", ar: "الورشات التدريبية" }
+    { id: "all", en: "All", ar: "الكل" },
+    { id: "conf-2025", en: "2025 Conferences", ar: "محاضرات 2025" },
+    { id: "conf-2024", en: "2024 Conferences", ar: "محاضرات 2024" },
+    { id: "workshop-2025", en: "Workshops & Masterclasses", ar: "الورشات التدريبية" }
   ];
 
-  const renderGroup = (title: { fr: string; ar: string }, list: Speaker[]) => {
+  const renderGroup = (title: { en: string; ar: string }, list: Speaker[]) => {
     if (list.length === 0) return null;
     return (
       <div className="space-y-3" dir={dir}>
         <GroupHeader
-          title={language === "ar" ? title.ar : title.fr}
+          title={language === "ar" ? title.ar : title.en}
           count={list.length}
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
@@ -58,7 +58,7 @@ export default function SpeakerFilterGrid() {
   return (
     <div className="space-y-6">
       {/* Filter Tabs Selector */}
-      <div className="flex flex-wrap justify-center gap-2 max-w-xl mx-auto" role="tablist" aria-label="Filtre des experts">
+      <div className="flex flex-wrap justify-center gap-2 max-w-xl mx-auto" role="tablist" aria-label="Speakers Filter">
         {filterTabs.map((tab) => {
           const isActive = activeFilter === tab.id;
           return (
@@ -73,7 +73,7 @@ export default function SpeakerFilterGrid() {
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200/60"
               }`}
             >
-              {language === "ar" ? tab.ar : tab.fr}
+              {language === "ar" ? tab.ar : tab.en}
             </button>
           );
         })}
@@ -83,19 +83,19 @@ export default function SpeakerFilterGrid() {
       <div className="space-y-8 max-w-7xl mx-auto">
         {(activeFilter === "all" || activeFilter === "conf-2025") &&
           renderGroup(
-            { fr: "Conférences — Édition 2025", ar: "محاضرات — دورة 2025" },
+            { en: "Conferences — 2025 Edition", ar: "محاضرات — دورة 2025" },
             conf2025
           )}
 
         {(activeFilter === "all" || activeFilter === "conf-2024") &&
           renderGroup(
-            { fr: "Conférences — Édition 2024", ar: "محاضرات — دورة 2024" },
+            { en: "Conferences — 2024 Edition", ar: "محاضرات — دورة 2024" },
             conf2024
           )}
 
         {(activeFilter === "all" || activeFilter === "workshop-2025") &&
           renderGroup(
-            { fr: "Ateliers & Workshops Pratiques — Édition 2025", ar: "الورشات التدريبية — دورة 2025" },
+            { en: "Hands-on Workshops — 2025 Edition", ar: "الورشات التدريبية — دورة 2025" },
             workshop2025
           )}
       </div>

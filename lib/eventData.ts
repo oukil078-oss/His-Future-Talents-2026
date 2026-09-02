@@ -1,6 +1,7 @@
 export interface ProgramItem {
   time: string;
   title: {
+    en?: string;
     fr: string;
     ar: string;
   };
@@ -9,10 +10,12 @@ export interface ProgramItem {
 export interface Speaker {
   name: string;
   role: {
+    en?: string;
     fr: string;
     ar: string;
   };
   specialty: {
+    en?: string;
     fr: string;
     ar: string;
   };
@@ -32,6 +35,7 @@ export interface SponsorPackage {
 
 export interface PackageBenefit {
   label: {
+    en?: string;
     fr: string;
     ar: string;
   };
@@ -42,10 +46,12 @@ export interface PackageBenefit {
 
 export const eventDetails = {
   date: {
+    en: "Tuesday, September 29, 2026",
     fr: "Mardi 29 Septembre 2026",
     ar: "الثلاثاء 29 سبتمبر 2026",
   },
   location: {
+    en: "HIS University, Algiers",
     fr: "HIS University, Alger",
     ar: "المعهد العالي للعلوم، برج الكيفان الجزائر العاصمة",
   },
@@ -67,6 +73,7 @@ export const programData: ProgramItem[] = [
   {
     time: "08:00",
     title: {
+      en: "Booth setup & exhibitor welcome",
       fr: "Mise en place des stands",
       ar: "تهيئة الأجنحة والاستعداد",
     },
@@ -74,6 +81,7 @@ export const programData: ProgramItem[] = [
   {
     time: "09:00",
     title: {
+      en: "Doors open & participant check-in",
       fr: "Ouverture des portes & accueil",
       ar: "فتح الأبواب واستقبال المشاركين",
     },
@@ -81,6 +89,7 @@ export const programData: ProgramItem[] = [
   {
     time: "10:00",
     title: {
+      en: "Opening ceremony & keynote addresses",
       fr: "Conférence d'ouverture — Keynote",
       ar: "Keynote — الجلسة الافتتاحية",
     },
@@ -88,6 +97,7 @@ export const programData: ProgramItem[] = [
   {
     time: "12:00",
     title: {
+      en: "Executive & VIP networking lunch",
       fr: "Networking Lunch",
       ar: "Networking Lunch — غداء وتواصل مهني",
     },
@@ -95,6 +105,7 @@ export const programData: ProgramItem[] = [
   {
     time: "13:00",
     title: {
+      en: "Parallel thematic sessions & interactive workshops",
       fr: "Sessions & Workshops — 3 en parallèle",
       ar: "جلسات وورشات تطبيقية — 3 ورشات بالتوازي",
     },
@@ -102,6 +113,7 @@ export const programData: ProgramItem[] = [
   {
     time: "15:30",
     title: {
+      en: "HIS Talent Awards ceremony & official closing",
       fr: "HIS Talent Awards & Clôture",
       ar: "HIS Talent Awards والاختتام",
     },
@@ -251,6 +263,7 @@ export const packagesData: SponsorPackage[] = [
 export const packageBenefits: PackageBenefit[] = [
   {
     label: {
+      en: "Premium exhibitor booth space in the main exhibition hall",
       fr: "Espace d'exposition premium (stand)",
       ar: "مساحة عرض مميزة (جناح خاص)",
     },
@@ -260,6 +273,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Logo and hyperlink featured on the official event website",
       fr: "Logo + lien sur le site officiel",
       ar: "الشعار مع رابط للموقع الإلكتروني الرسمي",
     },
@@ -269,6 +283,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Partner logo slideshow rotation across on-site event screens",
       fr: "Slideshow des partenaires sur les écrans de l'événement",
       ar: "عرض شعار المؤسسة على شاشات الفعالية",
     },
@@ -278,6 +293,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Official press Photo Wall displaying your corporate logo",
       fr: "Photo Wall officiel avec logo du partenaire",
       ar: "جدار الصور الرسمي حامل لشعار المؤسسة",
     },
@@ -287,6 +303,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Official partner speaking slot (4-5 min presentation & award handover)",
       fr: "Intervention partenaires · 4-5 min (certificat & présentation)",
       ar: "كلمة للمؤسسة مدتها 4-5 د (تقديم وتسليم شهادة)",
     },
@@ -296,6 +313,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Special mention across official press releases and national media coverage",
       fr: "Mention dans les communiqués de presse officiels",
       ar: "ذكر المؤسسة في البيانات الصحفية الرسمية",
     },
@@ -305,6 +323,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Dedicated social media spotlight posts across our digital channels",
       fr: "Publications dédiées sur les réseaux sociaux de l'événement",
       ar: "منشورات مخصصة على حسابات التواصل الاجتماعي",
     },
@@ -314,6 +333,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Comprehensive post-event report with detailed recruitment analytics",
       fr: "Rapport post-événement avec statistiques détaillées",
       ar: "تقرير ما بعد الحدث متضمن إحصائيات مفصلة",
     },
@@ -323,6 +343,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Official recognition certificate for distinguished partners",
       fr: "Certificat de reconnaissance officiel pour les partenaires",
       ar: "شهادة تقدير رسمية للشركاء والمساهمين",
     },
@@ -332,6 +353,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Corporate logo printed on official participant badges",
       fr: "Logo sur les badges officiels des participants",
       ar: "وضع الشعار على البطاقات التعريفية الرسمية",
     },
@@ -341,6 +363,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Event flags and prominent entrance signage",
       fr: "Event Flags – signalétique premium à l'entrée",
       ar: "أعلام ورايات إعلانية مميزة عند المدخل الرئيسي",
     },
@@ -350,6 +373,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Official event organizer t-shirts co-branded with your logo",
       fr: "T-shirts des organisateurs au nom du partenaire",
       ar: "شعار المؤسسة مطبوع على قمصان المنظمين",
     },
@@ -359,6 +383,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Promotional event brochures and flyers featuring your brand",
       fr: "Flyers distribués pendant l'événement avec logo du partenaire",
       ar: "توزيع مطويات ترويجية تحمل شعار المؤسسة",
     },
@@ -368,6 +393,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Livestream video outro sequence with prominent partner credit",
       fr: "Outro vidéo du live avec mention du partenaire",
       ar: "خاتمة البث المباشر متضمنة شعار المؤسسة",
     },
@@ -377,6 +403,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Lower-third digital banner overlay during live broadcast",
       fr: "Bannière 'Lower Third' pendant le live stream",
       ar: "شريط إعلاني أسفل شاشة البث المباشر",
     },
@@ -386,6 +413,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Exclusive social media feature: 1 Story + 3 dedicated Reels",
       fr: "1 Story + 3 Reels dédiés sur les réseaux sociaux",
       ar: "قصة واحدة (Story) و 3 مقاطع (Reels) على شبكاتنا",
     },
@@ -395,6 +423,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Keynote / panel discussion seat in thematic industry workshops",
       fr: "Prise de parole dans les panels et ateliers thématiques",
       ar: "المشاركة في الحلقات النقاشية وورشات العمل الموضوعاتية",
     },
@@ -404,6 +433,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Exclusive full access to the complete candidate CV database (CVthèque)",
       fr: "Accès privilégié à la base de CVs (CVthèque)",
       ar: "ولوج مميز لقاعدة السير الذاتية الكاملة للطلاب",
     },
@@ -413,6 +443,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Permanent on-screen logo watermark during the full live broadcast",
       fr: "Watermark permanent du logo pendant toute la durée du live",
       ar: "علامة مائية دائمة لشعاركم طيلة البث المباشر",
     },
@@ -422,6 +453,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Complete corporate stage branding in the main auditorium",
       fr: "Branding complet sur la scène principale",
       ar: "هوية المؤسسة البصرية كاملة على المنصة الرئيسية",
     },
@@ -431,6 +463,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Giant outdoor LED screen entrance broadcast – exclusive video spot",
       fr: "Écran LED devant la salle – diffusion exclusive",
       ar: "شاشة LED الكبيرة أمام القاعة – بث حصري للمؤسسة",
     },
@@ -440,6 +473,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Opening ceremony corporate video presentation (30 to 60 seconds)",
       fr: "Vidéo de présentation d'ouverture (30 à 60 secondes)",
       ar: "بث فيديو تعريفي للمؤسسة في الافتتاح (30-60 ثانية)",
     },
@@ -449,6 +483,7 @@ export const packageBenefits: PackageBenefit[] = [
   },
   {
     label: {
+      en: "Permanent sponsor watermark on all official high-res event photographs",
       fr: "Watermark permanent sur toutes les photos officielles",
       ar: "علامة مائية لشعاركم على كل الصور الرسمية",
     },
@@ -482,10 +517,12 @@ export type MediaPartner = {
   logo: string;
   website: string;
   description: {
+    en?: string;
     fr: string;
     ar: string;
   };
   keyPoints: {
+    en?: string[];
     fr: string[];
     ar: string[];
   };
