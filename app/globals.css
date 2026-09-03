@@ -482,3 +482,23 @@ h1, h2, h3, h4, h5, h6, .font-heading,
   [data-gsap] { opacity: 1 !important; }
   #scroll-progress { display: none; }
 }
+
+/* QR Scanner Laser Animation */
+@keyframes scanLaser {
+  0% {
+    top: 6%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 92%;
+    opacity: 1;
+  }
+  100% {
+    top: 6%;
+    opacity: 0.8;
+  }
+}
+
+.animate-scan-laser {
+  animation: scanLaser 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}

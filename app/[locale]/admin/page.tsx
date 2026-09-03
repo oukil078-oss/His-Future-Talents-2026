@@ -5,7 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { ExhibitorLead, StudentApplication } from "@/lib/dataStore";
 import { Partner } from "@/data/partners";
 import StudentBadge from "@/components/StudentBadge";
-import { Html5QrcodeScanner } from "html5-qrcode";
+import { Html5Qrcode } from "html5-qrcode";
 import {
   Shield,
   Building2,
@@ -41,7 +41,87 @@ import {
   QrCode,
   Camera,
   Mail,
+  RotateCcw,
+  X,
+  Zap,
 } from "lucide-react";
+
+/**
+ * Robust helper to extract and match student records from any scanned QR URL,
+ * query parameters, raw badge code, student ID, email, or phone.
+ */
+function findMatchingStudent(rawInput: string, students: StudentApplication[]): StudentApplication | null {
+  if (!rawInput || !students.length) return null;
+  const input = rawInput.trim();
+  const inputUpper = input.toUpperCase();
+
+  // 1. URL search params parsing (e.g. ?id=...&code=... or full verification URL)
+  try {
+    let searchStr = "";
+    if (input.includes("?")) {
+      searchStr = input.split("?")[1];
+    } else if (input.startsWith("http://") || input.startsWith("https://")) {
+      searchStr = new URL(input).search.replace(/^\?/, "");
+    }
+    if (searchStr) {
+      const params = new URLSearchParams(searchStr);
+      const urlId = params.get("id") || params.get("ID");
+      const urlCode = params.get("code") || params.get("CODE") || params.get("badgeId") || params.get("BADGEID") || params.get("CONFIRMBADGE");
+      const urlEmail = params.get("email") || params.get("EMAIL");
+
+      const match = students.find((s) => {
+        if (urlId && s.id && s.id.toLowerCase() === urlId.toLowerCase()) return true;
+        if (urlCode && s.badgeId && s.badgeId.toUpperCase().replace(/[-_]/g, "") === urlCode.toUpperCase().replace(/[-_]/g, "")) return true;
+        if (urlEmail && s.email && s.email.toLowerCase() === urlEmail.toLowerCase()) return true;
+        return false;
+      });
+      if (match) return match;
+    }
+  } catch (e) {
+    // Ignore URL parse errors
+  }
+
+  // 2. Regex extraction for Badge ID (e.g. HFT-2026-XXXX) and Student ID (std_...)
+  const badgeMatch = input.match(/HFT[-_]?2026[-_]?([A-Z0-9]{4,6})/i);
+  if (badgeMatch) {
+    const extracted = badgeMatch[0].toUpperCase().replace(/[-_]/g, "");
+    const match = students.find((s) => s.badgeId && s.badgeId.toUpperCase().replace(/[-_]/g, "") === extracted);
+    if (match) return match;
+  }
+
+  const stdMatch = input.match(/std_[0-9]+_[a-z0-9]+/i);
+  if (stdMatch) {
+    const extracted = stdMatch[0].toLowerCase();
+    const match = students.find((s) => s.id && s.id.toLowerCase() === extracted);
+    if (match) return match;
+  }
+
+  // 3. Exact & normalized field matching
+  const cleanUpper = inputUpper.replace(/\s+/g, " ");
+  const cleanPhone = input.replace(/[^0-9]/g, "");
+
+  return (
+    students.find((s) => {
+      const sId = (s.id || "").toUpperCase();
+      const sBadge = (s.badgeId || "").toUpperCase();
+      const sEmail = (s.email || "").toUpperCase();
+      const sPhone = (s.phone || "").replace(/[^0-9]/g, "");
+      const sFullName = `${s.firstName || ""} ${s.lastName || ""}`.trim().toUpperCase();
+
+      if (sBadge === cleanUpper || sBadge.replace(/[-_]/g, "") === cleanUpper.replace(/[-_]/g, "")) return true;
+      if (sId === cleanUpper) return true;
+      if (sEmail === cleanUpper) return true;
+      if (cleanPhone.length >= 8 && sPhone.includes(cleanPhone)) return true;
+      if (sFullName && (sFullName === cleanUpper || cleanUpper.includes(sFullName))) return true;
+
+      // Substring fallback in raw query
+      if (sBadge && inputUpper.includes(sBadge)) return true;
+      if (sId && inputUpper.includes(sId)) return true;
+
+      return false;
+    }) || null
+  );
+}
 
 function CameraScannerComponent({
   onScanResult,
@@ -50,64 +130,243 @@ function CameraScannerComponent({
 }) {
   const { language } = useLanguage();
   const [active, setActive] = useState(false);
+  const [cameraError, setCameraError] = useState<string | null>(null);
+  const [isScanning, setIsScanning] = useState(false);
+  const [scanSuccess, setScanSuccess] = useState(false);
+  const [hasMultipleCameras, setHasMultipleCameras] = useState(false);
+  const [currentFacingMode, setCurrentFacingMode] = useState<"environment" | "user">("environment");
+  const scannerRef = useRef<Html5Qrcode | null>(null);
 
   useEffect(() => {
     if (!active) return;
-    let scanner: Html5QrcodeScanner | null = null;
-    try {
-      scanner = new Html5QrcodeScanner(
-        "html5qr-code-full-region",
-        {
-          fps: 10,
-          qrbox: { width: 220, height: 220 },
+    let html5Qr: Html5Qrcode | null = null;
+    let isMounted = true;
+
+    const initScanner = async () => {
+      try {
+        setCameraError(null);
+        setScanSuccess(false);
+
+        html5Qr = new Html5Qrcode("hft-custom-qr-reader", false);
+        scannerRef.current = html5Qr;
+
+        const config = {
+          fps: 15,
+          qrbox: (viewfinderWidth: number, viewfinderHeight: number) => {
+            const minEdge = Math.min(viewfinderWidth, viewfinderHeight);
+            const size = Math.max(200, Math.floor(minEdge * 0.75));
+            return { width: size, height: size };
+          },
           aspectRatio: 1.0,
-        },
-        false
-      );
+          experimentalFeatures: {
+            useBarCodeDetectorIfSupported: true,
+          },
+        };
 
-      scanner.render(
-        (decodedText) => {
-          onScanResult(decodedText);
-          setActive(false);
-        },
-        (error) => {}
-      );
-    } catch (err) {
-      console.error("Camera scanner error:", err);
-    }
+        await html5Qr.start(
+          { facingMode: currentFacingMode },
+          config,
+          (decodedText) => {
+            if (!isMounted) return;
+            // Play success chime
+            try {
+              const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+              const osc = audioCtx.createOscillator();
+              const gain = audioCtx.createGain();
+              osc.connect(gain);
+              gain.connect(audioCtx.destination);
+              osc.type = "sine";
+              osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+              osc.frequency.exponentialRampToValueAtTime(1320, audioCtx.currentTime + 0.12);
+              gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+              gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+              osc.start();
+              osc.stop(audioCtx.currentTime + 0.12);
+            } catch (e) {}
 
-    return () => {
-      if (scanner) {
-        scanner.clear().catch((err) => console.error("Error clearing scanner:", err));
+            // Haptic vibration
+            if (typeof window !== "undefined" && window.navigator?.vibrate) {
+              window.navigator.vibrate([40, 30, 40]);
+            }
+
+            setScanSuccess(true);
+            onScanResult(decodedText);
+
+            setTimeout(() => {
+              if (isMounted) {
+                setActive(false);
+                setScanSuccess(false);
+              }
+            }, 650);
+          },
+          () => {}
+        );
+
+        if (isMounted) {
+          setIsScanning(true);
+        }
+
+        try {
+          const devices = await Html5Qrcode.getCameras();
+          if (devices && devices.length > 1 && isMounted) {
+            setHasMultipleCameras(true);
+          }
+        } catch (e) {}
+      } catch (err: any) {
+        console.error("Camera scanner error:", err);
+        if (isMounted) {
+          setIsScanning(false);
+          setCameraError(
+            language === "ar"
+              ? "تعذر تشغيل الكاميرا. يرجى التأكد من منح الإذن للمتصفح."
+              : "Could not access camera. Please allow camera permissions in your browser."
+          );
+        }
       }
     };
-  }, [active, onScanResult]);
+
+    const timer = setTimeout(() => {
+      initScanner();
+    }, 120);
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+      if (html5Qr && html5Qr.isScanning) {
+        html5Qr
+          .stop()
+          .catch(() => {})
+          .finally(() => {
+            try {
+              html5Qr?.clear();
+            } catch (e) {}
+          });
+      }
+    };
+  }, [active, currentFacingMode, language, onScanResult]);
+
+  const toggleCameraFacing = async () => {
+    if (scannerRef.current && scannerRef.current.isScanning) {
+      await scannerRef.current.stop().catch(() => {});
+      scannerRef.current.clear();
+      scannerRef.current = null;
+    }
+    setIsScanning(false);
+    setCurrentFacingMode((prev) => (prev === "environment" ? "user" : "environment"));
+  };
 
   return (
     <div className="space-y-4">
       {!active ? (
         <button
           onClick={() => setActive(true)}
-          className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#003876] via-[#0E1B2C] to-[#003876] hover:from-[#F05A22] hover:to-[#003876] text-white font-black text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 border border-white/10"
+          className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#003876] via-[#0E1B2C] to-[#003876] hover:from-[#F05A22] hover:to-[#003876] text-white font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center justify-center gap-3 border border-white/10 group"
         >
-          <Camera className="w-5 h-5 text-[#FFBD0E] animate-bounce" />
-          <span>{language === "ar" ? "تفعيل ماسح الكاميرا (هاتف / ويب كام)" : "Activate Camera Scanner (Phone / Webcam)"}</span>
+          <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <Camera className="w-4 h-4 text-[#FFBD0E] animate-pulse" />
+          </div>
+          <span>
+            {language === "ar"
+              ? "فتح ماسح الكاميرا السريع (Scan QR)"
+              : "Open Fast Camera QR Scanner"}
+          </span>
         </button>
       ) : (
-        <div className="space-y-3 bg-slate-900 border-2 border-[#003876] rounded-3xl p-4 text-center shadow-xl">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <span className="text-xs font-black uppercase text-[#FFBD0E] flex items-center gap-1.5">
-              <Camera className="w-4 h-4 text-emerald-400 animate-pulse" />
-              {language === "ar" ? "الماسح نشط — امسح رمز الاستجابة السريعة" : "Camera Scanner Active — Scan QR Pass"}
-            </span>
-            <button
-              onClick={() => setActive(false)}
-              className="text-xs font-bold text-slate-300 hover:text-white px-3 py-1 bg-red-600/80 hover:bg-red-600 rounded-xl transition-all"
-            >
-              {language === "ar" ? "إغلاق الكاميرا" : "Close Camera"}
-            </button>
+        <div className="bg-slate-950 border-2 border-[#003876] rounded-3xl p-4 sm:p-5 shadow-2xl space-y-4 text-center animate-fadeIn">
+          {/* Top Bar */}
+          <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs font-black uppercase text-[#FFBD0E] tracking-wider">
+                {language === "ar" ? "الكاميرا جاهزة للمسح" : "Scanner Ready — Aim at Badge"}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              {hasMultipleCameras && (
+                <button
+                  type="button"
+                  onClick={toggleCameraFacing}
+                  className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center gap-1.5 border border-slate-700"
+                  title="Switch Camera"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">{language === "ar" ? "تبديل الكاميرا" : "Flip"}</span>
+                </button>
+              )}
+
+              <button
+                type="button"
+                onClick={() => {
+                  if (scannerRef.current && scannerRef.current.isScanning) {
+                    scannerRef.current
+                      .stop()
+                      .catch(() => {})
+                      .finally(() => {
+                        try {
+                          scannerRef.current?.clear();
+                        } catch (e) {}
+                      });
+                  }
+                  setActive(false);
+                }}
+                className="px-3.5 py-1.5 rounded-xl bg-red-600/90 hover:bg-red-600 text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md"
+              >
+                <X className="w-4 h-4" />
+                <span>{language === "ar" ? "إلغاء" : "Close"}</span>
+              </button>
+            </div>
           </div>
-          <div id="html5qr-code-full-region" className="w-full rounded-2xl overflow-hidden text-slate-900 bg-white" />
+
+          {/* Camera Viewfinder Box with Laser Reticle */}
+          <div className="relative w-full max-w-sm mx-auto aspect-square rounded-2xl overflow-hidden bg-black border border-slate-800 shadow-inner flex items-center justify-center">
+            {/* HTML5 QR Code Mount Target */}
+            <div id="hft-custom-qr-reader" className="w-full h-full overflow-hidden" />
+
+            {/* Futuristic Targeting Reticle Overlay */}
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+              <div
+                className={`relative w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 ${
+                  scanSuccess
+                    ? "scale-105 border-4 border-emerald-400 shadow-[0_0_30px_rgba(52,211,153,0.8)] rounded-3xl"
+                    : ""
+                }`}
+              >
+                {/* 4 Golden Corners */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 rounded-tl-2xl border-[#FFBD0E] shadow-[0_0_10px_#FFBD0E]" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 rounded-tr-2xl border-[#FFBD0E] shadow-[0_0_10px_#FFBD0E]" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 rounded-bl-2xl border-[#FFBD0E] shadow-[0_0_10px_#FFBD0E]" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 rounded-br-2xl border-[#FFBD0E] shadow-[0_0_10px_#FFBD0E]" />
+
+                {/* Animated Horizontal Laser Beam */}
+                {!scanSuccess && (
+                  <div className="absolute left-2 right-2 h-0.5 bg-gradient-to-r from-transparent via-[#FFBD0E] to-transparent shadow-[0_0_12px_#FFBD0E] animate-scan-laser pointer-events-none" />
+                )}
+
+                {scanSuccess && (
+                  <div className="absolute inset-0 bg-emerald-500/20 backdrop-blur-[1px] rounded-2xl flex items-center justify-center">
+                    <CheckCircle2 className="w-16 h-16 text-emerald-400 animate-bounce" />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Helper caption */}
+          <p className="text-xs text-slate-400 font-medium">
+            {language === "ar"
+              ? "وجّه الكاميرا مباشرة نحو رمز الاستجابة السريعة (QR) على بطاقة الطالب"
+              : "Align the QR code on the student pass badge inside the golden frame"}
+          </p>
+
+          {cameraError && (
+            <div className="p-3 rounded-xl bg-red-950/80 border border-red-800 text-red-300 text-xs font-bold text-center">
+              {cameraError}
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -144,6 +403,31 @@ export default function AdminDashboard() {
   const [scannerInput, setScannerInput] = useState("");
   const [scannedStudentResult, setScannedStudentResult] = useState<StudentApplication | null>(null);
   const [scannerError, setScannerError] = useState("");
+
+  const handleProcessScanOrSearch = (rawInput: string) => {
+    const raw = (rawInput || "").trim();
+    if (!raw) return;
+    const match = findMatchingStudent(raw, students);
+    if (match) {
+      setScannedStudentResult(match);
+      setScannerError("");
+      setScannerInput(match.badgeId || match.email || match.id);
+    } else {
+      setScannedStudentResult(null);
+      let displayRef = raw;
+      try {
+        if (displayRef.includes("?")) {
+          const sp = new URLSearchParams(displayRef.split("?")[1]);
+          displayRef = sp.get("code") || sp.get("CODE") || sp.get("id") || sp.get("ID") || sp.get("name") || displayRef;
+        }
+      } catch (e) {}
+      setScannerError(
+        language === "ar"
+          ? `لم يتم العثور على طالب بالمعرف: ${displayRef}`
+          : `No student found with reference: ${displayRef}`
+      );
+    }
+  };
 
   // Sponsor manager state
   const [sponsorEditionFilter, setSponsorEditionFilter] = useState<number>(2026);
@@ -1289,21 +1573,7 @@ export default function AdminDashboard() {
                     onChange={(e) => setScannerInput(e.target.value)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
-                        const query = scannerInput.trim().toUpperCase();
-                        if (!query) return;
-                        const match = students.find(
-                          (s) =>
-                            s.badgeId?.toUpperCase() === query ||
-                            s.email.toUpperCase() === query ||
-                            s.id.toUpperCase() === query
-                        );
-                        if (match) {
-                          setScannedStudentResult(match);
-                          setScannerError("");
-                        } else {
-                          setScannedStudentResult(null);
-                          setScannerError(language === "ar" ? `لم يتم العثور على طالب بالمعرف: ${query}` : `No student found with reference: ${query}`);
-                        }
+                        handleProcessScanOrSearch(scannerInput);
                       }
                     }}
                     className="w-full h-12 pl-12 pr-4 rounded-2xl border border-slate-200 font-mono text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#003876]"
@@ -1311,24 +1581,9 @@ export default function AdminDashboard() {
                 </div>
 
                 <button
-                  onClick={() => {
-                    const query = scannerInput.trim().toUpperCase();
-                    if (!query) return;
-                    const match = students.find(
-                      (s) =>
-                        s.badgeId?.toUpperCase() === query ||
-                        s.email.toUpperCase() === query ||
-                        s.id.toUpperCase() === query
-                    );
-                    if (match) {
-                      setScannedStudentResult(match);
-                      setScannerError("");
-                    } else {
-                      setScannedStudentResult(null);
-                      setScannerError(language === "ar" ? `لم يتم العثور على طالب بالمعرف: ${query}` : `No student found with reference: ${query}`);
-                    }
-                  }}
-                  className="h-12 px-6 rounded-2xl bg-[#003876] hover:bg-[#F05A22] text-white font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
+                  type="button"
+                  onClick={() => handleProcessScanOrSearch(scannerInput)}
+                  className="h-12 px-6 rounded-2xl bg-[#003876] hover:bg-[#F05A22] text-white font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Search className="w-4 h-4" />
                   <span>{language === "ar" ? "بحث عن البطاقة" : "Search Pass"}</span>
@@ -1339,24 +1594,7 @@ export default function AdminDashboard() {
               <div className="pt-2">
                 <CameraScannerComponent
                   onScanResult={(decodedText) => {
-                    let query = decodedText.trim().toUpperCase();
-                    if (query.includes("CONFIRMBADGE=")) {
-                      query = query.split("CONFIRMBADGE=")[1]?.split("&")[0]?.trim() || query;
-                    }
-                    setScannerInput(query);
-                    const match = students.find(
-                      (s) =>
-                        s.badgeId?.toUpperCase() === query ||
-                        s.email.toUpperCase() === query ||
-                        s.id.toUpperCase() === query
-                    );
-                    if (match) {
-                      setScannedStudentResult(match);
-                      setScannerError("");
-                    } else {
-                      setScannedStudentResult(null);
-                      setScannerError(language === "ar" ? `لم يتم العثور على طالب بالمعرف: ${query}` : `No student found with reference: ${query}`);
-                    }
+                    handleProcessScanOrSearch(decodedText);
                   }}
                 />
               </div>
