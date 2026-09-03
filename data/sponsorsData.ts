@@ -38,10 +38,10 @@ export const verifiedSponsors2026: Sponsor[] = [
     logo: "/partners/2026/prophex.png",
     tier: "Bronze",
     edition: "2026",
-    website: "https://www.profex.dz",
+    website: "https://www.prophex.dz",
     description: {
-      en: "Manufacturer of certified high-quality personal care products and medical devices.",
-      ar: "شركة متخصصة في تصنيع منتجات العناية والأجهزة الطبية عالية الجودة."
+      en: "Leading distributor of high-grade plumbing, central heating, sanitary ware, drainage, and modern irrigation solutions.",
+      ar: "مؤسسة رائدة في التوزيع المعتمد لتجهيزات السباكة والترصيص، التدفئة، التجهيزات الصحية وأنظمة الري والصرف."
     }
   }
 ];

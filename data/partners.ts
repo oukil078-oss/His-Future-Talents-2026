@@ -98,20 +98,20 @@ export const partners: Partner[] = [
     "sponsorTier": "bronze",
     "featured": true,
     "description": {
-      "en": "Profex is a specialized manufacturer of high-quality healthcare products and medical devices, adhering strictly to international standards and regulatory requirements.",
-      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
+      "en": "PROPHEX SOLUTIONS GROUP is a premier Algerian enterprise founded in 2016, specializing in the certified distribution and supply of plumbing, heating, sanitary ware, drainage systems, and modern irrigation solutions.",
+      "ar": "مجموعة بروفكس للحلول (PROPHEX SOLUTIONS GROUP) هي مؤسسة تجارية جزائرية رائدة تأسست عام 2016، متخصصة في التوزيع المعتمد لمنتجات السباكة والترصيص، التدفئة المركزية، التجهيزات الصحية، وأنظمة الري والصرف."
     },
-    "website": "https://www.profex.dz",
+    "website": "https://www.prophex.dz",
     "keyPoints": {
       "en": [
-        "Leading Algerian manufacturer of certified medical devices and healthcare consumables",
-        "Strict compliance with international ISO and health regulatory standards",
-        "Active recruiter of biomedical engineers, production specialists, and quality control experts"
+        "Premier Algerian distributor of plumbing, central heating, and sanitary systems",
+        "Advanced solutions for water drainage, evacuation, and modern agricultural irrigation",
+        "Official Bronze Sponsor of HIS Future Talents 2026 offering engineering & commercial career opportunities"
       ],
       "ar": [
-        "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
-        "الامتثال للمعايير الدولية للجودة والسلامة.",
-        "الراعي البرونزي الرسمي لصالون HIS Future Talents 2026."
+        "الرائد الجزائري في توزيع تجهيزات السباكة والترصيص الصحي والتدفئة المركزية.",
+        "حلول متطورة لشبكات تصريف المياه، العزل، وتجهيزات الري الحديثة.",
+        "الراعي البرونزي الرسمي لصالون HIS Future Talents 2026 وفرص استقطاب للكفاءات الهندسية والتجارية."
       ]
     }
   },
@@ -441,25 +441,25 @@ export const partners: Partner[] = [
     }
   },
   {
-    "name": "Profex",
-    "slug": "profex",
+    "name": "PROPHEX",
+    "slug": "prophex-2025",
     "logo": "/partners/2025/prophex.png",
     "edition": 2025,
     "description": {
-      "en": "Profex is a specialized manufacturer of high-quality healthcare products and medical devices, adhering strictly to international standards and regulatory requirements.",
-      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
+      "en": "PROPHEX SOLUTIONS GROUP is a premier Algerian enterprise specializing in the distribution and supply of plumbing, heating, sanitary ware, drainage systems, and modern irrigation solutions.",
+      "ar": "مجموعة بروفكس للحلول (PROPHEX SOLUTIONS GROUP) هي مؤسسة جزائرية متخصصة في توزيع وتوريد منتجات السباكة، التدفئة المركزية، التجهيزات الصحية وشبكات الري والصرف."
     },
-    "website": "https://www.profex.dz",
+    "website": "https://www.prophex.dz",
     "keyPoints": {
       "en": [
-        "Leading Algerian manufacturer of certified medical devices and healthcare consumables",
-        "Strict compliance with international ISO and health regulatory standards",
-        "Active recruiter of biomedical engineers, production specialists, and quality control experts"
+        "Premier Algerian distributor of plumbing, central heating, and sanitary systems",
+        "Advanced solutions for water drainage, evacuation, and modern agricultural irrigation",
+        "Official partner of HIS Future Talents"
       ],
       "ar": [
-        "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
-        "الامتثال للمعايير الدولية للجودة والسلامة.",
-        "علامة تجارية موثوقة لمهنيي الصحة والمستهلكين على حد سواء."
+        "توزيع معتمد لتجهيزات السباكة والترصيص الصحي والتدفئة المركزية.",
+        "حلول متطورة لشبكات تصريف المياه وتجهيزات الري الحديثة.",
+        "شريك رسمي لصالون HIS Future Talents."
       ]
     }
   },

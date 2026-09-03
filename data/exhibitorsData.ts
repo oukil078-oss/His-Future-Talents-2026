@@ -10,7 +10,7 @@ export const verifiedExhibitors2025: Exhibitor[] = [
   { name: "HIS University", logo: "/partners/2025/his-university.png", edition: "2025", website: "https://his.edu.dz" },
   { name: "HIS Training Center", logo: "/shared/his-training-center.png", edition: "2025", website: "https://his.edu.dz" },
   { name: "IRAcademy", logo: "/shared/iracademy.png", edition: "2025", website: "https://his.edu.dz" },
-  { name: "Profex", logo: "/partners/2025/prophex.png", edition: "2025", website: "https://www.profex.dz" },
+  { name: "PROPHEX", logo: "/partners/2025/prophex.png", edition: "2025", website: "https://www.prophex.dz" },
   { name: "Faderco", logo: "/partners/2025/faderco.png", edition: "2025", website: "https://faderco.co" },
   { name: "Henkel", logo: "/partners/2025/henkel.png", edition: "2025", website: "https://www.henkel-algerie.com" },
   { name: "DealZone", logo: "/partners/2025/dealzone.png", edition: "2025", website: "https://www.dealzone.dz" },
@@ -39,7 +39,7 @@ export const verifiedExhibitors2025: Exhibitor[] = [
 
 export const verifiedExhibitors2024: Exhibitor[] = [
   { name: "SATIM", logo: "/partners/2024/satim.png", edition: "2024", website: "https://www.satim.dz" },
-  { name: "Profex", logo: "/partners/2024/prophex.png", edition: "2024", website: "https://www.profex.dz" },
+  { name: "PROPHEX", logo: "/partners/2024/prophex.png", edition: "2024", website: "https://www.prophex.dz" },
   { name: "Hayat", logo: "/partners/2024/hayat.png", edition: "2024", website: "https://www.hayat.com.tr" },
   { name: "El Djazair Takaful", logo: "/partners/2024/el-djazair-takaful.png", edition: "2024", website: "https://www.eldjazairtakaful.dz" },
   { name: "El Kendi", logo: "/partners/2024/elkendi.png", edition: "2024", website: "https://www.elkendi.com" },
