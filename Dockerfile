@@ -1,5 +1,8 @@
 FROM node:20-alpine AS base
 
+# Install fontconfig and fonts for sharp/librsvg text rendering (avoids tofu boxes)
+RUN apk add --no-cache fontconfig ttf-dejavu font-noto font-noto-arabic ttf-freefont && fc-cache -f
+
 WORKDIR /app
 
 # Install dependencies

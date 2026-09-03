@@ -1,5 +1,32 @@
 [
   {
+    "firstName": "zakarya",
+    "lastName": "oukil",
+    "email": "zakaryaoukil2003@gmail.com",
+    "phone": "0773234526",
+    "wilaya": "Bourdj Elkiffen",
+    "ageCategory": "18–24 سنة",
+    "currentStatus": "طالب (ليسانس / ماستر / مهندس)",
+    "fieldOfStudyOrWork": "CyberSec",
+    "university": "HIS",
+    "studyLevel": "طالب (ليسانس / ماستر / مهندس)",
+    "cvUrl": "/uploads/cv/cv-1788459094699-01.pdf",
+    "cvFileName": "01.pdf",
+    "seekingObjectives": [
+      "بناء شبكة علاقات مهنية",
+      "فرص تدريب"
+    ],
+    "interestedFields": [],
+    "interestedCompanies": [],
+    "interests": [],
+    "howDidYouHear": "",
+    "additionalComments": "",
+    "id": "std_1788459100874_7wm22",
+    "badgeId": "HFT-2026-LP5G",
+    "status": "Confirmé",
+    "submittedAt": "2026-09-03T18:11:40.874Z"
+  },
+  {
     "id": "std_1788451152543_vbgap",
     "badgeId": "HFT-2026-MGQ5",
     "firstName": "Zakarya",

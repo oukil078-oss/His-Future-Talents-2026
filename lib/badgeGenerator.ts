@@ -109,17 +109,17 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
 
     <!-- Top Left Institutional Header Text in HFT Gold -->
     <g transform="translate(36, 36)">
-      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11" fill="#FFBD0E" letter-spacing="1.2">UNDER THE HIGH PATRONAGE OF</text>
-      <text x="0" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9.5" fill="#FFFFFF" letter-spacing="0.8">MINISTRY OF HIGHER EDUCATION &amp; S.R</text>
-      <text x="0" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9.5" fill="#CBD5E1" letter-spacing="0.8">MINISTRY OF KNOWLEDGE ECONOMY &amp; STARTUPS</text>
+      <text x="0" y="0" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11" fill="#FFBD0E" letter-spacing="1.2">UNDER THE HIGH PATRONAGE OF</text>
+      <text x="0" y="15" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9.5" fill="#FFFFFF" letter-spacing="0.8">MINISTRY OF HIGHER EDUCATION &amp; S.R</text>
+      <text x="0" y="28" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9.5" fill="#CBD5E1" letter-spacing="0.8">MINISTRY OF KNOWLEDGE ECONOMY &amp; STARTUPS</text>
     </g>
 
     <!-- Top Right Location & Dates Text in HFT Palette -->
     <g transform="translate(964, 36)" text-anchor="end">
-      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11.5" fill="#FFFFFF" letter-spacing="1.5">HIS UNIVERSITY</text>
-      <text x="0" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10.5" fill="#58B9FF" letter-spacing="1.5">ALGIERS</text>
-      <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22" fill="#FFBD0E" letter-spacing="0.5">29</text>
-      <text x="0" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="12" fill="#FFFFFF" letter-spacing="2">SEPTEMBER 2026</text>
+      <text x="0" y="0" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11.5" fill="#FFFFFF" letter-spacing="1.5">HIS UNIVERSITY</text>
+      <text x="0" y="15" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10.5" fill="#58B9FF" letter-spacing="1.5">ALGIERS</text>
+      <text x="0" y="38" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22" fill="#FFBD0E" letter-spacing="0.5">29</text>
+      <text x="0" y="55" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="12" fill="#FFFFFF" letter-spacing="2">SEPTEMBER 2026</text>
     </g>
 
     <!-- ── CENTER OFFICIAL HIS FUTURE TALENTS LOGO + SLOGAN ── -->
@@ -156,14 +156,14 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
       </g>
 
       <!-- Slogan under official logo in bold HFT Gold -->
-      <text x="0" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11.5" fill="#FFBD0E" letter-spacing="2.8" text-anchor="middle">FROM POTENTIAL TO PROFESSION</text>
+      <text x="0" y="102" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11.5" fill="#FFBD0E" letter-spacing="2.8" text-anchor="middle">FROM POTENTIAL TO PROFESSION</text>
     </g>
 
     <!-- Bottom Separator Line & Event Highlights Text in Top Banner -->
     <line x1="36" y1="264" x2="964" y2="264" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="1" />
     <g transform="translate(964, 284)" text-anchor="end">
-      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="10.5" fill="#FFBD0E" letter-spacing="1.2">THE #1 TALENT &amp; RECRUITMENT FAIR IN ALGERIA</text>
-      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9" fill="#E2E8F0" letter-spacing="0.8">INTERNSHIPS, JOBS, NETWORKING, WORKSHOPS &amp; CONFERENCES</text>
+      <text x="0" y="0" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="10.5" fill="#FFBD0E" letter-spacing="1.2">THE #1 TALENT &amp; RECRUITMENT FAIR IN ALGERIA</text>
+      <text x="0" y="16" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9" fill="#E2E8F0" letter-spacing="0.8">INTERNSHIPS, JOBS, NETWORKING, WORKSHOPS &amp; CONFERENCES</text>
     </g>
 
     <!-- ════════════════════ BOTTOM SECTION (USER DETAILS + QR CODE) ════════════════════ -->
@@ -172,21 +172,21 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
     <!-- Bottom Left: Participant Details -->
     <g transform="translate(48, 356)">
       <!-- Event Name & Category Title in HIS Deep Navy -->
-      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="23" fill="#003876" letter-spacing="0.5">HIS FUTURE TALENTS 2026</text>
+      <text x="0" y="0" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="23" fill="#003876" letter-spacing="0.5">HIS FUTURE TALENTS 2026</text>
 
       <!-- Inscription Reference Number -->
       <g transform="translate(0, 16)">
-        <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="14.5" fill="#334155">
+        <text x="0" y="18" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="14.5" fill="#334155">
           Registration N° <tspan font-family="monospace, Courier" font-weight="900" font-size="16" fill="#F05A22">${badgeId}</tspan>
         </text>
       </g>
 
       <!-- Full Name & Profession -->
       <g transform="translate(0, 66)">
-        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="24" fill="#00224A" letter-spacing="0.5">
+        <text x="0" y="0" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="24" fill="#00224A" letter-spacing="0.5">
           ${fullName}
         </text>
-        <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="14.5" fill="#F05A22" letter-spacing="0.5">
+        <text x="0" y="24" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="14.5" fill="#F05A22" letter-spacing="0.5">
           ${professionText}
         </text>
       </g>
@@ -196,10 +196,10 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
 
       <!-- Venue & Date -->
       <g transform="translate(0, 134)">
-        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#475569">
+        <text x="0" y="0" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#475569">
           Campus HIS University, Bordj El Kiffan, Algiers
         </text>
-        <text x="0" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13.5" fill="#003876">
+        <text x="0" y="20" font-family="'DejaVu Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13.5" fill="#003876">
           Tuesday, September 29, 2026 from 08:30 AM
         </text>
       </g>

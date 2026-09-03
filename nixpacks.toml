@@ -1,0 +1,3 @@
+# Nixpacks configuration for Dokploy
+[phases.setup]
+aptPkgs = ["fontconfig", "fonts-dejavu-core", "fonts-noto-core"]
