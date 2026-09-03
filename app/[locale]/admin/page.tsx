@@ -133,8 +133,8 @@ function CameraScannerComponent({
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [isScanning, setIsScanning] = useState(false);
   const [scanSuccess, setScanSuccess] = useState(false);
-  const [hasMultipleCameras, setHasMultipleCameras] = useState(false);
-  const [currentFacingMode, setCurrentFacingMode] = useState<"environment" | "user">("environment");
+  const [cameras, setCameras] = useState<{ id: string; label: string }[]>([]);
+  const [currentCameraIndex, setCurrentCameraIndex] = useState(0);
   const scannerRef = useRef<Html5Qrcode | null>(null);
 
   useEffect(() => {
@@ -147,79 +147,99 @@ function CameraScannerComponent({
         setCameraError(null);
         setScanSuccess(false);
 
+        // Step 1: Detect available cameras
+        let availableDevices: { id: string; label: string }[] = [];
+        try {
+          const devs = await Html5Qrcode.getCameras();
+          if (devs && devs.length > 0) {
+            // Sort to place rear/back cameras first
+            const rear = devs.filter((d) => /back|rear|environment|arrière/i.test(d.label));
+            const front = devs.filter((d) => /front|user|avant|selfie/i.test(d.label));
+            const others = devs.filter((d) => !rear.includes(d) && !front.includes(d));
+            availableDevices = [...rear, ...others, ...front];
+            if (availableDevices.length === 0) availableDevices = devs;
+            if (isMounted) {
+              setCameras(availableDevices);
+            }
+          }
+        } catch (camListErr) {
+          console.warn("Could not enumerate camera devices:", camListErr);
+        }
+
+        if (!isMounted) return;
+
+        // Step 2: Initialize Html5Qrcode instance
         html5Qr = new Html5Qrcode("hft-custom-qr-reader", false);
         scannerRef.current = html5Qr;
 
+        // Configuration:
+        // CRITICAL: Do NOT force aspectRatio: 1.0 because smartphone rear camera hardware
+        // fails to negotiate 1:1 constraints and streams a black feed. CSS handles the visual crop.
         const config = {
           fps: 15,
-          qrbox: (viewfinderWidth: number, viewfinderHeight: number) => {
-            const minEdge = Math.min(viewfinderWidth, viewfinderHeight);
-            const size = Math.max(200, Math.floor(minEdge * 0.75));
-            return { width: size, height: size };
-          },
-          aspectRatio: 1.0,
-          experimentalFeatures: {
-            useBarCodeDetectorIfSupported: true,
-          },
+          qrbox: { width: 240, height: 240 },
+          disableFlip: true,
         };
 
-        await html5Qr.start(
-          { facingMode: currentFacingMode },
-          config,
-          (decodedText) => {
-            if (!isMounted) return;
-            // Play success chime
-            try {
-              const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-              const osc = audioCtx.createOscillator();
-              const gain = audioCtx.createGain();
-              osc.connect(gain);
-              gain.connect(audioCtx.destination);
-              osc.type = "sine";
-              osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-              osc.frequency.exponentialRampToValueAtTime(1320, audioCtx.currentTime + 0.12);
-              gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-              gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
-              osc.start();
-              osc.stop(audioCtx.currentTime + 0.12);
-            } catch (e) {}
+        const handleSuccess = (decodedText: string) => {
+          if (!isMounted) return;
+          // Audio chime
+          try {
+            const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1320, audioCtx.currentTime + 0.12);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.12);
+          } catch (e) {}
 
-            // Haptic vibration
-            if (typeof window !== "undefined" && window.navigator?.vibrate) {
-              window.navigator.vibrate([40, 30, 40]);
+          // Haptic vibration
+          if (typeof window !== "undefined" && window.navigator?.vibrate) {
+            window.navigator.vibrate([40, 30, 40]);
+          }
+
+          setScanSuccess(true);
+          onScanResult(decodedText);
+
+          setTimeout(() => {
+            if (isMounted) {
+              setActive(false);
+              setScanSuccess(false);
             }
+          }, 650);
+        };
 
-            setScanSuccess(true);
-            onScanResult(decodedText);
+        // Step 3: Determine which camera ID or facing mode to start
+        let selectedDevice = availableDevices[currentCameraIndex % Math.max(1, availableDevices.length)];
 
-            setTimeout(() => {
-              if (isMounted) {
-                setActive(false);
-                setScanSuccess(false);
-              }
-            }, 650);
-          },
-          () => {}
-        );
+        try {
+          if (selectedDevice && selectedDevice.id) {
+            await html5Qr.start(selectedDevice.id, config, handleSuccess, () => {});
+          } else {
+            await html5Qr.start({ facingMode: "environment" }, config, handleSuccess, () => {});
+          }
+        } catch (specificCamErr) {
+          console.warn("Starting with device ID failed, falling back to facingMode: environment", specificCamErr);
+          await html5Qr.start({ facingMode: "environment" }, config, handleSuccess, () => {});
+        }
 
         if (isMounted) {
           setIsScanning(true);
         }
-
-        try {
-          const devices = await Html5Qrcode.getCameras();
-          if (devices && devices.length > 1 && isMounted) {
-            setHasMultipleCameras(true);
-          }
-        } catch (e) {}
       } catch (err: any) {
-        console.error("Camera scanner error:", err);
+        console.error("Camera scanner initialization error:", err);
         if (isMounted) {
           setIsScanning(false);
           setCameraError(
             language === "ar"
-              ? "تعذر تشغيل الكاميرا. يرجى التأكد من منح الإذن للمتصفح."
-              : "Could not access camera. Please allow camera permissions in your browser."
+              ? "تعذر تشغيل الكاميرا الخلفية. يرجى التأكد من منح الإذن للمتصفح أو تجربة زر التبديل."
+              : "Could not access the camera. Please allow camera permissions in your browser or try switching cameras."
           );
         }
       }
@@ -227,7 +247,7 @@ function CameraScannerComponent({
 
     const timer = setTimeout(() => {
       initScanner();
-    }, 120);
+    }, 150);
 
     return () => {
       isMounted = false;
@@ -243,7 +263,7 @@ function CameraScannerComponent({
           });
       }
     };
-  }, [active, currentFacingMode, language, onScanResult]);
+  }, [active, currentCameraIndex, language, onScanResult]);
 
   const toggleCameraFacing = async () => {
     if (scannerRef.current && scannerRef.current.isScanning) {
@@ -252,7 +272,7 @@ function CameraScannerComponent({
       scannerRef.current = null;
     }
     setIsScanning(false);
-    setCurrentFacingMode((prev) => (prev === "environment" ? "user" : "environment"));
+    setCurrentCameraIndex((prev) => (prev + 1) % Math.max(1, cameras.length || 2));
   };
 
   return (
@@ -286,17 +306,21 @@ function CameraScannerComponent({
             </div>
 
             <div className="flex items-center gap-2">
-              {hasMultipleCameras && (
-                <button
-                  type="button"
-                  onClick={toggleCameraFacing}
-                  className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center gap-1.5 border border-slate-700"
-                  title="Switch Camera"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">{language === "ar" ? "تبديل الكاميرا" : "Flip"}</span>
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={toggleCameraFacing}
+                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center gap-1.5 border border-slate-700 active:scale-95 cursor-pointer"
+                title="Switch Camera"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-[#FFBD0E]" />
+                <span>
+                  {language === "ar"
+                    ? "تبديل الكاميرا"
+                    : cameras.length > 1
+                    ? `Cam ${currentCameraIndex + 1}/${cameras.length}`
+                    : "Flip Camera"}
+                </span>
+              </button>
 
               <button
                 type="button"

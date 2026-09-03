@@ -502,3 +502,28 @@ h1, h2, h3, h4, h5, h6, .font-heading,
 .animate-scan-laser {
   animation: scanLaser 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+
+/* QR Scanner Viewport Fix for Mobile Back Camera */
+#hft-custom-qr-reader {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #000 !important;
+  overflow: hidden !important;
+}
+
+#hft-custom-qr-reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Prevent html5-qrcode shaded overlay canvas from obscuring the camera feed with black */
+#hft-custom-qr-reader canvas {
+  display: none !important;
+}
