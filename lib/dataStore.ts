@@ -44,7 +44,7 @@ export type StudentApplication = {
   interests?: string[];
   howDidYouHear?: string;
   additionalComments?: string;
-  status: "Nouveau" | "En cours" | "Confirmé" | "Refusé";
+  status: "Nouveau" | "En cours" | "Confirmé" | "Arrivé" | "Refusé";
   submittedAt: string;
   createdAt?: string | Date;
   updatedAt?: string | Date;

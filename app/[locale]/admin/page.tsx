@@ -1045,8 +1045,9 @@ export default function AdminDashboard() {
                   <GraduationCap className="w-5 h-5 text-[#F05A22]" />
                 </div>
                 <p className="text-3xl font-black text-[#F05A22]">{students.length}</p>
-                <p className="text-xs text-slate-500 font-medium">
-                  {students.filter((s) => s.status === "Nouveau").length} nouveaux inscrits
+                <p className="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>{students.filter((s) => s.status === "Arrivé").length} {language === "ar" ? "حاضر بالصالون (Arrivé)" : "présents / arrivés"}</span>
                 </p>
               </div>
 
@@ -1263,17 +1264,19 @@ export default function AdminDashboard() {
 
               <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0 w-full md:w-auto">
                 <span className="text-xs font-bold text-slate-500 shrink-0">{language === "ar" ? "الحالة :" : "Status:"}</span>
-                {["all", "Nouveau", "En cours", "Confirmé", "Refusé"].map((st) => (
+                {["all", "Arrivé", "Confirmé", "Nouveau", "En cours", "Refusé"].map((st) => (
                   <button
                     key={st}
                     onClick={() => setStudentStatusFilter(st)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                       studentStatusFilter === st
-                        ? "bg-[#003876] text-white"
+                        ? "bg-[#003876] text-white shadow-xs"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                     }`}
                   >
-                    {st === "all" ? "Tous" : st}
+                    {st === "all" ? (language === "ar" ? "الكل" : "Tous") :
+                     st === "Arrivé" ? (language === "ar" ? "حاضر (Arrivé)" : "Arrivé") :
+                     st}
                   </button>
                 ))}
               </div>
@@ -1341,15 +1344,17 @@ export default function AdminDashboard() {
                               value={std.status}
                               onChange={(e) => handleUpdateStudentStatus(std.id, e.target.value as any)}
                               className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full border cursor-pointer ${
+                                std.status === "Arrivé" ? "bg-emerald-600 text-white border-emerald-700 shadow-xs" :
+                                std.status === "Confirmé" ? "bg-blue-100 text-blue-800 border-blue-300" :
                                 std.status === "Nouveau" ? "bg-amber-100 text-amber-800 border-amber-300" :
-                                std.status === "Confirmé" ? "bg-emerald-100 text-emerald-800 border-emerald-300" :
-                                std.status === "En cours" ? "bg-blue-100 text-blue-800 border-blue-300" :
+                                std.status === "En cours" ? "bg-purple-100 text-purple-800 border-purple-300" :
                                 "bg-red-100 text-red-800 border-red-300"
                               }`}
                             >
+                              <option value="Arrivé">✓ Arrivé (Présent)</option>
+                              <option value="Confirmé">Confirmé</option>
                               <option value="Nouveau">Nouveau</option>
                               <option value="En cours">En cours</option>
-                              <option value="Confirmé">Confirmé</option>
                               <option value="Refusé">Refusé</option>
                             </select>
                           </td>
@@ -1646,24 +1651,39 @@ export default function AdminDashboard() {
                   </div>
 
                   <div>
-                    {scannedStudentResult.status === "Confirmé" ? (
-                      <span className="px-5 py-3 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 font-black text-xs uppercase tracking-wider flex items-center gap-2 shadow-sm">
-                        <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                        <span>{language === "ar" ? "الدخول مؤكد مسبقاً" : "ENTRY ALREADY VALIDATED & CONFIRMED"}</span>
-                      </span>
+                    {scannedStudentResult.status === "Arrivé" ? (
+                      <div className="flex flex-col sm:flex-row items-center gap-3">
+                        <span className="px-5 py-3 rounded-2xl bg-emerald-100 text-emerald-800 border-2 border-emerald-300 font-black text-xs uppercase tracking-wider flex items-center gap-2 shadow-sm">
+                          <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                          <span>{language === "ar" ? "الطالب حاضر ومسجل بالصالون (Arrivé)" : "ARRIVÉE DÉJÀ VALIDÉE (ARRIVED)"}</span>
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            handleUpdateStudentStatus(scannedStudentResult.id, "Confirmé");
+                            setScannedStudentResult({ ...scannedStudentResult, status: "Confirmé" });
+                          }}
+                          className="text-xs text-slate-400 hover:text-slate-600 font-bold underline cursor-pointer"
+                        >
+                          {language === "ar" ? "إلغاء الوصول" : "Annuler l'arrivée"}
+                        </button>
+                      </div>
                     ) : (
                       <button
+                        type="button"
                         onClick={() => {
-                          handleUpdateStudentStatus(scannedStudentResult.id, "Confirmé");
-                          setScannedStudentResult({ ...scannedStudentResult, status: "Confirmé" });
+                          handleUpdateStudentStatus(scannedStudentResult.id, "Arrivé");
+                          setScannedStudentResult({ ...scannedStudentResult, status: "Arrivé" });
                           setScanConfirmationNotice(
-                            (language === "ar" ? `✅ تم تأكيد الدخول : ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} - تم التحقق بنجاح!` : `✅ ENTRY CONFIRMED: ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} - Successfully Checked In!`)
+                            language === "ar"
+                              ? `✅ تم تأكيد وصول الطالب : ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} — حاضر بالصالون!`
+                              : `✅ ARRIVAL CONFIRMED: ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} is now checked in!`
                           );
                         }}
-                        className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center gap-2"
+                        className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xl hover:shadow-2xl flex items-center gap-2 cursor-pointer active:scale-95"
                       >
-                        <CheckCircle2 className="w-5 h-5" />
-                        <span>{language === "ar" ? "تأكيد دخول الطالب" : "CONFIRM STUDENT ENTRY"}</span>
+                        <CheckCircle2 className="w-5 h-5 text-[#FFBD0E]" />
+                        <span>{language === "ar" ? "تأكيد وصول الطالب (Arrivé)" : "CONFIRMER L'ARRIVÉE (CONFIRM ARRIVAL)"}</span>
                       </button>
                     )}
                   </div>
@@ -1943,9 +1963,10 @@ export default function AdminDashboard() {
                       onChange={(e) => handleUpdateStudentStatus(selectedStudent.id, e.target.value as any)}
                       className="text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 bg-white"
                     >
+                      <option value="Arrivé">✓ Arrivé (Présent)</option>
+                      <option value="Confirmé">Confirmé</option>
                       <option value="Nouveau">Nouveau</option>
                       <option value="En cours">En cours</option>
-                      <option value="Confirmé">Confirmé</option>
                       <option value="Refusé">Refusé</option>
                     </select>
                   </div>
