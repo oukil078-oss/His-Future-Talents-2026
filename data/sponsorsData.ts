@@ -23,8 +23,19 @@ export const verifiedSponsors2026: Sponsor[] = [
     }
   },
   {
+    name: "TECHNO",
+    logo: "/partners/2026/techno-stationery.png",
+    tier: "Silver",
+    edition: "2026",
+    website: "https://www.techno-dz.com",
+    description: {
+      en: "Algeria's foremost distributor and retailer of school supplies, office stationery, fine arts equipment, and professional tools.",
+      ar: "الشركة الرائدة في الجزائر في توزيع وتجارة الأدوات المكتبية، المدرسية، الفنون الجميلة، والتجهيزات المكتبية الاحترافية."
+    }
+  },
+  {
     name: "PROPHEX",
-    logo: "/partners/2025/prophex.png",
+    logo: "/partners/2026/prophex.png",
     tier: "Bronze",
     edition: "2026",
     website: "https://www.profex.dz",

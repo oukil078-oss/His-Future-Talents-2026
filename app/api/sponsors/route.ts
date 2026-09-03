@@ -10,6 +10,14 @@ function sortPartnersByCustomRules(list: any[]) {
   const isIra = (n: string) => /iracademy/i.test(n);
   const isTraining = (n: string) => /training center/i.test(n);
 
+  const priority2026 = [
+    (n: string, s: string) => /satim/i.test(n) || /satim/i.test(s),
+    (n: string, s: string) => /techno/i.test(n) || /techno/i.test(s),
+    (n: string, s: string) => /prophex|profex/i.test(n) || /prophex|profex/i.test(s),
+    (n: string, s: string) => /hydrapharm/i.test(n) || /hydrapharm/i.test(s),
+    (n: string, s: string) => /mfg|mediterranean float glass/i.test(n) || /mfg/i.test(s),
+  ];
+
   const priority2024 = [
     (n: string) => /yassir/i.test(n),
     (n: string) => /bnp/i.test(n),
@@ -26,11 +34,16 @@ function sortPartnersByCustomRules(list: any[]) {
 
   function getScore(p: any): number {
     const name = p.name || "";
+    const slug = p.slug || "";
     if (isHis(name)) return 1;
     if (isIra(name)) return 2;
     if (isTraining(name)) return 3;
 
-    if (p.edition === 2024) {
+    if (p.edition === 2026) {
+      for (let i = 0; i < priority2026.length; i++) {
+        if (priority2026[i](name, slug)) return 10 + i;
+      }
+    } else if (p.edition === 2024) {
       for (let i = 0; i < priority2024.length; i++) {
         if (priority2024[i](name)) return 10 + i;
       }
@@ -88,6 +101,15 @@ export async function GET() {
       }
       result = Array.from(sponsorMap.values());
     }
+
+    // Filter out Vitrin Clinic from 2026 list
+    result = result.filter((p: any) => {
+      if (p.edition === 2026) {
+        const isVitrin = /vitrin|vi-tri-n/i.test(p.slug || "") || /vitrin|v[i\u0130]tr[i\u0130]n/i.test(p.name || "");
+        return !isVitrin;
+      }
+      return true;
+    });
 
     const sorted = sortPartnersByCustomRules(result);
     return NextResponse.json({ success: true, data: sorted });

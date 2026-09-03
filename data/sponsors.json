@@ -21,6 +21,102 @@
     "tier": "official"
   },
   {
+    "name": "SATIM",
+    "slug": "satim",
+    "logo": "/partners/2026/satim.png",
+    "edition": 2026,
+    "sponsorTier": "silver",
+    "featured": true,
+    "description": {
+      "en": "SATIM (Société d'Automatisations des Transactions Interbancaires et de Monétique) is the national interbanking and electronic payments operator in Algeria. Founded in 1995, it manages the national electronic payment switch and interbank card network (CIB and Edahabia).",
+      "ar": "شركة ساتيم (SATIM - الشركة التلقائية للمعاملات بين البنوك والدفع الإلكتروني) هي المؤسسة الوطنية المرجعية للبطاقات البنكية والدفع الإلكتروني في الجزائر (CIB)."
+    },
+    "website": "https://www.satim.dz",
+    "keyPoints": {
+      "en": [
+        "National interbank payment operator managing the CIB & Edahabia payment switch",
+        "Strategic partner for fintech innovations, cashless transactions, and electronic banking in Algeria",
+        "Long-standing sponsor and official partner of HIS Future Talents"
+      ],
+      "ar": [
+        "المؤسسة الوطنية الرائدة في تسيير الشبكة البنكية للدفع الإلكتروني والبطاقات البنكية CIB.",
+        "الراعي الفضي الرسمي (Silver Sponsor) لصالون HIS Future Talents 2026.",
+        "داعم استراتيجي للابتكار والتحول الرقمي المالي والتوظيف في الجزائر."
+      ]
+    }
+  },
+  {
+    "name": "TECHNO",
+    "slug": "techno-stationery",
+    "logo": "/partners/2026/techno-stationery.png",
+    "edition": 2026,
+    "description": {
+      "en": "Techno Stationery (Techno Moderne) is Algeria's foremost distributor and retailer of school supplies, office stationery, fine arts equipment, and professional tools, operating an extensive network of specialized branches nationwide.",
+      "ar": "تكنو ستاسيونري (Techno Stationery) هي الشركة الرائدة في الجزائر في مجال توزيع وتجارة الأدوات المكتبية، المدرسية، الفنون الجميلة، والتجهيزات المكتبية عبر شبكة واسعة من الفروع في جميع أنحاء الوطن."
+    },
+    "sponsorTier": "silver",
+    "tier": "Silver",
+    "featured": true,
+    "website": "https://www.techno-dz.com",
+    "keyPoints": {
+      "en": [
+        "National market leader in high-quality office supplies, stationery, and creative arts equipment",
+        "Official Silver Sponsor empowering students and creative talents at HIS Future Talents 2026",
+        "Extensive nationwide distribution network and retail store presence across Algeria"
+      ],
+      "ar": [
+        "الرائد الوطني في توفير الأدوات المكتبية والمدرسية ومعدات الفنون الجميلة عالية الجودة.",
+        "الراعي الفضي الرسمي الداعم للطلبة والمواهب الشابة في صالون HIS Future Talents 2026.",
+        "شبكة فروع وتوزيع كبرى تغطي مختلف ولايات الوطن."
+      ]
+    }
+  },
+  {
+    "name": "PROPHEX",
+    "slug": "prophex-2026",
+    "logo": "/partners/2026/prophex.png",
+    "edition": 2026,
+    "sponsorTier": "bronze",
+    "featured": true,
+    "description": {
+      "en": "Profex is a specialized manufacturer of high-quality healthcare products and medical devices, adhering strictly to international standards and regulatory requirements.",
+      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
+    },
+    "website": "https://www.profex.dz",
+    "keyPoints": {
+      "en": [
+        "Leading Algerian manufacturer of certified medical devices and healthcare consumables",
+        "Strict compliance with international ISO and health regulatory standards",
+        "Active recruiter of biomedical engineers, production specialists, and quality control experts"
+      ],
+      "ar": [
+        "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
+        "الامتثال للمعايير الدولية للجودة والسلامة.",
+        "الراعي البرونزي الرسمي لصالون HIS Future Talents 2026."
+      ]
+    }
+  },
+  {
+    "name": "HYDRAPHARM Groupe",
+    "slug": "hydrapharm-groupe",
+    "logo": "/partners/2026/hydrapharm-groupe.png",
+    "edition": 2026,
+    "description": {
+      "en": "HYDRAPHARM Groupe is officially participating in the 3rd edition of HIS Future Talents 2026.",
+      "ar": "HYDRAPHARM Groupe تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
+    "name": "MFG",
+    "slug": "mfg",
+    "logo": "/partners/2026/mfg.png",
+    "edition": 2026,
+    "description": {
+      "en": "Mediterranean Float Glass (MFG), a Cevital subsidiary founded in 2007, is Africa's largest manufacturer, processor, and exporter of flat architectural glass, operating world-class industrial float lines in Larbaâ.",
+      "ar": "MFG تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
+    }
+  },
+  {
     "name": "Les Laboratoires Frater Razes",
     "slug": "les-laboratoires-frater-razes",
     "logo": "/partners/2026/les-laboratoires-frater-razes.png",
@@ -28,16 +124,6 @@
     "description": {
       "en": "Les Laboratoires Frater Razes is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "Les Laboratoires Frater Razes تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
-  },
-  {
-    "name": "TECHNO STATIONERY",
-    "slug": "techno-stationery",
-    "logo": "/partners/2026/techno-stationery.png",
-    "edition": 2026,
-    "description": {
-      "en": "TECHNO STATIONERY is officially participating in the 3rd edition of HIS Future Talents 2026.",
-      "ar": "TECHNO STATIONERY تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
     }
   },
   {
@@ -141,16 +227,6 @@
     }
   },
   {
-    "name": "VİTRİN CLİNİC",
-    "slug": "vi-tri-n-cli-ni-c",
-    "logo": "/partners/2026/vi-tri-n-cli-ni-c.png",
-    "edition": 2026,
-    "description": {
-      "en": "VİTRİN CLİNİC is officially participating in the 3rd edition of HIS Future Talents 2026.",
-      "ar": "VİTRİN CLİNİC تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
-  },
-  {
     "name": "ZAD AI",
     "slug": "zad-ai",
     "logo": "/partners/2026/zad-ai.png",
@@ -181,16 +257,6 @@
     }
   },
   {
-    "name": "HYDRAPHARM Groupe",
-    "slug": "hydrapharm-groupe",
-    "logo": "/partners/2026/hydrapharm-groupe.png",
-    "edition": 2026,
-    "description": {
-      "en": "HYDRAPHARM Groupe is officially participating in the 3rd edition of HIS Future Talents 2026.",
-      "ar": "HYDRAPHARM Groupe تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
-  },
-  {
     "name": "Laboratoires Merinal",
     "slug": "laboratoires-merinal",
     "logo": "/partners/2026/laboratoires-merinal.png",
@@ -211,16 +277,6 @@
     }
   },
   {
-    "name": "MFG",
-    "slug": "mfg",
-    "logo": "/partners/2026/mfg.png",
-    "edition": 2026,
-    "description": {
-      "en": "Mediterranean Float Glass (MFG), a Cevital subsidiary founded in 2007, is Africa's largest manufacturer, processor, and exporter of flat architectural glass, operating world-class industrial float lines in Larbaâ.",
-      "ar": "MFG تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
-  },
-  {
     "name": "HIBOU CONSULTING RH",
     "slug": "hibou-consulting-rh",
     "logo": "/partners/2026/hibou-consulting.png",
@@ -228,56 +284,6 @@
     "description": {
       "en": "HIBOU CONSULTING RH is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "HIBOU CONSULTING RH تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
-  },
-  {
-    "name": "SATIM",
-    "slug": "satim",
-    "logo": "/partners/2026/satim.png",
-    "edition": 2026,
-    "sponsorTier": "silver",
-    "featured": true,
-    "description": {
-      "en": "SATIM (Société d'Automatisations des Transactions Interbancaires et de Monétique) is the national interbanking and electronic payments operator in Algeria. Founded in 1995, it manages the national electronic payment switch and interbank card network (CIB and Edahabia).",
-      "ar": "شركة ساتيم (SATIM - الشركة التلقائية للمعاملات بين البنوك والدفع الإلكتروني) هي المؤسسة الوطنية المرجعية للبطاقات البنكية والدفع الإلكتروني في الجزائر (CIB)."
-    },
-    "website": "https://www.satim.dz",
-    "keyPoints": {
-      "en": [
-        "National interbank payment operator managing the CIB & Edahabia payment switch",
-        "Strategic partner for fintech innovations, cashless transactions, and electronic banking in Algeria",
-        "Long-standing sponsor and official partner of HIS Future Talents"
-      ],
-      "ar": [
-        "المؤسسة الوطنية الرائدة في تسيير الشبكة البنكية للدفع الإلكتروني والبطاقات البنكية CIB.",
-        "الراعي الفضي الرسمي (Silver Sponsor) لصالون HIS Future Talents 2026.",
-        "داعم استراتيجي للابتكار والتحول الرقمي المالي والتوظيف في الجزائر."
-      ]
-    }
-  },
-  {
-    "name": "PROPHEX",
-    "slug": "prophex-2026",
-    "logo": "/partners/2026/prophex.png",
-    "edition": 2026,
-    "sponsorTier": "bronze",
-    "featured": true,
-    "description": {
-      "en": "Profex is a specialized manufacturer of high-quality healthcare products and medical devices, adhering strictly to international standards and regulatory requirements.",
-      "ar": "بروفيكس (Profex) هي شركة متخصصة في مجال تصنيع منتجات العناية والأجهزة الطبية عالية الجودة، وتلبي المتطلبات التنظيمية والمعايير الدولية."
-    },
-    "website": "https://www.profex.dz",
-    "keyPoints": {
-      "en": [
-        "Leading Algerian manufacturer of certified medical devices and healthcare consumables",
-        "Strict compliance with international ISO and health regulatory standards",
-        "Active recruiter of biomedical engineers, production specialists, and quality control experts"
-      ],
-      "ar": [
-        "تصنيع منتجات العناية والأجهزة الطبية المعتمدة.",
-        "الامتثال للمعايير الدولية للجودة والسلامة.",
-        "الراعي البرونزي الرسمي لصالون HIS Future Talents 2026."
-      ]
     }
   },
   {

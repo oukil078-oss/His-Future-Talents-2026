@@ -76,6 +76,9 @@ export default function PartnerLogoGrid() {
 
   // Filter exhibitors for active edition
   const filteredPartners = allPartners.filter((p) => {
+    if (p.edition === 2026 && (/vitrin|vi-tri-n/i.test(p.slug || "") || /vitrin|v[i\u0130]tr[i\u0130]n/i.test(p.name || ""))) {
+      return false;
+    }
     return p.edition === activeEdition;
   });
 
