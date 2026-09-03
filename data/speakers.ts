@@ -1,7 +1,7 @@
 export type Speaker = {
   name: string;
   role: {
-    fr: string;
+    en: string;
     ar: string;
   };
   company?: string;
@@ -16,7 +16,7 @@ export const speakersData: Speaker[] = [
   {
     name: "Abdelmalek Cheta",
     role: {
-      fr: "Fondateur d'Etihad Group",
+      en: "Founder of Etihad Group",
       ar: "مؤسس مجموعة الإتحاد",
     },
     category: "conference",
@@ -27,7 +27,7 @@ export const speakersData: Speaker[] = [
   {
     name: "Yacine Mahdid",
     role: {
-      fr: "Expert en Ressources Humaines",
+      en: "Human Resources Expert",
       ar: "خبير في الموارد البشرية",
     },
     category: "conference",
@@ -40,7 +40,7 @@ export const speakersData: Speaker[] = [
   {
     name: "Bouzid Moumen",
     role: {
-      fr: "DRH El Kendi",
+      en: "HR Director at El Kendi",
       ar: "مدير الموارد البشرية بشركة الكندي",
     },
     category: "conference",
@@ -51,7 +51,7 @@ export const speakersData: Speaker[] = [
   {
     name: "Nabil Djenadi",
     role: {
-      fr: "DRH El Hayat",
+      en: "HR Director at El Hayat",
       ar: "مدير الموارد البشرية بشركة الحياة",
     },
     category: "conference",
@@ -62,8 +62,8 @@ export const speakersData: Speaker[] = [
   {
     name: "Samir Gherbi",
     role: {
-      fr: "Lafarge",
-      ar: "لافارج",
+      en: "Director at Lafarge",
+      ar: "مدير في لافارج",
     },
     category: "conference",
     edition: 2024,
@@ -74,7 +74,7 @@ export const speakersData: Speaker[] = [
   {
     name: "Anis Hadadi",
     role: {
-      fr: "Head of Marketing",
+      en: "Head of Marketing",
       ar: "مدير التسويق",
     },
     company: "Oussama Promotion Immobilière",
@@ -86,7 +86,7 @@ export const speakersData: Speaker[] = [
   {
     name: "Sami Hamari",
     role: {
-      fr: "Founder",
+      en: "Founder",
       ar: "مؤسس",
     },
     company: "Data Intuition",
@@ -97,7 +97,7 @@ export const speakersData: Speaker[] = [
   {
     name: "Bouthaina Mobarki",
     role: {
-      fr: "Project Manager",
+      en: "Project Manager",
       ar: "مديرة مشاريع",
     },
     company: "Sylabs",

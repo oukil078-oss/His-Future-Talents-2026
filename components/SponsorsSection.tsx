@@ -14,11 +14,11 @@ export type SponsorItem = {
   edition: number | string;
   website?: string;
   description?: {
-    fr?: string;
+    en?: string;
     ar?: string;
   };
   keyPoints?: {
-    fr?: string[];
+    en?: string[];
     ar?: string[];
   };
 };
@@ -107,7 +107,7 @@ export default function SponsorsSection() {
             <div className="space-y-4">
               <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-400" />
-                {language === "ar" ? "الرعاية الذهبية (Sponsors Gold)" : "Gold Sponsors"}
+                {language === "ar" ? "الرعاية الذهبية" : "Gold Sponsors"}
               </h3>
 
               <div className="grid grid-cols-1 gap-4">
@@ -141,7 +141,7 @@ export default function SponsorsSection() {
                         </h4>
                         {sponsor.description && (
                           <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
-                            {language === "ar" ? sponsor.description.ar : ((sponsor.description as any).en || sponsor.description.fr)}
+                            {language === "ar" ? sponsor.description.ar : (sponsor.description.en || sponsor.description.ar)}
                           </p>
                         )}
                         {sponsor.website && (
@@ -168,7 +168,7 @@ export default function SponsorsSection() {
             <div className="space-y-4">
               <h3 className="text-xs font-bold uppercase tracking-widest text-[#58B9FF] flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#58B9FF]" />
-                {language === "ar" ? "الرعاية الفضية (Sponsors Silver)" : "Silver Sponsors"}
+                {language === "ar" ? "الرعاية الفضية" : "Silver Sponsors"}
               </h3>
 
               <div className="grid grid-cols-1 gap-4">
@@ -202,7 +202,7 @@ export default function SponsorsSection() {
                         </h4>
                         {sponsor.description && (
                           <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
-                            {language === "ar" ? sponsor.description.ar : ((sponsor.description as any).en || sponsor.description.fr)}
+                            {language === "ar" ? sponsor.description.ar : (sponsor.description.en || sponsor.description.ar)}
                           </p>
                         )}
                         {sponsor.website && (
@@ -229,7 +229,7 @@ export default function SponsorsSection() {
             <div className="space-y-4">
               <h3 className="text-xs font-bold uppercase tracking-widest text-amber-500 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-500" />
-                {language === "ar" ? "الرعاية البرونزية (Sponsors Bronze)" : "Bronze Sponsors"}
+                {language === "ar" ? "الرعاية البرونزية" : "Bronze Sponsors"}
               </h3>
 
               <div className="grid grid-cols-1 gap-4">
@@ -263,7 +263,7 @@ export default function SponsorsSection() {
                         </h4>
                         {sponsor.description && (
                           <p className="text-white/75 text-xs sm:text-sm leading-relaxed font-normal max-w-3xl">
-                            {language === "ar" ? sponsor.description.ar : ((sponsor.description as any).en || sponsor.description.fr)}
+                            {language === "ar" ? sponsor.description.ar : (sponsor.description.en || sponsor.description.ar)}
                           </p>
                         )}
                         {sponsor.website && (

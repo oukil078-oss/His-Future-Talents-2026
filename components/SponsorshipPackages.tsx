@@ -109,7 +109,7 @@ export default function SponsorshipPackages() {
                             <span className="w-4 h-4 shrink-0 mt-1 flex items-center justify-center text-slate-200 font-bold">—</span>
                           )}
                           <span className={has ? "text-slate-700 font-bold" : "text-slate-300 line-through opacity-50 font-medium"}>
-                            {language === "ar" ? benefit.label.ar : (benefit.label.en || benefit.label.fr)}
+                            {language === "ar" ? benefit.label.ar : benefit.label.en}
                           </span>
                         </div>
                       );
@@ -162,7 +162,7 @@ export default function SponsorshipPackages() {
               {visibleBenefits.map((benefit, idx) => (
                 <tr key={idx} className="hover:bg-his-cream/20 transition-colors">
                   <td className="p-4 text-slate-700 text-xs md:text-sm font-semibold">
-                    {language === "ar" ? benefit.label.ar : (benefit.label.en || benefit.label.fr)}
+                    {language === "ar" ? benefit.label.ar : benefit.label.en}
                   </td>
                   {["bronze", "silver", "gold"].map((tier) => (
                     <td key={tier} className={`p-4 text-center ${tier === "gold" ? "bg-his-gold/3 border-x b-alpha-gold/30" : ""}`}>
@@ -232,7 +232,7 @@ export default function SponsorshipPackages() {
                           <span className="w-5 shrink-0 text-slate-200 text-center font-bold">—</span>
                         )}
                         <span className={has ? "text-slate-700 font-bold" : "text-slate-350 line-through opacity-45 font-medium"}>
-                          {language === "ar" ? benefit.label.ar : benefit.label.fr}
+                          {language === "ar" ? benefit.label.ar : benefit.label.en}
                         </span>
                       </div>
                     );

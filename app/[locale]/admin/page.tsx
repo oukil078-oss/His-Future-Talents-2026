@@ -48,6 +48,7 @@ function CameraScannerComponent({
 }: {
   onScanResult: (text: string) => void;
 }) {
+  const { language } = useLanguage();
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -90,20 +91,20 @@ function CameraScannerComponent({
           className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#003876] via-[#0E1B2C] to-[#003876] hover:from-[#F05A22] hover:to-[#003876] text-white font-black text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 border border-white/10"
         >
           <Camera className="w-5 h-5 text-[#FFBD0E] animate-bounce" />
-          <span>Activer le Scanner Caméra (Téléphone / Webcam)</span>
+          <span>{language === "ar" ? "تفعيل ماسح الكاميرا (هاتف / ويب كام)" : "Activate Camera Scanner (Phone / Webcam)"}</span>
         </button>
       ) : (
         <div className="space-y-3 bg-slate-900 border-2 border-[#003876] rounded-3xl p-4 text-center shadow-xl">
           <div className="flex items-center justify-between border-b border-slate-800 pb-3">
             <span className="text-xs font-black uppercase text-[#FFBD0E] flex items-center gap-1.5">
               <Camera className="w-4 h-4 text-emerald-400 animate-pulse" />
-              Scanner Caméra Actif — Scannez le Pass QR
+              {language === "ar" ? "الماسح نشط — امسح رمز الاستجابة السريعة" : "Camera Scanner Active — Scan QR Pass"}
             </span>
             <button
               onClick={() => setActive(false)}
               className="text-xs font-bold text-slate-300 hover:text-white px-3 py-1 bg-red-600/80 hover:bg-red-600 rounded-xl transition-all"
             >
-              Fermer Caméra
+              {language === "ar" ? "إغلاق الكاميرا" : "Close Camera"}
             </button>
           </div>
           <div id="html5qr-code-full-region" className="w-full rounded-2xl overflow-hidden text-slate-900 bg-white" />
@@ -164,7 +165,7 @@ export default function AdminDashboard() {
     edition: 2026,
     sponsorTier: "silver",
     website: "",
-    description: { fr: "", ar: "" },
+    description: { en: "", ar: "" },
   });
 
   // Check auth session
@@ -187,7 +188,7 @@ export default function AdminDashboard() {
       }
       fetchData();
     } else {
-      setLoginError("Code d'accès incorrect.");
+      setLoginError(language === "ar" ? "رمز الدخول غير صحيح." : "Incorrect passcode.");
     }
   };
 
@@ -254,7 +255,7 @@ export default function AdminDashboard() {
   // Upload logo image helper
   const uploadLogoFile = async (file: File, editionYear?: number): Promise<string | null> => {
     if (!file.type || !file.type.startsWith("image/")) {
-      alert("Veuillez sélectionner un fichier image valide (PNG, JPG, SVG, WEBP...).");
+      alert(language === "ar" ? "يرجى اختيار ملف صورة صالح (PNG, JPG, SVG, WEBP...)." : "Please select a valid image file (PNG, JPG, SVG, WEBP...).");
       return null;
     }
 
@@ -323,7 +324,7 @@ export default function AdminDashboard() {
           edition: sponsorEditionFilter as any,
           sponsorTier: "silver",
           website: "",
-          description: { fr: "", ar: "" },
+          description: { en: "", ar: "" },
         });
         setShowSponsorModal(true);
       }
@@ -376,7 +377,7 @@ export default function AdminDashboard() {
   };
 
   const handleDeleteLead = async (id: string) => {
-    if (!confirm("Voulez-vous vraiment supprimer cette candidature exposant ?")) return;
+    if (!confirm(language === "ar" ? "هل أنت متأكد من حذف طلب العارض؟" : "Are you sure you want to delete this exhibitor application?")) return;
     try {
       const res = await fetch("/api/leads", {
         method: "PATCH",
@@ -389,7 +390,7 @@ export default function AdminDashboard() {
         if (selectedLead?.id === id) setSelectedLead(null);
       }
     } catch (err) {
-      alert("Erreur lors de la suppression");
+      alert(language === "ar" ? "حدث خطأ أثناء الحذف" : "Error during deletion");
     }
   };
 
@@ -410,9 +411,9 @@ export default function AdminDashboard() {
         }
         if (status === "Confirmé") {
           if (data.emailSent) {
-            alert("✓ Statut mis à jour ! L'email de confirmation avec le Pass Badge PDF a été envoyé au candidat.");
+            alert(language === "ar" ? "✓ تم تحديث الحالة وإرسال بطاقة الدخول عبر البريد الإلكتروني!" : "✓ Status updated! Confirmation email with Badge Pass PDF has been sent.");
           } else {
-            alert("Statut mis à jour en 'Confirmé'. Note: La notification par email a rencontré une erreur ou est en cours.");
+            alert(language === "ar" ? "تم تحديث الحالة إلى 'مؤكد'. تعذر إرسال الإشعار البريدي حالياً." : "Status updated to 'Confirmed'. Note: Email delivery encountered an error or is pending.");
           }
         }
       }
@@ -438,14 +439,14 @@ export default function AdminDashboard() {
         alert(`Erreur d'envoi d'email : ${data.emailResult?.error || data.error || "Échec SMTP"}`);
       }
     } catch (err: any) {
-      alert("Erreur de connexion lors de l'envoi de l'email.");
+      alert(language === "ar" ? "خطأ في الاتصال أثناء إرسال البريد الإلكتروني." : "Connection error while dispatching email.");
     } finally {
       setIsSendingEmail(false);
     }
   };
 
   const handleDeleteStudent = async (id: string) => {
-    if (!confirm("Voulez-vous vraiment supprimer cette inscription étudiant ?")) return;
+    if (!confirm(language === "ar" ? "هل أنت متأكد من حذف تسجيل الطالب؟" : "Are you sure you want to delete this student registration?")) return;
     try {
       const res = await fetch("/api/students", {
         method: "PATCH",
@@ -458,7 +459,7 @@ export default function AdminDashboard() {
         if (selectedStudent?.id === id) setSelectedStudent(null);
       }
     } catch (err) {
-      alert("Erreur lors de la suppression");
+      alert(language === "ar" ? "حدث خطأ أثناء الحذف" : "Error during deletion");
     }
   };
 
@@ -489,7 +490,7 @@ export default function AdminDashboard() {
         setSponsors(data.data);
         setShowSponsorModal(false);
         setEditingSponsor(null);
-        setSponsorForm({ name: "", slug: "", logo: "", edition: 2026, sponsorTier: "silver", website: "", description: { fr: "", ar: "" } });
+        setSponsorForm({ name: "", slug: "", logo: "", edition: 2026, sponsorTier: "silver", website: "", description: { en: "", ar: "" } });
       }
     } catch (err) {
       alert("Erreur de sauvegarde");
@@ -497,7 +498,7 @@ export default function AdminDashboard() {
   };
 
   const handleDeleteSponsor = async (slug: string, edition?: number) => {
-    if (!confirm("Voulez-vous vraiment supprimer cette entreprise / sponsor ?")) return;
+    if (!confirm(language === "ar" ? "هل أنت متأكد من حذف هذه الشركة / الراعي؟" : "Are you sure you want to delete this company / sponsor?")) return;
     try {
       const url = edition ? `/api/sponsors?slug=${slug}&edition=${edition}` : `/api/sponsors?slug=${slug}`;
       const res = await fetch(url, { method: "DELETE" });
@@ -506,7 +507,7 @@ export default function AdminDashboard() {
         setSponsors(data.data);
       }
     } catch (err) {
-      alert("Erreur lors de la suppression");
+      alert(language === "ar" ? "حدث خطأ أثناء الحذف" : "Error during deletion");
     }
   };
 
@@ -553,18 +554,18 @@ export default function AdminDashboard() {
             <Lock className="w-8 h-8 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tight">Espace Administration HFT 2026</h1>
-            <p className="text-white/70 text-xs mt-1">Gestion des candidats exposants et sponsors</p>
+            <h1 className="text-2xl font-black tracking-tight">{language === "ar" ? "فضاء إدارة HFT 2026" : "HFT 2026 Administration Portal"}</h1>
+            <p className="text-white/70 text-xs mt-1">{language === "ar" ? "إدارة العارضين والرعاة والطلبة" : "Exhibitor leads, sponsors & student management"}</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4 text-start">
             <div>
               <label className="block text-xs font-black uppercase tracking-wider text-white/80 mb-2">
-                Code d'accès administrateur
+                {language === "ar" ? "رمز دخول المسؤول" : "Administrator Passcode"}
               </label>
               <input
                 type="password"
-                placeholder="Saisissez le code"
+                placeholder={language === "ar" ? "أدخل الرمز" : "Enter passcode"}
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
                 className="w-full h-12 px-4 rounded-xl border border-white/20 bg-white/10 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#F05A22] font-semibold text-center text-lg"
@@ -576,7 +577,7 @@ export default function AdminDashboard() {
               type="submit"
               className="w-full h-12 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider transition-all shadow-lg"
             >
-              Se connecter
+              {language === "ar" ? "تسجيل الدخول" : "Sign In"}
             </button>
           </form>
 
@@ -600,7 +601,7 @@ export default function AdminDashboard() {
               HIS Future Talents — Admin
             </h1>
             <span className="bg-white/10 text-[#58B9FF] text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/15 hidden md:inline shrink-0">
-              Édition 2026
+              {language === "ar" ? "دورة 2026" : "Edition 2026"}
             </span>
           </div>
 
@@ -608,7 +609,7 @@ export default function AdminDashboard() {
             <button
               onClick={fetchData}
               className="p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-all text-white/80 hover:text-white"
-              title="Rafraîchir les données"
+              title={language === "ar" ? "تحديث البيانات" : "Refresh data"}
             >
               <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
             </button>
@@ -618,7 +619,7 @@ export default function AdminDashboard() {
               className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-red-500/80 text-white text-xs font-bold transition-all border border-white/15"
             >
               <LogOut className="w-4 h-4" />
-              <span className="hidden sm:inline">Déconnexion</span>
+              <span className="hidden sm:inline">{language === "ar" ? "تسجيل الخروج" : "Log Out"}</span>
             </button>
           </div>
         </div>
@@ -636,7 +637,7 @@ export default function AdminDashboard() {
             }`}
           >
             <BarChart3 className="w-4 h-4" />
-            Vue d'ensemble
+            {language === "ar" ? "نظرة عامة" : "Overview"}
           </button>
 
           <button
@@ -648,7 +649,7 @@ export default function AdminDashboard() {
             }`}
           >
             <Building2 className="w-4 h-4" />
-            Candidatures Exposants
+            {language === "ar" ? "طلبات العارضين" : "Exhibitor Applications"}
             {leads.filter((l) => l.status === "Nouveau").length > 0 && (
               <span className="ml-1 bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-black">
                 {leads.filter((l) => l.status === "Nouveau").length}
@@ -665,7 +666,7 @@ export default function AdminDashboard() {
             }`}
           >
             <GraduationCap className="w-4 h-4" />
-            Inscriptions Étudiants
+            {language === "ar" ? "تسجيلات الطلبة" : "Student Registrations"}
             {students.filter((s) => s.status === "Nouveau").length > 0 && (
               <span className="ml-1 bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-black">
                 {students.filter((s) => s.status === "Nouveau").length}
@@ -682,7 +683,7 @@ export default function AdminDashboard() {
             }`}
           >
             <QrCode className="w-4 h-4 text-emerald-400" />
-            <span>Scan QR Code (Réception)</span>
+            <span>{language === "ar" ? "ماسح الاستقبال" : "Check-in Scanner"}</span>
           </button>
 
           <button
@@ -694,7 +695,7 @@ export default function AdminDashboard() {
             }`}
           >
             <Award className="w-4 h-4" />
-            Gestion des Sponsors & Entreprises
+            {language === "ar" ? "إدارة الرعاة والشركات" : "Sponsors & Companies"}
           </button>
         </div>
       </div>
@@ -709,7 +710,7 @@ export default function AdminDashboard() {
               onClick={() => setScanConfirmationNotice(null)}
               className="px-3 py-1 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold shrink-0"
             >
-              Fermer
+              {language === "ar" ? "إغلاق" : "Close"}
             </button>
           </div>
         )}
@@ -721,7 +722,7 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
                 <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-black uppercase tracking-wider">Demandes Exposants</span>
+                  <span className="text-xs font-black uppercase tracking-wider">{language === "ar" ? "طلبات العارضين" : "Exhibitor Leads"}</span>
                   <Building2 className="w-5 h-5 text-[#003876]" />
                 </div>
                 <p className="text-3xl font-black text-[#003876]">{leads.length}</p>
@@ -732,7 +733,7 @@ export default function AdminDashboard() {
 
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
                 <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-black uppercase tracking-wider">Inscriptions Étudiants</span>
+                  <span className="text-xs font-black uppercase tracking-wider">{language === "ar" ? "تسجيلات الطلبة" : "Student Registrations"}</span>
                   <GraduationCap className="w-5 h-5 text-[#F05A22]" />
                 </div>
                 <p className="text-3xl font-black text-[#F05A22]">{students.length}</p>
@@ -743,13 +744,13 @@ export default function AdminDashboard() {
 
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
                 <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-black uppercase tracking-wider">Exposants Validés</span>
+                  <span className="text-xs font-black uppercase tracking-wider">{language === "ar" ? "العارضون المؤكدون" : "Confirmed Exhibitors"}</span>
                   <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                 </div>
                 <p className="text-3xl font-black text-emerald-600">
                   {leads.filter((l) => l.status === "Confirmé").length}
                 </p>
-                <p className="text-xs text-slate-500 font-medium">Partenariats validés</p>
+                <p className="text-xs text-slate-500 font-medium">{language === "ar" ? "شراكات مؤكدة" : "Confirmed Partnerships"}</p>
               </div>
 
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft space-y-2">
@@ -776,7 +777,7 @@ export default function AdminDashboard() {
             {/* Recent Submissions Section */}
             <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-soft space-y-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-black text-[#003876]">Dernières demandes exposants</h2>
+                <h2 className="text-lg font-black text-[#003876]">{language === "ar" ? "أحدث طلبات العارضين" : "Recent Exhibitor Applications"}</h2>
                 <button
                   onClick={() => setActiveTab("leads")}
                   className="text-xs font-bold text-[#F05A22] hover:underline"
@@ -826,7 +827,7 @@ export default function AdminDashboard() {
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
                 <input
                   type="text"
-                  placeholder="Rechercher entreprise, nom, email..."
+                  placeholder={language === "ar" ? "بحث عن شركة، اسم، بريد..." : "Search company, name, email..."}
                   value={leadSearch}
                   onChange={(e) => setLeadSearch(e.target.value)}
                   className="w-full h-10 pl-9 pr-4 rounded-xl border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#003876]"
@@ -834,7 +835,7 @@ export default function AdminDashboard() {
               </div>
 
               <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0 w-full md:w-auto">
-                <span className="text-xs font-bold text-slate-500 shrink-0">Statut :</span>
+                <span className="text-xs font-bold text-slate-500 shrink-0">{language === "ar" ? "الحالة :" : "Status:"}</span>
                 {["all", "Nouveau", "En cours", "Confirmé", "Refusé"].map((st) => (
                   <button
                     key={st}
@@ -858,10 +859,10 @@ export default function AdminDashboard() {
                   <thead className="bg-[#003876] text-white font-black uppercase tracking-wider">
                     <tr>
                       <th className="p-4 text-start">Entreprise</th>
-                      <th className="p-4 text-start">Représentant & Contact</th>
+                      <th className="p-4 text-start">{language === "ar" ? "الممثل والاتصال" : "Representative & Contact"}</th>
                       <th className="p-4 text-center">Personnes</th>
                       <th className="p-4 text-center">Pack Souhaité</th>
-                      <th className="p-4 text-center">Statut</th>
+                      <th className="p-4 text-center">{language === "ar" ? "الحالة" : "Status"}</th>
                       <th className="p-4 text-end">Actions</th>
                     </tr>
                   </thead>
@@ -869,7 +870,7 @@ export default function AdminDashboard() {
                     {filteredLeads.length === 0 ? (
                       <tr>
                         <td colSpan={6} className="p-8 text-center text-slate-400 font-bold">
-                          Aucune candidature exposant trouvée.
+                          {language === "ar" ? "لم يتم العثور على أي طلبات عارضين." : "No exhibitor applications found."}
                         </td>
                       </tr>
                     ) : (
@@ -913,14 +914,14 @@ export default function AdminDashboard() {
                               <button
                                 onClick={() => setSelectedLead(lead)}
                                 className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700"
-                                title="Voir les détails complets du formulaire PDF"
+                                title={language === "ar" ? "عرض التفاصيل الكاملة" : "View full details"}
                               >
                                 <Eye className="w-4 h-4" />
                               </button>
                               <button
                                 onClick={() => handleDeleteLead(lead.id)}
                                 className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600"
-                                title="Supprimer"
+                                title={language === "ar" ? "حذف" : "Delete"}
                               >
                                 <Trash2 className="w-4 h-4" />
                               </button>
@@ -945,7 +946,7 @@ export default function AdminDashboard() {
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
                 <input
                   type="text"
-                  placeholder="Rechercher nom, université, filière, entreprise..."
+                  placeholder={language === "ar" ? "بحث عن اسم، جامعة، تخصص..." : "Search name, university, field, company..."}
                   value={studentSearch}
                   onChange={(e) => setStudentSearch(e.target.value)}
                   className="w-full h-10 pl-9 pr-4 rounded-xl border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#003876]"
@@ -953,7 +954,7 @@ export default function AdminDashboard() {
               </div>
 
               <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0 w-full md:w-auto">
-                <span className="text-xs font-bold text-slate-500 shrink-0">Statut :</span>
+                <span className="text-xs font-bold text-slate-500 shrink-0">{language === "ar" ? "الحالة :" : "Status:"}</span>
                 {["all", "Nouveau", "En cours", "Confirmé", "Refusé"].map((st) => (
                   <button
                     key={st}
@@ -976,11 +977,11 @@ export default function AdminDashboard() {
                 <table className="w-full text-start text-xs min-w-[700px]">
                   <thead className="bg-[#003876] text-white font-black uppercase tracking-wider">
                     <tr>
-                      <th className="p-4 text-start">Pass / Étudiant</th>
-                      <th className="p-4 text-start">Wilaya & Statut</th>
+                      <th className="p-4 text-start">{language === "ar" ? "البطاقة / الطالب" : "Pass / Student"}</th>
+                      <th className="p-4 text-start">{language === "ar" ? "الولاية والوضعية" : "Wilaya & Status"}</th>
                       <th className="p-4 text-start">Domaine & Établissement</th>
                       <th className="p-4 text-center">CV PDF</th>
-                      <th className="p-4 text-center">Statut Inscription</th>
+                      <th className="p-4 text-center">{language === "ar" ? "حالة التسجيل" : "Registration Status"}</th>
                       <th className="p-4 text-end">Actions</th>
                     </tr>
                   </thead>
@@ -988,7 +989,7 @@ export default function AdminDashboard() {
                     {filteredStudents.length === 0 ? (
                       <tr>
                         <td colSpan={6} className="p-8 text-center text-slate-400 font-bold">
-                          Aucune inscription étudiant trouvée.
+                          {language === "ar" ? "لم يتم العثور على أي تسجيل طالب." : "No student registrations found."}
                         </td>
                       </tr>
                     ) : (
@@ -1004,7 +1005,7 @@ export default function AdminDashboard() {
                             <span className="text-slate-500 text-[11px] block">{std.email} • {std.phone}</span>
                           </td>
                           <td className="p-4">
-                            <span className="font-bold text-slate-800 block">{std.currentStatus || "Étudiant"}</span>
+                            <span className="font-bold text-slate-800 block">{std.currentStatus || (language === "ar" ? "طالب" : "Student")}</span>
                             <span className="text-slate-500 text-[11px] block">{std.wilaya ? `Wilaya: ${std.wilaya}` : std.ageCategory}</span>
                           </td>
                           <td className="p-4">
@@ -1049,14 +1050,14 @@ export default function AdminDashboard() {
                               <button
                                 onClick={() => setSelectedStudent(std)}
                                 className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700"
-                                title="Voir les détails"
+                                title={language === "ar" ? "عرض التفاصيل" : "View details"}
                               >
                                 <Eye className="w-4 h-4" />
                               </button>
                               <button
                                 onClick={() => handleDeleteStudent(std.id)}
                                 className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600"
-                                title="Supprimer"
+                                title={language === "ar" ? "حذف" : "Delete"}
                               >
                                 <Trash2 className="w-4 h-4" />
                               </button>
@@ -1097,7 +1098,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => {
                     setEditingSponsor(null);
-                    setSponsorForm({ name: "", slug: "", logo: "", edition: sponsorEditionFilter as any, sponsorTier: "silver", website: "", description: { fr: "", ar: "" } });
+                    setSponsorForm({ name: "", slug: "", logo: "", edition: sponsorEditionFilter as any, sponsorTier: "silver", website: "", description: { en: "", ar: "" } });
                     setShowSponsorModal(true);
                   }}
                   className="px-5 py-2.5 rounded-xl bg-[#F05A22] hover:bg-[#FFBD0E] hover:text-[#0E1B2C] text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all w-full sm:w-auto"
@@ -1129,7 +1130,7 @@ export default function AdminDashboard() {
                 onDrop={handleNewSponsorDrop}
                 onClick={() => {
                   setEditingSponsor(null);
-                  setSponsorForm({ name: "", slug: "", logo: "", edition: sponsorEditionFilter as any, sponsorTier: "silver", website: "", description: { fr: "", ar: "" } });
+                  setSponsorForm({ name: "", slug: "", logo: "", edition: sponsorEditionFilter as any, sponsorTier: "silver", website: "", description: { en: "", ar: "" } });
                   setShowSponsorModal(true);
                 }}
                 className={`border-2 border-dashed rounded-3xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 min-h-[220px] group ${
@@ -1141,7 +1142,7 @@ export default function AdminDashboard() {
                 {isUploadingLogo ? (
                   <div className="flex flex-col items-center gap-2 text-[#003876]">
                     <Loader2 className="w-8 h-8 animate-spin text-[#F05A22]" />
-                    <span className="font-bold text-xs">Téléversement du logo...</span>
+                    <span className="font-bold text-xs">{language === "ar" ? "جاري رفع الشعار..." : "Uploading logo..."}</span>
                   </div>
                 ) : (
                   <>
@@ -1208,20 +1209,22 @@ export default function AdminDashboard() {
                         />
                         <div className="absolute inset-0 bg-slate-950/40 rounded-2xl opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold gap-1">
                           <Upload className="w-3.5 h-3.5 text-[#F05A22]" />
-                          <span>Glisser un nouveau logo</span>
+                          <span>{language === "ar" ? "إسقاط شعار جديد" : "Drag new logo here"}</span>
                         </div>
                       </div>
 
                       <h3 className="font-extrabold text-base text-[#003876]">{sponsor.name}</h3>
-                      {sponsor.description?.fr && (
-                        <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">{sponsor.description.fr}</p>
+                      {sponsor.description && (
+                        <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                          {language === "ar" ? sponsor.description.ar : (sponsor.description.en || sponsor.description.ar)}
+                        </p>
                       )}
                     </div>
 
                     <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                       {sponsor.website ? (
                         <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="text-xs text-[#58B9FF] font-bold hover:underline flex items-center gap-1">
-                          <span>Site Web</span>
+                          <span>{language === "ar" ? "الموقع الرسمي" : "Website"}</span>
                           <ExternalLink className="w-3 h-3" />
                         </a>
                       ) : <span />}
@@ -1230,14 +1233,14 @@ export default function AdminDashboard() {
                         <button
                           onClick={() => openEditSponsor(sponsor)}
                           className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700"
-                          title="Modifier"
+                          title={language === "ar" ? "تعديل" : "Edit"}
                         >
                           <Edit className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => handleDeleteSponsor(sponsor.slug, sponsor.edition)}
                           className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600"
-                          title="Supprimer"
+                          title={language === "ar" ? "حذف" : "Delete"}
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -1266,7 +1269,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <p className="text-xs sm:text-sm text-slate-200 font-medium">
-                Scannez le QR Code de l'étudiant avec votre douchette / caméra ou saisissez sa référence unique (ex: HFT-2026-X89A2).
+                {language === "ar" ? "امسح رمز QR للطالب بالماسح أو الكاميرا أو أدخل المعرف المرجعي (مثال: HFT-2026-X89A2)." : "Scan the student QR Code with your reader / camera or enter the reference code (e.g. HFT-2026-X89A2)."}
               </p>
             </div>
 
@@ -1299,7 +1302,7 @@ export default function AdminDashboard() {
                           setScannerError("");
                         } else {
                           setScannedStudentResult(null);
-                          setScannerError(`Aucun étudiant trouvé avec la référence: ${query}`);
+                          setScannerError(language === "ar" ? `لم يتم العثور على طالب بالمعرف: ${query}` : `No student found with reference: ${query}`);
                         }
                       }
                     }}
@@ -1322,13 +1325,13 @@ export default function AdminDashboard() {
                       setScannerError("");
                     } else {
                       setScannedStudentResult(null);
-                      setScannerError(`Aucun étudiant trouvé avec la référence: ${query}`);
+                      setScannerError(language === "ar" ? `لم يتم العثور على طالب بالمعرف: ${query}` : `No student found with reference: ${query}`);
                     }
                   }}
                   className="h-12 px-6 rounded-2xl bg-[#003876] hover:bg-[#F05A22] text-white font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
                 >
                   <Search className="w-4 h-4" />
-                  <span>Rechercher Pass</span>
+                  <span>{language === "ar" ? "بحث عن البطاقة" : "Search Pass"}</span>
                 </button>
               </div>
 
@@ -1352,7 +1355,7 @@ export default function AdminDashboard() {
                       setScannerError("");
                     } else {
                       setScannedStudentResult(null);
-                      setScannerError(`Aucun étudiant trouvé avec la référence: ${query}`);
+                      setScannerError(language === "ar" ? `لم يتم العثور على طالب بالمعرف: ${query}` : `No student found with reference: ${query}`);
                     }
                   }}
                 />
@@ -1384,7 +1387,7 @@ export default function AdminDashboard() {
                     {scannedStudentResult.status === "Confirmé" ? (
                       <span className="px-5 py-3 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 font-black text-xs uppercase tracking-wider flex items-center gap-2 shadow-sm">
                         <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                        <span>ENTRÉE DÉJÀ VALIDÉE & CONFIRMÉE</span>
+                        <span>{language === "ar" ? "الدخول مؤكد مسبقاً" : "ENTRY ALREADY VALIDATED & CONFIRMED"}</span>
                       </span>
                     ) : (
                       <button
@@ -1392,13 +1395,13 @@ export default function AdminDashboard() {
                           handleUpdateStudentStatus(scannedStudentResult.id, "Confirmé");
                           setScannedStudentResult({ ...scannedStudentResult, status: "Confirmé" });
                           setScanConfirmationNotice(
-                            `✅ ACCÈS ENTRÉE CONFIRMÉ : ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} - Entrée Validée avec Succès !`
+                            (language === "ar" ? `✅ تم تأكيد الدخول : ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} - تم التحقق بنجاح!` : `✅ ENTRY CONFIRMED: ${scannedStudentResult.firstName} ${scannedStudentResult.lastName} - Successfully Checked In!`)
                           );
                         }}
                         className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center gap-2"
                       >
                         <CheckCircle2 className="w-5 h-5" />
-                        <span>CONFIRMER L'ENTRÉE DE L'ÉTUDIANT</span>
+                        <span>{language === "ar" ? "تأكيد دخول الطالب" : "CONFIRM STUDENT ENTRY"}</span>
                       </button>
                     )}
                   </div>
@@ -1412,14 +1415,14 @@ export default function AdminDashboard() {
                     <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
                       <span className="text-[10px] font-black uppercase text-[#003876] block">Informations Personnelles</span>
                       <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Email</span> <span className="font-bold text-slate-900">{scannedStudentResult.email}</span></p>
-                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Téléphone</span> <span className="font-bold text-slate-900">{scannedStudentResult.phone}</span></p>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">{language === "ar" ? "الهاتف" : "Phone"}</span> <span className="font-bold text-slate-900">{scannedStudentResult.phone}</span></p>
                       <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Wilaya</span> <span className="font-bold text-slate-900">{scannedStudentResult.wilaya || "Non spécifiée"}</span></p>
                       <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Tranche d'âge</span> <span className="font-bold text-slate-900">{scannedStudentResult.ageCategory}</span></p>
                     </div>
 
                     <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
                       <span className="text-[10px] font-black uppercase text-[#003876] block">Parcours & Profil</span>
-                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Statut Actuel</span> <span className="font-bold text-[#003876]">{scannedStudentResult.currentStatus}</span></p>
+                      <p><span className="text-slate-400 block uppercase text-[10px] font-bold">{language === "ar" ? "الوضعية الحالية" : "Current Status"}</span> <span className="font-bold text-[#003876]">{scannedStudentResult.currentStatus}</span></p>
                       <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Domaine</span> <span className="font-bold text-slate-900">{scannedStudentResult.fieldOfStudyOrWork}</span></p>
                       {scannedStudentResult.university && (
                         <p><span className="text-slate-400 block uppercase text-[10px] font-bold">Établissement</span> <span className="font-bold text-slate-900">{scannedStudentResult.university}</span></p>
@@ -1445,7 +1448,7 @@ export default function AdminDashboard() {
 
                   {/* Live Badge Preview */}
                   <div className="md:col-span-6 flex flex-col items-center justify-center bg-slate-100/60 p-4 rounded-3xl border border-slate-200">
-                    <span className="text-xs font-black uppercase text-[#003876] mb-3">Aperçu du Pass Badge Étudiant</span>
+                    <span className="text-xs font-black uppercase text-[#003876] mb-3">{language === "ar" ? "معاينة بطاقة دخول الطالب" : "Student Badge Pass Preview"}</span>
                     <StudentBadge student={scannedStudentResult} showActions={false} />
                   </div>
 
@@ -1476,7 +1479,7 @@ export default function AdminDashboard() {
             <div className="space-y-4 text-xs font-semibold text-slate-700">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-slate-50 p-3 sm:p-4 rounded-2xl border border-slate-200">
                 <div>
-                  <span className="block text-[10px] font-black uppercase text-slate-400">Représentant</span>
+                  <span className="block text-[10px] font-black uppercase text-slate-400">{language === "ar" ? "الممثل" : "Representative"}</span>
                   <span className="text-slate-900 font-bold text-sm">{selectedLead.representativeName}</span>
                 </div>
                 <div>
@@ -1495,7 +1498,7 @@ export default function AdminDashboard() {
 
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
                 <div>
-                  <span className="block text-[10px] font-black uppercase text-slate-400">Nombre de représentants sur stand</span>
+                  <span className="block text-[10px] font-black uppercase text-slate-400">{language === "ar" ? "عدد الممثلين بالجناح" : "Booth Representatives Count"}</span>
                   <span className="text-slate-900 font-bold text-sm">{selectedLead.representativesCount} personnes</span>
                 </div>
 
@@ -1533,7 +1536,7 @@ export default function AdminDashboard() {
                     onClick={() => handleUpdateLeadStatus(selectedLead.id, "Confirmé")}
                     className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700"
                   >
-                    Valider l'exposant
+                    {language === "ar" ? "اعتماد العارض" : "Approve Exhibitor"}
                   </button>
                 </div>
               </div>
@@ -1704,7 +1707,7 @@ export default function AdminDashboard() {
                     className="px-3.5 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs flex items-center gap-1.5"
                   >
                     <Trash2 className="w-4 h-4" />
-                    <span>Supprimer l'étudiant</span>
+                    <span>{language === "ar" ? "حذف الطالب" : "Delete Student"}</span>
                   </button>
                 </div>
 
@@ -1713,8 +1716,8 @@ export default function AdminDashboard() {
               {/* Right Column (5 cols): Live Student Lanyard Badge Preview */}
               <div className="lg:col-span-5 bg-slate-100/60 p-4 rounded-3xl border border-slate-200 flex flex-col items-center justify-center space-y-4">
                 <div className="text-center space-y-1">
-                  <span className="text-xs font-black uppercase text-[#003876] tracking-wider">Aperçu du Pass Badge Étudiant</span>
-                  <p className="text-[11px] text-slate-500 font-medium">Généré pour l'entrée et l'accueil du salon</p>
+                  <span className="text-xs font-black uppercase text-[#003876] tracking-wider">{language === "ar" ? "معاينة بطاقة دخول الطالب" : "Student Badge Pass Preview"}</span>
+                  <p className="text-[11px] text-slate-500 font-medium">{language === "ar" ? "مخصصة للدخول والاستقبال بالصالون" : "Generated for event entry and check-in"}</p>
                 </div>
 
                 {/* Live Badge Preview Component */}
@@ -1733,7 +1736,7 @@ export default function AdminDashboard() {
           <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-8 space-y-6 shadow-2xl text-start my-auto">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <h3 className="text-lg sm:text-xl font-black text-[#003876]">
-                {editingSponsor ? "Modifier le Sponsor / Entreprise" : "Ajouter un Sponsor / Entreprise"}
+                {language === "ar" ? (editingSponsor ? "تعديل الراعي / الشركة" : "إضافة راعي / شركة") : (editingSponsor ? "Edit Sponsor / Company" : "Add Sponsor / Company")}
               </h3>
               <button onClick={() => setShowSponsorModal(false)} className="p-2 rounded-full hover:bg-slate-100">
                 <XCircle className="w-6 h-6 text-slate-400" />
@@ -1790,7 +1793,7 @@ export default function AdminDashboard() {
                   {isUploadingLogo ? (
                     <div className="flex items-center gap-2 py-4 text-[#003876]">
                       <Loader2 className="w-6 h-6 animate-spin text-[#F05A22]" />
-                      <span className="font-bold text-xs">Téléversement de l'image en cours...</span>
+                      <span className="font-bold text-xs">{language === "ar" ? "جاري رفع الصورة..." : "Uploading image..."}</span>
                     </div>
                   ) : sponsorForm.logo ? (
                     <div className="space-y-3 py-1 flex flex-col items-center w-full">
@@ -1880,10 +1883,10 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <label className="block text-slate-700 font-black mb-1">Site Web (Optionnel)</label>
+                <label className="block text-slate-700 font-black mb-1">{language === "ar" ? "الموقع الإلكتروني (اختياري)" : "Website (Optional)"}</label>
                 <input
                   type="url"
-                  placeholder="https://www.entreprise.dz"
+                  placeholder="https://www.company.dz"
                   value={sponsorForm.website || ""}
                   onChange={(e) => setSponsorForm({ ...sponsorForm, website: e.target.value })}
                   className="w-full h-10 px-3 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#003876]"
@@ -1891,15 +1894,32 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <label className="block text-slate-700 font-black mb-1">Description (Français)</label>
+                <label className="block text-slate-700 font-black mb-1">{language === "ar" ? "الوصف (الإنجليزية)" : "Description (English)"}</label>
                 <textarea
                   rows={3}
-                  placeholder="Brève présentation de l'entreprise..."
-                  value={sponsorForm.description?.fr || ""}
+                  placeholder={language === "ar" ? "نبذة تعريفية باللغة الإنجليزية..." : "Brief company overview in English..."}
+                  value={sponsorForm.description?.en || ""}
                   onChange={(e) =>
                     setSponsorForm({
                       ...sponsorForm,
-                      description: { fr: e.target.value, ar: sponsorForm.description?.ar || "" },
+                      description: { en: e.target.value, ar: sponsorForm.description?.ar || "" },
+                    })
+                  }
+                  className="w-full p-3 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#003876]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-slate-700 font-black mb-1">{language === "ar" ? "الوصف (العربية)" : "Description (Arabic)"}</label>
+                <textarea
+                  rows={3}
+                  dir="rtl"
+                  placeholder={language === "ar" ? "نبذة تعريفية باللغة العربية..." : "Brief company overview in Arabic..."}
+                  value={sponsorForm.description?.ar || ""}
+                  onChange={(e) =>
+                    setSponsorForm({
+                      ...sponsorForm,
+                      description: { en: sponsorForm.description?.en || "", ar: e.target.value },
                     })
                   }
                   className="w-full p-3 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#003876]"
@@ -1912,13 +1932,13 @@ export default function AdminDashboard() {
                   onClick={() => setShowSponsorModal(false)}
                   className="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold hover:bg-slate-200"
                 >
-                  Annuler
+                  {language === "ar" ? "إلغاء" : "Cancel"}
                 </button>
                 <button
                   type="submit"
                   className="px-6 py-2.5 rounded-xl bg-[#F05A22] text-white font-black hover:bg-[#FFBD0E] hover:text-[#0E1B2C] shadow-md"
                 >
-                  Enregistrer
+                  {language === "ar" ? "حفظ" : "Save"}
                 </button>
               </div>
             </form>

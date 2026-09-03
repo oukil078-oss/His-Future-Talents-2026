@@ -17,21 +17,18 @@ import {
 export type DocumentItem = {
   id: "guide" | "sponsoring";
   title: {
-    en?: string;
-    fr?: string;
+    en: string;
     ar: string;
   };
   subtitle: {
-    en?: string;
-    fr?: string;
+    en: string;
     ar: string;
   };
   pages: number;
   pdfUrl: string;
   driveUrl: string;
   tag: {
-    en?: string;
-    fr?: string;
+    en: string;
     ar: string;
   };
   badgeColor: string;
@@ -42,12 +39,10 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
     id: "guide",
     title: {
       en: "Exhibitor Participation Guide — Career Fair & Internships",
-      fr: "Guide de Participation — Forum Carrières & Stages",
       ar: "دليل المشاركة — صالون التوظيف والتربصات",
     },
     subtitle: {
       en: "Practical event information, fair schedule, target academic profiles, and booth logistics (9 pages).",
-      fr: "Informations pratiques, déroulement du forum, profils ciblés et modalités d'organisation pour les exposants (9 pages).",
       ar: "المعلومات التطبيقية، سير الفعالية، الملفات المستهدفة والتنظيم اللوجستي للعارضين (9 صفحات).",
     },
     pages: 9,
@@ -55,7 +50,6 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
     driveUrl: "https://drive.google.com/drive/folders/15RIU4KXb1zHrkVr6VKDH3bmXGFyMXPjD",
     tag: {
       en: "Exhibitor Guide",
-      fr: "Guide Exposants",
       ar: "دليل العارضين",
     },
     badgeColor: "bg-[#58B9FF]/20 text-[#58B9FF] border-[#58B9FF]/40",
@@ -64,12 +58,10 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
     id: "sponsoring",
     title: {
       en: "Official Sponsoring Dossier & Packages 2026",
-      fr: "Dossier de Sponsoring & Grille des Packs 2026",
       ar: "ملف الرعاية وباقات المشاركة 2026",
     },
     subtitle: {
       en: "Detailed breakdown of Bronze, Silver, and Gold sponsorship tiers, media benefits, and brand visibility (15 pages).",
-      fr: "Présentation complète des formules de sponsoring (Bronze, Silver, Gold), avantages média et visibilité scénique (15 pages).",
       ar: "عرض شامل لباقات الرعاية (برونزي، فضي، ذهبي)، المزايا الإعلامية وتغطية العلامة التجارية (15 صفحة).",
     },
     pages: 15,
@@ -77,7 +69,6 @@ export const DOCUMENTS_LIST: DocumentItem[] = [
     driveUrl: "https://drive.google.com/drive/folders/15RIU4KXb1zHrkVr6VKDH3bmXGFyMXPjD",
     tag: {
       en: "Packages & Rates",
-      fr: "Packs & Tarifs",
       ar: "الباقات والأسعار",
     },
     badgeColor: "bg-[#F05A22]/20 text-[#F05A22] border-[#F05A22]/40",
@@ -185,7 +176,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 {/* Top Badge & Page Count */}
                 <div className="flex items-center justify-between gap-2">
                   <span className={`px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider border ${doc.badgeColor}`}>
-                    {language === "ar" ? doc.tag.ar : (doc.tag.en || doc.tag.fr)}
+                    {language === "ar" ? doc.tag.ar : doc.tag.en}
                   </span>
                   <span className="text-xs font-bold text-white/60 flex items-center gap-1">
                     <BookOpen className="w-3.5 h-3.5 text-[#58B9FF]" />
@@ -196,10 +187,10 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                 {/* Title & Subtitle */}
                 <div className="space-y-2">
                   <h3 className="text-lg font-black text-white group-hover:text-[#F05A22] transition-colors leading-snug">
-                    {language === "ar" ? doc.title.ar : (doc.title.en || doc.title.fr)}
+                    {language === "ar" ? doc.title.ar : doc.title.en}
                   </h3>
                   <p className="text-white/70 text-xs font-medium leading-relaxed">
-                    {language === "ar" ? doc.subtitle.ar : (doc.subtitle.en || doc.subtitle.fr)}
+                    {language === "ar" ? doc.subtitle.ar : doc.subtitle.en}
                   </p>
                 </div>
 
@@ -274,7 +265,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
                   }`}
                 >
                   <FileText className="w-3.5 h-3.5" />
-                  <span>{language === "ar" ? doc.tag.ar : (doc.tag.en || doc.tag.fr)}</span>
+                  <span>{language === "ar" ? doc.tag.ar : doc.tag.en}</span>
                 </button>
               ))}
             </div>
@@ -282,7 +273,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
             {/* Title & Page Info (Hidden on small mobile) */}
             <div className="hidden lg:flex items-center gap-3 text-white">
               <span className="text-xs font-extrabold truncate max-w-xs">
-                {language === "ar" ? activeDoc.title.ar : (activeDoc.title.en || activeDoc.title.fr)}
+                {language === "ar" ? activeDoc.title.ar : activeDoc.title.en}
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-white/70">
                 PDF • {activeDoc.pages} {language === "ar" ? "صفحات" : "pages"}
@@ -358,7 +349,7 @@ export default function DocumentModal({ isOpen, onClose, initialDocId = "guide" 
               <iframe
                 src={`${activeDoc.pdfUrl}#toolbar=1`}
                 className="w-full h-full border-none"
-                title={activeDoc.title.en || activeDoc.title.fr}
+                title={activeDoc.title.en}
               >
                 <div className="p-8 text-center text-white space-y-4">
                   <p>{language === "ar" ? "متصفحك لا يدعم العرض المباشر لملفات PDF." : "Your browser does not support direct inline PDF viewing."}</p>

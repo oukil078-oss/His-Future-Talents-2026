@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
     if (!file) {
       return NextResponse.json(
-        { success: false, error: "Aucun fichier fourni." },
+        { success: false, error: "No file provided." },
         { status: 400 }
       );
     }
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     // Validate image mime type
     if (!file.type || !file.type.startsWith("image/")) {
       return NextResponse.json(
-        { success: false, error: "Le fichier doit être une image (PNG, JPG, SVG, WEBP...)." },
+        { success: false, error: "The file must be an image (PNG, JPG, SVG, WEBP...)." },
         { status: 400 }
       );
     }
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json(
-      { success: false, error: "Erreur lors du téléversement du fichier logo." },
+      { success: false, error: "Error uploading logo file." },
       { status: 500 }
     );
   }

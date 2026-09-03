@@ -37,10 +37,10 @@ interface ExhibitorFormState {
 }
 
 const OPPORTUNITIES_OPTIONS = [
-  { id: "emploi", en: "Full-Time Jobs & Careers", fr: "Offres d'emploi", ar: "عروض عمل" },
-  { id: "pfe", en: "End-of-Studies Projects (PFE)", fr: "Stages de fin d'études (PFE)", ar: "مشاريع تخرج (PFE)" },
-  { id: "immersion", en: "Hands-on & Practical Internships", fr: "Stages pratiques / d'immersion", ar: "تربصات ميدانية وتطبيقية" },
-  { id: "decouverte", en: "Discovery & Exploration Internships", fr: "Stages découverte", ar: "تربصات استكشافية" },
+  { id: "emploi", en: "Full-Time Jobs & Careers", ar: "عروض عمل" },
+  { id: "pfe", en: "End-of-Studies Projects (PFE)", ar: "مشاريع تخرج (PFE)" },
+  { id: "immersion", en: "Hands-on & Practical Internships", ar: "تربصات ميدانية وتطبيقية" },
+  { id: "decouverte", en: "Discovery & Exploration Internships", ar: "تربصات استكشافية" },
 ];
 
 export default function SponsorLeadForm() {
@@ -441,7 +441,7 @@ export default function SponsorLeadForm() {
                             }`}>
                               {active && <CheckCircle2 className="w-4 h-4" />}
                             </div>
-                            <span className="text-xs sm:text-sm font-bold">{language === "ar" ? opp.ar : (opp.en || opp.fr)}</span>
+                            <span className="text-xs sm:text-sm font-bold">{language === "ar" ? opp.ar : opp.en}</span>
                           </button>
                         );
                       })}

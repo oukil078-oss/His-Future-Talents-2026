@@ -91,7 +91,7 @@ export async function POST(req: Request) {
 
     if (!companyName || !representativeName || !email || !phone) {
       return NextResponse.json(
-        { success: false, error: "Tous les champs obligatoires doivent être renseignés." },
+        { success: false, error: "All required fields must be filled." },
         { status: 400 }
       );
     }

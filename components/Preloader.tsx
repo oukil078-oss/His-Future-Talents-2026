@@ -290,13 +290,13 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             </div>
           </div>
 
-          {/* Welcome Titles in French & Arabic */}
+          {/* Welcome Titles in English & Arabic */}
           <div ref={welcomeTextRef} className="space-y-1.5 max-w-sm text-center">
             <h2 className="text-lg sm:text-xl font-black tracking-wider uppercase text-white drop-shadow-md">
-              Bienvenue au Salon
+              Welcome to the Fair
             </h2>
             <p className="text-xs sm:text-sm font-extrabold text-[#F05A22] tracking-wide">
-              HIS Future Talents — Édition 3
+              HIS Future Talents — 3rd Edition
             </p>
             <p className="text-[11px] text-white/60 font-semibold pt-1">
               أهلاً بكم في المنصة الرسمية لملتقى المستقبل
@@ -321,7 +321,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           }}
           className="absolute bottom-6 right-6 z-40 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white/70 hover:text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest backdrop-blur-md transition-all cursor-pointer"
         >
-          Passer / تخطي
+          Skip / تخطي
         </button>
 
       </div>

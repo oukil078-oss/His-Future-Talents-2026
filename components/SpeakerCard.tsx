@@ -71,7 +71,7 @@ export default function SpeakerCard({ speaker }: SpeakerCardProps) {
         {/* Topic / Role (What they do) */}
         <p className="text-[11px] text-slate-600 font-medium line-clamp-2 leading-tight">
           {typeof speaker.role === "object"
-            ? (language === "ar" ? speaker.role.ar : speaker.role.fr)
+            ? (language === "ar" ? speaker.role.ar : speaker.role.en)
             : speaker.role}
         </p>
       </div>

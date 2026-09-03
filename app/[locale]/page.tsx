@@ -127,18 +127,18 @@ export default function Home() {
 
   // Authentic HFT Gallery photos from official Future Talents Images archive (WebP format)
   const galleryPhotos = [
-    { src: "/brand/gallery/gallery-1.webp", alt: "Salon HFT - Espace Entreprises & Stands" },
-    { src: "/brand/gallery/gallery-2.webp", alt: "Entretiens et Sourcing Candidats" },
-    { src: "/brand/gallery/gallery-3.webp", alt: "Conférence Officielle & Keynote d'Ouverture HFT" },
-    { src: "/brand/gallery/gallery-4.webp", alt: "Workshop Interactif & Session de Formation RH" },
-    { src: "/brand/gallery/gallery-5.webp", alt: "Session Pratique & Masterclass Formateurs RH" },
-    { src: "/brand/gallery/gallery-6.webp", alt: "Échanges et Rencontres sur les Stands Partenaires" },
-    { src: "/brand/gallery/gallery-7.webp", alt: "Présentation des Innovations Écoles" },
-    { src: "/brand/gallery/gallery-8.webp", alt: "Cérémonie et Remise des Trophées HFT" },
-    { src: "/brand/gallery/gallery-9.webp", alt: "Signature de Partenariats Stratégiques" },
-    { src: "/brand/gallery/gallery-10.webp", alt: "Workshops RH et Coaching Carrière" },
-    { src: "/brand/gallery/gallery-11.webp", alt: "Atelier de Coaching & Orientation Professionnelle" },
-    { src: "/brand/gallery/gallery-12.webp", alt: "Rencontres Recruteurs & Espace Sourcing VIP" },
+    { src: "/brand/gallery/gallery-1.webp", alt: "HFT Fair - Corporate Booths & Exhibition Space" },
+    { src: "/brand/gallery/gallery-2.webp", alt: "Candidate Interviews and Talent Sourcing" },
+    { src: "/brand/gallery/gallery-3.webp", alt: "Official Opening Keynote Conference HFT" },
+    { src: "/brand/gallery/gallery-4.webp", alt: "Interactive Workshop & HR Training Session" },
+    { src: "/brand/gallery/gallery-5.webp", alt: "Practical Masterclass & Executive HR Training" },
+    { src: "/brand/gallery/gallery-6.webp", alt: "Networking and Meetings at Partner Booths" },
+    { src: "/brand/gallery/gallery-7.webp", alt: "University Academic Innovations Showcase" },
+    { src: "/brand/gallery/gallery-8.webp", alt: "HIS Talent Awards Ceremony" },
+    { src: "/brand/gallery/gallery-9.webp", alt: "Strategic Partnership Agreements Signing" },
+    { src: "/brand/gallery/gallery-10.webp", alt: "HR Masterclasses and Career Coaching" },
+    { src: "/brand/gallery/gallery-11.webp", alt: "Career Orientation & Professional Mentoring" },
+    { src: "/brand/gallery/gallery-12.webp", alt: "Executive Recruitment & VIP Talent Sourcing" },
   ];
 
   // ── Keyboard Navigation for Lightbox ──
@@ -791,8 +791,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {[
                 {
-                  title: language === "ar" ? "استقطاب كفاءات الغد" : "Attirez les talents de demain",
-                  badge: language === "ar" ? "توظيف مباشر" : "Sourcing & Recrutement",
+                  title: language === "ar" ? "استقطاب كفاءات الغد" : "Attract Tomorrow's Talent",
+                  badge: language === "ar" ? "توظيف مباشر" : "Direct Recruitment",
                   desc: language === "ar"
                     ? "استقطبوا ووظفوا كفاءات المستقبل من بين جيل جديد من طلبة وخريجي المعهد العالي للعلوم والتخصصات الواعدة."
                     : "Identify and recruit top-tier graduates and highly qualified young professionals directly for your teams.",
@@ -801,8 +801,8 @@ export default function Home() {
                   badgeBg: "bg-[#F05A22]/10 text-[#F05A22] border-[#F05A22]/20",
                 },
                 {
-                  title: language === "ar" ? "الظهور والانتشار للعلامة التجارية" : "Visibilité de Marque",
-                  badge: language === "ar" ? "حضور وطني" : "Rayonnement Média",
+                  title: language === "ar" ? "الظهور والانتشار للعلامة التجارية" : "Brand Visibility & Reach",
+                  badge: language === "ar" ? "حضور وطني" : "National Media Reach",
                   desc: language === "ar"
                     ? "احصلوا على حضور استثنائي وانتشار واسع لعلامتكم التجارية عبر الوسائط الإعلامية والدعاية الرقمية للفعالية."
                     : "Gain premier brand exposure across on-site spaces, national media coverage, and digital campaign channels.",
@@ -811,8 +811,8 @@ export default function Home() {
                   badgeBg: "bg-[#003876]/10 text-[#003876] border-[#003876]/20",
                 },
                 {
-                  title: language === "ar" ? "المسؤولية المجتمعية للمؤسسة (RSE)" : "Responsabilité RSE",
-                  badge: language === "ar" ? "التزام مجتمعي" : "Impact Sociétal",
+                  title: language === "ar" ? "المسؤولية المجتمعية للمؤسسة (RSE)" : "Corporate Social Responsibility (CSR)",
+                  badge: language === "ar" ? "التزام مجتمعي" : "Social Impact",
                   desc: language === "ar"
                     ? "جسدوا التزام مؤسستكم بالمسؤولية المجتمعية من خلال الدعم الفعلي لتوظيف وإدماج الكفاءات الشابة."
                     : "Demonstrate your societal commitment by actively supporting professional insertion and youth employability.",
@@ -821,8 +821,8 @@ export default function Home() {
                   badgeBg: "bg-[#F05A22]/10 text-[#F05A22] border-[#F05A22]/20",
                 },
                 {
-                  title: language === "ar" ? "تعزيز العلامة التجارية كجهة عمل" : "Marque Employeur",
-                  badge: language === "ar" ? "بيئة عمل مفضلة" : "Employeur de Choix",
+                  title: language === "ar" ? "تعزيز العلامة التجارية كجهة عمل" : "Employer Branding",
+                  badge: language === "ar" ? "بيئة عمل مفضلة" : "Employer of Choice",
                   desc: language === "ar"
                     ? "ابرزوا ثقافة مؤسستكم وفرص النمو المهني لترسيخ مكانتكم كبيئة العمل الأولى المفضلة لدى الكفاءات."
                     : "Showcase your company culture and career growth pathways to stand out as a preferred employer.",
@@ -831,8 +831,8 @@ export default function Home() {
                   badgeBg: "bg-[#003876]/10 text-[#003876] border-[#003876]/20",
                 },
                 {
-                  title: language === "ar" ? "شبكة علاقات B2B حصرية" : "Réseau B2B Exclusif",
-                  badge: language === "ar" ? "لقاءات VIP" : "Synergies & Partenariats",
+                  title: language === "ar" ? "شبكة علاقات B2B حصرية" : "Exclusive B2B Network",
+                  badge: language === "ar" ? "لقاءات VIP" : "VIP & Executive Synergies",
                   desc: language === "ar"
                     ? "تواصلوا مباشرة مع صناع القرار ومسؤولي التوظيف في أزيد من 45 مؤسسة عارضة لبناء شراكات استراتيجية."
                     : "Engage with HR directors, executives, and corporate leaders across 45+ partner organizations to build business synergies.",
@@ -1140,12 +1140,12 @@ export default function Home() {
                     type="button"
                     onClick={() => setSelectedRecapVideo({
                       src: "/video/hft-recap-2024.mp4",
-                      title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2024" : "Rétrospective Officielle — HIS Future Talents 2024",
+                      title: language === "ar" ? "الفيديو التلخيصي الرسمي — HIS Future Talents 2024" : "Official Retrospective — HIS Future Talents 2024",
                       year: "2024"
                     })}
                     className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#58B9FF] hover:text-white transition-colors cursor-pointer pt-1"
                   >
-                    <span>{language === "ar" ? "مشاهدة التقرير بالصوت الكامل" : "Regarder avec son en plein écran"}</span>
+                    <span>{language === "ar" ? "مشاهدة التقرير بالصوت الكامل" : "Watch report with full audio"}</span>
                     <ArrowRight className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
                   </button>
                 </div>
@@ -1337,7 +1337,7 @@ export default function Home() {
 
               {/* Description */}
               <p className="text-white/85 text-xs sm:text-sm font-medium leading-relaxed bg-white/5 border border-white/10 p-4 rounded-2xl">
-                {language === "ar" ? selectedMedia.description.ar : (selectedMedia.description.en || selectedMedia.description.fr)}
+                {language === "ar" ? selectedMedia.description.ar : (selectedMedia.description.en || selectedMedia.description.ar)}
               </p>
 
               {/* Key Points */}
@@ -1346,7 +1346,7 @@ export default function Home() {
                   {language === "ar" ? "تفاصيل التغطية الإعلامية" : "Media Coverage Highlights"}
                 </h4>
                 <ul className="space-y-2">
-                  {(language === "ar" ? selectedMedia.keyPoints.ar : (selectedMedia.keyPoints.en || selectedMedia.keyPoints.fr)).map((pt, i) => (
+                  {(language === "ar" ? selectedMedia.keyPoints?.ar || [] : (selectedMedia.keyPoints?.en || selectedMedia.keyPoints?.ar || [])).map((pt, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-xs text-white/90 font-medium">
                       <CheckCircle className="w-4 h-4 text-[#F05A22] shrink-0 mt-0.5" />
                       <span>{pt}</span>

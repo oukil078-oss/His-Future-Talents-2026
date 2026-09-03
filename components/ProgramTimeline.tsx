@@ -84,7 +84,7 @@ export default function ProgramTimeline() {
                     <h3 className={`font-black text-sm md:text-base leading-snug mb-0.5 ${
                       isKeynote ? "text-his-orange" : isAwards ? "text-[#9d7a0a]" : "text-his-deep"
                     }`}>
-                      {language === "ar" ? item.title.ar : (item.title.en || item.title.fr)}
+                      {language === "ar" ? item.title.ar : item.title.en}
                     </h3>
 
                     {/* Contextual note for Talent Awards */}

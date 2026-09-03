@@ -41,11 +41,11 @@ export async function generateApprovalEmailHtml(data: ApprovalEmailData): Promis
 
   return `
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirmation d'inscription & Ticket Officiel - HIS Future Talents 2026</title>
+  <title>Registration Confirmation & Official Pass - HIS Future Talents 2026</title>
   <style>
     body {
       margin: 0;
@@ -206,7 +206,7 @@ export async function generateApprovalEmailHtml(data: ApprovalEmailData): Promis
         
         <!-- Opening Confirmation Sentence -->
         <p class="main-paragraph">
-          This email is to confirm your registration for the <strong>HIS Future Talents 2026</strong> <span class="highlight-word">event</span> on <strong>May 13-14</strong> at <strong>HIS University, Algiers</strong>.
+          This email is to confirm your registration for the <strong>HIS Future Talents 2026</strong> <span class="highlight-word">event</span> on <strong>September 29, 2026</strong> at <strong>HIS University, Algiers</strong>.
         </p>
 
         <!-- Attached Ticket Callout -->
@@ -221,14 +221,14 @@ export async function generateApprovalEmailHtml(data: ApprovalEmailData): Promis
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="left" style="vertical-align: top;">
-                  <div style="font-size: 8px; font-weight: 800; color: #FFBD0E; letter-spacing: 1px;">SOUS LE HAUT PATRONAGE INSTITUTIONNEL</div>
+                  <div style="font-size: 8px; font-weight: 800; color: #FFBD0E; letter-spacing: 1px;">UNDER INSTITUTIONAL HIGH PATRONAGE</div>
                   <img src="cid:hft_logo_white" alt="HIS Future Talents" height="36" style="display: block; height: 36px; width: auto; margin: 6px 0 4px 0;" />
-                  <div class="ticket-subtitle">FAÇONNER L'AVENIR DES TALENTS & INNOVATIONS</div>
+                  <div class="ticket-subtitle">SHAPING THE FUTURE OF TALENT & INNOVATION</div>
                 </td>
                 <td align="right" style="vertical-align: top;">
                   <div style="font-size: 9px; font-weight: 800; color: #FFFFFF; letter-spacing: 1px;">HIS UNIVERSITY</div>
-                  <div style="font-size: 8px; font-weight: 700; color: #58B9FF;">ALGER, ALGÉRIE</div>
-                  <div style="font-size: 14px; font-weight: 900; color: #FFBD0E; margin-top: 2px;">13 & 14 MAI 2026</div>
+                  <div style="font-size: 8px; font-weight: 700; color: #58B9FF;">ALGIERS, ALGERIA</div>
+                  <div style="font-size: 14px; font-weight: 900; color: #FFBD0E; margin-top: 2px;">29 SEPTEMBER 2026</div>
                 </td>
               </tr>
             </table>
@@ -239,12 +239,12 @@ export async function generateApprovalEmailHtml(data: ApprovalEmailData): Promis
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="left" style="vertical-align: top; padding-right: 16px;">
-                  <div class="ticket-ref">Inscription N° <span>${badgeId}</span></div>
+                  <div class="ticket-ref">Registration N° <span>${badgeId}</span></div>
                   <div class="ticket-name">${fullName}</div>
                   <div class="ticket-role">${domain} • ${university}</div>
                   <div class="ticket-meta">
-                    Campus HIS University, Chéraga, Alger<br>
-                    <strong>Mercredi 13 & Jeudi 14 Mai 2026 à partir de 09:00</strong>
+                    Campus HIS University, Algiers, Algeria<br>
+                    <strong>Tuesday, September 29, 2026 from 08:00 AM</strong>
                   </div>
                 </td>
                 <td align="right" style="vertical-align: middle; width: 100px;">
@@ -281,7 +281,7 @@ export async function generateApprovalEmailHtml(data: ApprovalEmailData): Promis
                 <a href="https://facebook.com" class="social-link" style="margin-right: 8px;">Facebook</a>
               </td>
               <td>
-                <a href="https://his.edu.dz" class="social-link" style="background: #F05A22;">Site Web HIS</a>
+                <a href="https://his.edu.dz" class="social-link" style="background: #F05A22;">HIS Website</a>
               </td>
             </tr>
           </table>

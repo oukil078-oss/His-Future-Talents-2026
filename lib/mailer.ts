@@ -90,7 +90,7 @@ export async function sendStudentApprovalEmail(
   }
 
   const badgeId = student.badgeId || `HFT-2026-${student.id.slice(-4).toUpperCase()}`;
-  const fullName = `${student.firstName || ""} ${student.lastName || ""}`.trim() || "Étudiant";
+  const fullName = `${student.firstName || ""} ${student.lastName || ""}`.trim() || "Student";
   const cleanName = fullName.replace(/[^a-zA-Z0-9_-]/g, "_");
 
   // 1. Generate downloadable High-Res PNG Image and Printable PDF Landscape Ticket
@@ -190,7 +190,7 @@ export async function sendStudentApprovalEmail(
     to: student.email,
     subject: "Registration Confirmation & Official Event Pass - HIS Future Talents 2026",
     html: html,
-    text: `This email is to confirm your registration for the HIS Future Talents 2026 event on May 13-14 at HIS University Algiers.\n\nPlease find attached your official event registration ticket.\n\nTo stay informed on all event updates, we highly recommend following our official social media account @hisfuturetalents.\n\nThank you for your participation and we look forward to welcoming you at the event.\n\nBest,\nHIS Future Talents Team`,
+    text: `This email is to confirm your registration for the HIS Future Talents 2026 event on September 29, 2026 at HIS University Algiers.\n\nPlease find attached your official event registration ticket.\n\nTo stay informed on all event updates, we highly recommend following our official social media account @hisfuturetalents.\n\nThank you for your participation and we look forward to welcoming you at the event.\n\nBest,\nHIS Future Talents Team`,
     attachments: attachments,
   });
 }

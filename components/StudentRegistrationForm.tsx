@@ -488,11 +488,11 @@ export default function StudentRegistrationForm({
                   <option value="" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
                     {language === "ar" ? "اختر وضعك الحالي" : "Select your status"}
                   </option>
-                  <option value="طالب (Licence / Master / Ingénieur)" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    {language === "ar" ? "طالب (Licence / Master / Ingénieur)" : "Student (Bachelor / Master / Engineering)"}
+                  <option value="طالب (ليسانس / ماستر / مهندس)" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
+                    {language === "ar" ? "طالب (ليسانس / ماستر / مهندس)" : "Student (Bachelor / Master / Engineering)"}
                   </option>
                   <option value="خريج حديث" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
-                    {language === "ar" ? "خريج حديث (Jeune diplômé)" : "Recent Graduate / Alumni"}
+                    {language === "ar" ? "خريج حديث" : "Recent Graduate / Alumni"}
                   </option>
                   <option value="باحث عن عمل / تربص" className={isDark ? "bg-[#0E1B2C] text-white" : ""}>
                     {language === "ar" ? "باحث عن عمل أو تربص" : "Job / Internship Seeker"}
@@ -611,8 +611,8 @@ export default function StudentRegistrationForm({
               <label className={labelClass}>{language === "ar" ? "ما الذي تبحث عنه في الصالون ؟ (اختيارات متعددة) *" : "What are your primary goals at HIS Future Talents? *"}</label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {[
-                  { id: "فرص تدريب", label: language === "ar" ? "فرص تدريب (Stages / PFE)" : "Internships & End-of-Studies Projects (PFE)" },
-                  { id: "فرص عمل", label: language === "ar" ? "فرص عمل (Offres d'emploi)" : "Job Offers & Career Recruitment" },
+                  { id: "فرص تدريب", label: language === "ar" ? "فرص تدريب ومشاريع تخرج (PFE)" : "Internships & End-of-Studies Projects (PFE)" },
+                  { id: "فرص عمل", label: language === "ar" ? "فرص عمل وتوظيف" : "Job Offers & Career Recruitment" },
                   { id: "بناء شبكة علاقات مهنية", label: language === "ar" ? "بناء شبكة علاقات مهنية" : "Professional Networking" },
                   { id: "التعرف على الشركات والمؤسسات", label: language === "ar" ? "التعرف على الشركات والمؤسسات" : "Discovering Leading Companies" },
                   { id: "حضور المحاضرات والورشات", label: language === "ar" ? "حضور المحاضرات والورشات" : "Attending Keynotes & Masterclasses" },

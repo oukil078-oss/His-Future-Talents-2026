@@ -17,8 +17,8 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
   const badgeId = student.badgeId || `HFT-2026-${student.id.slice(-4).toUpperCase()}`;
   const firstName = (student.firstName || "").toUpperCase();
   const lastName = (student.lastName || "").toUpperCase();
-  const fullName = `${firstName} ${lastName}`.trim() || "TALENT ÉTUDIANT";
-  const domain = (student.fieldOfStudyOrWork || student.currentStatus || "INFORMATIQUE & IA").trim().toUpperCase();
+  const fullName = `${firstName} ${lastName}`.trim() || "STUDENT TALENT";
+  const domain = (student.fieldOfStudyOrWork || student.currentStatus || "COMPUTER SCIENCE & AI").trim().toUpperCase();
   const university = (student.university || "HIS University").trim().toUpperCase();
   const professionText = `${domain} • ${university}`;
 
@@ -107,17 +107,17 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
 
     <!-- Top Left Institutional Header Text in HFT Gold -->
     <g transform="translate(36, 40)">
-      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11" fill="#FFBD0E" letter-spacing="1.5">SOUS LE HAUT PATRONAGE DE</text>
-      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="10" fill="#FFFFFF" letter-spacing="1">MINISTÈRE DE L'ENSEIGNEMENT SUPÉRIEUR ET DE LA RECHERCHE SCIENTIFIQUE</text>
-      <text x="0" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="10" fill="#CBD5E1" letter-spacing="1">MINISTÈRE DE L'ÉCONOMIE DE LA CONNAISSANCE ET DES START-UPS</text>
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11" fill="#FFBD0E" letter-spacing="1.5">UNDER THE HIGH PATRONAGE OF</text>
+      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="10" fill="#FFFFFF" letter-spacing="1">MINISTRY OF HIGHER EDUCATION AND SCIENTIFIC RESEARCH</text>
+      <text x="0" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="10" fill="#CBD5E1" letter-spacing="1">MINISTRY OF KNOWLEDGE ECONOMY AND STARTUPS</text>
     </g>
 
     <!-- Top Right Location & Dates Text in HFT Palette -->
     <g transform="translate(964, 40)" text-anchor="end">
       <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="12" fill="#FFFFFF" letter-spacing="1.5">HIS UNIVERSITY</text>
-      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10" fill="#58B9FF" letter-spacing="1.5">"CAMPUS DES TALENTS", ALGER</text>
-      <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22" fill="#FFBD0E" letter-spacing="1">13 &amp; 14</text>
-      <text x="0" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13" fill="#FFFFFF" letter-spacing="2">MAI 2026</text>
+      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10" fill="#58B9FF" letter-spacing="1.5">"TALENTS CAMPUS", ALGIERS</text>
+      <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22" fill="#FFBD0E" letter-spacing="1">29</text>
+      <text x="0" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13" fill="#FFFFFF" letter-spacing="2">SEPTEMBER 2026</text>
     </g>
 
     <!-- ── OFFICIAL WHITE HFT LOGO FROM HEADER ── -->
@@ -154,13 +154,13 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
         </svg>
       </g>
       <!-- Subtitle under official logo -->
-      <text x="0" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="13.5" fill="#58B9FF" letter-spacing="4" text-anchor="middle">FAÇONNER L'AVENIR DES TALENTS &amp; INNOVATIONS</text>
+      <text x="0" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="13.5" fill="#58B9FF" letter-spacing="4" text-anchor="middle">SHAPING THE FUTURE OF TALENT &amp; INNOVATION</text>
     </g>
 
     <!-- Bottom Right Highlights Text in Top Banner -->
     <g transform="translate(964, 282)" text-anchor="end">
-      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10" fill="#FFBD0E" letter-spacing="1.5">LE 1ER SALON DES TALENTS &amp; RECRUTEMENT EN ALGÉRIE</text>
-      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9" fill="#E2E8F0" letter-spacing="1">STAGES, EMPLOIS, NETWORKING, ATELIERS &amp; CONFÉRENCES</text>
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="10" fill="#FFBD0E" letter-spacing="1.5">ALGERIA'S PREMIER TALENT &amp; RECRUITMENT FAIR</text>
+      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9" fill="#E2E8F0" letter-spacing="1">INTERNSHIPS, CAREERS, NETWORKING, WORKSHOPS &amp; KEYNOTES</text>
     </g>
 
     <!-- ════════════════════ BOTTOM SECTION (USER DETAILS + QR CODE) ════════════════════ -->
@@ -175,7 +175,7 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
       <!-- Inscription Reference Number Pill -->
       <g transform="translate(0, 16)">
         <text x="0" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="15" fill="#0E1B2C">
-          Inscription N° <tspan font-family="monospace, Courier" font-weight="900" fill="#F05A22">${badgeId}</tspan>
+          Registration N° <tspan font-family="monospace, Courier" font-weight="900" fill="#F05A22">${badgeId}</tspan>
         </text>
       </g>
 
@@ -192,10 +192,10 @@ export async function generateStudentBadgeSvg(student: StudentApplication): Prom
       <!-- Venue & Date -->
       <g transform="translate(0, 122)">
         <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="12.5" fill="#475569">
-          Campus HIS University, Chéraga, Alger, Algérie
+          Campus HIS University, Algiers, Algeria
         </text>
         <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13" fill="#003876">
-          Mercredi 13 &amp; Jeudi 14 Mai 2026 à partir de 09:00
+          Tuesday, September 29, 2026 from 08:00 AM
         </text>
       </g>
     </g>

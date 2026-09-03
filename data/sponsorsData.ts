@@ -5,7 +5,7 @@ export type Sponsor = {
   edition: "2026";
   website?: string;
   description?: {
-    fr: string;
+    en: string;
     ar: string;
   };
 };
@@ -18,7 +18,7 @@ export const verifiedSponsors2026: Sponsor[] = [
     edition: "2026",
     website: "https://www.satim.dz",
     description: {
-      fr: "Société d'Automatisations des Transactions Interbancaires et de Monétique — Opérateur officiel du réseau CIB en Algérie.",
+      en: "Automated Interbank Transactions and Electronic Payment Company — Official operator of the CIB interbank payment network in Algeria.",
       ar: "الشركة التلقائية للمعاملات بين البنوك والدفع الإلكتروني — المسير الرسمي لشبكة البطاقات البنكية CIB."
     }
   },
@@ -29,7 +29,7 @@ export const verifiedSponsors2026: Sponsor[] = [
     edition: "2026",
     website: "https://www.profex.dz",
     description: {
-      fr: "Fabrication de produits de soins et de dispositifs médicaux certifiés de haute qualité.",
+      en: "Manufacturer of certified high-quality personal care products and medical devices.",
       ar: "شركة متخصصة في تصنيع منتجات العناية والأجهزة الطبية عالية الجودة."
     }
   }

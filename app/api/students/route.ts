@@ -76,7 +76,7 @@ export async function POST(req: Request) {
     // Required fields: Full Name (firstName + lastName or firstName), Email, Phone, Age Category, Current Status, Field of Study/Work, Interested Fields, CV
     if (!firstName || !email || !phone || !ageCategory || !currentStatus || !fieldOfStudyOrWork) {
       return NextResponse.json(
-        { success: false, error: "Veuillez remplir tous les champs obligatoires (*)." },
+        { success: false, error: "Please fill in all required fields (*)." },
         { status: 400 }
       );
     }

@@ -123,7 +123,7 @@ export default function MediaCoverage() {
                 {language === "ar" ? "حول القناة وتغطية الصالون" : "About the Broadcaster & Event Coverage"}
               </h4>
               <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-medium">
-                {language === "ar" ? selectedChannel.description.ar : ((selectedChannel.description as any).en || selectedChannel.description.fr)}
+                {language === "ar" ? selectedChannel.description.ar : selectedChannel.description.en}
               </p>
             </div>
 
@@ -134,7 +134,7 @@ export default function MediaCoverage() {
                   {language === "ar" ? "أبرز محطات التغطية" : "Coverage Highlights"}
                 </h4>
                 <ul className="space-y-2 text-xs text-white/80 font-medium">
-                  {(language === "ar" ? selectedChannel.keyPoints.ar : ((selectedChannel.keyPoints as any).en || selectedChannel.keyPoints.fr)).map((pt: string, i: number) => (
+                  {((language === "ar" ? selectedChannel.keyPoints.ar : selectedChannel.keyPoints.en) || []).map((pt: string, i: number) => (
                     <li key={i} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#58B9FF] shrink-0 mt-0.5" />
                       <span>{pt}</span>

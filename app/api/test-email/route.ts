@@ -22,12 +22,12 @@ export async function GET(req: Request) {
       subject: "Test SMTP - HIS Future Talents 2026",
       html: `
         <div style="font-family: sans-serif; padding: 20px; background-color: #0A111E; color: #FFFFFF; border-radius: 10px;">
-          <h2 style="color: #FFBD0E;">✓ Connexion SMTP Réussie !</h2>
-          <p>Ce courriel confirme que le serveur SMTP (<strong>${process.env.SMTP_HOST}</strong> sur le port <strong>${process.env.SMTP_PORT}</strong>) fonctionne parfaitement.</p>
-          <p style="color: #94A3B8; font-size: 12px;">Envoyé depuis le système de gestion des talents HIS Future Talents 2026.</p>
+          <h2 style="color: #FFBD0E;">✓ SMTP Connection Successful!</h2>
+          <p>This email confirms that the SMTP server (<strong>${process.env.SMTP_HOST}</strong> on port <strong>${process.env.SMTP_PORT}</strong>) is functioning properly.</p>
+          <p style="color: #94A3B8; font-size: 12px;">Sent from the HIS Future Talents 2026 talent management system.</p>
         </div>
       `,
-      text: "Test SMTP HIS Future Talents 2026 : Le serveur SMTP fonctionne correctement.",
+      text: "SMTP Test HIS Future Talents 2026: The SMTP server is functioning properly.",
     });
 
     return NextResponse.json({
