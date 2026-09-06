@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSponsors, addSponsor, updateSponsor, deleteSponsor } from "@/lib/dataStore";
+import { getSponsors, addSponsor, updateSponsor, deleteSponsor, getLeads } from "@/lib/dataStore";
 import { Partner } from "@/data/partners";
 
 export const dynamic = "force-dynamic";
@@ -100,6 +100,42 @@ export async function GET() {
         }
       }
       result = Array.from(sponsorMap.values());
+    }
+
+    // Enrich 2026 sponsors with lead opportunities and target profiles
+    try {
+      const leads = await getLeads();
+      const leadMap = new Map<string, any>();
+      leads.forEach((l) => {
+        const key = (l.companyName || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+        leadMap.set(key, l);
+      });
+
+      result = result.map((partner: any) => {
+        if (partner.edition === 2026) {
+          const pKey = (partner.name || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+          const slugKey = (partner.slug || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+          let match = leadMap.get(pKey) || leadMap.get(slugKey);
+          if (!match) {
+            for (const [k, l] of Array.from(leadMap.entries())) {
+              if (pKey.includes(k) || k.includes(pKey) || slugKey.includes(k) || k.includes(slugKey)) {
+                match = l;
+                break;
+              }
+            }
+          }
+          if (match) {
+            return {
+              ...partner,
+              opportunities: partner.opportunities || match.opportunities || ["emploi", "pfe"],
+              targetProfiles: partner.targetProfiles || match.targetProfiles || "",
+            };
+          }
+        }
+        return partner;
+      });
+    } catch (leadErr) {
+      console.warn("Could not enrich sponsors with leads:", leadErr);
     }
 
     // Filter out Vitrin Clinic from 2026 list

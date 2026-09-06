@@ -1,5 +1,28 @@
 [
   {
+    "id": "lead_1788690387518_tu46a",
+    "companyName": "BOMARE COMPANY - STREAM",
+    "representativeName": "BOUZERGUI KAOUTHAR",
+    "role": "TRAINING OFFICER",
+    "email": "charge.formation@bomarecompany.com",
+    "phone": "0560672531",
+    "representativesCount": 3,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-09-06T10:26:27.518Z",
+    "createdAt": "2026-09-06T10:26:27.524Z",
+    "updatedAt": "2026-09-06T13:07:29.179Z"
+  },
+  {
     "id": "lead_1788447723636_2hnyx",
     "companyName": "Okadoo",
     "representativeName": "Lylia Slamani",
@@ -82,7 +105,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-09-02T09:49:55.165Z",
     "createdAt": "2026-09-02T09:49:55.205Z",
-    "updatedAt": "2026-09-03T10:29:52.881Z"
+    "updatedAt": "2026-09-03T20:36:16.564Z"
   },
   {
     "id": "lead_1788095067613_gjr0f",
@@ -104,7 +127,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-30T13:04:27.613Z",
     "createdAt": "2026-08-30T13:04:28.152Z",
-    "updatedAt": "2026-09-03T10:29:52.909Z"
+    "updatedAt": "2026-09-03T20:36:16.697Z"
   },
   {
     "id": "lead_1788073116527_0ousc",
@@ -125,7 +148,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-30T06:58:36.527Z",
     "createdAt": "2026-08-30T06:58:36.551Z",
-    "updatedAt": "2026-09-03T10:29:52.930Z"
+    "updatedAt": "2026-09-03T20:36:16.771Z"
   },
   {
     "id": "lead_1787840869449_6ns5y",
@@ -147,7 +170,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-27T14:27:49.449Z",
     "createdAt": "2026-08-27T14:27:49.461Z",
-    "updatedAt": "2026-09-03T10:29:52.944Z"
+    "updatedAt": "2026-09-03T20:36:16.803Z"
   },
   {
     "id": "lead_1787146853219_durmv",
@@ -168,7 +191,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-19T13:40:53.219Z",
     "createdAt": "2026-08-19T13:40:53.226Z",
-    "updatedAt": "2026-09-03T10:29:52.967Z"
+    "updatedAt": "2026-09-03T20:36:16.828Z"
   },
   {
     "id": "lead_1787053371630_lobo3",
@@ -191,7 +214,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-18T11:42:51.630Z",
     "createdAt": "2026-08-18T11:42:51.632Z",
-    "updatedAt": "2026-09-03T10:29:52.978Z"
+    "updatedAt": "2026-09-03T20:36:16.852Z"
   },
   {
     "id": "lead_1786622173707_3gfw1",
@@ -214,7 +237,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-13T11:56:13.707Z",
     "createdAt": "2026-08-17T16:36:12.568Z",
-    "updatedAt": "2026-09-03T10:29:52.994Z"
+    "updatedAt": "2026-09-03T20:36:16.867Z"
   },
   {
     "id": "lead_1786612817101_h37c9",
@@ -236,7 +259,7 @@
     "status": "En cours",
     "submittedAt": "2026-08-13T09:20:17.101Z",
     "createdAt": "2026-08-17T16:36:12.584Z",
-    "updatedAt": "2026-09-03T10:29:53.012Z"
+    "updatedAt": "2026-09-03T20:36:16.885Z"
   },
   {
     "id": "lead_1786536638514_scgrs",
@@ -257,7 +280,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-12T12:10:38.514Z",
     "createdAt": "2026-08-17T16:36:12.601Z",
-    "updatedAt": "2026-09-03T10:29:53.022Z"
+    "updatedAt": "2026-09-03T20:36:16.915Z"
   },
   {
     "id": "lead_1786374061037_qzlog",
@@ -278,7 +301,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-10T15:01:01.037Z",
     "createdAt": "2026-08-17T16:36:12.608Z",
-    "updatedAt": "2026-09-03T10:29:53.034Z"
+    "updatedAt": "2026-09-03T20:36:16.927Z"
   },
   {
     "id": "lead_1786363483142_orys7",
@@ -300,7 +323,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-10T12:04:43.142Z",
     "createdAt": "2026-08-17T16:36:12.616Z",
-    "updatedAt": "2026-09-03T10:29:53.046Z"
+    "updatedAt": "2026-09-03T20:36:16.939Z"
   },
   {
     "id": "lead_1786302038327_hi7ng",
@@ -320,7 +343,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-09T19:00:38.327Z",
     "createdAt": "2026-08-17T16:36:12.624Z",
-    "updatedAt": "2026-09-03T10:29:53.054Z"
+    "updatedAt": "2026-09-03T20:36:16.950Z"
   },
   {
     "id": "lead_1786277155406_mjj5z",
@@ -339,10 +362,10 @@
     "equipmentNeeded": "Roll up, flyers, ...",
     "remarks": "",
     "packageDesired": "Exposant",
-    "status": "Refusé",
+    "status": "En cours",
     "submittedAt": "2026-08-09T12:05:55.406Z",
     "createdAt": "2026-08-17T16:36:12.632Z",
-    "updatedAt": "2026-09-03T13:28:49.144Z"
+    "updatedAt": "2026-09-03T20:36:16.965Z"
   },
   {
     "id": "lead_1786272150222_is1m9",
@@ -363,7 +386,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-09T10:42:30.222Z",
     "createdAt": "2026-08-17T16:36:12.638Z",
-    "updatedAt": "2026-09-03T10:29:53.066Z"
+    "updatedAt": "2026-09-03T20:36:16.978Z"
   },
   {
     "id": "lead_1786271815110_kdi5j",
@@ -386,7 +409,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-09T10:36:55.110Z",
     "createdAt": "2026-08-17T16:36:12.649Z",
-    "updatedAt": "2026-09-03T10:29:53.073Z"
+    "updatedAt": "2026-09-03T20:36:16.992Z"
   },
   {
     "id": "lead_1786260926128_9gymc",
@@ -409,7 +432,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-09T07:35:26.128Z",
     "createdAt": "2026-08-17T16:36:12.656Z",
-    "updatedAt": "2026-09-03T10:29:53.080Z"
+    "updatedAt": "2026-09-03T20:36:16.998Z"
   },
   {
     "id": "lead_1786017516645_4d4ra",
@@ -430,7 +453,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-06T11:58:36.645Z",
     "createdAt": "2026-08-17T16:36:12.663Z",
-    "updatedAt": "2026-09-03T10:29:53.089Z"
+    "updatedAt": "2026-09-03T20:36:17.012Z"
   },
   {
     "id": "lead_1785857696100_w9xhc",
@@ -452,7 +475,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-04T15:34:56.101Z",
     "createdAt": "2026-08-17T16:36:12.670Z",
-    "updatedAt": "2026-09-03T10:29:53.100Z"
+    "updatedAt": "2026-09-03T20:36:17.035Z"
   },
   {
     "id": "lead_1785768194136_xyceh",
@@ -473,7 +496,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-03T14:43:14.136Z",
     "createdAt": "2026-08-17T16:36:12.677Z",
-    "updatedAt": "2026-09-03T10:29:53.110Z"
+    "updatedAt": "2026-09-03T20:36:17.073Z"
   },
   {
     "id": "lead_1785764709493_vgokz",
@@ -496,7 +519,7 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-03T13:45:09.493Z",
     "createdAt": "2026-08-17T16:36:12.687Z",
-    "updatedAt": "2026-09-03T10:29:53.121Z"
+    "updatedAt": "2026-09-03T20:36:17.094Z"
   },
   {
     "id": "lead_1785671872976_5kdpm",
@@ -517,6 +540,6 @@
     "status": "Confirmé",
     "submittedAt": "2026-08-02T11:57:52.976Z",
     "createdAt": "2026-08-17T16:36:12.693Z",
-    "updatedAt": "2026-09-03T10:29:53.147Z"
+    "updatedAt": "2026-09-03T20:36:17.107Z"
   }
 ]

@@ -3,19 +3,43 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { partnersData, Partner } from "@/data/partners";
+import CompanyDetailModal from "@/components/CompanyDetailModal";
+import { Sparkles } from "lucide-react";
 
-function PartnerLogoCard({ partner }: { partner: Partner }) {
+function PartnerLogoCard({
+  partner,
+  onClick,
+}: {
+  partner: Partner;
+  onClick: () => void;
+}) {
   const [hasError, setHasError] = useState(false);
+  const { language } = useLanguage();
 
   const isOrganizingEntity =
     partner.slug === "his-university" ||
     partner.slug === "iracademy" ||
     partner.slug === "his-training-center";
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <div
-      title={partner.name}
-      className={`group relative bg-white rounded-xl p-1.5 sm:p-2 h-16 sm:h-20 flex items-center justify-center transition-all duration-200 hover:shadow-md hover:scale-105 overflow-hidden ${
+      role="button"
+      tabIndex={0}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      title={
+        language === "ar"
+          ? `${partner.name} - انقر لمشاهدة التفاصيل والفرص`
+          : `${partner.name} - Click to view opportunities & details`
+      }
+      className={`group relative bg-white rounded-xl p-1.5 sm:p-2 h-16 sm:h-20 flex items-center justify-center transition-all duration-200 cursor-pointer select-none hover:shadow-lg hover:-translate-y-1 overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#F05A22] ${
         isOrganizingEntity
           ? "border-2 border-[#003876]/40 bg-gradient-to-b from-white to-blue-50/20 hover:border-[#003876]"
           : "border border-slate-200/80 hover:border-[#F05A22]"
@@ -46,6 +70,9 @@ function PartnerLogoCard({ partner }: { partner: Partner }) {
         </div>
       )}
 
+      {/* Subtle bottom indicator on hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F05A22] opacity-0 group-hover:opacity-100 transition-opacity" />
+
       {/* Micro Hover Tooltip with Name */}
       <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[9px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity z-20 shadow-md">
         {partner.name}
@@ -58,6 +85,7 @@ export default function PartnerLogoGrid() {
   const { language, dir } = useLanguage();
   const [activeEdition, setActiveEdition] = useState<2026 | 2025 | 2024>(2026);
   const [allPartners, setAllPartners] = useState<Partner[]>(partnersData);
+  const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
 
   useEffect(() => {
     const fetchSponsors = async () => {
@@ -86,8 +114,9 @@ export default function PartnerLogoGrid() {
     <div className="space-y-6" dir={dir}>
       {/* Header & Tabs Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4 text-start">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#003876]/10 text-[#003876] text-[10px] font-black uppercase tracking-wider mb-1.5">
+        <div className="space-y-1">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#003876]/10 text-[#003876] text-[10px] font-black uppercase tracking-wider mb-0.5">
+            <Sparkles className="w-3 h-3 text-[#F05A22]" />
             <span>{language === "ar" ? "شبكة الشركاء والعارضين" : "Partner Network & Exhibitors"}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-[#003876] tracking-tight">
@@ -99,10 +128,10 @@ export default function PartnerLogoGrid() {
               ? "Exhibitors & Partners for 2026 Edition"
               : "Exhibitors from Previous Editions"}
           </h2>
-          <p className="text-slate-500 text-xs sm:text-sm font-medium mt-0.5">
+          <p className="text-slate-500 text-xs sm:text-sm font-medium">
             {language === "ar"
-              ? "أكثر من 140 مؤسسة وطنية ودولية تشارك في دورات HIS Future Talents"
-              : "Over 140 leading companies recruit and partner across HIS Future Talents editions."}
+              ? "أكثر من 140 مؤسسة وطنية ودولية — انقر على أي شركة لمعرفة الفرص المعروضة (عروض عمل، PFE، وتربصات)"
+              : "Over 140 leading companies — click any logo to explore job offers, PFE internships & details."}
           </p>
         </div>
 
@@ -137,9 +166,18 @@ export default function PartnerLogoGrid() {
           <PartnerLogoCard
             key={`${partner.edition}-${partner.slug}-${idx}`}
             partner={partner}
+            onClick={() => setSelectedPartner(partner)}
           />
         ))}
       </div>
+
+      {/* Interactive Company Detail Modal */}
+      {selectedPartner && (
+        <CompanyDetailModal
+          partner={selectedPartner}
+          onClose={() => setSelectedPartner(null)}
+        />
+      )}
     </div>
   );
 }

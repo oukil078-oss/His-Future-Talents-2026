@@ -14,6 +14,10 @@ import {
   Zap,
   X,
   Info,
+  Briefcase,
+  GraduationCap,
+  Layers,
+  Search,
 } from "lucide-react";
 
 export type SponsorItem = {
@@ -33,6 +37,8 @@ export type SponsorItem = {
     en?: string[];
     ar?: string[];
   };
+  opportunities?: string[];
+  targetProfiles?: string;
 };
 
 interface SponsorTheme {
@@ -650,6 +656,33 @@ export default function SponsorsSection() {
                 <p className="text-slate-100 text-xs sm:text-sm leading-relaxed font-medium">
                   {fullDesc}
                 </p>
+              </div>
+
+              {/* Opportunités proposées */}
+              <div className="space-y-2.5">
+                <h4 className="text-xs font-black uppercase tracking-wider text-[#FF4D5E] flex items-center gap-1.5" style={{ color: theme.taglineColor }}>
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{language === "ar" ? "الفرص المعروضة (Opportunités proposées)" : "Opportunities Offered (Opportunités proposées)"}</span>
+                </h4>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: "emploi", icon: Briefcase, ar: "عروض عمل", en: "Job Offers" },
+                    { id: "pfe", icon: GraduationCap, ar: "مشاريع تخرج (PFE)", en: "PFE Projects" },
+                    { id: "immersion", icon: Layers, ar: "تربصات تطبيقية", en: "Practical Internships" },
+                    { id: "decouverte", icon: Search, ar: "تربصات استكشافية", en: "Discovery Internships" },
+                  ].map((opp) => {
+                    const OppIcon = opp.icon;
+                    return (
+                      <div
+                        key={opp.id}
+                        className="flex items-center gap-2 p-2 rounded-xl bg-white/10 border border-white/15 text-xs font-bold text-white/90"
+                      >
+                        <OppIcon className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <span>{language === "ar" ? opp.ar : opp.en}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Key Highlights / Impact Points */}

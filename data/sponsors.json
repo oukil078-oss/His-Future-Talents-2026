@@ -4,21 +4,36 @@
     "slug": "his-university",
     "logo": "/brand/his-official-logo.png",
     "edition": 2026,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "immersion",
+      "decouverte"
+    ]
   },
   {
     "name": "IRAcademy",
     "slug": "iracademy",
     "logo": "/shared/iracademy.png",
     "edition": 2026,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "immersion",
+      "decouverte"
+    ]
   },
   {
     "name": "HIS Training Center",
     "slug": "his-training-center",
     "logo": "/shared/his-training-center.png",
     "edition": 2026,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "immersion",
+      "decouverte"
+    ]
   },
   {
     "name": "SATIM",
@@ -43,7 +58,13 @@
         "الراعي الفضي الرسمي (Silver Sponsor) لصالون HIS Future Talents 2026.",
         "داعم استراتيجي للابتكار والتحول الرقمي المالي والتوظيف في الجزائر."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ]
   },
   {
     "name": "TECHNO",
@@ -69,7 +90,13 @@
         "الراعي الفضي الرسمي الداعم للطلبة والمواهب الشابة في صالون HIS Future Talents 2026.",
         "شبكة فروع وتوزيع كبرى تغطي مختلف ولايات الوطن."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ],
+    "targetProfiles": "Comptabilité – Finance – Gestion & Économie\nMarketing – Marketing Digital\nRessources Humaines – Administration\nSystèmes d’Information – Intelligence Artificielle\nGestion de Projets – Hygiène, Sécurité & Environnement (HSE)\nLogistique – Gestion des Stocks – Achats\nTechnique & Industrie\nVentes – Ventes B2B"
   },
   {
     "name": "PROPHEX",
@@ -94,7 +121,13 @@
         "حلول متطورة لشبكات تصريف المياه، العزل، وتجهيزات الري الحديثة.",
         "الراعي البرونزي الرسمي لصالون HIS Future Talents 2026 وفرص استقطاب للكفاءات الهندسية والتجارية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ]
   },
   {
     "name": "HYDRAPHARM Groupe",
@@ -104,7 +137,12 @@
     "description": {
       "en": "HYDRAPHARM Groupe is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "HYDRAPHARM Groupe تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ],
+    "targetProfiles": "Développeurs Applications et ERP \nDélégués médicaux  \nConseillers Commerciaux Parapharm et clinique \nEvènementiel"
   },
   {
     "name": "MFG",
@@ -114,7 +152,13 @@
     "description": {
       "en": "Mediterranean Float Glass (MFG), a Cevital subsidiary founded in 2007, is Africa's largest manufacturer, processor, and exporter of flat architectural glass, operating world-class industrial float lines in Larbaâ.",
       "ar": "MFG تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "decouverte",
+      "immersion"
+    ]
   },
   {
     "name": "Les Laboratoires Frater Razes",
@@ -124,7 +168,14 @@
     "description": {
       "en": "Les Laboratoires Frater Razes is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "Les Laboratoires Frater Razes تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ],
+    "targetProfiles": "profils avec cursus scientifiques et autres"
   },
   {
     "name": "CPH",
@@ -134,7 +185,11 @@
     "description": {
       "en": "CPH is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "CPH تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "pfe",
+      "emploi"
+    ]
   },
   {
     "name": "Ouedkniss SARL",
@@ -144,7 +199,12 @@
     "description": {
       "en": "Ouedkniss SARL is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "Ouedkniss SARL تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Sarl Wafa Faile",
@@ -154,7 +214,11 @@
     "description": {
       "en": "Sarl Wafa Faile is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "Sarl Wafa Faile تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ]
   },
   {
     "name": "MAGHREB LEASING ALGERIE",
@@ -164,7 +228,14 @@
     "description": {
       "en": "MAGHREB LEASING ALGERIE is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "MAGHREB LEASING ALGERIE تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "decouverte",
+      "immersion"
+    ],
+    "targetProfiles": "Finances/Banque, Informatique, Commerciaux, juridique"
   },
   {
     "name": "SPA MOUSTACHIR",
@@ -174,7 +245,14 @@
     "description": {
       "en": "SPA MOUSTACHIR is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "SPA MOUSTACHIR تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "decouverte",
+      "immersion"
+    ],
+    "targetProfiles": "Generalement de le departement Commercial ,Finance, marketing"
   },
   {
     "name": "SARL AYAM",
@@ -184,7 +262,13 @@
     "description": {
       "en": "SARL AYAM is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "SARL AYAM تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ],
+    "targetProfiles": "MARKETING - COMMERCIAL - COMPTABILITE"
   },
   {
     "name": "CANHYGINEN",
@@ -194,7 +278,11 @@
     "description": {
       "en": "CANHYGINEN is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "CANHYGINEN تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "pfe",
+      "emploi"
+    ]
   },
   {
     "name": "Gam assurance",
@@ -204,7 +292,12 @@
     "description": {
       "en": "Gam assurance is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "Gam assurance تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "pfe",
+      "emploi"
+    ],
+    "targetProfiles": "ingénieur système sécurité /graphiste/manager juridique /juriste contentieux /moyen généraux/ressources humaines"
   },
   {
     "name": "EURL OUM DARMAN ENTREPOT PUBLIC",
@@ -214,7 +307,12 @@
     "description": {
       "en": "EURL OUM DARMAN ENTREPOT PUBLIC is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "EURL OUM DARMAN ENTREPOT PUBLIC تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "pfe",
+      "decouverte",
+      "immersion"
+    ]
   },
   {
     "name": "BortoCall",
@@ -224,7 +322,11 @@
     "description": {
       "en": "BortoCall is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "BortoCall تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi"
+    ],
+    "targetProfiles": "- Cyber Security Engineer\n- Android Developer - Native\n- iOS Developer - Native"
   },
   {
     "name": "ZAD AI",
@@ -234,7 +336,11 @@
     "description": {
       "en": "ZAD AI is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "ZAD AI تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ]
   },
   {
     "name": "SARL SOFICLEF",
@@ -244,7 +350,14 @@
     "description": {
       "en": "SARL SOFICLEF is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "SARL SOFICLEF تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ],
+    "targetProfiles": "nous cherchons des profils pour l'engenniring , R & D , marketing (chef de produit)"
   },
   {
     "name": "SARL AFC INDUSTRY",
@@ -254,7 +367,13 @@
     "description": {
       "en": "SARL AFC INDUSTRY is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "SARL AFC INDUSTRY تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "immersion",
+      "pfe",
+      "decouverte"
+    ]
   },
   {
     "name": "Laboratoires Merinal",
@@ -264,7 +383,12 @@
     "description": {
       "en": "Laboratoires Merinal is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "Laboratoires Merinal تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "decouverte"
+    ]
   },
   {
     "name": "KAOUA FOOD",
@@ -274,7 +398,12 @@
     "description": {
       "en": "KAOUA FOOD is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "KAOUA FOOD تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ],
+    "targetProfiles": "Marketing management rh"
   },
   {
     "name": "HIBOU CONSULTING RH",
@@ -284,28 +413,48 @@
     "description": {
       "en": "HIBOU CONSULTING RH is officially participating in the 3rd edition of HIS Future Talents 2026.",
       "ar": "HIBOU CONSULTING RH تشارك رسمياً في الطبعة الثالثة لصالون HIS Future Talents 2026."
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "immersion"
+    ],
+    "targetProfiles": "gestionnaire des ressources humaines \ncommercial sédentaire (plusieurs postes )"
   },
   {
     "name": "HIS University",
     "slug": "his-university",
     "logo": "/brand/his-official-logo.png",
     "edition": 2025,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "IRAcademy",
     "slug": "iracademy",
     "logo": "/shared/iracademy.png",
     "edition": 2025,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "HIS Training Center",
     "slug": "his-training-center",
     "logo": "/shared/his-training-center.png",
     "edition": 2025,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "SATIM",
@@ -328,7 +477,12 @@
         "اعتماد وتأمين أجهزة الدفع الإلكتروني (TPE) والموزعات الآلية (DAB/GAB) وفقًا للمعايير الدولية.",
         "توفير البوابة الوطنية الآمنة للدفع الإلكتروني عبر الإنترنت لدعم التجارة الإلكترونية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Djezzy",
@@ -351,7 +505,12 @@
         "مملوك بنسبة 96.57٪ للدولة الجزائرية عبر الصندوق الوطني للاستثمار (FNI).",
         "فاعل رئيسي في الاقتصاد الرقمي الوطني، ملتزم بتغطية الجيل الرابع والتحضير للجيل الخامس."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "CyBears",
@@ -373,7 +532,12 @@
         "حلول متكاملة لتدقيق الأمن، الكشف عن الحوادث والاستجابة الفورية لها.",
         "شراكات استراتيجية مع كبار الفاعلين التكنولوجيين الدوليين مثل WALLIX."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Yalidine Express",
@@ -396,7 +560,12 @@
         "تغطية لوجستية شاملة وموثوقة تمتد لتشمل كافة ولايات الوطن الـ 58.",
         "رائد حلول الدفع عند الاستلام (Cash on Delivery) وتتبع حركة الشحنات فورياً."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "National Civil Aviation Agency",
@@ -419,7 +588,12 @@
         "ضمان مطابقة معايير السلامة والأمن الجوي الدولية (منظمة الطيران المدني الدولي).",
         "المكلفة بحماية حقوق المسافرين وتطوير النقل الجوي."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "PROPHEX",
@@ -442,7 +616,12 @@
         "حلول متطورة لشبكات تصريف المياه وتجهيزات الري الحديثة.",
         "شريك رسمي لصالون HIS Future Talents."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Faderco",
@@ -465,7 +644,12 @@
         "مجموعة متنوعة من العلامات التجارية المعروفة (أوان، كوتكس، بيمبيز، بيلو).",
         "صرح صناعي متكامل يضم مصنعًا لإنتاج عجينة السليلوز (ورق)."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Cevital",
@@ -488,7 +672,12 @@
         "رائد الصناعات الغذائية في إفريقيا (السكر، زيوت المائدة، المشروبات).",
         "مجمع صناعي وخدماتي متنوع يضم شركات رائدة مثل (MFG) للزجاج و(براندت)."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Techno Stationery",
@@ -510,7 +699,12 @@
         "مجموعة كاملة موجهة للمهنيين، الطلاب، والرسامين (الفنون الجميلة).",
         "شبكة محلات حديثة تغطي عدة ولايات جزائرية (الجزائر العاصمة، سطيف، مستغانم)."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "MFG",
@@ -533,7 +727,12 @@
         "شركة تابعة لمجمع سيفيتال بطاقة إنتاجية تبلغ 1,400 طن يوميًا.",
         "حضور دولي قوي مع تصدير 70٪ من الإنتاج إلى الأسواق الأوروبية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "CASH Assurances",
@@ -556,7 +755,12 @@
         "شركة فرعية رئيسية لمجمع المحروقات الوطني سوناطراك.",
         "توفر مجموعة واسعة من تأمينات الأضرار للمؤسسات والأفراد."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "CAARAMA Assurance",
@@ -579,7 +783,12 @@
         "توفر مجموعة كاملة من حلول التأمين على الحياة، الصحة (صحتي) وتأمين السفر (مسافر).",
         "رائدة في تقديم خدمات الدفع والاشتراك الإلكتروني عبر الإنترنت في الجزائر."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "SAA Assurances",
@@ -602,7 +811,12 @@
         "قاعدة عملاء واسعة تضم أكثر من مليوني عميل من الأفراد والمؤسسات.",
         "شبكة وكالات تجارية تغطي كامل التراب الوطني الجزائري."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Legal Doctrine",
@@ -625,7 +839,12 @@
         "تجميع وتصنيف القوانين، المراسيم التنفيذية، والأحكام القضائية.",
         "حائزة على جوائز كأفضل شركة ناشئة في مجالات الابتكار التكنولوجي والقانوني في إفريقيا."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "PayPart",
@@ -648,7 +867,12 @@
         "آلية آمنة لتجميد وتحرير الأموال فور الاستلام الفعلي للمنتج.",
         "تسهيل دمج بوابات الدفع للمتاجر الإلكترونية وتقليل نسب إلغاء الطلبات."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Henkel",
@@ -671,7 +895,12 @@
         "مصنعان إنتاجيان حديثان ورقمان في الرغاية وشلغوم العيد.",
         "ريادة في قطاع المنتجات الاستهلاكية (العناية بالمنزل والشعر) والمواد اللاصقة الصناعية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Beyn",
@@ -694,7 +923,12 @@
         "شريك استراتيجي لأكثر من عشرة بنوك لدعم التحول الرقمي والخدمات الإلكترونية.",
         "مطور حلول الدفع عبر الهاتف المحمول الرائجة مثل منصة الدفع (WimPay)."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Canbebe",
@@ -716,7 +950,12 @@
         "إنتاج محلي عالي الجودة في المركب الصناعي بالرويبة (الجزائر العاصمة).",
         "توزيع وإدارة من قِبل شركة هيجيانيس (Hygianis SPA)، الفاعل الرئيسي في القطاع."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Benslimane & Partners",
@@ -739,7 +978,12 @@
         "تأسس عام 2007 من قِبل الأستاذ سمير بن سليمان، المحامي المعتمد لدى المحكمة العليا.",
         "مرافقة قانونية مخصصة للمستثمرين المحليين والدوليين."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "DZ-IT",
@@ -762,7 +1006,12 @@
         "خبير في أنظمة الأمن الإلكتروني (المراقبة البصرية، التحكم في الوصول).",
         "تأسست عام 2009 ويقع مقرها في دالي إبراهيم، الجزائر العاصمة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Sylabs",
@@ -784,7 +1033,12 @@
         "مسرع للشركات الناشئة ومنشط رئيسي للمشهد التكنولوجي الجزائري.",
         "برامج تدريبية وورش عمل تكنولوجية مخصصة لتطوير مهارات الشباب."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "GIG Algeria",
@@ -807,7 +1061,12 @@
         "امتداد وتطور للشركة التاريخية (L'Algérienne des Assurances - 2A).",
         "توفر مجموعة واسعة من تأمينات الأضرار للأفراد والشركات."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Hibou Consulting RH",
@@ -829,7 +1088,12 @@
         "مرافقة مخصصة للمؤسسات المحلية في إدارة رأس مالها البشري.",
         "يقع مقره في البليدة وله حضور بارز على منصات التوظيف الرئيسية في الجزائر."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Hayat",
@@ -852,7 +1116,12 @@
         "مجمع صناعي كبير في بوعينان (البليدة) لإنتاج حفاضات Molfix ومنظفات Bingo.",
         "رائد في السوق الوطنية لمنتجات النظافة الشخصية والمنظفات المنزلية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Ouedkniss",
@@ -875,7 +1144,12 @@
         "أكثر من مليون إعلان نشط في مجالات السيارات، العقارات، التكنولوجيا، والتوظيف.",
         "منصة مرجعية تسجل ملايين الزيارات شهرياً وتضم آلاف المتاجر الرقمية للمحترفين."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "El Kendi",
@@ -898,7 +1172,12 @@
         "شركة فرعية رئيسية لمجموعة (MS Pharma) الإقليمية تضم أكثر من 1,000 موظف.",
         "وحدة إنتاج حديثة ومتطورة تقع في المدينة الجديدة سيدي عبد الله (الجزائر العاصمة)."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Oussama Promotion Immobilière",
@@ -921,7 +1200,12 @@
         "إنجاز مشاريع سكنية حديثة ومبتكرة (إقامة سيرما، فيراندا، لومبرانت).",
         "يقع مقر الشركة في الشراقة، الجزائر العاصمة، لخدمة المستثمرين المحليين والجالية بالخارج."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Data Intuition",
@@ -943,7 +1227,12 @@
         "مطور منصة (S4AI) للتحليلات المتقدمة المدعومة بالذكاء الاصطناعي.",
         "خبرة في مرافقة المؤسسات نحو التحول الرقمي القائم على البيانات."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Global Job",
@@ -966,7 +1255,12 @@
         "منصة رقمية مبتكرة تستخدم تقنيات الذكاء الاصطناعي لمطابقة السير الذاتية بالوظائف.",
         "يقع مقر الشركة في مركز القدس التجاري بالشراقة، الجزائر العاصمة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "GAM Assurances",
@@ -989,7 +1283,12 @@
         "تأسست عام 2001 وتقدم تغطية متكاملة للأفراد والمؤسسات في مجال تأمينات الأضرار.",
         "حائزة على جائزة أفضل خدمة عملاء لعامَي 2021 و2022، وملتزمة بالتحول الرقمي."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Namlatic",
@@ -1012,28 +1311,48 @@
         "أكثر من 300 فندق مصنف عبر كامل التراب الجزائري مع تأكيد فوري.",
         "مصنّف مشروع مبتكر من وزارتي السياحة والناشئات، مع دعم عملاء على مدار الساعة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "HIS University",
     "slug": "his-university",
     "logo": "/brand/his-official-logo.png",
     "edition": 2024,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "IRAcademy",
     "slug": "iracademy",
     "logo": "/shared/iracademy.png",
     "edition": 2024,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "HIS Training Center",
     "slug": "his-training-center",
     "logo": "/shared/his-training-center.png",
     "edition": 2024,
-    "tier": "official"
+    "tier": "official",
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Yassir",
@@ -1056,7 +1375,12 @@
         "حاضر في عدة دول إفريقية وشرق أوسطية مع ملايين المستخدمين النشطين.",
         "شركة تكنولوجية أفريقية ذات قيمة مليارية وواحدة من أكثر الشركات الناشئة قيمةً في القارة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "BNP Paribas",
@@ -1079,7 +1403,12 @@
         "تقدم مجموعة شاملة من الخدمات المصرفية للأفراد والمؤسسات الصغيرة والمتوسطة والكبرى.",
         "فاعل رئيسي في تمويل الاقتصاد الجزائري والتجارة الدولية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Natixis Algérie",
@@ -1102,7 +1431,12 @@
         "متواجد في الجزائر منذ 1999 لخدمة المؤسسات والمهنيين.",
         "خبرة قوية في التمويل المهيكل، إدارة الخزينة، والتجارة الدولية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Apollo Digital Solutions",
@@ -1125,7 +1459,12 @@
         "مرافقة المؤسسات في تحولها الرقمي (ويب، تطبيقات الهاتف، دمج أنظمة المعلومات).",
         "شريك تكنولوجي موثوق للمؤسسات الصغيرة والمتوسطة والكبرى في الجزائر."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Cabcofi",
@@ -1147,7 +1486,12 @@
         "مرافقة استراتيجية مخصصة للمؤسسات الصغيرة والمتوسطة والمقاولين الجزائريين.",
         "خبرة في تحسين الأداء المالي والامتثال للمتطلبات التنظيمية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "DZ Déclic",
@@ -1170,7 +1514,12 @@
         "محتوى متنوع (مقاطع مرئية، بودكاست، مقالات) لإلهام رواد الأعمال الجزائريين.",
         "فاعل رئيسي في المشهد الريادي الجزائري وفعاليات التكنولوجيا المحلية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "El Djazair Takaful",
@@ -1193,7 +1542,12 @@
         "تقدم مجموعة شاملة من ضمانات التكافل للأفراد والمؤسسات.",
         "فاعل رئيسي في تطوير التمويل الإسلامي والتأمين الأخلاقي في الجزائر."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Elkindi Engineering",
@@ -1216,7 +1570,12 @@
         "حلول تقنية مخصصة للمؤسسات الجزائرية في مجال الأشغال العمومية والصناعة الثقيلة.",
         "خبرة معترف بها في المرافقة التقنية والاستشارات في مجال الحلول الهندسية المتقدمة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Equatorial Coca-Cola Bottling Company Algeria",
@@ -1239,7 +1598,12 @@
         "فرع من مجموعة ECCBC، إحدى أكبر شركات تعبئة كوكا-كولا في إفريقيا.",
         "تضمن الإنتاج المحلي وسلسلة التوريد والتوزيع الوطني لمشروبات كوكا-كولا."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Fransabank El Djazaïr SPA",
@@ -1262,7 +1626,12 @@
         "متواجد في الجزائر منذ 2006، يقدم خدمات مصرفية شاملة للأفراد والمؤسسات.",
         "ملتزم بتحديث ورقمنة الخدمات المالية في الجزائر."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Comet Coworking",
@@ -1285,7 +1654,12 @@
         "مركز مجتمعي للمستقلين والشركات الناشئة ورواد الأعمال الجزائريين.",
         "فضاء للتواصل والابتكار يعزز التعاون والإبداع."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Innovation School",
@@ -1308,7 +1682,12 @@
         "مناهج عملية ومبتكرة موجهة نحو التوظيف وريادة الأعمال.",
         "شريك لمنظومة الشركات الناشئة الجزائرية في تكوين مواهب الغد."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Maystro Delivery",
@@ -1331,7 +1710,12 @@
         "منصة تكنولوجية لإدارة الشحنات مع تتبع الطرود في الوقت الفعلي.",
         "حل متكامل للتجار: استلام، معالجة، توصيل وإدارة المرتجعات."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Moustachir",
@@ -1354,7 +1738,12 @@
         "ربط رواد الأعمال بالخبراء والمرشدين والمستثمرين لتسريع نمو الشركات الناشئة.",
         "منظومة رقمية متكاملة لإطلاق وتطوير وهيكلة المؤسسات."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "MS Pharma",
@@ -1377,7 +1766,12 @@
         "حاضرة في دول منطقة الشرق الأوسط وشمال إفريقيا (MENA)، ومنها الجزائر عبر شركة الكندي للأدوية.",
         "ملتزمة بتيسير الوصول إلى الأدوية الجيدة وتطوير الصناعة الدوائية المحلية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "S.Five Groupe",
@@ -1400,7 +1794,12 @@
         "هندسة دقيقة وحلول جاهزة للبنى التحتية التقنية.",
         "مرافقة المشاريع الصناعية الكبرى عبر كامل التراب الوطني."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Societe Generale",
@@ -1423,7 +1822,12 @@
         "مجموعة كاملة من حلول التمويل، إدارة الحسابات، والخدمات المصرفية عبر الإنترنت.",
         "شبكة وكالات واسعة تغطي الولايات الرئيسية في الجزائر لتقديم خدمة قريبة من العملاء."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Tassili Airlines",
@@ -1446,7 +1850,12 @@
         "شبكة رحلات داخلية وخطوط دولية منتظمة نحو أوروبا.",
         "فاعل رئيسي في النقل العارض لشركات النفط والشركات الصناعية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "TriEmploi",
@@ -1469,7 +1878,12 @@
         "حلول مرنة للموارد البشرية تتكيف مع الاحتياجات المحددة للشركات الجزائرية.",
         "مرافقة كاملة للمرشحين في بحثهم عن عمل وإدماجهم المهني."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Unilever",
@@ -1492,7 +1906,12 @@
         "مجموعة علامات تجارية ذات شهرة عالمية في مجالات النظافة الشخصية، العناية بالجمال، والعناية بالمنزل.",
         "التزام قوي بالتنمية المستدable، الإنتاج المحلي، وخلق فرص العمل."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "ABC Corporation",
@@ -1515,7 +1934,12 @@
         "مجموعة متكاملة من الخدمات المالية المبتكرة للمؤسسات والأفراد.",
         "خبرة معترف بها في المعاملات المالية الدولية والتجارة الخارجية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "SARL Energical",
@@ -1538,7 +1962,12 @@
         "حلول طاقة فعالة ومصممة لتلائم السوق الجزائرية.",
         "التزام بتوفير الراحة الحرارية ورفع كفاءة استهلاك الطاقة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "AEPI New Vision Club",
@@ -1560,7 +1989,12 @@
         "ترقية الابتكار التكنولوجي وروح المبادرة لدى الطلاب.",
         "تنظيم دورات تكوينية، مسابقات هاكاثون، ومنافسات علمية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "CASH Assurances",
@@ -1583,7 +2017,12 @@
         "شركة فرعية رئيسية لمجمع المحروقات الوطني سوناطراك.",
         "توفر مجموعة واسعة من تأمينات الأضرار للمؤسسات والأفراد."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Namlatic",
@@ -1606,7 +2045,12 @@
         "أكثر من 300 فندق مصنف عبر كامل التراب الجزائري مع تأكيد فوري.",
         "مصنّف مشروع مبتكر من وزارتي السياحة والناشئات، مع دعم عملاء على مدار الساعة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "El Kendi",
@@ -1629,7 +2073,12 @@
         "شركة فرعية رئيسية لمجموعة (MS Pharma) الإقليمية تضم أكثر من 1,000 موظف.",
         "وحدة إنتاج حديثة ومتطورة تقع في المدينة الجديدة سيدي عبد الله (الجزائر العاصمة)."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Techno Stationery",
@@ -1651,7 +2100,12 @@
         "مجموعة كاملة موجهة للمهنيين، الطلاب، والرسامين (الفنون الجميلة).",
         "شبكة محلات حديثة تغطي عدة ولايات جزائرية (الجزائر العاصمة، سطيف، مستغانم)."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "PayPart",
@@ -1674,7 +2128,12 @@
         "آلية آمنة لتجميد وتحرير الأموال فور الاستلام الفعلي للمنتج.",
         "تسهيل دمج بوابات الدفع للمتاجر الإلكترونية وتقليل نسب إلغاء الطلبات."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "MFG",
@@ -1697,7 +2156,12 @@
         "شركة تابعة لمجمع سيفيتال بطاقة إنتاجية تبلغ 1,400 طن يوميًا.",
         "حضور دولي قوي مع تصدير 70٪ من الإنتاج إلى الأسواق الأوروبية."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Global Job",
@@ -1720,7 +2184,12 @@
         "منصة رقمية مبتكرة تستخدم تقنيات الذكاء الاصطناعي لمطابقة السير الذاتية بالوظائف.",
         "يقع مقر الشركة في مركز القدس التجاري بالشراقة، الجزائر العاصمة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "Club d'Activités Polyvalents",
@@ -1742,7 +2211,12 @@
         "تنظيم فعاليات وطنية ذات أثر اجتماعي وعلمي كبير.",
         "تطوير المهارات القيادية والتواصلية وإدارة المشاريع للطلبة."
       ]
-    }
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
   },
   {
     "name": "MPI DZ",
@@ -1765,6 +2239,76 @@
         "خبرة في التوصيل الهيكلي، شبكات المعلومات، والاتصالات.",
         "خدمة دعم فني وصيانة احترافية للمؤسسات والشركات."
       ]
+    },
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion"
+    ]
+  },
+  {
+    "name": "BOMARE COMPANY - STREAM",
+    "slug": "bomare-company-stream",
+    "logo": "/partners/2026/bomare-company.png",
+    "edition": 2026,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ],
+    "targetProfiles": "Ingénierie électronique, informatique, commerce & marketing",
+    "website": "https://www.bomarecompany.com",
+    "description": {
+      "en": "BOMARE COMPANY (STREAM System) is a premier Algerian manufacturer and technological pioneer in consumer electronics, smart TVs, digital displays, and innovative industrial engineering.",
+      "ar": "شركة بومار كومباني (BOMARE COMPANY - STREAM) الرائدة في الجزائر في تصنيع وتطوير الأجهزة الإلكترونية والشاشات الذكية وحلول التكنولوجيا المتقدمة."
+    }
+  },
+  {
+    "name": "Okadoo",
+    "slug": "okadoo",
+    "logo": "/partners/2026/okadoo.png",
+    "edition": 2026,
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ],
+    "targetProfiles": "E-commerce, supply chain, marketing digital, développement web & mobile",
+    "website": "https://www.okadoo.com",
+    "description": {
+      "en": "Okadoo is a fast-growing Algerian e-commerce and digital logistics ecosystem providing on-demand retail, marketplace, and express delivery solutions.",
+      "ar": "أوكادو (Okadoo) منصة رقمية وتجارة إلكترونية ولوجستية جزائرية تقدم خدمات التوصيل السريع والتسوق والحلول الرقمية للمستهلكين والشركات."
+    }
+  },
+  {
+    "name": "Beker Laboratoires",
+    "slug": "beker-laboratoires",
+    "logo": "/partners/2026/beker-laboratoires.png",
+    "edition": 2026,
+    "opportunities": [
+      "emploi"
+    ],
+    "targetProfiles": "Biologie, chimie pharmaceutique, contrôle qualité, délégués médicaux",
+    "website": "https://bekerlaboratoires.com",
+    "description": {
+      "en": "Beker Laboratoires is an Algerian pharmaceutical laboratory specializing in high-standard generic drug manufacturing, biotechnology, and healthcare innovation.",
+      "ar": "مخابر بيكر (Beker Laboratoires) مؤسسة صيدلانية جزائرية متخصصة في تطوير وتصنيع الأدوية الجنيسة والتكنولوجيا الحيوية الصيدلانية."
+    }
+  },
+  {
+    "name": "Halkorb RH",
+    "slug": "halkorb-rh",
+    "logo": "/partners/2026/halkorb-rh.png",
+    "edition": 2026,
+    "opportunities": [
+      "emploi",
+      "immersion"
+    ],
+    "targetProfiles": "Gestion des ressources humaines, psychologie du travail, management, recrutement",
+    "website": "https://www.halkorb-rh.com",
+    "description": {
+      "en": "Halkorb RH is a specialized human resources consultancy and talent acquisition firm assisting businesses across Algeria in recruitment and HR development.",
+      "ar": "هالكورب للموارد البشرية (Halkorb RH) مؤسسة استشارية رائدة في استقطاب الكفاءات والتوظيف وإدارة رأس المال البشري للمؤسسات والشركات."
     }
   }
 ]

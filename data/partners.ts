@@ -15,6 +15,8 @@ export type Partner = {
     en: string[];
     ar: string[];
   };
+  opportunities?: string[];
+  targetProfiles?: string;
 };
 
 export const partners: Partner[] = [

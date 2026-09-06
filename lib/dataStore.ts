@@ -52,6 +52,91 @@ export type StudentApplication = {
 
 export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
   {
+    "id": "lead_1788690387518_tu46a",
+    "companyName": "BOMARE COMPANY - STREAM",
+    "representativeName": "BOUZERGUI KAOUTHAR",
+    "role": "TRAINING OFFICER",
+    "email": "charge.formation@bomarecompany.com",
+    "phone": "0560672531",
+    "representativesCount": 3,
+    "opportunities": [
+      "emploi",
+      "pfe",
+      "immersion",
+      "decouverte"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-09-06T10:26:27.518Z",
+    "createdAt": "2026-09-06T10:26:27.524Z",
+    "updatedAt": "2026-09-06T13:07:29.179Z"
+  },
+  {
+    "id": "lead_1788447723636_2hnyx",
+    "companyName": "Okadoo",
+    "representativeName": "Lylia Slamani",
+    "role": "Head of product",
+    "email": "lylia@okadoo.com",
+    "phone": "0770820266",
+    "representativesCount": 3,
+    "opportunities": [
+      "emploi",
+      "pfe"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "Roll-ups - banners, screens - flyers,",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-09-03T15:02:03.636Z",
+    "createdAt": "2026-09-03T15:02:03.649Z",
+    "updatedAt": "2026-09-03T15:05:22.452Z"
+  },
+  {
+    "id": "lead_1788431821514_ygc22",
+    "companyName": "Bbeker laboratoire",
+    "representativeName": "SAGHOUR",
+    "role": "DRH",
+    "email": "h.saghour@bekerlaboratoires.com",
+    "phone": "0560024268",
+    "representativesCount": 2,
+    "opportunities": [
+      "emploi"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "bannières",
+    "remarks": "un stand contenant table ou box et chaises",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-09-03T10:37:01.514Z",
+    "createdAt": "2026-09-03T10:37:01.518Z",
+    "updatedAt": "2026-09-03T13:28:39.855Z"
+  },
+  {
+    "id": "lead_1788361223530_n8xlg",
+    "companyName": "Halkorb-rh",
+    "representativeName": "Yacine Ghezali",
+    "role": "Recruteur",
+    "email": "yacine.ghezali@halkorb-rh.com",
+    "phone": "0561996964",
+    "representativesCount": 2,
+    "opportunities": [
+      "emploi",
+      "immersion"
+    ],
+    "targetProfiles": "",
+    "equipmentNeeded": "Bannière publicitaire",
+    "remarks": "",
+    "packageDesired": "Exposant",
+    "status": "Confirmé",
+    "submittedAt": "2026-09-02T15:00:23.530Z",
+    "createdAt": "2026-09-02T15:00:23.535Z",
+    "updatedAt": "2026-09-02T16:15:18.076Z"
+  },
+  {
     "id": "lead_1788342595165_pfmv0",
     "companyName": "Les Laboratoires Frater Razes",
     "representativeName": "ZITOUNI Maya",
@@ -72,7 +157,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-09-02T09:49:55.165Z",
     "createdAt": "2026-09-02T09:49:55.205Z",
-    "updatedAt": "2026-09-02T10:30:02.360Z"
+    "updatedAt": "2026-09-03T20:36:16.564Z"
   },
   {
     "id": "lead_1788095067613_gjr0f",
@@ -94,7 +179,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-30T13:04:27.613Z",
     "createdAt": "2026-08-30T13:04:28.152Z",
-    "updatedAt": "2026-08-30T15:40:24.558Z"
+    "updatedAt": "2026-09-03T20:36:16.697Z"
   },
   {
     "id": "lead_1788073116527_0ousc",
@@ -115,7 +200,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-30T06:58:36.527Z",
     "createdAt": "2026-08-30T06:58:36.551Z",
-    "updatedAt": "2026-08-30T12:23:00.341Z"
+    "updatedAt": "2026-09-03T20:36:16.771Z"
   },
   {
     "id": "lead_1787840869449_6ns5y",
@@ -137,7 +222,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-27T14:27:49.449Z",
     "createdAt": "2026-08-27T14:27:49.461Z",
-    "updatedAt": "2026-08-29T19:55:06.292Z"
+    "updatedAt": "2026-09-03T20:36:16.803Z"
   },
   {
     "id": "lead_1787146853219_durmv",
@@ -158,7 +243,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-19T13:40:53.219Z",
     "createdAt": "2026-08-19T13:40:53.226Z",
-    "updatedAt": "2026-08-19T22:09:15.965Z"
+    "updatedAt": "2026-09-03T20:36:16.828Z"
   },
   {
     "id": "lead_1787053371630_lobo3",
@@ -181,7 +266,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-18T11:42:51.630Z",
     "createdAt": "2026-08-18T11:42:51.632Z",
-    "updatedAt": "2026-08-18T14:35:37.972Z"
+    "updatedAt": "2026-09-03T20:36:16.852Z"
   },
   {
     "id": "lead_1786622173707_3gfw1",
@@ -204,7 +289,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-13T11:56:13.707Z",
     "createdAt": "2026-08-17T16:36:12.568Z",
-    "updatedAt": "2026-08-30T13:38:10.096Z"
+    "updatedAt": "2026-09-03T20:36:16.867Z"
   },
   {
     "id": "lead_1786612817101_h37c9",
@@ -226,7 +311,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "En cours",
     "submittedAt": "2026-08-13T09:20:17.101Z",
     "createdAt": "2026-08-17T16:36:12.584Z",
-    "updatedAt": "2026-08-30T13:38:10.174Z"
+    "updatedAt": "2026-09-03T20:36:16.885Z"
   },
   {
     "id": "lead_1786536638514_scgrs",
@@ -247,7 +332,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-12T12:10:38.514Z",
     "createdAt": "2026-08-17T16:36:12.601Z",
-    "updatedAt": "2026-08-30T13:38:10.211Z"
+    "updatedAt": "2026-09-03T20:36:16.915Z"
   },
   {
     "id": "lead_1786374061037_qzlog",
@@ -268,7 +353,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-10T15:01:01.037Z",
     "createdAt": "2026-08-17T16:36:12.608Z",
-    "updatedAt": "2026-08-30T13:38:10.244Z"
+    "updatedAt": "2026-09-03T20:36:16.927Z"
   },
   {
     "id": "lead_1786363483142_orys7",
@@ -290,7 +375,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-10T12:04:43.142Z",
     "createdAt": "2026-08-17T16:36:12.616Z",
-    "updatedAt": "2026-08-30T13:38:10.253Z"
+    "updatedAt": "2026-09-03T20:36:16.939Z"
   },
   {
     "id": "lead_1786302038327_hi7ng",
@@ -310,7 +395,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-09T19:00:38.327Z",
     "createdAt": "2026-08-17T16:36:12.624Z",
-    "updatedAt": "2026-08-30T13:38:10.263Z"
+    "updatedAt": "2026-09-03T20:36:16.950Z"
   },
   {
     "id": "lead_1786277155406_mjj5z",
@@ -332,7 +417,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "En cours",
     "submittedAt": "2026-08-09T12:05:55.406Z",
     "createdAt": "2026-08-17T16:36:12.632Z",
-    "updatedAt": "2026-08-30T13:38:10.276Z"
+    "updatedAt": "2026-09-03T20:36:16.965Z"
   },
   {
     "id": "lead_1786272150222_is1m9",
@@ -353,7 +438,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-09T10:42:30.222Z",
     "createdAt": "2026-08-17T16:36:12.638Z",
-    "updatedAt": "2026-08-30T13:38:10.287Z"
+    "updatedAt": "2026-09-03T20:36:16.978Z"
   },
   {
     "id": "lead_1786271815110_kdi5j",
@@ -376,7 +461,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-09T10:36:55.110Z",
     "createdAt": "2026-08-17T16:36:12.649Z",
-    "updatedAt": "2026-08-30T13:38:10.296Z"
+    "updatedAt": "2026-09-03T20:36:16.992Z"
   },
   {
     "id": "lead_1786260926128_9gymc",
@@ -399,7 +484,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-09T07:35:26.128Z",
     "createdAt": "2026-08-17T16:36:12.656Z",
-    "updatedAt": "2026-08-30T13:38:10.310Z"
+    "updatedAt": "2026-09-03T20:36:16.998Z"
   },
   {
     "id": "lead_1786017516645_4d4ra",
@@ -420,7 +505,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-06T11:58:36.645Z",
     "createdAt": "2026-08-17T16:36:12.663Z",
-    "updatedAt": "2026-08-30T13:38:10.318Z"
+    "updatedAt": "2026-09-03T20:36:17.012Z"
   },
   {
     "id": "lead_1785857696100_w9xhc",
@@ -442,7 +527,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-04T15:34:56.101Z",
     "createdAt": "2026-08-17T16:36:12.670Z",
-    "updatedAt": "2026-08-30T13:38:10.322Z"
+    "updatedAt": "2026-09-03T20:36:17.035Z"
   },
   {
     "id": "lead_1785768194136_xyceh",
@@ -463,7 +548,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-03T14:43:14.136Z",
     "createdAt": "2026-08-17T16:36:12.677Z",
-    "updatedAt": "2026-08-30T13:38:10.327Z"
+    "updatedAt": "2026-09-03T20:36:17.073Z"
   },
   {
     "id": "lead_1785764709493_vgokz",
@@ -486,7 +571,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-03T13:45:09.493Z",
     "createdAt": "2026-08-17T16:36:12.687Z",
-    "updatedAt": "2026-08-30T13:38:10.333Z"
+    "updatedAt": "2026-09-03T20:36:17.094Z"
   },
   {
     "id": "lead_1785671872976_5kdpm",
@@ -507,7 +592,7 @@ export const AUTHENTIC_RECOVERED_LEADS: ExhibitorLead[] = [
     "status": "Confirmé",
     "submittedAt": "2026-08-02T11:57:52.976Z",
     "createdAt": "2026-08-17T16:36:12.693Z",
-    "updatedAt": "2026-08-30T13:38:10.344Z"
+    "updatedAt": "2026-09-03T20:36:17.107Z"
   }
 ];
 
